@@ -83,6 +83,7 @@ public class Twitup {
 	 */
 	protected void initGui() {
 		// this.mMainView...
+		this.mMainView = new TwitupMainView();
 	}
 
 	/**
