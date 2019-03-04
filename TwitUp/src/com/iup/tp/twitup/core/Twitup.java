@@ -9,6 +9,8 @@ import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
 
+import javax.swing.*;
+
 /**
  * Classe principale l'application.
  * 
@@ -76,6 +78,12 @@ public class Twitup {
 	 * Initialisation du look and feel de l'application.
 	 */
 	protected void initLookAndFeel() {
+		try{
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+		} catch (Exception e){
+			System.err.println("Erreur à l'application du thème");
+		}
+
 	}
 
 	/**
@@ -140,5 +148,6 @@ public class Twitup {
 
 	public void show() {
 		// ... setVisible?
+		this.mMainView.setVisible(true);
 	}
 }

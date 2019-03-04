@@ -1,8 +1,9 @@
 package com.iup.tp.twitup.ihm;
 
-import com.sun.deploy.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 /**
@@ -14,73 +15,40 @@ public class TwitupMainView extends JFrame {
 
     public TwitupMainView(){
         super("TwitUp");
-
-
         this.menu();
+        this.setFileChooser();
 
-        setSize(1920,1080);
-        setVisible(true);
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(screenSize);
     }
 
-    private JMenuItem addItemToMenu(String name, JMenu parent, String filenameIcon){
+    private void addItemToMenu(String name, JMenu parent, String filenameIcon, ActionListener action){
 
         JMenuItem j = new JMenuItem(name);
         parent.add(j);
-        if(filenameIcon != null){
-            j.setIcon(new ImageIcon(filenameIcon));
+        if(StringUtils.isNotBlank(filenameIcon)){
+            j.setIcon(new ImageIcon(getClass().getResource(filenameIcon)));
         }
-        return j;
+        if(action != null){
+            j.addActionListener(action);
+        }
     }
 
-    private void menu(){
-        JMenuBar menuBar = new JMenuBar();
-
-        JMenu fichier = new JMenu("Fichier");
-
-        JMenuItem ouvrir = addItemToMenu("Ouvrir", fichier, null);
-        addFileChooser(ouvrir);
-
-        JMenuItem enregistrer_sous = new JMenuItem("Enregistrer sous");
-        fichier.add(enregistrer_sous);
-
-        JMenuItem fermer = new JMenuItem("Fermer");
-        fermer.setIcon(new ImageIcon("src/resources/images/exitIcon_20.png"));
-        fermer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        fichier.add(fermer);
-
-        menuBar.add(fichier);
-
-
-        JMenu aide = new JMenu("?");
-
-        JMenuItem a_propos = new JMenuItem("A propos");
-        aide.add(a_propos);
-
-        a_propos.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon("src/resources/images/logoIUP_50.jpg"));
-            }
-        });
-
-        menuBar.add(aide);
-        setJMenuBar(menuBar);
-    }
-
-    private void addFileChooser(JMenuItem parent){
-        // sélection de répertoire uniquement
+    private void setFileChooser(){
         this.fileChooser = new JFileChooser();
         this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         this.fileChooser.setDialogTitle("Selection du dossier d'échange");
+    }
 
 
-        ActionListener actionListener = new ActionListener()
+    private void menu(){
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        JMenu fichier = new JMenu("Fichier");
+        menuBar.add(fichier);
+
+        addItemToMenu("Ouvrir", fichier, null, new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -88,6 +56,7 @@ public class TwitupMainView extends JFrame {
                 switch (fileChooser.showOpenDialog(TwitupMainView.this))
                 {
                     case JFileChooser.APPROVE_OPTION:
+
                         JOptionPane.showMessageDialog(TwitupMainView.this, "Vous avez choisi: \""+
                                         fileChooser.getSelectedFile()+"\" comme dossier d'échange",
                                 "TwitUp",
@@ -99,14 +68,27 @@ public class TwitupMainView extends JFrame {
                                 "TwitUp",
                                 JOptionPane.OK_OPTION);
                         break;
-
-                    case JFileChooser.ERROR_OPTION:
-                        JOptionPane.showMessageDialog(TwitupMainView.this, "Une erreur est apparu lors de la sélection du fichier",
-                                "TwitUp",
-                                JOptionPane.OK_OPTION);
                 }
             }
-        };
-        parent.addActionListener(actionListener);
+        });
+
+        addItemToMenu("Enregistrer sous", fichier, null, null);
+        addItemToMenu("Fermer", fichier,"/images/exitIcon_20.png", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        JMenu aide = new JMenu("?");
+        menuBar.add(aide);
+
+        addItemToMenu("A propos", aide,null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(getClass().getResource("/images/logoIUP_50.jpg")));
+            }
+        });
     }
 }
