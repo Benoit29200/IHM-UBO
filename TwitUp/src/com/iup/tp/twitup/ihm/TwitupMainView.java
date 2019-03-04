@@ -1,19 +1,20 @@
 package com.iup.tp.twitup.ihm;
 
+import com.sun.deploy.util.StringUtils;
+
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
 
 /**
  * Classe de la vue principale de l'application.
  */
 public class TwitupMainView extends JFrame {
 
-    private JMenu menu;
-    private JMenuItem menuItem;
+    private JFileChooser fileChooser;
 
     public TwitupMainView(){
         super("TwitUp");
+
 
         this.menu();
 
@@ -21,19 +22,35 @@ public class TwitupMainView extends JFrame {
         setVisible(true);
     }
 
+    private JMenuItem addItemToMenu(String name, JMenu parent, String filenameIcon){
+
+        JMenuItem j = new JMenuItem(name);
+        parent.add(j);
+        if(filenameIcon != null){
+            j.setIcon(new ImageIcon(filenameIcon));
+        }
+        return j;
+    }
+
     private void menu(){
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fichier = new JMenu("Fichier");
 
-        JMenuItem ouvrir = new JMenuItem("Ouvrir");
-        fichier.add(ouvrir);
+        JMenuItem ouvrir = addItemToMenu("Ouvrir", fichier, null);
+        addFileChooser(ouvrir);
 
         JMenuItem enregistrer_sous = new JMenuItem("Enregistrer sous");
         fichier.add(enregistrer_sous);
 
         JMenuItem fermer = new JMenuItem("Fermer");
         fermer.setIcon(new ImageIcon("src/resources/images/exitIcon_20.png"));
+        fermer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         fichier.add(fermer);
 
         menuBar.add(fichier);
@@ -56,14 +73,40 @@ public class TwitupMainView extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    private void setWindowListener(){
-        WindowListener l = new WindowAdapter() {
+    private void addFileChooser(JMenuItem parent){
+        // sélection de répertoire uniquement
+        this.fileChooser = new JFileChooser();
+        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        this.fileChooser.setDialogTitle("Selection du dossier d'échange");
+
+
+        ActionListener actionListener = new ActionListener()
+        {
             @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
+            public void actionPerformed(ActionEvent ae)
+            {
+                switch (fileChooser.showOpenDialog(TwitupMainView.this))
+                {
+                    case JFileChooser.APPROVE_OPTION:
+                        JOptionPane.showMessageDialog(TwitupMainView.this, "Vous avez choisi: \""+
+                                        fileChooser.getSelectedFile()+"\" comme dossier d'échange",
+                                "TwitUp",
+                                JOptionPane.OK_OPTION);
+                        break;
+
+                    case JFileChooser.CANCEL_OPTION:
+                        JOptionPane.showMessageDialog(TwitupMainView.this, "Vous devez sélectionner un dossier d'échange avant de lancer l'application",
+                                "TwitUp",
+                                JOptionPane.OK_OPTION);
+                        break;
+
+                    case JFileChooser.ERROR_OPTION:
+                        JOptionPane.showMessageDialog(TwitupMainView.this, "Une erreur est apparu lors de la sélection du fichier",
+                                "TwitUp",
+                                JOptionPane.OK_OPTION);
+                }
             }
         };
-
-        addWindowListener(l);
+        parent.addActionListener(actionListener);
     }
 }
