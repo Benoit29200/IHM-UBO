@@ -2,11 +2,11 @@ package com.iup.tp.twitup.common;
 
 public class Loger {
 
-    public static void Warn(String log){
+    public static void warn(String log){
         System.out.println(log);
     }
 
-    public static void Err(String err){
+    public static void err(String err){
         System.err.println(err);
     }
 

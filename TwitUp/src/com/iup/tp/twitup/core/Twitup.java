@@ -1,10 +1,8 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Properties;
 
-import com.iup.tp.twitup.PropertyLoader;
 import com.iup.tp.twitup.common.Loger;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.datamodel.Database;
@@ -14,7 +12,6 @@ import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
 
-import javax.annotation.Resource;
 import javax.swing.*;
 
 /**
@@ -92,12 +89,12 @@ public class Twitup {
 	 * Initialisation du look and feel de l'application.
 	 */
 	protected void initLookAndFeel() {
-		System.out.println("-- Initialisation des styles de l'application");
+		Loger.warn("-- Initialisation des styles de l'application");
 		try{
 			UIManager.setLookAndFeel(this.mProperties.getProperty("LOOK_AND_FEEL"));
-			System.out.println("✔ Succès");
+			Loger.warn("✔ Succès");
 		} catch (Exception e){
-			System.err.println("Erreur à l'application du thème");
+			Loger.err("Erreur à l'application du thème");
 		}
 	}
 
@@ -113,9 +110,9 @@ public class Twitup {
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
-		System.out.println("-- Initialisation de l'interface graphique");
+		Loger.warn("-- Initialisation de l'interface graphique");
 		this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
-		System.out.println("✔ Succès");
+		Loger.warn("✔ Succès");
 	}
 
 	/**
@@ -125,12 +122,12 @@ public class Twitup {
 	 * pouvoir utiliser l'application</b>
 	 */
 	protected void initDirectory() {
-		System.out.println("-- Initialisation du répertoire d'échange depuis le fichier de conf");
+		Loger.warn("-- Initialisation du répertoire d'échange depuis le fichier de conf");
 		if(!this.isValideExchangeDirectory(new File(this.mExchangeDirectoryPath))){
 		    System.exit(0);
         }
 		this.initDirectory(this.mExchangeDirectoryPath);
-        Loger.Warn("✔ Succès");
+        Loger.warn("✔ Succès");
 
 
 	}
@@ -152,20 +149,20 @@ public class Twitup {
 	 * Initialisation du mode bouchoné de l'application
 	 */
 	protected void initMock() {
-		System.out.println("-- Initialisation du mock");
+		Loger.warn("-- Initialisation du mock");
 		TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
 		mock.showGUI();
-		System.out.println("✔ Succès");
+        Loger.warn("✔ Succès");
 	}
 
 	/**
 	 * Initialisation de la base de données
 	 */
 	protected void initDatabase() {
-		System.out.println("-- Initialisation de la base de données");
+		Loger.warn("-- Initialisation de la base de données");
 		mDatabase = new Database();
 		mEntityManager = new EntityManager(mDatabase);
-		System.out.println("✔ Succès");
+		Loger.warn("✔ Succès");
 	}
 
 	/**
