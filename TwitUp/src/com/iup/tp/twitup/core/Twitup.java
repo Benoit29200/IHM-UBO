@@ -3,7 +3,7 @@ package com.iup.tp.twitup.core;
 import java.io.File;
 import java.util.Properties;
 
-import com.iup.tp.twitup.common.Loger;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.IDatabase;
@@ -51,6 +51,11 @@ public class Twitup {
     protected Properties mProperties;
 
 	/**
+	 * Nom du look and feel à appliquer.
+	 */
+	protected String mLookAndFeel;
+
+	/**
 	 * Indique si le mode bouchoné est activé.
 	 */
 	protected boolean mIsMockEnabled = false;
@@ -89,12 +94,12 @@ public class Twitup {
 	 * Initialisation du look and feel de l'application.
 	 */
 	protected void initLookAndFeel() {
-		Loger.warn("-- Initialisation des styles de l'application");
+		LOGER.warn("-- Initialisation des styles de l'application");
 		try{
-			UIManager.setLookAndFeel(this.mProperties.getProperty("LOOK_AND_FEEL"));
-			Loger.warn("✔ Succès");
+			UIManager.setLookAndFeel(this.mLookAndFeel);
+			LOGER.warn("✅ Succès");
 		} catch (Exception e){
-			Loger.err("Erreur à l'application du thème");
+			LOGER.err("❌ Erreur à l'application du thème");
 		}
 	}
 
@@ -104,15 +109,21 @@ public class Twitup {
 	protected void initProperties(){
         this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
         this.mExchangeDirectoryPath = this.mProperties.get("EXCHANGE_DIRECTORY").toString();
+        this.mLookAndFeel = this.mProperties.get("LOOK_AND_FEEL").toString();
     }
 
 	/**
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
-		Loger.warn("-- Initialisation de l'interface graphique");
-		this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
-		Loger.warn("✔ Succès");
+		LOGER.warn("-- Initialisation de l'interface graphique");
+		try{
+			this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
+			LOGER.warn("✅ Succès");
+		} catch (Exception e){
+			LOGER.err("❌ Erreur à l'initialisation de la vue");
+		}
+
 	}
 
 	/**
@@ -122,14 +133,16 @@ public class Twitup {
 	 * pouvoir utiliser l'application</b>
 	 */
 	protected void initDirectory() {
-		Loger.warn("-- Initialisation du répertoire d'échange depuis le fichier de conf");
+		LOGER.warn("-- Initialisation du répertoire d'échange depuis le fichier de conf");
 		if(!this.isValideExchangeDirectory(new File(this.mExchangeDirectoryPath))){
 		    System.exit(0);
         }
-		this.initDirectory(this.mExchangeDirectoryPath);
-        Loger.warn("✔ Succès");
-
-
+		try {
+			this.initDirectory(this.mExchangeDirectoryPath);
+			LOGER.warn("✅ Succès");
+		} catch (Exception e){
+			LOGER.err("❌ Erreur à l'initialisation du répertoire d'échange");
+		}
 	}
 
 	/**
@@ -149,20 +162,30 @@ public class Twitup {
 	 * Initialisation du mode bouchoné de l'application
 	 */
 	protected void initMock() {
-		Loger.warn("-- Initialisation du mock");
-		TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
-		mock.showGUI();
-        Loger.warn("✔ Succès");
+		LOGER.warn("-- Initialisation du mock");
+		try{
+			TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
+			mock.showGUI();
+			LOGER.warn("✅ Succès");
+		} catch (Exception e){
+			LOGER.err("❌ Erreur à l'initialisation du mock");
+		}
+
 	}
 
 	/**
 	 * Initialisation de la base de données
 	 */
 	protected void initDatabase() {
-		Loger.warn("-- Initialisation de la base de données");
-		mDatabase = new Database();
-		mEntityManager = new EntityManager(mDatabase);
-		Loger.warn("✔ Succès");
+		LOGER.warn("-- Initialisation de la base de données");
+		try{
+			mDatabase = new Database();
+			mEntityManager = new EntityManager(mDatabase);
+			LOGER.warn("✅ Succès");
+		} catch (Exception e){
+			LOGER.err("❌ Erreur à l'initialisation de la base de données");
+		}
+
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package com.iup.tp.twitup.common;
 
-public class Loger {
+public class LOGER {
 
     public static void warn(String log){
         System.out.println(log);
