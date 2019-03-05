@@ -72,7 +72,7 @@ public class TwitupMenu extends JMenuBar {
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
 	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	        this.fileChooser.setDialogTitle("Selection du dossier d'Ã©change");
+	        this.fileChooser.setDialogTitle("Selection du dossier d'échange");
 	    }
 	
 	private void addItemToMenu(String name, JMenu parent, String filenameIcon, ActionListener action){

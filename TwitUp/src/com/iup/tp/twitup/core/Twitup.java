@@ -91,7 +91,7 @@ public class Twitup {
 	 */
 	protected void initGui() {
 		// this.mMainView...
-		this.mMainView = new TwitupMainView();
+		this.mMainView = new TwitupMainView(this.mDatabase, this.mEntityManager);
 	}
 
 	/**
@@ -147,7 +147,6 @@ public class Twitup {
 	}
 
 	public void show() {
-		// ... setVisible?
-		this.mMainView.setVisible(true);
+		this.mMainView.showGUI();
 	}
 }
