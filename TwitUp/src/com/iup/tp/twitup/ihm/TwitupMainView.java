@@ -4,13 +4,8 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
-import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.core.EntityManager;
 import com.iup.tp.twitup.datamodel.IDatabase;
 
@@ -20,7 +15,7 @@ import com.iup.tp.twitup.datamodel.IDatabase;
 public class TwitupMainView extends JFrame {
     
     /**
-	 * Base de donénes de l'application.
+	 * Base de donï¿½nes de l'application.
 	 */
 	protected IDatabase mDatabase;
 
@@ -29,7 +24,7 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected EntityManager mEntityManager;
 	
-	protected JTextArea grandeZone = new JTextArea(4, 10);
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,7 +47,6 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this));
-		add(grandeZone);
 	}
 
 	/**

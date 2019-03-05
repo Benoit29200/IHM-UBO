@@ -107,7 +107,7 @@ public class Twitup {
 	 */
 	protected void initGui() {
 		System.out.println("-- Initialisation de l'interface graphique");
-		this.mMainView = new TwitupMainView();
+		this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
 		System.out.println("✔ Succès");
 	}
 
