@@ -34,12 +34,6 @@ public class TwitupMainView extends JFrame {
 		this.mEntityManager = entityManager;
 		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
-//        try {
-//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-//				| UnsupportedLookAndFeelException e) {
-//			e.printStackTrace();
-//		}
 	}
 	
 	/**

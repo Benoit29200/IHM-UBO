@@ -68,9 +68,7 @@ public class Twitup {
 	public Twitup() {
 
 		// Initialisation des properties
-
-		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").toString());
-
+		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
 
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
@@ -95,7 +93,7 @@ public class Twitup {
 	protected void initLookAndFeel() {
 		System.out.println("-- Initialisation des styles de l'application");
 		try{
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			UIManager.setLookAndFeel(this.mProperties.getProperty("LOOK_AND_FEEL"));
 			System.out.println("✔ Succès");
 		} catch (Exception e){
 			System.err.println("Erreur à l'application du thème");
