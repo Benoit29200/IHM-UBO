@@ -42,7 +42,7 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this));
-		add(new TwitupCreationCompte());
+		setContentPane(new TwitupCreationCompte());
 	}
 
 	/**
