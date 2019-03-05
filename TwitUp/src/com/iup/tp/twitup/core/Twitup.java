@@ -68,7 +68,7 @@ public class Twitup {
 	public Twitup() {
 
 		// Initialisation des properties
-		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
+		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/resources/conf/configuration.properties").getPath());
 
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
