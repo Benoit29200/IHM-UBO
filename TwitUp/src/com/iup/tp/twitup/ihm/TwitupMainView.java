@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.ihm;
 
 import java.awt.Dimension;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,15 +25,21 @@ public class TwitupMainView extends JFrame {
 	 * Gestionnaire de bdd et de fichier.
 	 */
 	protected EntityManager mEntityManager;
+
+	/**
+	 * Language bundle.
+	 */
+	protected ResourceBundle mResourceBundleLanguage;
 	
 
 
 	private static final long serialVersionUID = 1L;
 
-	public TwitupMainView(IDatabase database, EntityManager entityManager) {
+	public TwitupMainView(IDatabase database, EntityManager entityManager, ResourceBundle resourceBundleLanguage) {
 		super("twiItUp");
 		this.mDatabase = database;
 		this.mEntityManager = entityManager;
+		this.mResourceBundleLanguage = resourceBundleLanguage;
 		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
 	}
@@ -41,7 +48,7 @@ public class TwitupMainView extends JFrame {
 	 * Initialisation de l'IHM
 	 */
 	protected void initGUI() {
-		setJMenuBar(new TwitupMenu(this));
+		setJMenuBar(new TwitupMenu(this, mResourceBundleLanguage));
 		setContentPane(new TwitupCreationCompte());
 	}
 

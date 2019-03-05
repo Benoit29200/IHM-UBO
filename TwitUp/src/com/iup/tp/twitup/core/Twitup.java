@@ -57,6 +57,11 @@ public class Twitup {
 	 */
 	protected String mLookAndFeel;
 
+	/**
+	 * Nom du look and feel à appliquer.
+	 */
+	protected ResourceBundle mResourceBundleLanguage;
+
 
 	/**
 	 * Indique si le mode bouchoné est activé.
@@ -131,8 +136,8 @@ public class Twitup {
 	 * Initialisation de la langue
 	 */
 	private void initLanguage(){
-		Locale langue = new Locale(this.mProperties.getProperty("LANGUE"));
-		ResourceBundle res = ResourceBundle.getBundle("langue", langue);
+		Locale langue = new Locale(this.mProperties.getProperty("LANGUE"),this.mProperties.getProperty("REGION"));
+		this.mResourceBundleLanguage = ResourceBundle.getBundle("langue", langue);
 	}
 
 	/**
@@ -141,12 +146,11 @@ public class Twitup {
 	protected void initGui() {
 		LOGER.warn("-- Initialisation de l'interface graphique");
 		try{
-			this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
+			this.mMainView = new TwitupMainView(mDatabase,mEntityManager, mResourceBundleLanguage);
 			LOGER.warn("✅ Succès");
 		} catch (Exception e){
 			LOGER.err("❌ Erreur à l'initialisation de la vue");
 		}
-
 	}
 
 	/**

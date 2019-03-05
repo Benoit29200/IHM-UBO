@@ -2,6 +2,7 @@ package com.iup.tp.twitup.ihm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -19,13 +20,16 @@ import org.apache.commons.lang3.StringUtils;
 public class TwitupMenu extends JMenuBar {
 	
     private JFileChooser fileChooser;
+    private ResourceBundle language;
 	
-	public TwitupMenu(JFrame fenetre) {
-		JMenu fichier = new JMenu("Fichier");
+	public TwitupMenu(JFrame fenetre, ResourceBundle mResourceBundleLanguage) {
+
+	    this.language = mResourceBundleLanguage;
+		JMenu fichier = new JMenu(this.language.getObject("fichier").toString());
         add(fichier);
         setFileChooser();
 
-        addItemToMenu("Ouvrir", fichier, null, new ActionListener()
+        addItemToMenu(this.language.getObject("ouvrir").toString(), fichier, null, new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -49,8 +53,8 @@ public class TwitupMenu extends JMenuBar {
             }
         });
 
-        addItemToMenu("Enregistrer sous", fichier, null, null);
-        addItemToMenu("Fermer", fichier,"/resources/images/exitIcon_20.png", new ActionListener() {
+        addItemToMenu(this.language.getObject("enregistrer_sous").toString(), fichier, null, null);
+        addItemToMenu(this.language.getObject("fermer").toString(), fichier,"/resources/images/exitIcon_20.png", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
