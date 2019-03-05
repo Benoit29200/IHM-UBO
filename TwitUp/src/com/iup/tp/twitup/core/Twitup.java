@@ -1,9 +1,11 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Properties;
 
 import com.iup.tp.twitup.PropertyLoader;
+import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
@@ -11,6 +13,7 @@ import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
 
+import javax.annotation.Resource;
 import javax.swing.*;
 
 /**
@@ -63,6 +66,12 @@ public class Twitup {
 	 * Constructeur.
 	 */
 	public Twitup() {
+
+		// Initialisation des properties
+
+		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").toString());
+
+
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
 
@@ -91,19 +100,7 @@ public class Twitup {
 		} catch (Exception e){
 			System.err.println("Erreur à l'application du thème");
 		}
-
 	}
-
-    /**
-     * Initialisation du look and feel de l'application.
-     */
-    protected void loadProperties(String filename) {
-        try{
-            this.mProperties = PropertyLoader.load(filename);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 	/**
 	 * Initialisation de l'interface graphique.
