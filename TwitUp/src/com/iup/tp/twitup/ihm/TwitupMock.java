@@ -138,6 +138,7 @@ public class TwitupMock {
 		// Ajout des composants à la fenêtre
 		this.mFrame.add(dbLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		//GridBagConstraints(int gridx, int gridy,int gridwidth, int gridheight,double weightx, double weighty,int anchor, int fill, Insets insets, int ipadx, int ipady)
 		this.mFrame.add(addUserButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 0, 0));
 		this.mFrame.add(addTwitButton, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.EAST,
