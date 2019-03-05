@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Properties;
 
 import com.iup.tp.twitup.PropertyLoader;
+import com.iup.tp.twitup.common.Loger;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.IDatabase;
@@ -68,7 +69,7 @@ public class Twitup {
 	public Twitup() {
 
 		// Initialisation des properties
-		this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
+        this.initProperties();
 
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
@@ -100,6 +101,14 @@ public class Twitup {
 		}
 	}
 
+    /**
+     * Initialisation du fichier de properties
+     */
+	protected void initProperties(){
+        this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
+        this.mExchangeDirectoryPath = this.mProperties.get("EXCHANGE_DIRECTORY").toString();
+    }
+
 	/**
 	 * Initialisation de l'interface graphique.
 	 */
@@ -117,7 +126,13 @@ public class Twitup {
 	 */
 	protected void initDirectory() {
 		System.out.println("-- Initialisation du répertoire d'échange depuis le fichier de conf");
-		System.out.println("✔ Succès");
+		if(!this.isValideExchangeDirectory(new File(this.mExchangeDirectoryPath))){
+		    System.exit(0);
+        }
+		this.initDirectory(this.mExchangeDirectoryPath);
+        Loger.Warn("✔ Succès");
+
+
 	}
 
 	/**
