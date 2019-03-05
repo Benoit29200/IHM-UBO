@@ -1,7 +1,10 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
@@ -11,7 +14,6 @@ import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
-
 import javax.swing.*;
 
 /**
@@ -55,6 +57,7 @@ public class Twitup {
 	 */
 	protected String mLookAndFeel;
 
+
 	/**
 	 * Indique si le mode bouchoné est activé.
 	 */
@@ -73,6 +76,9 @@ public class Twitup {
 		// Initialisation des properties
         this.initProperties();
 
+        // Initialisation de la langue
+		this.initLanguage();
+
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
 
@@ -89,6 +95,8 @@ public class Twitup {
 		// Initialisation du répertoire d'échange
 		this.initDirectory();
 	}
+
+
 
 	/**
 	 * Initialisation du look and feel de l'application.
@@ -107,10 +115,26 @@ public class Twitup {
      * Initialisation du fichier de properties
      */
 	protected void initProperties(){
-        this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/conf/configuration.properties").getPath());
-        this.mExchangeDirectoryPath = this.mProperties.get("EXCHANGE_DIRECTORY").toString();
-        this.mLookAndFeel = this.mProperties.get("LOOK_AND_FEEL").toString();
-    }
+		LOGER.warn("-- Initialisation du fichier properties");
+
+		try {
+			this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/resources/conf/configuration.properties").getPath());
+			this.mExchangeDirectoryPath = this.mProperties.get("EXCHANGE_DIRECTORY").toString();
+			this.mLookAndFeel = this.mProperties.get("LOOK_AND_FEEL").toString();
+			LOGER.warn("✅ Succès");
+		} catch (Exception e) {
+			LOGER.err("❌ Erreur à l'initialisation du fichier properties");
+		}
+	}
+
+	/**
+	 * Initialisation de la langue
+	 */
+	private void initLanguage(){
+		Locale locale = new Locale("fr");
+		ResourceBundle res = ResourceBundle.getBundle("local", locale);
+		System.out.println(res.getObject("texte"));
+	}
 
 	/**
 	 * Initialisation de l'interface graphique.
