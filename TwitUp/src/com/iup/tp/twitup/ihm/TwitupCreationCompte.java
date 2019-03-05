@@ -4,8 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +25,7 @@ public class TwitupCreationCompte extends JPanel{
 	
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
-	TwitupCreationCompte() {
+	TwitupCreationCompte(){
 		
 		JPanel create = new JPanel();
 		
@@ -30,6 +36,8 @@ public class TwitupCreationCompte extends JPanel{
 		create.setBorder(new LineBorder(Color.CYAN, 4, true));
 		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));
 		create.setOpaque(true);
+		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/resources/images/logoTwitterDummy.jpg")));
+		add(picLabel);
 		add(create);
 		
 	}
