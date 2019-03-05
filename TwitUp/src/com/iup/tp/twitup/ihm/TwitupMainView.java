@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import com.iup.tp.twitup.core.EntityManager;
 import com.iup.tp.twitup.datamodel.IDatabase;
@@ -41,6 +42,7 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this));
+		add(new TwitupCreationCompte());
 	}
 
 	/**
@@ -55,6 +57,7 @@ public class TwitupMainView extends JFrame {
 			public void run() {
 				// Custom de l'affichage
 				setIconImage(new ImageIcon("/resources/images/logoIUP_20.jpg").getImage());
+				setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				setVisible(true);
 			}
 		});
