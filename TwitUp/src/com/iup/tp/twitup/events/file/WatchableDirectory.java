@@ -165,11 +165,11 @@ public class WatchableDirectory implements IWatchableDirectory {
 	 */
 	protected void watchDirectory() {
 		if (mDirectory != null) {
-			Set<File> presentFiles = new HashSet<File>();
-			Set<File> newFiles = new HashSet<File>();
-			Set<File> deletedFiles = new HashSet<File>();
-			Set<File> modifiedFiles = new HashSet<File>();
-			Set<File> oldFiles = new HashSet<File>(this.mPresentFiles);
+			Set<File> presentFiles = new HashSet<>();
+			Set<File> newFiles = new HashSet<>();
+			Set<File> deletedFiles = new HashSet<>();
+			Set<File> modifiedFiles = new HashSet<>();
+			Set<File> oldFiles = new HashSet<>(this.mPresentFiles);
 
 			// Récupération de fichiers actuellement présent
 			for (File file : mDirectory.listFiles()) {

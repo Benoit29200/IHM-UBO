@@ -1,7 +1,9 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
+import java.util.Properties;
 
+import com.iup.tp.twitup.PropertyLoader;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
@@ -42,8 +44,13 @@ public class Twitup {
 	 */
 	protected String mExchangeDirectoryPath;
 
+    /**
+     * Properties loader.
+     */
+    protected Properties mProperties;
+
 	/**
-	 * Idnique si le mode bouchoné est activé.
+	 * Indique si le mode bouchoné est activé.
 	 */
 	protected boolean mIsMockEnabled = false;
 
@@ -69,7 +76,6 @@ public class Twitup {
 
 		// Initialisation de l'IHM
 		this.initGui();
-
 		// Initialisation du répertoire d'échange
 		this.initDirectory();
 	}
@@ -78,20 +84,34 @@ public class Twitup {
 	 * Initialisation du look and feel de l'application.
 	 */
 	protected void initLookAndFeel() {
+		System.out.println("-- Initialisation des styles de l'application");
 		try{
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			System.out.println("✔ Succès");
 		} catch (Exception e){
 			System.err.println("Erreur à l'application du thème");
 		}
 
 	}
 
+    /**
+     * Initialisation du look and feel de l'application.
+     */
+    protected void loadProperties(String filename) {
+        try{
+            this.mProperties = PropertyLoader.load(filename);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 	/**
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
-		// this.mMainView...
-		this.mMainView = new TwitupMainView(this.mDatabase, this.mEntityManager);
+		System.out.println("-- Initialisation de l'interface graphique");
+		this.mMainView = new TwitupMainView();
+		System.out.println("✔ Succès");
 	}
 
 	/**
@@ -101,6 +121,8 @@ public class Twitup {
 	 * pouvoir utiliser l'application</b>
 	 */
 	protected void initDirectory() {
+		System.out.println("-- Initialisation du répertoire d'échange depuis le fichier de conf");
+		System.out.println("✔ Succès");
 	}
 
 	/**
@@ -120,16 +142,20 @@ public class Twitup {
 	 * Initialisation du mode bouchoné de l'application
 	 */
 	protected void initMock() {
+		System.out.println("-- Initialisation du mock");
 		TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
 		mock.showGUI();
+		System.out.println("✔ Succès");
 	}
 
 	/**
 	 * Initialisation de la base de données
 	 */
 	protected void initDatabase() {
+		System.out.println("-- Initialisation de la base de données");
 		mDatabase = new Database();
 		mEntityManager = new EntityManager(mDatabase);
+		System.out.println("✔ Succès");
 	}
 
 	/**
