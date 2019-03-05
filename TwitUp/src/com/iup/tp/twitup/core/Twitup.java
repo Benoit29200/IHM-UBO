@@ -1,7 +1,9 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
+import java.util.Properties;
 
+import com.iup.tp.twitup.PropertyLoader;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
@@ -42,8 +44,13 @@ public class Twitup {
 	 */
 	protected String mExchangeDirectoryPath;
 
+    /**
+     * Properties loader.
+     */
+    protected Properties mProperties;
+
 	/**
-	 * Idnique si le mode bouchoné est activé.
+	 * Indique si le mode bouchoné est activé.
 	 */
 	protected boolean mIsMockEnabled = false;
 
@@ -69,7 +76,6 @@ public class Twitup {
 
 		// Initialisation de l'IHM
 		this.initGui();
-
 		// Initialisation du répertoire d'échange
 		this.initDirectory();
 	}
@@ -87,6 +93,17 @@ public class Twitup {
 		}
 
 	}
+
+    /**
+     * Initialisation du look and feel de l'application.
+     */
+    protected void loadProperties(String filename) {
+        try{
+            this.mProperties = PropertyLoader.load(filename);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 	/**
 	 * Initialisation de l'interface graphique.
