@@ -35,13 +35,13 @@ public class TwitupMenu extends JMenuBar {
                     case JFileChooser.APPROVE_OPTION:
 
                         JOptionPane.showMessageDialog(fenetre, "Vous avez choisi: \""+
-                                        fileChooser.getSelectedFile()+"\" comme dossier d'échange",
+                                        fileChooser.getSelectedFile()+"\" comme dossier d'Ã©change",
                                 "TwitUp",
                                 JOptionPane.OK_OPTION);
                         break;
 
                     case JFileChooser.CANCEL_OPTION:
-                        JOptionPane.showMessageDialog(fenetre, "Vous devez sélectionner un dossier d'échange avant de lancer l'application",
+                        JOptionPane.showMessageDialog(fenetre, "Vous devez sÃ©lectionner un dossier d'Ã©change avant de lancer l'application",
                                 "TwitUp",
                                 JOptionPane.OK_OPTION);
                         break;
@@ -63,7 +63,7 @@ public class TwitupMenu extends JMenuBar {
         addItemToMenu("A propos", aide,null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n DÃ©partement Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
                         new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
             }
         });
@@ -72,7 +72,7 @@ public class TwitupMenu extends JMenuBar {
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
 	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	        this.fileChooser.setDialogTitle("Selection du dossier d'échange");
+	        this.fileChooser.setDialogTitle("Selection du dossier d'Ã©change");
 	    }
 	
 	private void addItemToMenu(String name, JMenu parent, String filenameIcon, ActionListener action){
