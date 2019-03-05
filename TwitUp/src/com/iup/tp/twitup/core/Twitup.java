@@ -170,6 +170,6 @@ public class Twitup {
 	}
 
 	public void show() {
-		this.mMainView.setVisible(true);
+		this.mMainView.showGUI();
 	}
 }
