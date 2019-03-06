@@ -33,7 +33,7 @@ public class TwitupCreationCompte extends JPanel{
 		
 		createUserPage(create);
 		
-		create.setBorder(new LineBorder(Color.CYAN, 4, true));
+//		create.setBorder(new LineBorder(Color.CYAN, 4, true));
 		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));
 		create.setOpaque(true);
 //		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.jpg")));

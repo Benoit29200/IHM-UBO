@@ -22,8 +22,8 @@ public class TwitupCreateTwit extends JPanel {
 	
 	public TwitupCreateTwit() {
 		this.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/6));
-		this.setBorder(new LineBorder(Color.GRAY, 4, true));
-		this.setBackground(Color.LIGHT_GRAY);
+		this.setBorder(new LineBorder(Color.WHITE, 4, true));
+//		this.setBackground(Color.LIGHT_GRAY);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 
 		this.add(textTwit);

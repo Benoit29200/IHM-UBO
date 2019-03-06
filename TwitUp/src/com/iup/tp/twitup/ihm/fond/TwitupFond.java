@@ -50,7 +50,7 @@ public class TwitupFond extends JPanel{
 	private JPanel addMenuLeft() {
 		JPanel panelCoteLeft = new JPanel();
 		panelCoteLeft.setBackground(Color.WHITE);
-		panelCoteLeft.setBorder(new LineBorder(Color.RED, 4, true));
+//		panelCoteLeft.setBorder(new LineBorder(Color.RED, 4, true));
 		panelCoteLeft.setLayout(new GridBagLayout());
 		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.png")));
 		panelCoteLeft.add(picLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTH,
