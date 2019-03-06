@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
+import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
 
 /**
  * Classe représentant les donénes chargées dans l'application.

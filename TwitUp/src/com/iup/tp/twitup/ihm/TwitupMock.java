@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 import com.iup.tp.twitup.core.EntityManager;
-import com.iup.tp.twitup.datamodel.IDatabase;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 

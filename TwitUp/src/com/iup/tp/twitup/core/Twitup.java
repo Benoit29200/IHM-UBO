@@ -7,8 +7,9 @@ import java.util.ResourceBundle;
 
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
+import com.iup.tp.twitup.controller.MainViewController;
 import com.iup.tp.twitup.datamodel.Database;
-import com.iup.tp.twitup.datamodel.IDatabase;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
@@ -106,12 +107,12 @@ public class Twitup {
 	 * Initialisation du look and feel de l'application.
 	 */
 	protected void initLookAndFeel() {
-		LOGER.info("-- Initialisation des styles de l'application");
+		LOGER.debug("-- Initialisation des styles de l'application");
 		try{
 			UIManager.setLookAndFeel(this.mLookAndFeel);
-			LOGER.info("✅ Succès");
+			LOGER.success("Succès");
 		} catch (Exception e){
-			LOGER.err("❌ Erreur à l'application du thème");
+			LOGER.err("Erreur à l'application du thème");
 		}
 	}
 
@@ -119,14 +120,14 @@ public class Twitup {
      * Initialisation du fichier de properties
      */
 	protected void initProperties(){
-		LOGER.info("-- Initialisation du fichier properties");
+		LOGER.debug("-- Initialisation du fichier properties");
 		try {
 			this.mProperties = PropertiesManager.loadProperties(getClass().getResource("/resources/conf/configuration.properties").getPath());
 			this.mExchangeDirectoryPath = this.mProperties.get("EXCHANGE_DIRECTORY").toString();
 			this.mLookAndFeel = this.mProperties.get("LOOK_AND_FEEL").toString();
-			LOGER.info("✅ Succès");
+			LOGER.success("Succès");
 		} catch (Exception e) {
-			LOGER.err("❌ Erreur à l'initialisation du fichier properties");
+			LOGER.err("Erreur à l'initialisation du fichier properties");
 		}
 	}
 
@@ -142,12 +143,15 @@ public class Twitup {
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
-		LOGER.info("-- Initialisation de l'interface graphique");
+		LOGER.debug("-- Initialisation de l'interface graphique");
 		try{
 			this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
-			LOGER.info("✅ Succès");
+			MainViewController mainViewController = new MainViewController();
+			mainViewController.setDatabase(this.mDatabase);
+			this.mMainView.addObserver(new MainViewController());
+			LOGER.success("Succès");
 		} catch (Exception e){
-			LOGER.err("❌ Erreur à l'initialisation de la vue");
+			LOGER.err("Erreur à l'initialisation de la vue");
 		}
 	}
 
@@ -158,15 +162,15 @@ public class Twitup {
 	 * pouvoir utiliser l'application</b>
 	 */
 	protected void initDirectory() {
-		LOGER.info("-- Initialisation du répertoire d'échange depuis le fichier de conf");
+		LOGER.debug("-- Initialisation du répertoire d'échange depuis le fichier de conf");
 		if(!this.isValideExchangeDirectory(new File(this.mExchangeDirectoryPath))){
 		    System.exit(0);
         }
 		try {
 			this.initDirectory(this.mExchangeDirectoryPath);
-			LOGER.info("✅ Succès");
+			LOGER.success("Succès");
 		} catch (Exception e){
-			LOGER.err("❌ Erreur à l'initialisation du répertoire d'échange");
+			LOGER.err("Erreur à l'initialisation du répertoire d'échange");
 		}
 	}
 
@@ -187,13 +191,13 @@ public class Twitup {
 	 * Initialisation du mode bouchoné de l'application
 	 */
 	protected void initMock() {
-		LOGER.info("-- Initialisation du mock");
+		LOGER.debug("-- Initialisation du mock");
 		try{
 			TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
 			mock.showGUI();
-			LOGER.info("✅ Succès");
+			LOGER.success("Succès");
 		} catch (Exception e){
-			LOGER.err("❌ Erreur à l'initialisation du mock");
+			LOGER.err("Erreur à l'initialisation du mock");
 		}
 	}
 
@@ -201,13 +205,13 @@ public class Twitup {
 	 * Initialisation de la base de données
 	 */
 	protected void initDatabase() {
-		LOGER.info("-- Initialisation de la base de données");
+		LOGER.debug("-- Initialisation de la base de données");
 		try{
 			mDatabase = new Database();
 			mEntityManager = new EntityManager(mDatabase);
-			LOGER.info("✅ Succès");
+			LOGER.success("Succès");
 		} catch (Exception e){
-			LOGER.err("❌ Erreur à l'initialisation de la base de données");
+			LOGER.err("Erreur à l'initialisation de la base de données");
 		}
 	}
 

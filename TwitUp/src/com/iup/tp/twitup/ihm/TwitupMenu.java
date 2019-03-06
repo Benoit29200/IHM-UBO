@@ -13,9 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import com.iup.tp.twitup.ObservableController.IObservableMenu;
-import com.iup.tp.twitup.ObservableController.IObserverMenu;
-import com.iup.tp.twitup.controller.MenuController;
+import com.iup.tp.twitup.datamodel.login.IObserverLogin;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
@@ -35,7 +33,7 @@ public class TwitupMenu extends JMenuBar {
     private ResourceBundle fileLanguage;
     protected JFrame mainFenetre;
 
-    protected IObserverMenu observer;
+    protected IObserverLogin observer;
 	
     /**
      * Constructeur de la classe

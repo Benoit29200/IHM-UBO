@@ -7,15 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
+import com.iup.tp.twitup.datamodel.mainView.IObservableMainView;
+import com.iup.tp.twitup.datamodel.mainView.IObserverMainView;
 import com.iup.tp.twitup.core.EntityManager;
-import com.iup.tp.twitup.datamodel.IDatabase;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
 import com.iup.tp.twitup.ihm.fond.TwitupFond;
 
 /**
  * Classe de la vue principale de l'application.
  */
-public class TwitupMainView extends JFrame {
+public class TwitupMainView extends JFrame implements IObservableMainView {
     
     /**
 	 * Base de don�nes de l'application.
@@ -26,6 +28,11 @@ public class TwitupMainView extends JFrame {
 	 * Gestionnaire de bdd et de fichier.
 	 */
 	protected EntityManager mEntityManager;
+
+	/**
+	 * observer
+	 */
+	protected IObserverMainView observer;
 
 
 	private static final long serialVersionUID = 1L;
@@ -65,5 +72,19 @@ public class TwitupMainView extends JFrame {
 			}
 		});
 	}
-    
+
+	@Override
+	public void addObserver(IObserverMainView o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyController() {
+		//TODO
+	}
 }
