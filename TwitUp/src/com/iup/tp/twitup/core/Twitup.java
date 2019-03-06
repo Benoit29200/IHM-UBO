@@ -145,10 +145,9 @@ public class Twitup {
 	protected void initGui() {
 		LOGER.debug("-- Initialisation de l'interface graphique");
 		try{
-			this.mMainView = new TwitupMainView(mDatabase,mEntityManager);
-			MainViewController mainViewController = new MainViewController();
-			mainViewController.setDatabase(this.mDatabase);
-			this.mMainView.addObserver(new MainViewController());
+			this.mMainView = new TwitupMainView();
+			MainViewController mainViewController = new MainViewController(this.mDatabase, this.mMainView);
+			this.mMainView.addObserver(mainViewController);
 			LOGER.success("Succès");
 		} catch (Exception e){
 			LOGER.err("Erreur à l'initialisation de la vue");

@@ -6,5 +6,5 @@ public interface IObservableMainView {
 
     void deleteObserver();
 
-    void notifyController();
+
 }

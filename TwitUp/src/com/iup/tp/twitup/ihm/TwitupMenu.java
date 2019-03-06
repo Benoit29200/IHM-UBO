@@ -13,7 +13,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.iup.tp.twitup.datamodel.login.IObservableLogin;
 import com.iup.tp.twitup.datamodel.login.IObserverLogin;
+import com.iup.tp.twitup.datamodel.menu.IObservableMenu;
+import com.iup.tp.twitup.datamodel.menu.IObserverMenu;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
@@ -22,7 +25,7 @@ import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
 /**
  * Classe de la vue principale de l'application.
  */
-public class TwitupMenu extends JMenuBar {
+public class TwitupMenu extends JMenuBar implements IObservableMenu {
 	
     /**
 	 * 
@@ -31,18 +34,19 @@ public class TwitupMenu extends JMenuBar {
 
 	private JFileChooser fileChooser;
     private ResourceBundle fileLanguage;
-    protected JFrame mainFenetre;
+    protected TwitupMainView mainView;
 
-    protected IObserverLogin observer;
+    protected IObserverMenu observer;
 	
     /**
      * Constructeur de la classe
      * @param fenetre
      */
-	public TwitupMenu(JFrame fenetre) {
+	public TwitupMenu(TwitupMainView fenetre, IObserverMenu observer) {
 
-        this.mainFenetre = fenetre;
+        this.mainView = fenetre;
         this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+        this.observer = observer;
 
 		JMenu fichier = new JMenu(this.fileLanguage.getObject("fichier").toString());
         add(fichier);
@@ -66,16 +70,14 @@ public class TwitupMenu extends JMenuBar {
 		addItemToMenu(this.fileLanguage.getObject("creation").toString(), userAccount, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
-				 mainFenetre.setContentPane(new TwitupCreationCompte());
-				 mainFenetre.revalidate();
+				 notifyChargeAccountManager();
 			 }
 		});
 		
 		addItemToMenu(this.fileLanguage.getObject("connexion").toString(), userAccount, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
-				 mainFenetre.setContentPane(new TwitupConnexionUser());
-				 mainFenetre.revalidate();
+				notifyChargeConnexion();
 			 }
 		});
 		
@@ -166,4 +168,23 @@ public class TwitupMenu extends JMenuBar {
     }
 
 
+	@Override
+	public void addObserver(IObserverMenu o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyChargeAccountManager() {
+		this.observer.chargeAccountManager();
+	}
+
+	@Override
+	public void notifyChargeConnexion() {
+		this.observer.chargeConnexion();
+	}
 }
