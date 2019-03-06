@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.ihm.fond;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -31,6 +32,9 @@ public class TwitupFond extends JPanel{
 		/**
 		 * Pour les tests
 		 */
+		
+		this.setBackground(new Color(135,206,250));
+		
 		this.add(new TwitupBordereauMenu(), new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
 				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
 		

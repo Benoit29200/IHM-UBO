@@ -1,13 +1,12 @@
 package com.iup.tp.twitup.ihm.twit;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 public class TwitupCreateViewTwit extends JPanel {
 
@@ -21,6 +20,7 @@ public class TwitupCreateViewTwit extends JPanel {
 	public TwitupCreateViewTwit() {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
+		this.setBackground(new Color(135,206,250));
 //		this.setBorder(new LineBorder(Color.WHITE, 4, true));
 //		this.setBackground(Color.WHITE);
 		this.add(new TwitupCreateTwit(), new GridBagConstraints(0, 0, 1, 1, 0, 0.2, GridBagConstraints.CENTER,

@@ -26,11 +26,10 @@ public class TwitupFilTwit extends JPanel {
 
 	public TwitupFilTwit() {
 		this.setLayout(new GridBagLayout());
-		this.setBorder(new LineBorder(Color.RED, 2, true));
 		
 		JPanel testScroll = new JPanel(new GridBagLayout());
 		testScroll.setMinimumSize(new Dimension(1000, 1000));
-		//testScroll.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
+		testScroll.setBackground(new Color(240,248,255));
 		
 		JScrollPane scroll = new JScrollPane(testScroll, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
