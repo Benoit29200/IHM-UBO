@@ -1,4 +1,4 @@
 *.idea
-*.properties
+configuration.properties
 *DS_STORE
 

@@ -86,20 +86,21 @@ public class TwitupCreationCompte extends JPanel{
 		creation.add(nom);
 		return creation;
 	}
-	
-	private JPanel createJPanelTextField(Dimension screenSize,Boolean pwd) {
-		JPanel creation = new JPanel();
-		if(pwd) {
-			JPasswordField monText = new JPasswordField();
-			monText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-			creation.add(monText);
-		}
-		else {
-			JTextField nomText = new JTextField("");
-			nomText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-			creation.add(nomText);
-		}
-		return creation;
-	}
+
+    private JPanel createJPanelTextField(Dimension screenSize,Boolean pwd) {
+        JPanel creation = new JPanel();
+        Dimension dimension =new Dimension(screenSize.width/5, screenSize.height/22);
+        if(pwd) {
+            JPasswordField password = new JPasswordField();
+            password.setPreferredSize(dimension);
+            creation.add(password);
+        }
+        else {
+            JTextField champ = new JTextField("");
+            champ.setPreferredSize(dimension);
+            creation.add(champ);
+        }
+        return creation;
+    }
 
 }
