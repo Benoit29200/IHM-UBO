@@ -50,8 +50,7 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this, mResourceBundleLanguage));
-		//setContentPane(new TwitupCreationCompte());
-		setContentPane(new TwitupConnexionUser());
+		
 	}
 
 	/**

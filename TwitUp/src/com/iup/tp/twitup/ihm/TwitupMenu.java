@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
+import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
+
 /**
  * Classe de la vue principale de l'application.
  */
@@ -25,6 +28,7 @@ public class TwitupMenu extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	private JFileChooser fileChooser;
     private ResourceBundle language;
+    protected JFrame mainFenetre;
 	
     /**
      * Constructeur de la classe
@@ -33,18 +37,41 @@ public class TwitupMenu extends JMenuBar {
      */
 	public TwitupMenu(JFrame fenetre, ResourceBundle mResourceBundleLanguage) {
 
+		this.mainFenetre = fenetre;
 	    this.language = mResourceBundleLanguage;
 		JMenu fichier = new JMenu(this.language.getObject("fichier").toString());
         add(fichier);
         addItemToFichierMenu(fenetre, fichier);
         
         JMenu userAccount = new JMenu(this.language.getObject("userAccount").toString());
-        
+        add(userAccount);
+        addItemToUserAccountMenu(fenetre,userAccount);        
 
         JMenu aide = new JMenu("?");
         add(aide);
-
         addItemToTheProposMenu(aide);
+	}
+
+	/**
+	 * 
+	 * @param fenetre
+	 * @param userAccount
+	 */
+	private void addItemToUserAccountMenu(JFrame fenetre, JMenu userAccount) {
+		addItemToMenu(this.language.getObject("creation").toString(), userAccount, null, new ActionListener() {
+			 @Override
+	            public void actionPerformed(ActionEvent e) {
+				 mainFenetre.setContentPane(new TwitupCreationCompte());
+			 }
+		});
+		
+		addItemToMenu(this.language.getObject("connexion").toString(), userAccount, null, new ActionListener() {
+			 @Override
+	            public void actionPerformed(ActionEvent e) {
+				 mainFenetre.setContentPane(new TwitupConnexionUser());
+			 }
+		});
+		
 	}
 
 	/**
