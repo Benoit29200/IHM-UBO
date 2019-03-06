@@ -34,12 +34,12 @@ public class TwitupMenu extends JMenuBar {
     /**
      * Constructeur de la classe
      * @param fenetre
-     * @param mResourceBundleLanguage
      */
 	public TwitupMenu(JFrame fenetre) {
 
         this.mainFenetre = fenetre;
         this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+
 		JMenu fichier = new JMenu(this.fileLanguage.getObject("fichier").toString());
         add(fichier);
         addItemToFichierMenu(fenetre, fichier);
