@@ -27,20 +27,13 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected EntityManager mEntityManager;
 
-	/**
-	 * Language bundle.
-	 */
-	protected ResourceBundle mResourceBundleLanguage;
-	
-
 
 	private static final long serialVersionUID = 1L;
 
-	public TwitupMainView(IDatabase database, EntityManager entityManager, ResourceBundle resourceBundleLanguage) {
+	public TwitupMainView(IDatabase database, EntityManager entityManager) {
 		super("twiItUp");
 		this.mDatabase = database;
 		this.mEntityManager = entityManager;
-		this.mResourceBundleLanguage = resourceBundleLanguage;
 		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
 	}
@@ -49,7 +42,7 @@ public class TwitupMainView extends JFrame {
 	 * Initialisation de l'IHM
 	 */
 	protected void initGUI() {
-		setJMenuBar(new TwitupMenu(this, mResourceBundleLanguage));
+		setJMenuBar(new TwitupMenu(this));
 		
 	}
 
