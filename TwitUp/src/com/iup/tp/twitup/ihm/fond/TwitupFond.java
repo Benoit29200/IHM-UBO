@@ -31,13 +31,13 @@ public class TwitupFond extends JPanel{
 		/**
 		 * Pour les tests
 		 */
-		this.add(new TwitupBordereauMenu(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.WEST,
+		this.add(new TwitupBordereauMenu(), new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
 				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
 		
-		this.add(new TwitupBordereau(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.EAST,
+		this.add(new TwitupBordereau(), new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
 				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
 		
-		this.add(new TwitupCreateViewTwit(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTH,
+		this.add(new TwitupCreateViewTwit(), new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 

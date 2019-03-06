@@ -67,7 +67,7 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 			public void run() {
 				// Custom de l'affichage
 				setIconImage(new ImageIcon("/resources/images/logoIUP_20.jpg").getImage());
-				setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				setVisible(true);
 			}
 		});
