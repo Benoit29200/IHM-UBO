@@ -25,7 +25,7 @@ public class TwitupMenu extends JMenuBar {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFileChooser fileChooser;
-    private ResourceBundle language;
+    private ResourceBundle fileLanguage;
 	
     /**
      * Constructeur de la classe
@@ -33,12 +33,12 @@ public class TwitupMenu extends JMenuBar {
      */
 	public TwitupMenu(JFrame fenetre) {
 
-	    this.language = ResourceBundle.getBundle("menu", Locale.getDefault());
-		JMenu fichier = new JMenu(this.language.getObject("fichier").toString());
+	    this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		JMenu fichier = new JMenu(this.fileLanguage.getObject("fichier").toString());
         add(fichier);
         addItemToFichierMenu(fenetre, fichier);
 
-        JMenu userAccount = new JMenu(this.language.getObject("userAccount").toString());
+        JMenu userAccount = new JMenu(this.fileLanguage.getObject("userAccount").toString());
 
 
         JMenu aide = new JMenu("?");
@@ -70,7 +70,7 @@ public class TwitupMenu extends JMenuBar {
 
 		setFileChooser();
 
-		addItemToMenu(this.language.getObject("ouvrir").toString(), fichier, null, new ActionListener()
+		addItemToMenu(this.fileLanguage.getObject("ouvrir").toString(), fichier, null, new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -94,8 +94,8 @@ public class TwitupMenu extends JMenuBar {
             }
         });
 
-        addItemToMenu(this.language.getObject("enregistrer_sous").toString(), fichier, null, null);
-        addItemToMenu(this.language.getObject("fermer").toString(), fichier,"/resources/images/exitIcon_20.png", new ActionListener() {
+        addItemToMenu(this.fileLanguage.getObject("enregistrer_sous").toString(), fichier, null, null);
+        addItemToMenu(this.fileLanguage.getObject("fermer").toString(), fichier,"/resources/images/exitIcon_20.png", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
