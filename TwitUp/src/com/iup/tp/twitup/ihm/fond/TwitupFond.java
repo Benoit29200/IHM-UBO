@@ -33,6 +33,7 @@ public class TwitupFond extends JPanel{
 	public void addComponentInPage(Container monComponent) {
 		this.add(monComponent, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		this.revalidate();
 	}
 	
 	private JPanel addMenuLeft() {
