@@ -1,7 +1,6 @@
 package com.iup.tp.twitup.ihm;
 
 import java.awt.Dimension;
-import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,7 +9,6 @@ import javax.swing.WindowConstants;
 
 import com.iup.tp.twitup.core.EntityManager;
 import com.iup.tp.twitup.datamodel.IDatabase;
-import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
 
 /**
  * Classe de la vue principale de l'application.
