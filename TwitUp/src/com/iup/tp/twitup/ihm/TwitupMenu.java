@@ -19,17 +19,58 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class TwitupMenu extends JMenuBar {
 	
-    private JFileChooser fileChooser;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JFileChooser fileChooser;
     private ResourceBundle language;
 	
+    /**
+     * Constructeur de la classe
+     * @param fenetre
+     * @param mResourceBundleLanguage
+     */
 	public TwitupMenu(JFrame fenetre, ResourceBundle mResourceBundleLanguage) {
 
 	    this.language = mResourceBundleLanguage;
 		JMenu fichier = new JMenu(this.language.getObject("fichier").toString());
         add(fichier);
-        setFileChooser();
+        addItemToFichierMenu(fenetre, fichier);
+        
+        JMenu userAccount = new JMenu(this.language.getObject("userAccount").toString());
+        
 
-        addItemToMenu(this.language.getObject("ouvrir").toString(), fichier, null, new ActionListener()
+        JMenu aide = new JMenu("?");
+        add(aide);
+
+        addItemToTheProposMenu(aide);
+	}
+
+	/**
+	 * Méthode privée permettant de mettre en place la fenêtre de dialogue pour le "à propos"
+	 * @param aide
+	 */
+	private void addItemToTheProposMenu(JMenu aide) {
+		addItemToMenu("A propos", aide,null, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
+            }
+        });
+	}
+
+	/**
+	 * 
+	 * @param fenetre
+	 * @param fichier
+	 */
+	private void addItemToFichierMenu(JFrame fenetre, JMenu fichier) {
+		
+		setFileChooser();
+		
+		addItemToMenu(this.language.getObject("ouvrir").toString(), fichier, null, new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -60,25 +101,24 @@ public class TwitupMenu extends JMenuBar {
                 System.exit(0);
             }
         });
-
-        JMenu aide = new JMenu("?");
-        add(aide);
-
-        addItemToMenu("A propos", aide,null, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
-            }
-        });
 	}
 	
+	/**
+	 * 
+	 */
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
 	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 	        this.fileChooser.setDialogTitle("Selection du dossier d'échange");
 	    }
 	
+	 /**
+	  * 
+	  * @param name
+	  * @param parent
+	  * @param filenameIcon
+	  * @param action
+	  */
 	private void addItemToMenu(String name, JMenu parent, String filenameIcon, ActionListener action){
 
         JMenuItem j = new JMenuItem(name);

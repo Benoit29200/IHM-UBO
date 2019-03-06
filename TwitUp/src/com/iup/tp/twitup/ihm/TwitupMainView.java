@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 
 import com.iup.tp.twitup.core.EntityManager;
 import com.iup.tp.twitup.datamodel.IDatabase;
+import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
 
 /**
  * Classe de la vue principale de l'application.
@@ -49,7 +50,8 @@ public class TwitupMainView extends JFrame {
 	 */
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this, mResourceBundleLanguage));
-		setContentPane(new TwitupCreationCompte());
+		//setContentPane(new TwitupCreationCompte());
+		setContentPane(new TwitupConnexionUser());
 	}
 
 	/**

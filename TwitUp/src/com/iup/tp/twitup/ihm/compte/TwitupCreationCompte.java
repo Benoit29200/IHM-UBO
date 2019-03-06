@@ -1,16 +1,11 @@
-package com.iup.tp.twitup.ihm;
+package com.iup.tp.twitup.ihm.compte;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,11 +16,16 @@ import javax.swing.border.LineBorder;
 
 public class TwitupCreationCompte extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	JButton creationcompteJButton = new JButton("Créer mon compte");
 	
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
-	TwitupCreationCompte(){
+	public TwitupCreationCompte(){
 		
 		JPanel create = new JPanel();
 		
