@@ -135,7 +135,7 @@ public class Twitup {
 	 */
 	private void initLanguage(){
 		Locale.setDefault(new Locale(this.mProperties.getProperty("LANGUE"),this.mProperties.getProperty("REGION")));
-		this.mResourceBundleLanguage = ResourceBundle.getBundle("langue", Locale.getDefault());
+		this.mResourceBundleLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
 	}
 
 	/**
