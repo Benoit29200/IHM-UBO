@@ -63,6 +63,7 @@ public class TwitupMenu extends JMenuBar {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 mainFenetre.setContentPane(new TwitupCreationCompte());
+				 mainFenetre.revalidate();
 			 }
 		});
 		
@@ -70,6 +71,7 @@ public class TwitupMenu extends JMenuBar {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 mainFenetre.setContentPane(new TwitupConnexionUser());
+				 mainFenetre.revalidate();
 			 }
 		});
 		

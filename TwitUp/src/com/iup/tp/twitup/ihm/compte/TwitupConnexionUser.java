@@ -28,6 +28,8 @@ public class TwitupConnexionUser extends JPanel{
 	
 	public TwitupConnexionUser(){
 		
+		setLayout(new GridBagLayout());
+		
 		JPanel create = new JPanel();
 		
 		create.setLayout(new GridBagLayout());
@@ -35,9 +37,10 @@ public class TwitupConnexionUser extends JPanel{
 		createUserPage(create);
 		
 		create.setBorder(new LineBorder(Color.CYAN, 4, true));
-		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));
+		create.setPreferredSize(new Dimension((int) (screenSize.width/3), screenSize.height/4));
 		create.setOpaque(true);
-		add(create);
+		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		
 	}
 
@@ -53,15 +56,15 @@ public class TwitupConnexionUser extends JPanel{
 		
 		create.add(creationLabel1, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(creationText1, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		create.add(creationText1, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		create.add(creationLabel2, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(creationText2, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		create.add(creationText2, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(this.creationcompteJButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.SOUTHEAST,
+		create.add(this.creationcompteJButton, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.SOUTHWEST,
+		create.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 	}
 		

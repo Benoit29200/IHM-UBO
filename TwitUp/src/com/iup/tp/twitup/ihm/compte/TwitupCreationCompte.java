@@ -29,6 +29,7 @@ public class TwitupCreationCompte extends JPanel{
 		JPanel create = new JPanel();
 		
 		create.setLayout(new GridBagLayout());
+		setLayout(new GridBagLayout());
 		
 		createUserPage(create);
 		
@@ -37,7 +38,8 @@ public class TwitupCreationCompte extends JPanel{
 		create.setOpaque(true);
 //		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.jpg")));
 //		add(picLabel);
-		add(create);
+		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		
 	}
 
