@@ -312,4 +312,12 @@ public class Database implements IDatabase {
 	protected Set<IDatabaseObserver> getObservers() {
 		return new HashSet<IDatabaseObserver>(this.mObservers);
 	}
+
+	@Override
+	public User findUser(User userToFind) {
+		for(User u: this.mUsers){
+			if(userToFind.getUserTag().equals(u.getUserTag()) && userToFind.getUserPassword().equals(u.getUserPassword())) return u;
+		}
+		return null;
+	}
 }

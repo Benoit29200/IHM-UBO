@@ -9,8 +9,8 @@ import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMenu;
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
 import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
+import com.iup.tp.twitup.ihm.fond.TwitupFond;
 
-import javax.swing.*;
 
 public class MainViewController implements IObserverMainView, IDatabaseObserver {
 
@@ -55,6 +55,10 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.notifyUserModified(modifiedUser);
     }
 
+    public IDatabase getDatabase() {
+        return database;
+    }
+
     private void chargeMenu(){
 
         MenuController menuController = new MenuController(this);
@@ -65,13 +69,22 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     public void chargeConnexionComponent(){
-        JPanel connexion = new TwitupConnexionUser();
+        LoginController loginController = new LoginController(this);
+        TwitupConnexionUser connexion = new TwitupConnexionUser(loginController);
+        loginController.setVue(connexion);
         this.vue.chargeComponent(connexion);
     }
 
     public void chargeAccountManager(){
-        JPanel accountManager = new TwitupCreationCompte();
-        this.vue.chargeComponent(accountManager);
+        AccountCreationController accountCreationController = new AccountCreationController(this);
+        TwitupCreationCompte creationCompte = new TwitupCreationCompte(accountCreationController);
+        accountCreationController.setVue(creationCompte);
+        this.vue.chargeComponent(creationCompte);
+    }
+
+    public void chargeApp(){
+        TwitupFond app = new TwitupFond();
+        vue.chargeComponent(app);
     }
 
 

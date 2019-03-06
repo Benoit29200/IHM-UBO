@@ -80,6 +80,13 @@ public interface IDatabase {
 	void modifiyUser(User userToModify);
 
 	/**
+	 * Recherche de l'utilisateur.
+	 *
+	 * @param userToFind
+	 */
+	User findUser(User userToFind);
+
+	/**
 	 * Supprime l'intégralité des twits enregistrés.
 	 */
 	void clearTwits();

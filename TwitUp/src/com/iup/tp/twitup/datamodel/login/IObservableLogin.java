@@ -9,4 +9,8 @@ public interface IObservableLogin {
     void notifyEventCancel();
 
     void notifyEventLogin(String login, String mdp);
+
+    void notifyEventAccountManager();
+
+    void setErrorMessage(String error);
 }

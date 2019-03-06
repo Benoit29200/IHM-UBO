@@ -38,7 +38,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 
 
 	
-	public TwitupCreationCompte(){
+	public TwitupCreationCompte(IObserverAccountCreation observer){
 		
 		JPanel create = new JPanel();
 		
@@ -48,7 +48,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		this.createUserPage(create);
 		this.setActionAccountCreation();
 
-		this.addObserver(new AccountCreationController());
+		this.observer = observer;
 		
 //		create.setBorder(new LineBorder(Color.CYAN, 4, true));
 		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));

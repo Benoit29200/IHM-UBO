@@ -22,8 +22,6 @@ public class TwitupFond extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 2724237454765496211L;
-	
-	protected Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 	public TwitupFond() {
 		this.setLayout(new GridBagLayout());
@@ -41,11 +39,5 @@ public class TwitupFond extends JPanel{
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	public void addComponentInPage(Container monComponent) {
-//		monComponent.setPreferredSize(new Dimension((int)(screenSize.width/1.7), screenSize.height/2));
-		this.add(monComponent, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		this.revalidate();
-	}
 
 }

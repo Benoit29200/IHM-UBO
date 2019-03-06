@@ -1,14 +1,13 @@
 package com.iup.tp.twitup.core;
 
 import java.io.File;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.controller.MainViewController;
 import com.iup.tp.twitup.datamodel.Database;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
@@ -78,6 +77,8 @@ public class Twitup {
 	 */
 	public Twitup() {
 
+
+
 		// Initialisation des properties
         this.initProperties();
 
@@ -90,6 +91,8 @@ public class Twitup {
 		// Initialisation de la base de données
 		this.initDatabase();
 
+		this.initUser();
+
 		if (this.mIsMockEnabled) {
 			// Initialisation du bouchon de travail
 			this.initMock();
@@ -101,6 +104,11 @@ public class Twitup {
 		this.initDirectory();
 	}
 
+
+	protected void initUser(){
+		User u = new User(UUID.randomUUID(), "bautret", "test","benoit" ,new HashSet<String>(),"");
+		this.mDatabase.addUser(u);
+	}
 
 
 	/**
