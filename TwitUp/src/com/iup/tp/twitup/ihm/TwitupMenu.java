@@ -2,6 +2,7 @@ package com.iup.tp.twitup.ihm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
@@ -20,7 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 public class TwitupMenu extends JMenuBar {
 	
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFileChooser fileChooser;
@@ -29,17 +30,16 @@ public class TwitupMenu extends JMenuBar {
     /**
      * Constructeur de la classe
      * @param fenetre
-     * @param mResourceBundleLanguage
      */
-	public TwitupMenu(JFrame fenetre, ResourceBundle mResourceBundleLanguage) {
+	public TwitupMenu(JFrame fenetre) {
 
-	    this.language = mResourceBundleLanguage;
+	    this.language = ResourceBundle.getBundle("menu", Locale.getDefault());
 		JMenu fichier = new JMenu(this.language.getObject("fichier").toString());
         add(fichier);
         addItemToFichierMenu(fenetre, fichier);
-        
+
         JMenu userAccount = new JMenu(this.language.getObject("userAccount").toString());
-        
+
 
         JMenu aide = new JMenu("?");
         add(aide);
@@ -62,14 +62,14 @@ public class TwitupMenu extends JMenuBar {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param fenetre
 	 * @param fichier
 	 */
 	private void addItemToFichierMenu(JFrame fenetre, JMenu fichier) {
-		
+
 		setFileChooser();
-		
+
 		addItemToMenu(this.language.getObject("ouvrir").toString(), fichier, null, new ActionListener()
         {
             @Override
@@ -104,7 +104,7 @@ public class TwitupMenu extends JMenuBar {
 	}
 	
 	/**
-	 * 
+	 *
 	 */
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
@@ -113,7 +113,7 @@ public class TwitupMenu extends JMenuBar {
 	    }
 	
 	 /**
-	  * 
+	  *
 	  * @param name
 	  * @param parent
 	  * @param filenameIcon
