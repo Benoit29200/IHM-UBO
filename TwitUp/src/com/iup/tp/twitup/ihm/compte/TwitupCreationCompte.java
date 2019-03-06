@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,35 +29,29 @@ public class TwitupCreationCompte extends JPanel{
 		JPanel create = new JPanel();
 		
 		create.setLayout(new GridBagLayout());
+		setLayout(new GridBagLayout());
 		
 		createUserPage(create);
 		
 		create.setBorder(new LineBorder(Color.CYAN, 4, true));
 		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));
 		create.setOpaque(true);
-//		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/resources/images/logoTwitterDummy.jpg")));
+//		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.jpg")));
 //		add(picLabel);
-		add(create);
+		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		
 	}
 
 	private void createUserPage(JPanel create) {
 		JPanel creationLabel = createJPanelLabel("Votre nom :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationText = createJPanelTextField(screenSize,false);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationLabel1 = createJPanelLabel("Votre pseudo :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationText1 = createJPanelTextField(screenSize,false);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationLabel2 = createJPanelLabel("Votre mot de passe :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationText2 = createJPanelTextField(screenSize,true);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationLabel3 = createJPanelLabel("Confirmation mot de passe :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		JPanel creationText3 = createJPanelTextField(screenSize,true);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
 		
 		create.add(creationLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
@@ -86,21 +79,20 @@ public class TwitupCreationCompte extends JPanel{
 		creation.add(nom);
 		return creation;
 	}
-
-    private JPanel createJPanelTextField(Dimension screenSize,Boolean pwd) {
-        JPanel creation = new JPanel();
-        Dimension dimension =new Dimension(screenSize.width/5, screenSize.height/22);
-        if(pwd) {
-            JPasswordField password = new JPasswordField();
-            password.setPreferredSize(dimension);
-            creation.add(password);
-        }
-        else {
-            JTextField champ = new JTextField("");
-            champ.setPreferredSize(dimension);
-            creation.add(champ);
-        }
-        return creation;
-    }
+	
+	private JPanel createJPanelTextField(Dimension screenSize,Boolean pwd) {
+		JPanel creation = new JPanel();
+		if(pwd) {
+			JPasswordField monText = new JPasswordField();
+			monText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+			creation.add(monText);
+		}
+		else {
+			JTextField nomText = new JTextField("");
+			nomText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+			creation.add(nomText);
+		}
+		return creation;
+	}
 
 }

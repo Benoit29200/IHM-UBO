@@ -63,6 +63,7 @@ public class TwitupMenu extends JMenuBar {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 mainFenetre.setContentPane(new TwitupCreationCompte());
+				 mainFenetre.revalidate();
 			 }
 		});
 		
@@ -70,6 +71,7 @@ public class TwitupMenu extends JMenuBar {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 mainFenetre.setContentPane(new TwitupConnexionUser());
+				 mainFenetre.revalidate();
 			 }
 		});
 		
@@ -80,7 +82,7 @@ public class TwitupMenu extends JMenuBar {
 	 * @param aide
 	 */
 	private void addItemToTheProposMenu(JMenu aide) {
-		addItemToMenu("A propos", aide,null, new ActionListener() {
+		addItemToMenu(this.fileLanguage.getObject("a_propos").toString(), aide,null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
