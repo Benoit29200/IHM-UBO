@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.AccountCreation.IObservableAccountCreation;
-import com.iup.tp.twitup.datamodel.AccountCreation.IObserverAccountCreation;
+import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
+import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
 import com.iup.tp.twitup.common.LOGER;
 
 public class AccountCreationController implements IObserverAccountCreation {

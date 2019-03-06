@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.ihm.compte;
 
-import com.iup.tp.twitup.datamodel.AccountCreation.IObservableAccountCreation;
-import com.iup.tp.twitup.datamodel.AccountCreation.IObserverAccountCreation;
+import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
+import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
 import com.iup.tp.twitup.controller.AccountCreationController;
 
 import java.awt.Dimension;

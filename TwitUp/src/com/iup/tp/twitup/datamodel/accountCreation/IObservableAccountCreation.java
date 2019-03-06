@@ -1,4 +1,4 @@
-package com.iup.tp.twitup.datamodel.AccountCreation;
+package com.iup.tp.twitup.datamodel.accountCreation;
 
 public interface IObservableAccountCreation {
 
