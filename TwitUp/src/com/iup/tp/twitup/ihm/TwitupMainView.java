@@ -51,7 +51,7 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 	protected void initGUI() {
 		setJMenuBar(new TwitupMenu(this));
 		TwitupFond fond = new TwitupFond();
-		fond.addComponentInPage(new TwitupCreationCompte());
+		//fond.addComponentInPage(new TwitupCreationCompte());
 		setContentPane(fond);
 	}
 

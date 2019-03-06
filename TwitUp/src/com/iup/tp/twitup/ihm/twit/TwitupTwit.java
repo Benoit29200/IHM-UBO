@@ -1,38 +1,51 @@
 package com.iup.tp.twitup.ihm.twit;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class TwitupCreateTwit extends JPanel {
+import com.iup.tp.twitup.datamodel.Twit;
+
+public class TwitupTwit extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	JButton creationTwit = new JButton("Créer mon twit");
-
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	JTextField textTwit = new JTextField();
 	
-	public TwitupCreateTwit() {
+	JTextField textTwit = new JTextField();
+	JLabel nomUser = new JLabel();
+	
+	public TwitupTwit(Twit monTwit) {
 		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
-//		this.setBorder(new LineBorder(Color.GRAY, 2, true));
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
-		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
-		this.add(textTwit);
-		this.add(creationTwit);
+		this.add(setNewTwit(monTwit));
 	}
-	
-	
+
+	private JPanel setNewTwit(Twit monTwit) {
+		JPanel panelCreateTwit = new JPanel();
+		panelCreateTwit.setLayout(new BorderLayout());
+		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
+		this.textTwit.setText(monTwit.getText());
+		panelCreateTwit.add(textTwit, BorderLayout.CENTER);
+		this.nomUser.setText("C'est moi :" + monTwit.getUserTags() + " Date : "+monTwit.getEmissionDate());
+		panelCreateTwit.add(this.nomUser, BorderLayout.SOUTH);
+		return panelCreateTwit;
+	}
 
 }
