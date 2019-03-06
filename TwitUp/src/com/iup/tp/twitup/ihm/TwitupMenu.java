@@ -3,8 +3,6 @@ package com.iup.tp.twitup.ihm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
@@ -15,7 +13,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import com.iup.tp.twitup.ObservableController.IObservable;
+import com.iup.tp.twitup.ObservableController.IObservableMenu;
+import com.iup.tp.twitup.ObservableController.IObserverMenu;
+import com.iup.tp.twitup.controller.MenuController;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
@@ -24,15 +24,18 @@ import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
 /**
  * Classe de la vue principale de l'application.
  */
-public class TwitupMenu extends JMenuBar implements IObservable {
+public class TwitupMenu extends JMenuBar {
 	
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private JFileChooser fileChooser;
     private ResourceBundle fileLanguage;
     protected JFrame mainFenetre;
+
+    protected IObserverMenu observer;
 	
     /**
      * Constructeur de la classe
@@ -165,23 +168,4 @@ public class TwitupMenu extends JMenuBar implements IObservable {
     }
 
 
-	@Override
-	public void addObserver(Observer o) {
-
-	}
-
-	@Override
-	public void deleteObserver(Observer o) {
-
-	}
-
-	@Override
-	public void notifyObservers() {
-
-	}
-
-	@Override
-	public void notifyObservers(Object arg) {
-
-	}
 }

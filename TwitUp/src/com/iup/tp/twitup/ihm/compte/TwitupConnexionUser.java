@@ -1,10 +1,17 @@
 package com.iup.tp.twitup.ihm.compte;
 
+import com.iup.tp.twitup.ObservableController.IObservableMenu;
+import com.iup.tp.twitup.ObservableController.IObserverMenu;
+import com.iup.tp.twitup.controller.MenuController;
+import org.apache.commons.lang3.StringUtils;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,7 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public class TwitupConnexionUser extends JPanel{
+public class TwitupConnexionUser extends JPanel implements IObservableMenu {
 	
 	/**
 	 * 
@@ -21,73 +28,83 @@ public class TwitupConnexionUser extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	JButton creationcompteJButton = new JButton("Créer mon compte");
-	
 	JButton connexionUser = new JButton("Connexion");
-	
+
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+	JLabel loginLabel = new JLabel("Votre pseudo :");
+	JTextField login = new JTextField();
+
+	JLabel passwordLabel = new JLabel("Votre mot de passe :");
+	JTextField password = new JPasswordField();
+
+	protected IObserverMenu observer;
 	
 	public TwitupConnexionUser(){
-		
-		setLayout(new GridBagLayout());
-		
+
 		JPanel create = new JPanel();
-		
+
 		create.setLayout(new GridBagLayout());
-		
-		createUserPage(create);
-		
 		create.setBorder(new LineBorder(Color.CYAN, 4, true));
 		create.setPreferredSize(new Dimension((int) (screenSize.width/3), screenSize.height/4));
 		create.setOpaque(true);
+
+		setLayout(new GridBagLayout());
 		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		
+
+
+		this.createUserPage(create);
+		this.addActionLogin();
+		this.addObserver(new MenuController());
+
+	}
+
+	private void addActionLogin(){
+		this.connexionUser.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyEventLogin(login.getText(), password.getText());
+			}
+		});
 	}
 
 	private void createUserPage(JPanel create) {
-		JPanel creationLabel1 = createJPanelLabel("Votre pseudo :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
-		JPanel creationText1 = createJPanelTextField(screenSize,false);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
-		JPanel creationLabel2 = createJPanelLabel("Votre mot de passe :");
-		create.setBorder(new LineBorder(Color.RED, 4, true));
-		JPanel creationText2 = createJPanelTextField(screenSize,true);
-		create.setBorder(new LineBorder(Color.RED, 4, true));
+
 		
-		create.add(creationLabel1, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
+		create.add(loginLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(creationText1, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		create.add(login, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(creationLabel2, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
+		create.add(passwordLabel, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(creationText2, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		create.add(password, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		create.add(this.creationcompteJButton, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		create.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 	}
-		
-	private JPanel createJPanelLabel(String titreLabel) {
-		JPanel creation = new JPanel();
-		JLabel nom = new JLabel(titreLabel);
-		creation.add(nom);
-		return creation;
+
+	@Override
+	public void addObserver(IObserverMenu o) {
+		this.observer = o;
 	}
-	
-	private JPanel createJPanelTextField(Dimension screenSize,Boolean pwd) {
-		JPanel creation = new JPanel();
-		if(pwd) {
-			JPasswordField monText = new JPasswordField();
-			monText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-			creation.add(monText);
-		}
-		else {
-			JTextField nomText = new JTextField("");
-			nomText.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-			creation.add(nomText);
-		}
-		return creation;
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyEventCancel() {
+		this.observer.eventCancel(this,null);
+	}
+
+	@Override
+	public void notifyEventLogin(String login, String mdp) {
+		if(StringUtils.isNotBlank(login) && StringUtils.isNotBlank(mdp))
+			this.observer.eventLogin(this,login,mdp);
 	}
 
 }
