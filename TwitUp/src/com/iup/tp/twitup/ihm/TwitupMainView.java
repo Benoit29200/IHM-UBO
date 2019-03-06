@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.ihm;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.*;
