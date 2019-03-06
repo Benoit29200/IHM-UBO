@@ -20,6 +20,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+/**
+ * Mise en place du component gérant la connexion d'un utilisateur
+ * @author gaetan
+ *
+ */
 public class TwitupConnexionUser extends JPanel implements IObservableMenu {
 	
 	/**
@@ -60,6 +65,9 @@ public class TwitupConnexionUser extends JPanel implements IObservableMenu {
 
 	}
 
+	/**
+	 * Ajout d'un action sur le bouton de connexion
+	 */
 	private void addActionLogin(){
 		this.connexionUser.addActionListener(new ActionListener() {
 			@Override
@@ -69,19 +77,30 @@ public class TwitupConnexionUser extends JPanel implements IObservableMenu {
 		});
 	}
 
+	/**
+	 * Permet de créer le JPanel correspondant au component de la création d'un compte
+	 * @param create
+	 */
 	private void createUserPage(JPanel create) {
-
+		
+		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		
 		create.add(loginLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(login, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		
+		create.add(login, new GridBagConstraints(1, 0, 5, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		
 		create.add(passwordLabel, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		
 		create.add(password, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		
 		create.add(this.creationcompteJButton, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		
 		create.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 	}
