@@ -26,8 +26,6 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 
 	private JButton creationcompteJButton = new JButton("Créer mon compte");
 	
-	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 	private IObserverAccountCreation observer;
 
 	private JLabel nomLabel = new JLabel("Votre nom");
@@ -49,34 +47,33 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		create.setLayout(new GridBagLayout());
 		setLayout(new GridBagLayout());
 		
-		this.createUserPage(create);
+		this.initUserPage(create);
 		this.setActionAccountCreation();
 
 		this.observer = observer;
 		
-//		create.setBorder(new LineBorder(Color.CYAN, 4, true));
-		create.setPreferredSize(new Dimension((int) (screenSize.width/2.5), screenSize.height/2));
 		create.setOpaque(true);
 		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
-		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
-		this.nom.setPreferredSize(componentDimension);
-		this.pseudo.setPreferredSize(componentDimension);
-		this.password.setPreferredSize(componentDimension);
-		this.confirmPassword.setPreferredSize(componentDimension);
+//		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
+//		this.nom.setPreferredSize(componentDimension);
+//		this.pseudo.setPreferredSize(componentDimension);
+//		this.password.setPreferredSize(componentDimension);
+//		this.confirmPassword.setPreferredSize(componentDimension);
 		
 	}
 
-	private void createUserPage(JPanel create) {
-		JPanel nomLabel = createJPanelComponent(this.nomLabel);
-		JPanel nom = createJPanelComponent(this.nom);
-		JPanel pseudoLabel = createJPanelComponent(this.pseudoLabel);
-		JPanel pseudo = createJPanelComponent(this.pseudo);
-		JPanel passwordLabel = createJPanelComponent(this.passwordLabel);
-		JPanel password = createJPanelComponent(this.password);
-		JPanel confirmPasswordLabel = createJPanelComponent(this.confirmPasswordLabel);
-		JPanel confirmPassword = createJPanelComponent(this.confirmPassword);
+	private void initUserPage(JPanel create) {
+		
+		JPanel nomLabel = initJPanelComponent(this.nomLabel);
+		JPanel nom = initJPanelComponent(this.nom);
+		JPanel pseudoLabel = initJPanelComponent(this.pseudoLabel);
+		JPanel pseudo = initJPanelComponent(this.pseudo);
+		JPanel passwordLabel = initJPanelComponent(this.passwordLabel);
+		JPanel password = initJPanelComponent(this.password);
+		JPanel confirmPasswordLabel = initJPanelComponent(this.confirmPasswordLabel);
+		JPanel confirmPassword = initJPanelComponent(this.confirmPassword);
 		
 		create.add(nomLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
@@ -107,7 +104,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		});
 	}
 		
-	private JPanel createJPanelComponent(JComponent component) {
+	private JPanel initJPanelComponent(JComponent component) {
 		JPanel creation = new JPanel();
 		creation.add(component);
 		return creation;
