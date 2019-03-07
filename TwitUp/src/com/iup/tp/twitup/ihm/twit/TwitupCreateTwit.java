@@ -5,6 +5,8 @@ import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -34,6 +36,16 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.add(textTwit);
 		this.add(creationTwit);
+		this.addAction();
+	}
+
+	private void addAction(){
+		this.creationTwit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyAddTwit(textTwit.getText());
+			}
+		});
 	}
 
 
@@ -45,5 +57,10 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	@Override
 	public void deleteObserver() {
 		this.observer = null;
+	}
+
+	@Override
+	public void notifyAddTwit(String twitTexte) {
+		this.observer.addTwit(twitTexte);
 	}
 }

@@ -7,6 +7,7 @@ import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.controller.MainViewController;
 import com.iup.tp.twitup.datamodel.Database;
+import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
@@ -114,6 +115,9 @@ public class Twitup {
 
 		User u = new User(UUID.randomUUID(), "bautret", "test","benoit" ,test,"");
 		this.mDatabase.addUser(u);
+
+		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
+		this.mDatabase.addTwit(twit);
 	}
 
 

@@ -23,30 +23,38 @@ public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 	 */
 	private static final long serialVersionUID = 1L;
 	private IObserverTwitupFilTwit observer;
+	JPanel scrollTwit;
 
 
 	public TwitupFilTwit(IObserverTwitupFilTwit observer) {
 		this.setLayout(new GridBagLayout());
 		this.observer = observer;
-		JPanel scrollTwit = new JPanel(new GridBagLayout());
+		this.scrollTwit = new JPanel(new GridBagLayout());
 		scrollTwit.setMinimumSize(new Dimension(1000, 1000));
 		scrollTwit.setBackground(new Color(240,248,255));
 		
 		JScrollPane scroll = new JScrollPane(scrollTwit, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
-		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
-		
-		for(int i = 0; i<5 ; i++) {
-			TwitupTwit twitPanel = new TwitupTwit(twit);
-			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
-			scrollTwit.add(twitPanel, new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		}
-		scrollTwit.revalidate();
-		scrollTwit.repaint();
+//		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
+
+		this.viewTwit();
 		
 		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void viewTwit(){
+		this.scrollTwit.removeAll();
+		int iterator = 0;
+		for(Twit twit: this.observer.getTwit()) {
+			TwitupTwit twitPanel = new TwitupTwit(twit);
+			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
+			this.scrollTwit.add(twitPanel, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
+					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+			iterator++;
+		}
+		this.scrollTwit.revalidate();
+		this.scrollTwit.repaint();
 	}
 
 	@Override
