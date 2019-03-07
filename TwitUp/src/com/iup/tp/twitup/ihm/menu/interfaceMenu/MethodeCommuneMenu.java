@@ -12,19 +12,9 @@ public interface MethodeCommuneMenu {
 	/**
 	  * 
 	  * @param name
-	  * @param parent
 	  * @param filenameIcon
 	  * @param action
 	  */
-	static void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action){
+	 void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action);
 
-      JMenuItem j = new JMenuItem(name);
-      menu.add(j);
-      if(StringUtils.isNotBlank(filenameIcon)){
-          j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
-      }
-      if(action != null){
-          j.addActionListener(action);
-      }
-  }
 }

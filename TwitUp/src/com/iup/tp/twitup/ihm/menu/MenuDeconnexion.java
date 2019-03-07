@@ -34,7 +34,6 @@ public class MenuDeconnexion extends JMenu implements MethodeCommuneMenu{
 	/**
 	 * 
 	 * @param fenetre
-	 * @param userAccount
 	 */
 	private void addItemToUserAccountMenu(JFrame fenetre) {
 		addItemToMenu(this.fileLanguage.getObject("deconnexion").toString(),this, null, new ActionListener() {
@@ -47,4 +46,8 @@ public class MenuDeconnexion extends JMenu implements MethodeCommuneMenu{
 		
 	}
 
+	@Override
+	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+
+	}
 }

@@ -1,18 +1,18 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.menu.IObserverMenu;
-import com.iup.tp.twitup.ihm.TwitupMenu;
+import com.iup.tp.twitup.datamodel.menu.IObserverMenuConnexionCreation;
+import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 
-public class MenuController implements IObserverMenu  {
+public class MenuConnexionCreationController implements IObserverMenuConnexionCreation {
 
-    private TwitupMenu menuView;
+    private MenuConnexionCreation menuView;
     private MainViewController mainViewController;
 
-    public MenuController( MainViewController mainViewController) {
+    public MenuConnexionCreationController(MainViewController mainViewController) {
         this.mainViewController = mainViewController;
     }
 
-    public void setMenuView(TwitupMenu menuView) {
+    public void setMenuView(MenuConnexionCreation menuView) {
         this.menuView = menuView;
     }
 

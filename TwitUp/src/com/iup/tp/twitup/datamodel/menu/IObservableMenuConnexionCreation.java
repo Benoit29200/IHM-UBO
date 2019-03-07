@@ -1,8 +1,8 @@
 package com.iup.tp.twitup.datamodel.menu;
 
-public interface IObservableMenu {
+public interface IObservableMenuConnexionCreation {
 
-    void addObserver(IObserverMenu o);
+    void addObserver(IObserverMenuConnexionCreation o);
 
     void deleteObserver();
 

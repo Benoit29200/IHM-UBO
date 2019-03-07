@@ -32,7 +32,6 @@ public class MenuInformation extends JMenu implements MethodeCommuneMenu{
 	
 	/**
 	 * Méthode privée permettant de mettre en place la fenêtre de dialogue pour le "à propos"
-	 * @param aide
 	 */
 	private void addItemToTheProposMenu() {
 		addItemToMenu(this.fileLanguage.getObject("a_propos").toString(),this,null, new ActionListener() {
@@ -44,4 +43,15 @@ public class MenuInformation extends JMenu implements MethodeCommuneMenu{
         });
 	}
 
+	@Override
+	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+		JMenuItem j = new JMenuItem(name);
+		menu.add(j);
+		if(StringUtils.isNotBlank(filenameIcon)){
+			j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
+		}
+		if(action != null){
+			j.addActionListener(action);
+		}
+	}
 }

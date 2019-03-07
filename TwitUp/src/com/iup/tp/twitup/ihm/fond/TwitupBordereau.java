@@ -1,5 +1,8 @@
 package com.iup.tp.twitup.ihm.fond;
 
+import com.iup.tp.twitup.datamodel.bordereau.IObservableBordereau;
+import com.iup.tp.twitup.datamodel.bordereau.IObserverBordereau;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -11,17 +14,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TwitupBordereau extends JPanel{
+public class TwitupBordereau extends JPanel implements IObservableBordereau {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private IObserverBordereau observer;
 	
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
-	public TwitupBordereau() {
+	public TwitupBordereau(IObserverBordereau observer) {
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.WHITE);
+		this.observer = observer;
 		
 		this.add(this.addMenuRight(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.EAST,
 				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
@@ -52,4 +58,13 @@ public class TwitupBordereau extends JPanel{
 		return monJPanel;
 	}
 
+	@Override
+	public void addObserver(IObserverBordereau o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
 }

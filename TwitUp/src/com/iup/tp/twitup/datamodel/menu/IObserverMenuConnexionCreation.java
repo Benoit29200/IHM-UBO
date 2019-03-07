@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.datamodel.menu;
 
 
-public interface IObserverMenu {
+public interface IObserverMenuConnexionCreation {
 
     void chargeAccountManager();
     void chargeConnexion();

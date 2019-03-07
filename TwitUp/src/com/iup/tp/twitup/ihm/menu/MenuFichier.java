@@ -47,7 +47,6 @@ public class MenuFichier extends JMenu implements MethodeCommuneMenu{
 	/**
 	 * 
 	 * @param fenetre
-	 * @param fichier
 	 */
 	private void addItemToFichierMenu(JFrame fenetre) {
 		
@@ -86,4 +85,8 @@ public class MenuFichier extends JMenu implements MethodeCommuneMenu{
         });
 	}
 
+	@Override
+	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+
+	}
 }

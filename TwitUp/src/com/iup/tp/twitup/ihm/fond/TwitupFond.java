@@ -1,13 +1,11 @@
 package com.iup.tp.twitup.ihm.fond;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
+import com.iup.tp.twitup.datamodel.fond.IObservableFond;
+import com.iup.tp.twitup.datamodel.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
@@ -16,31 +14,39 @@ import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
  * @author gaetan
  *
  */
-public class TwitupFond extends JPanel{
+public class TwitupFond extends JPanel implements IObservableFond {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2724237454765496211L;
 
-	public TwitupFond() {
+	private IObserverFond observer;
+
+	public TwitupFond(IObserverFond observer) {
 		this.setLayout(new GridBagLayout());
-		
-		/**
-		 * Pour les tests
-		 */
-
-		this.setBackground(new Color(135,206,250));
-
-		this.add(new TwitupBordereauMenu(), new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
-				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
-		
-		this.add(new TwitupBordereau(), new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
-				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
-		
-		this.add(new TwitupCreateViewTwit(), new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.observer = observer;
 	}
 
+	@Override
+	public void chargeComponent(JComponent component, GridBagConstraints constraints) {
+		this.add(component,constraints);
+		this.revalidate();
+		this.repaint();
+	}
 
+	@Override
+	public void addObserver(IObserverFond o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyEventApp(String nom, String login, String mdp) {
+
+	}
 }
