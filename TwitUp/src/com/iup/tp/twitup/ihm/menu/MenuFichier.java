@@ -12,10 +12,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.menuFichier.IObservableMenuFichier;
 import com.iup.tp.twitup.datamodel.menuFichier.IObserverMenuFichier;
-import org.apache.commons.lang3.StringUtils;
 
 public class MenuFichier extends JMenu implements IObservableMenuFichier {
 
@@ -45,7 +46,7 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
 	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	        this.fileChooser.setDialogTitle("Selection du dossier d'échange");
+	        this.fileChooser.setDialogTitle(Constants.CLE_DOSSIER_ECHANGE);
 	    }
 	
 	/**
@@ -72,7 +73,7 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
                         break;
 
                     case JFileChooser.CANCEL_OPTION:
-                        JOptionPane.showMessageDialog(fenetre, "Vous devez sélectionner un dossier d'échange avant de lancer l'application",
+                        JOptionPane.showMessageDialog(fenetre, Constants.CLE_ERREUR_DOSSIER_ECHANGE,
                                 "TwitUp",
                                 JOptionPane.OK_OPTION);
                         break;
@@ -80,8 +81,8 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
             }
         });
 
-        setItemToMenu(this.fileLanguage.getObject("enregistrer_sous").toString(),this, null, null);
-        setItemToMenu(this.fileLanguage.getObject("fermer").toString(),this,"/resources/images/exitIcon_20.png", new ActionListener() {
+        setItemToMenu(this.fileLanguage.getObject(Constants.MENU_ENREGISTRER_SOUS).toString(),this, null, null);
+        setItemToMenu(this.fileLanguage.getObject(Constants.MENU_FERMER).toString(),this,"/resources/images/exitIcon_20.png", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
