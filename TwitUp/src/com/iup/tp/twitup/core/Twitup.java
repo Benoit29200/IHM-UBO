@@ -106,7 +106,13 @@ public class Twitup {
 
 
 	protected void initUser(){
-		User u = new User(UUID.randomUUID(), "bautret", "test","benoit" ,new HashSet<String>(),"");
+
+		Set<String> test = new HashSet<String>();
+		test.add("AdrienLeBoLol");
+		test.add("LeMaxime");
+		test.add("BenoitThePope");
+
+		User u = new User(UUID.randomUUID(), "bautret", "test","benoit" ,test,"");
 		this.mDatabase.addUser(u);
 	}
 
