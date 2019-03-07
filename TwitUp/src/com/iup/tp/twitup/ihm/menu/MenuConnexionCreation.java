@@ -27,7 +27,7 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 	
 	public MenuConnexionCreation(IObserverMenuConnexionCreation observer) {
 		
-		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
         this.addItemToUserAccountMenu();
         this.observer = observer;

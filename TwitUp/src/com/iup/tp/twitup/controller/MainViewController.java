@@ -14,6 +14,7 @@ import com.iup.tp.twitup.ihm.fond.TwitupBordereauMenu;
 import com.iup.tp.twitup.ihm.fond.TwitupFond;
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
+import com.iup.tp.twitup.ihm.menu.MenuInformation;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
 import java.awt.*;
@@ -72,8 +73,9 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         TwitupMenu twitupMenu = new TwitupMenu();
         menuController.setVue(twitupMenu);
         this.vue.setJMenuBar(twitupMenu);
-        this.chargeMenuConnexionCreation(menuController,twitupMenu);
         this.chargeMenuFichier(menuController,twitupMenu);
+        this.chargeMenuConnexionCreation(menuController,twitupMenu);
+        this.chargeMenuInformation(menuController,twitupMenu);
     }
 
     private void chargeMenuConnexionCreation(MenuController parent, TwitupMenu vueParent){
@@ -88,6 +90,13 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         MenuFichier menuFichier = new MenuFichier(this.vue, menuFichierController);
         menuFichierController.setVue(menuFichier);
         vueParent.addComponent(menuFichier);
+    }
+
+    private void chargeMenuInformation(MenuController parent, TwitupMenu vueParent){
+        MenuInformationController menuInformationController = new MenuInformationController(parent);
+        MenuInformation menuInformation = new MenuInformation(menuInformationController);
+        menuInformationController.setVue(menuInformation);
+        vueParent.addComponent(menuInformation);
     }
 
     public void chargeConnexionComponent(){

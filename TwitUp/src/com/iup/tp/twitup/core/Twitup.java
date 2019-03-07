@@ -158,6 +158,7 @@ public class Twitup {
 			this.mMainView.addObserver(mainViewController);
 			LOGER.success("Succès");
 		} catch (Exception e){
+			e.printStackTrace();
 			LOGER.err("Erreur à l'initialisation de la vue");
 		}
 	}

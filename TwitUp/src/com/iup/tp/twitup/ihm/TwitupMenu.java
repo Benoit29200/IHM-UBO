@@ -21,7 +21,6 @@ public class TwitupMenu extends JMenuBar {
      */
 	public TwitupMenu() {
 
-	    //this.add(new MenuInformation(fenetre));
 
 	}
 

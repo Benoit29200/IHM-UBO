@@ -11,19 +11,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.iup.tp.twitup.datamodel.menuInformation.IObservableMenuInformation;
+import com.iup.tp.twitup.datamodel.menuInformation.IObserverMenuInformation;
 import org.apache.commons.lang3.StringUtils;
 
-public class MenuInformation extends JMenu{
+public class MenuInformation extends JMenu implements IObservableMenuInformation {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private IObserverMenuInformation observer;
 	
 	private ResourceBundle fileLanguage;
 	
-	public MenuInformation(JFrame fenetre) {
-		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
+	public MenuInformation(IObserverMenuInformation observer) {
+		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.observer = observer;
 		this.setText("?");
         addItemToTheProposMenu();
 	}
@@ -50,5 +54,20 @@ public class MenuInformation extends JMenu{
 		if(action != null){
 			j.addActionListener(action);
 		}
+	}
+
+	@Override
+	public void addObserver(IObserverMenuInformation o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyChargeInformation() {
+		this.observer.chargeInformation();
 	}
 }
