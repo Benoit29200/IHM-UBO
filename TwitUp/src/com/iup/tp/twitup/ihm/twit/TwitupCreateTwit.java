@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.BadLocationException;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.createTwit.IObservableCreateTwit;
@@ -27,7 +28,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
-	
+
 	JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
 
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -60,6 +61,12 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 			public void keyTyped(KeyEvent e) {
 				System.out.println("nombre de caractère: "+textTwit.getText().length());
 				text.setText("Nombre de caractères: "+textTwit.getText().length());
+
+				if(textTwit.getText().length() >= 150){
+					try {
+						textTwit.setText(textTwit.getText(0, 149));
+					} catch (BadLocationException ble) { ble.printStackTrace(); }
+				}
 			}
 
 			@Override
