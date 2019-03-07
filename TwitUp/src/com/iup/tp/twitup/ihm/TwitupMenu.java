@@ -28,4 +28,24 @@ public class TwitupMenu extends JMenuBar {
 		this.add(component);
 		this.revalidate();
 	}
+
+	public void addMenuConnexion(MenuConnexionCreation menuConnexionCreation){
+		this.add(menuConnexionCreation);
+		this.refresh();
+	}
+
+	public void addMenuFichier(MenuFichier menuFichier){
+		this.add(menuFichier);
+		this.refresh();
+	}
+
+	public void addMenuInformation(MenuInformation menuInformation){
+		this.add(menuInformation);
+		this.refresh();
+	}
+
+	private void refresh(){
+		this.revalidate();
+		this.repaint();
+	}
 }

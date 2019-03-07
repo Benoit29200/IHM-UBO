@@ -84,45 +84,45 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(parent);
         MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(menuConnexionCreationController);
         menuConnexionCreationController.setMenuView(menuConnexionCreation);
-        vueParent.addComponent(menuConnexionCreation);
+        vueParent.addMenuConnexion(menuConnexionCreation);
     }
 
     private void chargeMenuFichier(MenuController parent, TwitupMenu vueParent){
         MenuFichierController menuFichierController = new MenuFichierController(parent);
         MenuFichier menuFichier = new MenuFichier(this.vue, menuFichierController);
         menuFichierController.setVue(menuFichier);
-        vueParent.addComponent(menuFichier);
+        vueParent.addMenuFichier(menuFichier);
     }
 
     private void chargeMenuInformation(MenuController parent, TwitupMenu vueParent){
         MenuInformationController menuInformationController = new MenuInformationController(parent);
         MenuInformation menuInformation = new MenuInformation(menuInformationController);
         menuInformationController.setVue(menuInformation);
-        vueParent.addComponent(menuInformation);
+        vueParent.addMenuInformation(menuInformation);
     }
 
     public void chargeConnexionComponent(){
         LoginController loginController = new LoginController(this);
         TwitupConnexionUser connexion = new TwitupConnexionUser(loginController);
         loginController.setVue(connexion);
-        this.vue.chargeComponent(connexion);
+        this.vue.addTwitupConnexionUser(connexion);
     }
 
     public void chargeAccountManager(){
         AccountCreationController accountCreationController = new AccountCreationController(this);
         TwitupCreationCompte creationCompte = new TwitupCreationCompte(accountCreationController);
         accountCreationController.setVue(creationCompte);
-        this.vue.chargeComponent(creationCompte);
+        this.vue.chargeAccountManager(creationCompte);
     }
 
     public void chargeFond(){
         FondController fondController = new FondController(this);
-        TwitupFond app = new TwitupFond(fondController);
-        fondController.setVue(app);
-        this.vue.chargeComponent(app);
-        this.chargeBordereauMenu(fondController,app);
-        this.chargeBordereau(fondController,app);
-        this.chargeCreateViewTwit(fondController,app);
+        TwitupFond twitupFond = new TwitupFond(fondController);
+        fondController.setVue(twitupFond);
+        this.vue.chargeFond(twitupFond);
+        this.chargeBordereauMenu(fondController,twitupFond);
+        this.chargeBordereau(fondController,twitupFond);
+        this.chargeCreateViewTwit(fondController,twitupFond);
     }
 
     private void chargeBordereauMenu(FondController parent, TwitupFond vueParent){

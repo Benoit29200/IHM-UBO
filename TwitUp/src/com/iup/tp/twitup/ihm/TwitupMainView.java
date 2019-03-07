@@ -7,6 +7,9 @@ import javax.swing.*;
 
 import com.iup.tp.twitup.datamodel.mainView.IObservableMainView;
 import com.iup.tp.twitup.datamodel.mainView.IObserverMainView;
+import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
+import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
+import com.iup.tp.twitup.ihm.fond.TwitupFond;
 
 /**
  * Classe de la vue principale de l'application.
@@ -27,12 +30,26 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
         setSize(screenSize);
 	}
 
-	/**
-	 * Lance l'affichage de la page de connexion
-	 */
-	public void chargeComponent(JPanel connexionComponent) {
-		setContentPane(connexionComponent);
-		revalidate();
+
+	public void addTwitupConnexionUser(TwitupConnexionUser twitupConnexionUser){
+		setContentPane(twitupConnexionUser);
+		this.refresh();
+	}
+
+	public void chargeAccountManager(TwitupCreationCompte twitupCreationCompte){
+		setContentPane(twitupCreationCompte);
+		this.refresh();
+	}
+
+	public void chargeFond(TwitupFond twitupFond){
+		setContentPane(twitupFond);
+		this.refresh();
+	}
+
+
+	public void refresh(){
+		this.revalidate();
+		this.repaint();
 	}
 
 	public void setMenu(JMenuBar menu){
