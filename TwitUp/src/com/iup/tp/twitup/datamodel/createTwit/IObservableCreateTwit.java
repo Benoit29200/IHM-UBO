@@ -6,5 +6,7 @@ public interface IObservableCreateTwit {
 
     void deleteObserver();
 
+    void notifyAddTwit(String twitTexte);
+
 
 }

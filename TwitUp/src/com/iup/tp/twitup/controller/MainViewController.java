@@ -138,25 +138,29 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     private void chargeCreateViewTwit(FondController fondController, TwitupFond twitupFond){
-        CreateViewTwitController createViewTwitController = new CreateViewTwitController(fondController);
+        CreateViewTwitController createViewTwitController = new CreateViewTwitController(fondController, this.database);
         TwitupCreateViewTwit twitupCreateViewTwit = new TwitupCreateViewTwit(createViewTwitController);
         createViewTwitController.setVue(twitupCreateViewTwit);
         twitupFond.chargeTwitupCreateViewTwit(twitupCreateViewTwit);
-        this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
-        this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
+
+        CreateTwitController createTwitController = this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
+        TwitupFilTwitController twitupFilTwitController = this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
+        createTwitController.setViewTwit(twitupFilTwitController);
     }
 
-    private void chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private CreateTwitController chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
         CreateTwitController createTwitController = new CreateTwitController(createViewTwitController);
         TwitupCreateTwit twitupCreateTwit = new TwitupCreateTwit(createTwitController);
         createTwitController.setVue(twitupCreateTwit);
         twitupCreateViewTwit.addTwitupCreateTwit(twitupCreateTwit);
+        return createTwitController;
     }
 
-    private void chargeFilTwit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private TwitupFilTwitController chargeFilTwit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
         TwitupFilTwitController twitupFilTwitController = new TwitupFilTwitController(createViewTwitController);
         TwitupFilTwit twitupFilTwit = new TwitupFilTwit(twitupFilTwitController);
         twitupFilTwitController.setVue(twitupFilTwit);
         twitupCreateViewTwit.addTwitupFilTwit(twitupFilTwit);
+        return twitupFilTwitController;
     }
 }
