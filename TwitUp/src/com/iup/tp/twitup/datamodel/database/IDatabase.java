@@ -82,7 +82,6 @@ public interface IDatabase {
 	/**
 	 * Recherche de l'utilisateur.
 	 *
-	 * @param userToFind
 	 */
 	User findUser(String pseudo, String mdp);
 
