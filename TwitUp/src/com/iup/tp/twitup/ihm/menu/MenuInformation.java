@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.menuInformation.IObservableMenuInformation;
 import com.iup.tp.twitup.datamodel.menuInformation.IObserverMenuInformation;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +27,7 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
 	private ResourceBundle fileLanguage;
 	
 	public MenuInformation(IObserverMenuInformation observer) {
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 		this.observer = observer;
 		this.setText("?");
         setItemToTheProposMenu();
@@ -36,10 +37,10 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
 	 * Méthode privée permettant de mettre en place la fenêtre de dialogue pour le "à propos"
 	 */
 	private void setItemToTheProposMenu() {
-		setItemToMenu(this.fileLanguage.getObject("a_propos").toString(),this,null, new ActionListener() {
+		setItemToMenu(this.fileLanguage.getObject(Constants.MENU_A_PROPOS).toString(),this,null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.showMessageDialog(null,Constants.UBO_MESSAGE,Constants.MENU_A_PROPOS,JOptionPane.INFORMATION_MESSAGE,
                         new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
             }
         });

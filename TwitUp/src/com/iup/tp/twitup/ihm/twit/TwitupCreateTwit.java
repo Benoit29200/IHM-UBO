@@ -1,8 +1,5 @@
 package com.iup.tp.twitup.ihm.twit;
 
-import com.iup.tp.twitup.datamodel.createTwit.IObservableCreateTwit;
-import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -14,6 +11,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.datamodel.createTwit.IObservableCreateTwit;
+import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
+
 public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 
 	/**
@@ -22,7 +23,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private static final long serialVersionUID = 1L;
 	private IObserverCreateTwit observer;
 	
-	JButton creationTwit = new JButton("Créer mon twit");
+	JButton creationTwit = new JButton(Constants.CREATION_TWIT);
 
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	JTextField textTwit = new JTextField();

@@ -147,4 +147,24 @@ public interface Constants {
 	 * Clé de configuration pour le lien images
 	 */
 	public static final String CLE_IMAGES = "/images/";
+	
+	/**
+	 * Clé de configuration pour la sélection du fichier d'échange
+	 */
+	public static final String CLE_DOSSIER_ECHANGE = "dossierechange";
+	
+	/**
+	 * Clé de configuration pour l'erreur lors de la sélection du fichier d'échange
+	 */
+	public static final String CLE_ERREUR_DOSSIER_ECHANGE = "erreurdossierechange";
+	
+	/**
+	 * Clé pour la pop up
+	 */
+	public static final String UBO_MESSAGE = "UBO M2TIIL \\n Département Informatique";
+	
+	/**
+	 * Clé pour créer un twit
+	 */
+	public static final String CREATION_TWIT = "createtwit";
 }
