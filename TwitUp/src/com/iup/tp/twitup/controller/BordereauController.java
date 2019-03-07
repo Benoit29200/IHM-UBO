@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.controller;
 
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
 
@@ -20,4 +21,5 @@ public class BordereauController implements IObserverBordereau {
     public void eventChargeBordereau() {
 
     }
+
 }

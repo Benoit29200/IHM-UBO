@@ -67,13 +67,18 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeMenu(){
 
-        MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(this);
-        MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(this.vue, menuConnexionCreationController);
-        menuConnexionCreationController.setMenuView(menuConnexionCreation);
+        MenuController menuController = new MenuController(this);
+        TwitupMenu twitupMenu = new TwitupMenu(this.vue);
+        menuController.setVue(twitupMenu);
+        this.vue.setJMenuBar(twitupMenu);
+        this.chargeMenuConnexionCreation(menuController,twitupMenu);
+    }
 
-        TwitupMenu menu = new TwitupMenu(this.vue);
-        menu.add(menuConnexionCreation);
-        this.vue.setMenu(menu);
+    private void chargeMenuConnexionCreation(MenuController parent, TwitupMenu vueParent){
+        MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(parent);
+        MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(menuConnexionCreationController);
+        menuConnexionCreationController.setMenuView(menuConnexionCreation);
+        vueParent.addComponent(menuConnexionCreation);
     }
 
     public void chargeConnexionComponent(){

@@ -6,10 +6,10 @@ import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 public class MenuConnexionCreationController implements IObserverMenuConnexionCreation {
 
     private MenuConnexionCreation menuView;
-    private MainViewController mainViewController;
+    private MenuController menuController;
 
-    public MenuConnexionCreationController(MainViewController mainViewController) {
-        this.mainViewController = mainViewController;
+    public MenuConnexionCreationController(MenuController mainViewController) {
+        this.menuController = mainViewController;
     }
 
     public void setMenuView(MenuConnexionCreation menuView) {
@@ -18,11 +18,11 @@ public class MenuConnexionCreationController implements IObserverMenuConnexionCr
 
     @Override
     public void chargeConnexion() {
-        this.mainViewController.chargeConnexionComponent();
+        //this.menuController.chargeConnexionComponent();
     }
 
     @Override
     public void chargeAccountManager() {
-        this.mainViewController.chargeAccountManager();
+        //this.menuController.chargeAccountManager();
     }
 }

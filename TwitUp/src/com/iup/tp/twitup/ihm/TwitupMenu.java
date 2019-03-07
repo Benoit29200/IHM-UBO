@@ -1,7 +1,6 @@
 package com.iup.tp.twitup.ihm;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
+import javax.swing.*;
 
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
@@ -33,5 +32,10 @@ public class TwitupMenu extends JMenuBar {
 
 	    this.add(new MenuInformation(fenetre));
 
+	}
+
+	public void addComponent(JComponent component){
+		this.add(component);
+		this.revalidate();
 	}
 }

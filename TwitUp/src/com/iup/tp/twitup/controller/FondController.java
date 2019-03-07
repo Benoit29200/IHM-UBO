@@ -21,4 +21,8 @@ public class FondController implements IObserverFond {
     public void chargeApp(IObservableFond o, String nom, String login, String mdp) {
 
     }
+
+    public MainViewController getParent() {
+        return parent;
+    }
 }

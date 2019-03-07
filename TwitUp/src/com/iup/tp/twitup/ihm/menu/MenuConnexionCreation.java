@@ -25,19 +25,18 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 	private ResourceBundle fileLanguage;
 	protected IObserverMenuConnexionCreation observer;
 	
-	public MenuConnexionCreation(JFrame fenetre, IObserverMenuConnexionCreation observer) {
+	public MenuConnexionCreation(IObserverMenuConnexionCreation observer) {
 		
 		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
-        this.addItemToUserAccountMenu(fenetre);
+        this.addItemToUserAccountMenu();
         this.observer = observer;
 	}
 
 	/**
-	 * 
-	 * @param fenetre
+	 *
 	 */
-	private void addItemToUserAccountMenu(JFrame fenetre) {
+	private void addItemToUserAccountMenu() {
 		addItemToMenu(this.fileLanguage.getObject("creation").toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
