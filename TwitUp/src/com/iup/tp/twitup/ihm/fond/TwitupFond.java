@@ -28,11 +28,21 @@ public class TwitupFond extends JPanel implements IObservableFond {
 		this.observer = observer;
 	}
 
-	@Override
-	public void chargeComponent(JComponent component, GridBagConstraints constraints) {
-		this.add(component,constraints);
-		this.revalidate();
-		this.repaint();
+
+	public void chargeTwitupBordereauMenu(TwitupBordereauMenu twitupBordereauMenu){
+		this.add(twitupBordereauMenu,new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
+				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeTwitupBordereau(TwitupBordereau twitupBordereau){
+		this.add(twitupBordereau,new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
+				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+
+	public void chargeTwitupCreateViewTwit(TwitupCreateViewTwit twitupCreateViewTwit){
+		this.add(twitupCreateViewTwit,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
 	@Override

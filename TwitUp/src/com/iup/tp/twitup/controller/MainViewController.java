@@ -19,8 +19,6 @@ import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
 
-import java.awt.*;
-
 
 public class MainViewController implements IObserverMainView, IDatabaseObserver {
 
@@ -80,25 +78,25 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuInformation(menuController,twitupMenu);
     }
 
-    private void chargeMenuConnexionCreation(MenuController parent, TwitupMenu vueParent){
-        MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(parent);
+    private void chargeMenuConnexionCreation(MenuController menuController, TwitupMenu twitupMenu){
+        MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(menuController);
         MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(menuConnexionCreationController);
         menuConnexionCreationController.setMenuView(menuConnexionCreation);
-        vueParent.addMenuConnexion(menuConnexionCreation);
+        twitupMenu.addMenuConnexion(menuConnexionCreation);
     }
 
-    private void chargeMenuFichier(MenuController parent, TwitupMenu vueParent){
-        MenuFichierController menuFichierController = new MenuFichierController(parent);
+    private void chargeMenuFichier(MenuController menuController, TwitupMenu twitupMenu){
+        MenuFichierController menuFichierController = new MenuFichierController(menuController);
         MenuFichier menuFichier = new MenuFichier(this.vue, menuFichierController);
         menuFichierController.setVue(menuFichier);
-        vueParent.addMenuFichier(menuFichier);
+        twitupMenu.addMenuFichier(menuFichier);
     }
 
-    private void chargeMenuInformation(MenuController parent, TwitupMenu vueParent){
-        MenuInformationController menuInformationController = new MenuInformationController(parent);
+    private void chargeMenuInformation(MenuController menuController, TwitupMenu twitupMenu){
+        MenuInformationController menuInformationController = new MenuInformationController(menuController);
         MenuInformation menuInformation = new MenuInformation(menuInformationController);
         menuInformationController.setVue(menuInformation);
-        vueParent.addMenuInformation(menuInformation);
+        twitupMenu.addMenuInformation(menuInformation);
     }
 
     public void chargeConnexionComponent(){
@@ -125,46 +123,40 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeCreateViewTwit(fondController,twitupFond);
     }
 
-    private void chargeBordereauMenu(FondController parent, TwitupFond vueParent){
-        BordereauMenuController bordereauMenuController = new BordereauMenuController(parent);
+    private void chargeBordereauMenu(FondController fondController, TwitupFond twitupFond){
+        BordereauMenuController bordereauMenuController = new BordereauMenuController(fondController);
         TwitupBordereauMenu twitupBordereauMenu = new TwitupBordereauMenu(bordereauMenuController);
         bordereauMenuController.setVue(twitupBordereauMenu);
-        
-        vueParent.chargeComponent(twitupBordereauMenu, new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
-				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+        twitupFond.chargeTwitupBordereauMenu(twitupBordereauMenu);
     }
 
-    private void chargeBordereau(FondController parent, TwitupFond vueParent){
-        BordereauController bordereauController = new BordereauController(parent);
+    private void chargeBordereau(FondController fondController, TwitupFond twitupFond){
+        BordereauController bordereauController = new BordereauController(fondController);
         TwitupBordereau twitupBordereau = new TwitupBordereau(bordereauController, this.database.getUserConnected());
- 
         bordereauController.setVue(twitupBordereau);
-        
-        vueParent.chargeComponent(twitupBordereau,new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
-                GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+        twitupFond.chargeTwitupBordereau(twitupBordereau);
     }
 
-    private void chargeCreateViewTwit(FondController parent, TwitupFond vueParent){
-        CreateViewTwitController createViewTwitController = new CreateViewTwitController(parent);
+    private void chargeCreateViewTwit(FondController fondController, TwitupFond twitupFond){
+        CreateViewTwitController createViewTwitController = new CreateViewTwitController(fondController);
         TwitupCreateViewTwit twitupCreateViewTwit = new TwitupCreateViewTwit(createViewTwitController);
         createViewTwitController.setVue(twitupCreateViewTwit);
-        vueParent.chargeComponent(twitupCreateViewTwit,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-                GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+        twitupFond.chargeTwitupCreateViewTwit(twitupCreateViewTwit);
         this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
         this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
     }
 
-    private void chargeCreateTWit(CreateViewTwitController parent, TwitupCreateViewTwit vueParent){
-        CreateTwitController createTwitController = new CreateTwitController(parent);
+    private void chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+        CreateTwitController createTwitController = new CreateTwitController(createViewTwitController);
         TwitupCreateTwit twitupCreateTwit = new TwitupCreateTwit(createTwitController);
         createTwitController.setVue(twitupCreateTwit);
-        vueParent.addTwitupCreateTwit(twitupCreateTwit);
+        twitupCreateViewTwit.addTwitupCreateTwit(twitupCreateTwit);
     }
 
-    private void chargeFilTwit(CreateViewTwitController parent, TwitupCreateViewTwit vueParent){
-        TwitupFilTwitController twitupFilTwitController = new TwitupFilTwitController(parent);
+    private void chargeFilTwit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+        TwitupFilTwitController twitupFilTwitController = new TwitupFilTwitController(createViewTwitController);
         TwitupFilTwit twitupFilTwit = new TwitupFilTwit(twitupFilTwitController);
         twitupFilTwitController.setVue(twitupFilTwit);
-        vueParent.addTwitupFilTwit(twitupFilTwit);
+        twitupCreateViewTwit.addTwitupFilTwit(twitupFilTwit);
     }
 }

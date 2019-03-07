@@ -23,11 +23,7 @@ public class TwitupMenu extends JMenuBar {
 
 
 	}
-
-	public void addComponent(JComponent component){
-		this.add(component);
-		this.revalidate();
-	}
+	
 
 	public void addMenuConnexion(MenuConnexionCreation menuConnexionCreation){
 		this.add(menuConnexionCreation);
