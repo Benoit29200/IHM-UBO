@@ -59,6 +59,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		this.setActionAccountCreation();
 		this.observer = observer;
 		
+		this.setLayout(new GridBagLayout());
 		this.setBorder(new LineBorder(Color.CYAN, 4, true));
 		this.setOpaque(true);
 		

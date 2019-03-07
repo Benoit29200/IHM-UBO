@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -23,7 +25,10 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private static final long serialVersionUID = 1L;
 	private IObserverCreateTwit observer;
 	
-	JButton creationTwit = new JButton(Constants.CREATION_TWIT);
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+
+	
+	JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
 
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	JTextField textTwit = new JTextField();
