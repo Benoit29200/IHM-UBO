@@ -27,32 +27,42 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 		this.setBackground(Color.WHITE);
 		this.observer = observer;
 		
-		this.add(this.addMenuRight(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.EAST,
-				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(this.getPanelMenu(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 	
-	private JPanel addMenuRight() {
-		JPanel panelCoteLeft = new JPanel();
-		panelCoteLeft.setBackground(Color.WHITE);
-		panelCoteLeft.setLayout(new GridBagLayout());
+	private JPanel getPanelMenu() {
+		
+		JPanel panelMenu = new JPanel();
 		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.png")));
-		panelCoteLeft.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTH,
+		
+		panelMenu.setBackground(Color.WHITE);
+		panelMenu.setLayout(new GridBagLayout());
+		
+		panelMenu.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		panelCoteLeft.add(getButtonsCreationConnexion(), new GridBagConstraints(0, 1, 1, 1, 0, 1, GridBagConstraints.NORTH,
+		
+		panelMenu.add(getButtonsCreationConnexion(), new GridBagConstraints(0, 1, 1, 1, 0, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		return panelCoteLeft;
+		
+		return panelMenu;
 	}
 
 	private JPanel getButtonsCreationConnexion() {
+		
 		JPanel monJPanel= new JPanel();
-		monJPanel.setLayout(new GridBagLayout());
-		monJPanel.setBackground(Color.white);
 		JButton connexion = new JButton("Connexion à mon compte");
 		JButton creation = new JButton("Création de mon compte");
+		
+		monJPanel.setLayout(new GridBagLayout());
+		monJPanel.setBackground(Color.white);
+		
 		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		
 		monJPanel.add(creation, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		
 		return monJPanel;
 	}
 

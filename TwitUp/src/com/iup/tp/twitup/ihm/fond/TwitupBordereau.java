@@ -5,8 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,8 +27,6 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 	
 	protected User monUser;
 	
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	
 	public TwitupBordereau(IObserverBordereau observer, User user) {
 		this.monUser = user;
 		this.setLayout(new GridBagLayout());
@@ -36,24 +34,31 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 //		this.setPreferredSize(new Dimension(this.screenSize.width/5, this.screenSize.height));
 		this.observer = observer;
 		
-		this.add(this.addMenuRight(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.EAST,
-				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(this.getPanelUtilisateurEtFollowers(), new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 	
 	/**
-	 * Permet de contruire le Panel qui sera affiché comprenant 
+	 * Permet de contruire le Panel qui sera affiché comprenant le panel utilisateur et le panel follower
 	 * @return un JPanel
 	 */
-	private JPanel addMenuRight() {
-		JPanel panelCoteRight = new JPanel();
-		panelCoteRight.setBackground(Color.WHITE);
-		panelCoteRight.setLayout(new GridBagLayout());
-		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(this.monUser.getAvatarPath())));
-		panelCoteRight.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTH,
+	private JPanel getPanelUtilisateurEtFollowers() {
+		JPanel panelFinal = new JPanel();
+		panelFinal.setBackground(Color.WHITE);
+		panelFinal.setLayout(new GridBagLayout());
+		
+		JPanel panelUtilisateur = getPanelUtilisateur();
+		JPanel panelFollower = this.getFollowerUtilisateur();
+		
+		panelUtilisateur.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
+		panelFinal.add(panelUtilisateur, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		panelCoteRight.add(getPanelUtilisateur(), new GridBagConstraints(0, 1, 1, 1, 0, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		return panelCoteRight;
+		
+		panelFollower.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		panelFinal.add(panelFollower, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		
+		return panelFinal;
 	}
 
 	/**
@@ -67,33 +72,33 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		monJPanel.setLayout(new GridBagLayout());
 		JLabel connexion = new JLabel(this.monUser.getUserTag());
 		
+		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(this.monUser.getAvatarPath())));
+		monJPanel.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		
 		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
-		monJPanel.add(this.getFollowerUtilisateur(), new GridBagConstraints(0, 1, 1, 1, 0, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return monJPanel;
 	}
 	
 	private JPanel getFollowerUtilisateur() {
 		JPanel follow = new JPanel(new GridBagLayout());
 		
-		follow.setMinimumSize(new Dimension(2000, 2000));
+//		follow.setMinimumSize(new Dimension(2000, 2000));
 		follow.setBackground(new Color(240,248,255));
 		
 		JScrollPane scroll = new JScrollPane(follow, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		int i = 0;
 		for(String follower : this.monUser.getFollows()) {
-			follow.add(new JLabel(follower), new GridBagConstraints(0, i, 1, 1, 0, 1, GridBagConstraints.NORTH,
+			JLabel comp = new JLabel(follower);
+			follow.add(comp, new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 			i++;
 		}
 		follow.revalidate();
 		follow.repaint();
-		
-		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
 		return follow;
 	}
