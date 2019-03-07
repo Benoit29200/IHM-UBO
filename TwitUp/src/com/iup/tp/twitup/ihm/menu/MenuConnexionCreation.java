@@ -8,8 +8,8 @@ import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 
-import com.iup.tp.twitup.datamodel.menu.IObservableMenuConnexionCreation;
-import com.iup.tp.twitup.datamodel.menu.IObserverMenuConnexionCreation;
+import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObservableMenuConnexionCreation;
+import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObserverMenuConnexionCreation;
 
 import com.iup.tp.twitup.ihm.menu.interfaceMenu.MethodeCommuneMenu;
 
@@ -25,7 +25,7 @@ public class MenuConnexionCreation extends JMenu implements MethodeCommuneMenu, 
 	
 	public MenuConnexionCreation(JFrame fenetre, IObserverMenuConnexionCreation observer) {
 		
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
         this.addItemToUserAccountMenu(fenetre);
         this.observer = observer;

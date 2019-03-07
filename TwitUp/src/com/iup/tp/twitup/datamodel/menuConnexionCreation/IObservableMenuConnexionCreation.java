@@ -1,4 +1,4 @@
-package com.iup.tp.twitup.datamodel.menu;
+package com.iup.tp.twitup.datamodel.menuConnexionCreation;
 
 public interface IObservableMenuConnexionCreation {
 

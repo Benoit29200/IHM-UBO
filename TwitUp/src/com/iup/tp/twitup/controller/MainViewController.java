@@ -70,6 +70,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(this);
         MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(this.vue, menuConnexionCreationController);
         menuConnexionCreationController.setMenuView(menuConnexionCreation);
+
         TwitupMenu menu = new TwitupMenu(this.vue);
         menu.add(menuConnexionCreation);
         this.vue.setMenu(menu);

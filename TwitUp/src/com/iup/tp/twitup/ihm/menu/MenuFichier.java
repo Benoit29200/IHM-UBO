@@ -28,7 +28,7 @@ public class MenuFichier extends JMenu implements MethodeCommuneMenu{
 	private ResourceBundle fileLanguage;
 	
 	public MenuFichier(JFrame fenetre) {
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("fichier").toString());
 	    this.addItemToFichierMenu(fenetre);
 	}

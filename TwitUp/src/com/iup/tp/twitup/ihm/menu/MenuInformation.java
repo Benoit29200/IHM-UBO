@@ -25,7 +25,7 @@ public class MenuInformation extends JMenu implements MethodeCommuneMenu{
 	private ResourceBundle fileLanguage;
 	
 	public MenuInformation(JFrame fenetre) {
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText("?");
         addItemToTheProposMenu();
 	}

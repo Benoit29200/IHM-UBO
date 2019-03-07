@@ -25,7 +25,7 @@ public class MenuDeconnexion extends JMenu implements MethodeCommuneMenu{
 	
 	public MenuDeconnexion(JFrame fenetre) {
 		
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
         this.addItemToUserAccountMenu(fenetre); 
 	}
