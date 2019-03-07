@@ -35,6 +35,7 @@ public class LoginController implements IObserverLogin {
 
         if(parent.getDatabase().findUser(u) != null){
             LOGER.success("L'utilisateur existe ! Allélujah");
+            parent.getDatabase().setUserConnected(parent.getDatabase().findUser(u));
             parent.chargeFond();
         }else{
             LOGER.err("L'utilisateur n'existe pas");

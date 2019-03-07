@@ -133,7 +133,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeBordereau(FondController parent, TwitupFond vueParent){
         BordereauController bordereauController = new BordereauController(parent);
-        TwitupBordereau twitupBordereau = new TwitupBordereau(bordereauController);
+        TwitupBordereau twitupBordereau = new TwitupBordereau(bordereauController, this.database.getUserConnected());
         bordereauController.setVue(twitupBordereau);
         vueParent.chargeComponent(twitupBordereau,new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
                 GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));

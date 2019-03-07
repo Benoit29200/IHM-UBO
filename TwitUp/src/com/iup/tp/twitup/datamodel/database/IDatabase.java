@@ -146,4 +146,9 @@ public interface IDatabase {
 	 */
 	public User getUnknowUser();
 
+
+	void setUserConnected(User u);
+
+	User getUserConnected();
+
 }

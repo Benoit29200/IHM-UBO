@@ -18,11 +18,11 @@ public class MenuConnexionCreationController implements IObserverMenuConnexionCr
 
     @Override
     public void chargeConnexion() {
-        //this.menuController.chargeConnexionComponent();
+        this.menuController.getParent().chargeConnexionComponent();
     }
 
     @Override
     public void chargeAccountManager() {
-        //this.menuController.chargeAccountManager();
+        this.menuController.getParent().chargeAccountManager();
     }
 }

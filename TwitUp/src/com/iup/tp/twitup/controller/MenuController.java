@@ -15,4 +15,8 @@ public class MenuController implements IObserverMenu {
     public void setVue(TwitupMenu vue) {
         this.vue = vue;
     }
+
+    public MainViewController getParent() {
+        return parent;
+    }
 }

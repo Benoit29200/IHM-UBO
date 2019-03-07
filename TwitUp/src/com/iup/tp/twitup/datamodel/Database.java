@@ -18,6 +18,9 @@ public class Database implements IDatabase {
 	 */
 	protected final Set<User> mUsers;
 
+
+	protected User mUserConnected;
+
 	/**
 	 * Liste des Twit enregistrés.
 	 */
@@ -319,5 +322,15 @@ public class Database implements IDatabase {
 			if(userToFind.getUserTag().equals(u.getUserTag()) && userToFind.getUserPassword().equals(u.getUserPassword())) return u;
 		}
 		return null;
+	}
+
+	@Override
+	public void setUserConnected(User u) {
+		this.mUserConnected = u;
+	}
+
+	@Override
+	public User getUserConnected() {
+		return this.mUserConnected;
 	}
 }
