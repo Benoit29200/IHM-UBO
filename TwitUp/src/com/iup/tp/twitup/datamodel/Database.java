@@ -317,9 +317,9 @@ public class Database implements IDatabase {
 	}
 
 	@Override
-	public User findUser(User userToFind) {
+	public User findUser(String pseudo, String mdp) {
 		for(User u: this.mUsers){
-			if(userToFind.getUserTag().equals(u.getUserTag()) && userToFind.getUserPassword().equals(u.getUserPassword())) return u;
+			if(u.getUserTag().equals("pseudo") && u.getUserPassword().equals("password")) return u;
 		}
 		return null;
 	}

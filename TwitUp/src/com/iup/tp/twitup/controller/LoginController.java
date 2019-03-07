@@ -31,11 +31,11 @@ public class LoginController implements IObserverLogin {
     @Override
     public void eventLogin(IObservableLogin o, String login, String mdp) {
 
-        User u = new User(UUID.randomUUID(), login, mdp,"benoit" ,new HashSet<String>(),"");
+        User u = parent.getDatabase().findUser(login,mdp);
 
-        if(parent.getDatabase().findUser(u) != null){
+        if( u != null){
             LOGER.success("L'utilisateur existe ! Allélujah");
-            parent.getDatabase().setUserConnected(parent.getDatabase().findUser(u));
+            parent.getDatabase().setUserConnected(u);
             parent.chargeFond();
         }else{
             LOGER.err("L'utilisateur n'existe pas");
