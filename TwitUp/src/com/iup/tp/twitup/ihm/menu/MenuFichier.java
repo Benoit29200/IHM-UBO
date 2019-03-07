@@ -46,7 +46,7 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
 	 private void setFileChooser(){
 	        this.fileChooser = new JFileChooser();
 	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	        this.fileChooser.setDialogTitle(Constants.CLE_DOSSIER_ECHANGE);
+	        this.fileChooser.setDialogTitle(this.fileLanguage.getObject(Constants.CLE_DOSSIER_ECHANGE).toString());
 	    }
 	
 	/**
@@ -73,7 +73,7 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
                         break;
 
                     case JFileChooser.CANCEL_OPTION:
-                        JOptionPane.showMessageDialog(fenetre, Constants.CLE_ERREUR_DOSSIER_ECHANGE,
+                        JOptionPane.showMessageDialog(fenetre, fileLanguage.getObject(Constants.CLE_ERREUR_DOSSIER_ECHANGE).toString(),
                                 "TwitUp",
                                 JOptionPane.OK_OPTION);
                         break;
