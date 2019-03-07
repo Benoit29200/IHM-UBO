@@ -333,4 +333,12 @@ public class Database implements IDatabase {
 	public User getUserConnected() {
 		return this.mUserConnected;
 	}
+
+	@Override
+	public boolean findTagUser(String tag) {
+		for(User u: this.mUsers){
+			if(u.getUserTag().equals(tag)) return true;
+		}
+		return false;
+	}
 }

@@ -41,6 +41,7 @@ public class TwitupTwit extends JPanel {
 	private JPanel setNewTwit(Twit monTwit) {
 		JPanel panelCreateTwit = new JPanel();
 		panelCreateTwit.setLayout(new BorderLayout());
+		this.textTwit.disable();
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setText(monTwit.getText());
 		panelCreateTwit.add(textTwit, BorderLayout.CENTER);

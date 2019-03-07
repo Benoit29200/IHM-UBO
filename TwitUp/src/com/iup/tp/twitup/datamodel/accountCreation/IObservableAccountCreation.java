@@ -8,5 +8,5 @@ public interface IObservableAccountCreation {
 
     void notifyEventCancel();
 
-    void notifyEventAccountCreation(String nom, String login, String mdp);
+    void notifyEventAccountCreation(String nom, String login, String mdp, String confirm);
 }

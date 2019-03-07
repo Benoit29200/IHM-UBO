@@ -37,6 +37,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 
 	private IObserverAccountCreation observer;
 
+	private JLabel errorMessage = new JLabel("");
 	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
 	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
 	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
@@ -59,6 +60,8 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		this.initUserPage(panelCreation);
 		this.setActionAccountCreation();
 		this.observer = observer;
+
+		this.errorMessage.setForeground(Color.RED);
 		
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(true);
@@ -69,8 +72,13 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		
 	}
 
+	public void setErrorMessage(String error) {
+		this.errorMessage.setText(error);
+	}
+
 	private void dimensionComponent() {
 		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
+		this.errorMessage.setPreferredSize(componentDimension);
 		this.nomLabel.setPreferredSize(componentDimension);
 		this.pseudoLabel.setPreferredSize(componentDimension);
 		this.passwordLabel.setPreferredSize(componentDimension);
@@ -94,8 +102,11 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		create.add(panelJTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(this.creationcompteJButton, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.SOUTH,
+		create.add(this.errorMessage, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.SOUTH,
+				GridBagConstraints.NONE, new Insets(5, 5, 6, 5), 0, 0));
+		create.add(this.creationcompteJButton, new GridBagConstraints(1, 2, 1, 1, 1, 1, GridBagConstraints.SOUTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+
 	}
 
 	/**
@@ -129,7 +140,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		this.creationcompteJButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				notifyEventAccountCreation(nom.getText(),pseudo.getText(),password.getText());
+				notifyEventAccountCreation(nom.getText(),pseudo.getText(),password.getText(), confirmPassword.getText());
 			}
 		});
 	}
@@ -150,7 +161,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	}
 
 	@Override
-	public void notifyEventAccountCreation(String nom, String login, String mdp) {
-		this.observer.eventEventAccountCreation(this, nom, login, mdp);
+	public void notifyEventAccountCreation(String nom, String login, String mdp, String confirm) {
+		this.observer.eventEventAccountCreation(this, nom, login, mdp, confirm);
 	}
 }

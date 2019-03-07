@@ -29,11 +29,11 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 
-	JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
+	private JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
 
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	JTextField textTwit = new JTextField();
-	JLabel text = new JLabel("nb caractères: 0");
+	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private JTextField textTwit = new JTextField();
+	private JLabel nbCaracteres = new JLabel("nb caractères: 0");
 
 	
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
@@ -44,7 +44,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.add(textTwit);
 		this.add(creationTwit);
-		this.add(text);
+		this.add(nbCaracteres);
 		this.addAction();
 	}
 
@@ -59,8 +59,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.textTwit.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				System.out.println("nombre de caractère: "+textTwit.getText().length());
-				text.setText("Nombre de caractères: "+textTwit.getText().length());
+				nbCaracteres.setText("Nombre de caractères: "+textTwit.getText().length());
 
 				if(textTwit.getText().length() >= 150){
 					try {

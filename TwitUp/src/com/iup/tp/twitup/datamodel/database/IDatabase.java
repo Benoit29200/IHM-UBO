@@ -150,4 +150,6 @@ public interface IDatabase {
 
 	User getUserConnected();
 
+	boolean findTagUser(String tag);
+
 }

@@ -6,6 +6,7 @@ import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
 import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObservableCreateTwitViewTwit;
 import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObserverCreateTwitViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
+import org.apache.commons.lang3.StringUtils;
 
 public class CreateTwitController implements IObserverCreateTwit, IObservableCreateTwitViewTwit {
 
@@ -42,12 +43,11 @@ public class CreateTwitController implements IObserverCreateTwit, IObservableCre
     }
 
     public void addTwit(String twitText){
-
-            User userConnected = this.parent.getDatabase().getUserConnected();
-            Twit twit = new Twit(userConnected,twitText);
-            this.parent.getDatabase().addTwit(twit);
-            this.notifyAddTwit();
-
-
+            if(StringUtils.isNotBlank(twitText)){
+                User userConnected = this.parent.getDatabase().getUserConnected();
+                Twit twit = new Twit(userConnected,twitText);
+                this.parent.getDatabase().addTwit(twit);
+                this.notifyAddTwit();
+            }
     }
 }

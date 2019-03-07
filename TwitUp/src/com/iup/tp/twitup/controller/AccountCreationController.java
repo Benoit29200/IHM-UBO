@@ -5,6 +5,7 @@ import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashSet;
 import java.util.UUID;
@@ -29,10 +30,21 @@ public class AccountCreationController implements IObserverAccountCreation {
     }
 
     @Override
-    public void eventEventAccountCreation(IObservableAccountCreation o, String nom, String login, String mdp) {
-        LOGER.debug("J'ai reçu le signal \"Créer compte\" ");
-        User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),"");
-        parent.getDatabase().addUser(u);
-        System.out.println("testrt");
+    public void eventEventAccountCreation(IObservableAccountCreation o, String nom, String login, String mdp, String confirm) {
+        if(StringUtils.isBlank(nom) || StringUtils.isBlank(login) || StringUtils.isBlank(mdp) || StringUtils.isBlank(confirm)){
+            this.vue.setErrorMessage("Tous les champs sont obligatoires");
+        }else if(!mdp.equals(confirm)) {
+            this.vue.setErrorMessage("Les mots de passe ne correspondent pas");
+        }else if(parent.getDatabase().findTagUser(login)){
+            this.vue.setErrorMessage("Le login est déja utilisé");
+        }else{
+            LOGER.debug("J'ai reçu le signal \"Créer compte\" ");
+            User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),"");
+            parent.getDatabase().addUser(u);
+            parent.getDatabase().setUserConnected(u);
+            parent.chargeFond();
+        }
+
+
     }
 }
