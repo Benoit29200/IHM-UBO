@@ -12,6 +12,8 @@ import javax.swing.JMenuItem;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.iup.tp.twitup.common.Constants;
+
 public class MenuDeconnexion extends JMenu {
 
 	/**
@@ -23,8 +25,8 @@ public class MenuDeconnexion extends JMenu {
 	
 	public MenuDeconnexion(JFrame fenetre) {
 		
-		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
-		this.setText(this.fileLanguage.getObject("userAccount").toString());
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.setText(this.fileLanguage.getObject(Constants.MENU_USER_ACCOUNT).toString());
         this.setItemToUserAccountMenu(fenetre); 
 	}
 	
@@ -34,7 +36,7 @@ public class MenuDeconnexion extends JMenu {
 	 * @param fenetre
 	 */
 	private void setItemToUserAccountMenu(JFrame fenetre) {
-		setItemToMenu(this.fileLanguage.getObject("deconnexion").toString(),this, null, new ActionListener() {
+		setItemToMenu(this.fileLanguage.getObject(Constants.DECONNEXION).toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 //fenetre.setContentPane();

@@ -8,6 +8,8 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import com.iup.tp.twitup.common.Constants;
+
 public class BoutonsDeconnexion extends JPanel {
 
 	/**
@@ -24,7 +26,7 @@ public class BoutonsDeconnexion extends JPanel {
 		JPanel monJPanel= new JPanel();
 		monJPanel.setLayout(new GridBagLayout());
 		monJPanel.setBackground(Color.white);
-		JButton connexion = new JButton("Déconnexion");
+		JButton connexion = new JButton(Constants.DECONNEXION);
 		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		return monJPanel;

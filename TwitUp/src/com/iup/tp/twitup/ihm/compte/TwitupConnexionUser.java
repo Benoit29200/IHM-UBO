@@ -19,6 +19,7 @@ import javax.swing.border.LineBorder;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.login.IObservableLogin;
 import com.iup.tp.twitup.datamodel.login.IObserverLogin;
 
@@ -34,17 +35,17 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
-	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject("creation").toString());
-	private JButton connexionUser = new JButton(this.fileLanguage.getObject("connexion").toString());
+	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+	private JButton connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
 
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
-	private JLabel loginLabel = new JLabel(this.fileLanguage.getObject("pseudo").toString());
+	private JLabel loginLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
 	private JTextField login = new JTextField();
 
-	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject("mdp").toString());
+	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
 	private JTextField password = new JPasswordField();
 
 	private JLabel errorMessage = new JLabel("");
@@ -178,7 +179,7 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 		if(StringUtils.isNotBlank(login) && StringUtils.isNotBlank(mdp))
 			this.observer.eventLogin(this,login,mdp);
 		else
-			this.setErrorMessage(this.fileLanguage.getObject("erreurconnexion").toString());
+			this.setErrorMessage(this.fileLanguage.getObject(Constants.VIEW_ERREUR_CONNEXION).toString());
 	}
 
 	@Override

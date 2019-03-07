@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
 
@@ -28,18 +29,18 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
-	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject("creation").toString());
+	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
 	
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 	private IObserverAccountCreation observer;
 
-	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject("nom").toString());
-	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject("pseudo").toString());
-	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject("mdp").toString());
-	private JLabel confirmPasswordLabel = new JLabel(this.fileLanguage.getObject("cmdp").toString());
+	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
+	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
+	private JLabel confirmPasswordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CMDP).toString());
 
 	private JTextField nom = new JTextField();
 	private JTextField pseudo = new JTextField();
