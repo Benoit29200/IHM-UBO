@@ -15,22 +15,13 @@ public class TwitupMenu extends JMenuBar {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-    protected JFrame mainFenetre;
 	
     /**
      * Constructeur de la classe
-     * @param fenetre
      */
-	public TwitupMenu(JFrame fenetre) {
+	public TwitupMenu() {
 
-        this.mainFenetre = fenetre;
-        
-        this.add(new MenuFichier(fenetre));
-
-        //this.add(new MenuConnexionCreation(fenetre));
-
-	    this.add(new MenuInformation(fenetre));
+	    //this.add(new MenuInformation(fenetre));
 
 	}
 

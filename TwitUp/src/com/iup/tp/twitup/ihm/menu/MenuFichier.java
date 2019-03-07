@@ -12,9 +12,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.iup.tp.twitup.datamodel.menuFichier.IObservableMenuFichier;
+import com.iup.tp.twitup.datamodel.menuFichier.IObserverMenuFichier;
 import org.apache.commons.lang3.StringUtils;
 
-public class MenuFichier extends JMenu {
+public class MenuFichier extends JMenu implements IObservableMenuFichier {
 
 	/**
 	 * 
@@ -24,9 +26,12 @@ public class MenuFichier extends JMenu {
 	private JFileChooser fileChooser;
 	
 	private ResourceBundle fileLanguage;
+
+	private IObserverMenuFichier observer;
 	
-	public MenuFichier(JFrame fenetre) {
+	public MenuFichier(JFrame fenetre, IObserverMenuFichier observer) {
 		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
+		this.observer = observer;
 		this.setText(this.fileLanguage.getObject("fichier").toString());
 	    this.addItemToFichierMenu(fenetre);
 	}
@@ -92,5 +97,20 @@ public class MenuFichier extends JMenu {
 		if(action != null){
 			j.addActionListener(action);
 		}
+	}
+
+	@Override
+	public void addObserver(IObserverMenuFichier o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyChargeFichier() {
+		this.observer.chargeFichier();
 	}
 }
