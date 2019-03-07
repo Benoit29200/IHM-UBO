@@ -1,11 +1,14 @@
 package com.iup.tp.twitup.ihm.compte;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -13,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
@@ -23,17 +27,19 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
 
-	private JButton creationcompteJButton = new JButton("Créer mon compte");
+	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject("creation").toString());
 	
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 	private IObserverAccountCreation observer;
 
-	private JLabel nomLabel = new JLabel("Votre nom");
-	private JLabel pseudoLabel = new JLabel("Votre pseudo");
-	private JLabel passwordLabel = new JLabel("Votre mot de passe");
-	private JLabel confirmPasswordLabel = new JLabel("Confirmation mot de passe");
+	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject("nom").toString());
+	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject("pseudo").toString());
+	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject("mdp").toString());
+	private JLabel confirmPasswordLabel = new JLabel(this.fileLanguage.getObject("cmdp").toString());
 
 	private JTextField nom = new JTextField();
 	private JTextField pseudo = new JTextField();
@@ -44,59 +50,79 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	
 	public TwitupCreationCompte(IObserverAccountCreation observer){
 		
-		JPanel create = new JPanel();
+		JPanel panelCreation = new JPanel(new GridBagLayout());
+		panelCreation.setLayout(new GridBagLayout());
+		panelCreation.setOpaque(true);
 		
-		create.setLayout(new GridBagLayout());
-		setLayout(new GridBagLayout());
-		
-		this.initUserPage(create);
+		this.initUserPage(panelCreation);
 		this.setActionAccountCreation();
-
 		this.observer = observer;
 		
-		create.setOpaque(true);
-		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+		this.setBorder(new LineBorder(Color.CYAN, 4, true));
+		this.setOpaque(true);
+		
+		this.add(panelCreation, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		this.dimensionComponent();
+		
+	}
 
+	private void dimensionComponent() {
 		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
+		this.nomLabel.setPreferredSize(componentDimension);
+		this.pseudoLabel.setPreferredSize(componentDimension);
+		this.passwordLabel.setPreferredSize(componentDimension);
+		this.confirmPasswordLabel.setPreferredSize(componentDimension);
 		this.nom.setPreferredSize(componentDimension);
 		this.pseudo.setPreferredSize(componentDimension);
 		this.password.setPreferredSize(componentDimension);
 		this.confirmPassword.setPreferredSize(componentDimension);
-		
 	}
 
+	/**
+	 * Permet de créer le JPanel principal
+	 * @param create
+	 */
 	private void initUserPage(JPanel create) {
 		
-		JPanel nomLabel = initJPanelComponent(this.nomLabel);
-		JPanel nom = initJPanelComponent(this.nom);
-		JPanel pseudoLabel = initJPanelComponent(this.pseudoLabel);
-		JPanel pseudo = initJPanelComponent(this.pseudo);
-		JPanel passwordLabel = initJPanelComponent(this.passwordLabel);
-		JPanel password = initJPanelComponent(this.password);
-		JPanel confirmPasswordLabel = initJPanelComponent(this.confirmPasswordLabel);
-		JPanel confirmPassword = initJPanelComponent(this.confirmPassword);
+		JPanel panelJLabels = this.initJComponentDansJPanelComponent(this.nomLabel,this.pseudoLabel,this.passwordLabel,this.confirmPasswordLabel);
+		JPanel panelJTextField = this.initJComponentDansJPanelComponent(this.nom,this.pseudo,this.password,this.confirmPassword);
 		
-		create.add(nomLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(nom, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
+		create.add(panelJLabels, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(pseudoLabel, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
+		create.add(panelJTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(pseudo, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(passwordLabel, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(password, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(confirmPasswordLabel, new GridBagConstraints(0, 3, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		create.add(confirmPassword, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		create.add(this.creationcompteJButton, new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.SOUTH,
+		create.add(this.creationcompteJButton, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.SOUTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 	}
 
+	/**
+	 * Permet de construire un JPanel qui prend les 4 components afin de les aligner correctement
+	 * @param component1
+	 * @param component2
+	 * @param component3
+	 * @param component4
+	 * @return
+	 */
+	private JPanel initJComponentDansJPanelComponent(JComponent component1, JComponent component2, JComponent component3,JComponent component4
+			) {
+		JPanel panelConstruit = new JPanel(new GridBagLayout());
+		
+		panelConstruit.add(component1, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		panelConstruit.add(component2, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		panelConstruit.add(component3, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		panelConstruit.add(component4, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		
+		return panelConstruit;
+	}
+
+	/**
+	 * Ajoute une action lors de l'appui sur le bouton de création du compte
+	 */
 	private void setActionAccountCreation(){
 		this.creationcompteJButton.addActionListener(new ActionListener() {
 			@Override
@@ -106,12 +132,6 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		});
 	}
 		
-	private JPanel initJPanelComponent(JComponent component) {
-		JPanel creation = new JPanel();
-		creation.add(component);
-		return creation;
-	}
-
 	@Override
 	public void addObserver(IObserverAccountCreation o) {
 		this.observer = o;
