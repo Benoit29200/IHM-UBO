@@ -67,32 +67,32 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		monJPanel.setLayout(new GridBagLayout());
 		JLabel connexion = new JLabel(this.monUser.getUserTag());
 		
-		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTH,
+		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
-		monJPanel.add(this.getFollowerUtilisateur(), new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		monJPanel.add(this.getFollowerUtilisateur(), new GridBagConstraints(0, 1, 1, 1, 0, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return monJPanel;
 	}
 	
 	private JPanel getFollowerUtilisateur() {
 		JPanel follow = new JPanel(new GridBagLayout());
 		
-		follow.setMinimumSize(new Dimension(10, 10));
+		follow.setMinimumSize(new Dimension(2000, 2000));
 		follow.setBackground(new Color(240,248,255));
 		
 		JScrollPane scroll = new JScrollPane(follow, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		int i = 0;
 		for(String follower : this.monUser.getFollows()) {
-			follow.add(new JLabel(follower), new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
+			follow.add(new JLabel(follower), new GridBagConstraints(0, i, 1, 1, 0, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 			i++;
 		}
 		follow.revalidate();
 		follow.repaint();
 		
-		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
 		return follow;
