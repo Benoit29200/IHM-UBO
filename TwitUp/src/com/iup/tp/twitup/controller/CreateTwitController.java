@@ -43,15 +43,10 @@ public class CreateTwitController implements IObserverCreateTwit, IObservableCre
 
     public void addTwit(String twitText){
 
-        if(twitText.length()>150){
-            //erreur
-        }
-        else{
             User userConnected = this.parent.getDatabase().getUserConnected();
             Twit twit = new Twit(userConnected,twitText);
             this.parent.getDatabase().addTwit(twit);
             this.notifyAddTwit();
-        }
 
 
     }
