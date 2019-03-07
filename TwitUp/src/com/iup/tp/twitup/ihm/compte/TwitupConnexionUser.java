@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,18 +49,18 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	
 	public TwitupConnexionUser(IObserverLogin observer){
 
-		JPanel create = new JPanel();
+		JPanel panelCreate = new JPanel();
 
-		create.setLayout(new GridBagLayout());
-//		create.setBorder(new LineBorder(Color.CYAN, 4, true));
-		create.setOpaque(true);
+		panelCreate.setLayout(new GridBagLayout());
+		panelCreate.setBorder(new LineBorder(Color.CYAN, 4, true));
+		panelCreate.setOpaque(true);
 
 		setLayout(new GridBagLayout());
-		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+		add(panelCreate, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
 		this.observer = observer;
-		this.initUserPage(create);
+		this.initUserPage(panelCreate);
 		this.setAction();
 
 	}
@@ -85,34 +86,45 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 
 	/**
 	 * Permet de créer le JPanel correspondant au component de la création d'un compte
-	 * @param create
+	 * @param panelCreate
 	 */
-	private void initUserPage(JPanel create) {
+	private void initUserPage(JPanel panelCreate) {
 
 		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.loginLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.passwordLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.errorMessage.setForeground(Color.RED);
+		
+		JPanel labelEtBoutonConnexion = new JPanel(new GridBagLayout());
+		JPanel textFieldEtBoutonCreation = new JPanel(new GridBagLayout());
 
-		create.add(loginLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
+		/**
+		 * Mise en place 
+		 */
+		labelEtBoutonConnexion.add(this.loginLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		labelEtBoutonConnexion.add(this.passwordLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		labelEtBoutonConnexion.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		
+		textFieldEtBoutonCreation.add(this.login, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		textFieldEtBoutonCreation.add(this.password, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		textFieldEtBoutonCreation.add(this.creationcompteJButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+
+		panelCreate.add(labelEtBoutonConnexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		
+		panelCreate.add(textFieldEtBoutonCreation, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+
+		panelCreate.add(errorMessage, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
-		create.add(login, new GridBagConstraints(1, 0, 5, 1, 1, 1, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-
-		create.add(passwordLabel, new GridBagConstraints(0, 1, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-
-		create.add(password, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-
-		create.add(errorMessage, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-
-		create.add(this.creationcompteJButton, new GridBagConstraints(1, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-
-		create.add(this.connexionUser, new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 	}
 
 	@Override
