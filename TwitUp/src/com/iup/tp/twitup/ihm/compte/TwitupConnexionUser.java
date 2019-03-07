@@ -1,12 +1,10 @@
 package com.iup.tp.twitup.ihm.compte;
 
-import com.iup.tp.twitup.controller.MainViewController;
-import com.iup.tp.twitup.datamodel.login.IObservableLogin;
-import com.iup.tp.twitup.datamodel.login.IObserverLogin;
-import com.iup.tp.twitup.controller.LoginController;
-import org.apache.commons.lang3.StringUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.iup.tp.twitup.datamodel.login.IObservableLogin;
+import com.iup.tp.twitup.datamodel.login.IObserverLogin;
 
 /**
  * Mise en place du component gérant la connexion d'un utilisateur
@@ -30,6 +33,8 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 
 	private JButton creationcompteJButton = new JButton("Créer mon compte");
 	private JButton connexionUser = new JButton("Connexion");
+
+	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 	private JLabel loginLabel = new JLabel("Votre pseudo :");
 	private JTextField login = new JTextField();
@@ -84,6 +89,8 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 */
 	private void initUserPage(JPanel create) {
 
+		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.errorMessage.setForeground(Color.RED);
 
 		create.add(loginLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,
