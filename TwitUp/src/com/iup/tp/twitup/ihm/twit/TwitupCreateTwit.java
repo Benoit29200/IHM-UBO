@@ -7,11 +7,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
@@ -27,6 +26,8 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	JTextField textTwit = new JTextField();
+	JLabel text = new JLabel("nb caractères: 0");
+
 	
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
 		this.observer = observer;
@@ -36,6 +37,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.add(textTwit);
 		this.add(creationTwit);
+		this.add(text);
 		this.addAction();
 	}
 
@@ -44,6 +46,24 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				notifyAddTwit(textTwit.getText());
+			}
+		});
+
+		this.textTwit.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				System.out.println("nombre de caractère: "+textTwit.getText().length());
+				text.setText("Nombre de caractères: "+textTwit.getText().length());
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
 			}
 		});
 	}

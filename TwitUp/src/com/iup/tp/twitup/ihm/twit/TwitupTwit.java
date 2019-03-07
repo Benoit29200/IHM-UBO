@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -43,7 +44,8 @@ public class TwitupTwit extends JPanel {
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setText(monTwit.getText());
 		panelCreateTwit.add(textTwit, BorderLayout.CENTER);
-		this.nomUser.setText("C'est moi :" + monTwit.getUserTags() + " Date : "+monTwit.getEmissionDate());
+		Date d = new Date(monTwit.getEmissionDate());
+		this.nomUser.setText("Twiter :" + monTwit.getUserTag() + " Date : "+d);
 		panelCreateTwit.add(this.nomUser, BorderLayout.SOUTH);
 		return panelCreateTwit;
 	}

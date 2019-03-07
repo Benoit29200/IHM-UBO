@@ -171,6 +171,8 @@ public class Twit {
 		return new HashSet<String>(mUserTags);
 	}
 
+	public String getUserTag(){ return mTwiter.getUserTag();}
+
 	/**
 	 * Indique si le Twit possède le tag donné.
 	 * 
