@@ -31,8 +31,6 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	private JButton creationcompteJButton = new JButton("Créer mon compte");
 	private JButton connexionUser = new JButton("Connexion");
 
-	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 	private JLabel loginLabel = new JLabel("Votre pseudo :");
 	private JTextField login = new JTextField();
 
@@ -49,7 +47,6 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 
 		create.setLayout(new GridBagLayout());
 //		create.setBorder(new LineBorder(Color.CYAN, 4, true));
-		create.setPreferredSize(new Dimension((int) (screenSize.width/3), screenSize.height/4));
 		create.setOpaque(true);
 
 		setLayout(new GridBagLayout());
@@ -57,15 +54,15 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
 		this.observer = observer;
-		this.createUserPage(create);
-		this.addAction();
+		this.initUserPage(create);
+		this.setAction();
 
 	}
 
 	/**
 	 * Ajout d'un action sur le bouton de connexion
 	 */
-	private void addAction(){
+	private void setAction(){
 		this.connexionUser.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -85,10 +82,8 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 * Permet de créer le JPanel correspondant au component de la création d'un compte
 	 * @param create
 	 */
-	private void createUserPage(JPanel create) {
+	private void initUserPage(JPanel create) {
 
-		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.errorMessage.setForeground(Color.RED);
 
 		create.add(loginLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTHWEST,

@@ -29,14 +29,14 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
 		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
 		this.observer = observer;
 		this.setText("?");
-        addItemToTheProposMenu();
+        setItemToTheProposMenu();
 	}
 	
 	/**
 	 * Méthode privée permettant de mettre en place la fenêtre de dialogue pour le "à propos"
 	 */
-	private void addItemToTheProposMenu() {
-		addItemToMenu(this.fileLanguage.getObject("a_propos").toString(),this,null, new ActionListener() {
+	private void setItemToTheProposMenu() {
+		setItemToMenu(this.fileLanguage.getObject("a_propos").toString(),this,null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"UBO M2TIIL \n Département Informatique"," A propos",JOptionPane.INFORMATION_MESSAGE,
@@ -45,7 +45,7 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
         });
 	}
 
-	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+	public void setItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
 		JMenuItem j = new JMenuItem(name);
 		menu.add(j);
 		if(StringUtils.isNotBlank(filenameIcon)){

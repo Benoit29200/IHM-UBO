@@ -29,22 +29,22 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 		
 		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
-        this.addItemToUserAccountMenu();
+        this.setItemToUserAccountMenu();
         this.observer = observer;
 	}
 
 	/**
 	 *
 	 */
-	private void addItemToUserAccountMenu() {
-		addItemToMenu(this.fileLanguage.getObject("creation").toString(),this, null, new ActionListener() {
+	private void setItemToUserAccountMenu() {
+		setItemToMenu(this.fileLanguage.getObject("creation").toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 notifyChargeAccountManager();
 			 }
 		});
 		
-		addItemToMenu(this.fileLanguage.getObject("connexion").toString(),this, null, new ActionListener() {
+		setItemToMenu(this.fileLanguage.getObject("connexion").toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 notifyChargeConnexion();
@@ -53,7 +53,7 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 		
 	}
 
-	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+	public void setItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
 		JMenuItem j = new JMenuItem(name);
 		menu.add(j);
 		if(StringUtils.isNotBlank(filenameIcon)){

@@ -25,7 +25,7 @@ public class MenuDeconnexion extends JMenu {
 		
 		this.fileLanguage = ResourceBundle.getBundle("menuConnexionCreation", Locale.getDefault());
 		this.setText(this.fileLanguage.getObject("userAccount").toString());
-        this.addItemToUserAccountMenu(fenetre); 
+        this.setItemToUserAccountMenu(fenetre); 
 	}
 	
 	
@@ -33,8 +33,8 @@ public class MenuDeconnexion extends JMenu {
 	 * 
 	 * @param fenetre
 	 */
-	private void addItemToUserAccountMenu(JFrame fenetre) {
-		addItemToMenu(this.fileLanguage.getObject("deconnexion").toString(),this, null, new ActionListener() {
+	private void setItemToUserAccountMenu(JFrame fenetre) {
+		setItemToMenu(this.fileLanguage.getObject("deconnexion").toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 //fenetre.setContentPane();
@@ -44,7 +44,7 @@ public class MenuDeconnexion extends JMenu {
 		
 	}
 
-	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
+	public void setItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
 		JMenuItem j = new JMenuItem(name);
 		menu.add(j);
 		if(StringUtils.isNotBlank(filenameIcon)){
