@@ -5,15 +5,17 @@ import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.datamodel.menu.IObservableMenuConnexionCreation;
 import com.iup.tp.twitup.datamodel.menu.IObserverMenuConnexionCreation;
 
-import com.iup.tp.twitup.ihm.menu.interfaceMenu.MethodeCommuneMenu;
-
-public class MenuConnexionCreation extends JMenu implements MethodeCommuneMenu, IObservableMenuConnexionCreation {
+public class MenuConnexionCreation extends JMenu implements IObservableMenuConnexionCreation {
 
 	/**
 	 * 
@@ -52,9 +54,15 @@ public class MenuConnexionCreation extends JMenu implements MethodeCommuneMenu, 
 		
 	}
 
-	@Override
 	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
-
+		JMenuItem j = new JMenuItem(name);
+		menu.add(j);
+		if(StringUtils.isNotBlank(filenameIcon)){
+			j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
+		}
+		if(action != null){
+			j.addActionListener(action);
+		}
 	}
 
 	@Override

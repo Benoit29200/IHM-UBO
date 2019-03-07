@@ -12,9 +12,7 @@ import javax.swing.JMenuItem;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.iup.tp.twitup.ihm.menu.interfaceMenu.MethodeCommuneMenu;
-
-public class MenuDeconnexion extends JMenu implements MethodeCommuneMenu{
+public class MenuDeconnexion extends JMenu {
 
 	/**
 	 * 
@@ -46,8 +44,14 @@ public class MenuDeconnexion extends JMenu implements MethodeCommuneMenu{
 		
 	}
 
-	@Override
 	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
-
+		JMenuItem j = new JMenuItem(name);
+		menu.add(j);
+		if(StringUtils.isNotBlank(filenameIcon)){
+			j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
+		}
+		if(action != null){
+			j.addActionListener(action);
+		}
 	}
 }

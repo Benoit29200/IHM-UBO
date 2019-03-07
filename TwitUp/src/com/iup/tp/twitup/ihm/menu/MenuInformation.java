@@ -13,9 +13,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.iup.tp.twitup.ihm.menu.interfaceMenu.MethodeCommuneMenu;
-
-public class MenuInformation extends JMenu implements MethodeCommuneMenu{
+public class MenuInformation extends JMenu{
 
 	/**
 	 * 
@@ -43,7 +41,6 @@ public class MenuInformation extends JMenu implements MethodeCommuneMenu{
         });
 	}
 
-	@Override
 	public void addItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
 		JMenuItem j = new JMenuItem(name);
 		menu.add(j);
