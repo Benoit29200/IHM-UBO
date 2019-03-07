@@ -1,9 +1,5 @@
 package com.iup.tp.twitup.ihm.compte;
 
-import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
-import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
-import com.iup.tp.twitup.controller.AccountCreationController;
-
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +7,15 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
+import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
 
 public class TwitupCreationCompte extends JPanel implements IObservableAccountCreation {
 	

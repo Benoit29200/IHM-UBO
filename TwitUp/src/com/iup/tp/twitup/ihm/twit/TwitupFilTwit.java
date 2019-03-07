@@ -10,7 +10,6 @@ import java.util.UUID;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.LineBorder;
 
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
@@ -27,22 +26,22 @@ public class TwitupFilTwit extends JPanel {
 	public TwitupFilTwit() {
 		this.setLayout(new GridBagLayout());
 		
-		JPanel testScroll = new JPanel(new GridBagLayout());
-		testScroll.setMinimumSize(new Dimension(1000, 1000));
-		testScroll.setBackground(new Color(240,248,255));
+		JPanel scrollTwit = new JPanel(new GridBagLayout());
+		scrollTwit.setMinimumSize(new Dimension(1000, 1000));
+		scrollTwit.setBackground(new Color(240,248,255));
 		
-		JScrollPane scroll = new JScrollPane(testScroll, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JScrollPane scroll = new JScrollPane(scrollTwit, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
 		
 		for(int i = 0; i<5 ; i++) {
 			TwitupTwit twitPanel = new TwitupTwit(twit);
 			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
-			testScroll.add(twitPanel, new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
+			scrollTwit.add(twitPanel, new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		}
-		testScroll.revalidate();
-		testScroll.repaint();
+		scrollTwit.revalidate();
+		scrollTwit.repaint();
 		
 		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
