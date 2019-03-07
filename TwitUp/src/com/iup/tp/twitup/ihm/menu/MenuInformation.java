@@ -40,7 +40,7 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
 		setItemToMenu(this.fileLanguage.getObject(Constants.MENU_A_PROPOS).toString(),this,null, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,Constants.UBO_MESSAGE,Constants.MENU_A_PROPOS,JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.showMessageDialog(null,Constants.UBO_MESSAGE, fileLanguage.getObject(Constants.MENU_A_PROPOS).toString(),JOptionPane.INFORMATION_MESSAGE,
                         new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
             }
         });
