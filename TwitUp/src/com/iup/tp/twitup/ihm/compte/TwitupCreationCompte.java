@@ -26,6 +26,8 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 
 	private JButton creationcompteJButton = new JButton("Créer mon compte");
 	
+	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
 	private IObserverAccountCreation observer;
 
 	private JLabel nomLabel = new JLabel("Votre nom");
@@ -56,11 +58,11 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 		add(create, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
-//		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
-//		this.nom.setPreferredSize(componentDimension);
-//		this.pseudo.setPreferredSize(componentDimension);
-//		this.password.setPreferredSize(componentDimension);
-//		this.confirmPassword.setPreferredSize(componentDimension);
+		Dimension componentDimension = new Dimension(screenSize.width/5, screenSize.height/22);
+		this.nom.setPreferredSize(componentDimension);
+		this.pseudo.setPreferredSize(componentDimension);
+		this.password.setPreferredSize(componentDimension);
+		this.confirmPassword.setPreferredSize(componentDimension);
 		
 	}
 

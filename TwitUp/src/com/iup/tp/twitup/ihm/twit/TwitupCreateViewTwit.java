@@ -18,14 +18,10 @@ public class TwitupCreateViewTwit extends JPanel implements IObservableCreateVie
 	 */
 	private static final long serialVersionUID = 1L;
 	private IObserverCreateViewTwit observer;
-
-	
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
 	public TwitupCreateViewTwit(IObserverCreateViewTwit observer) {
 		this.observer = observer;
 		this.setLayout(new GridBagLayout());
-		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
 		this.setBackground(new Color(135,206,250));
 
 

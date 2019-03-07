@@ -27,9 +27,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	JTextField textTwit = new JTextField();
 	
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
-		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
 		this.observer = observer;
-//		this.setBorder(new LineBorder(Color.GRAY, 2, true));
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
