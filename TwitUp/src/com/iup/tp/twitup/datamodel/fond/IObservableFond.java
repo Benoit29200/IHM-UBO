@@ -11,5 +11,4 @@ public interface IObservableFond {
 
     void notifyEventApp(String nom, String login, String mdp);
 
-    void chargeComponent(JComponent component, GridBagConstraints constraints);
 }

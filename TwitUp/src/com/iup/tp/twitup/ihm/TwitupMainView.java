@@ -30,7 +30,6 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
         setSize(screenSize);
 	}
 
-
 	public void addTwitupConnexionUser(TwitupConnexionUser twitupConnexionUser){
 		setContentPane(twitupConnexionUser);
 		this.refresh();
