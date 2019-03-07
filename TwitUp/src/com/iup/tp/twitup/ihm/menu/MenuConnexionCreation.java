@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObservableMenuConnexionCreation;
 import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObserverMenuConnexionCreation;
 
@@ -27,8 +28,8 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 	
 	public MenuConnexionCreation(IObserverMenuConnexionCreation observer) {
 		
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
-		this.setText(this.fileLanguage.getObject("userAccount").toString());
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.setText(this.fileLanguage.getObject(Constants.MENU_USER_ACCOUNT).toString());
         this.setItemToUserAccountMenu();
         this.observer = observer;
 	}
@@ -37,14 +38,14 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 	 *
 	 */
 	private void setItemToUserAccountMenu() {
-		setItemToMenu(this.fileLanguage.getObject("creation").toString(),this, null, new ActionListener() {
+		setItemToMenu(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 notifyChargeAccountManager();
 			 }
 		});
 		
-		setItemToMenu(this.fileLanguage.getObject("connexion").toString(),this, null, new ActionListener() {
+		setItemToMenu(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString(),this, null, new ActionListener() {
 			 @Override
 	            public void actionPerformed(ActionEvent e) {
 				 notifyChargeConnexion();

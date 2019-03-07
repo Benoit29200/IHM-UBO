@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,6 +19,7 @@ import javax.swing.border.LineBorder;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.login.IObservableLogin;
 import com.iup.tp.twitup.datamodel.login.IObserverLogin;
 
@@ -31,32 +34,34 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
-	private JButton creationcompteJButton = new JButton("Créer mon compte");
-	private JButton connexionUser = new JButton("Connexion");
+	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+	private JButton connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
 
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
-	private JLabel loginLabel = new JLabel("Votre pseudo :");
+	private JLabel loginLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
 	private JTextField login = new JTextField();
 
-	private JLabel passwordLabel = new JLabel("Votre mot de passe :");
+	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
 	private JTextField password = new JPasswordField();
 
 	private JLabel errorMessage = new JLabel("");
 
 	protected IObserverLogin observer;
-	
-	public TwitupConnexionUser(IObserverLogin observer){
 
+	public TwitupConnexionUser(IObserverLogin observer){
+		
 		JPanel panelCreate = new JPanel();
 
 		panelCreate.setLayout(new GridBagLayout());
 		panelCreate.setBorder(new LineBorder(Color.CYAN, 4, true));
 		panelCreate.setOpaque(true);
 
-		setLayout(new GridBagLayout());
-		add(panelCreate, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+		this.setLayout(new GridBagLayout());
+		this.add(panelCreate, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
 		this.observer = observer;
@@ -90,11 +95,7 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 */
 	private void initUserPage(JPanel panelCreate) {
 
-		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.loginLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.passwordLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.errorMessage.setForeground(Color.RED);
+		configurationComponentPanel();
 		
 		JPanel labelEtBoutonConnexion = new JPanel(new GridBagLayout());
 		JPanel textFieldEtBoutonCreation = new JPanel(new GridBagLayout());
@@ -102,19 +103,9 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 		/**
 		 * Mise en place 
 		 */
-		labelEtBoutonConnexion.add(this.loginLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		labelEtBoutonConnexion.add(this.passwordLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		labelEtBoutonConnexion.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		labelEtBoutonConnexion = initJLabelsEtConnexion(labelEtBoutonConnexion);
 		
-		textFieldEtBoutonCreation.add(this.login, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		textFieldEtBoutonCreation.add(this.password, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
-		textFieldEtBoutonCreation.add(this.creationcompteJButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		textFieldEtBoutonCreation = initJTextFieldEtCreation(textFieldEtBoutonCreation);
 
 		panelCreate.add(labelEtBoutonConnexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
@@ -125,6 +116,47 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 		panelCreate.add(errorMessage, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
+	}
+
+	/**
+	 * Permet de gérer la configuration de la taille des components et de la couleur du message
+	 */
+	private void configurationComponentPanel() {
+		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.loginLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.passwordLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.errorMessage.setForeground(Color.RED);
+	}
+
+	/**
+	 * Permet de gérer la mise dans un Panel des JTextField et du bouton Création
+	 * @param textFieldEtBoutonCreation
+	 */
+	private JPanel initJTextFieldEtCreation(JPanel textFieldEtBoutonCreation) {
+		textFieldEtBoutonCreation.add(this.login, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		textFieldEtBoutonCreation.add(this.password, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		textFieldEtBoutonCreation.add(this.creationcompteJButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		return textFieldEtBoutonCreation;
+	}
+
+	/**
+	 * Permet de gérer la mise en place dans un Panel des  JLabels et du bouton Connexion
+	 * @param labelEtBoutonConnexion
+	 * @return
+	 */
+	private JPanel initJLabelsEtConnexion(JPanel labelEtBoutonConnexion) {
+		
+		labelEtBoutonConnexion.add(this.loginLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		labelEtBoutonConnexion.add(this.passwordLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		labelEtBoutonConnexion.add(this.connexionUser, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
+		return labelEtBoutonConnexion;
 	}
 
 	@Override
@@ -147,7 +179,7 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 		if(StringUtils.isNotBlank(login) && StringUtils.isNotBlank(mdp))
 			this.observer.eventLogin(this,login,mdp);
 		else
-			this.setErrorMessage("Vous devez remplir les champs pseudo et mot de passe.");
+			this.setErrorMessage(this.fileLanguage.getObject(Constants.VIEW_ERREUR_CONNEXION).toString());
 	}
 
 	@Override

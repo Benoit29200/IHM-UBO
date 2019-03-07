@@ -12,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.menuFichier.IObservableMenuFichier;
 import com.iup.tp.twitup.datamodel.menuFichier.IObserverMenuFichier;
 import org.apache.commons.lang3.StringUtils;
@@ -30,9 +31,9 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
 	private IObserverMenuFichier observer;
 	
 	public MenuFichier(JFrame fenetre, IObserverMenuFichier observer) {
-		this.fileLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 		this.observer = observer;
-		this.setText(this.fileLanguage.getObject("fichier").toString());
+		this.setText(this.fileLanguage.getObject(Constants.MENU_FICHIER).toString());
 	    this.setItemToFichierMenu(fenetre);
 	}
 	
@@ -55,7 +56,7 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
 		
 		setFileChooser();
 		
-		setItemToMenu(this.fileLanguage.getObject("ouvrir").toString(),this, null, new ActionListener()
+		setItemToMenu(this.fileLanguage.getObject(Constants.MENU_OUVRIR).toString(),this, null, new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent ae)

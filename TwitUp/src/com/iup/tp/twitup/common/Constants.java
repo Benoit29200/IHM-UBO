@@ -67,4 +67,84 @@ public interface Constants {
 	 * Clé de configuration pour le mode bouchoné
 	 */
 	public static final String CONFIGURATION_KEY_MOCK_ENABLED = "MOCK_ENABLED";
+	
+	/**
+	 * Clé de configuration pour la langue pour le menu du fichier
+	 */
+	public static final String MENU_FICHIER = "fichier";
+	
+	/**
+	 * Clé de configuration pour la langue pour le menu du compte
+	 */
+	public static final String MENU_USER_ACCOUNT = "userAccount";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item ouvrir
+	 */
+	public static final String MENU_OUVRIR = "ouvrir";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item enregistrer_sous
+	 */
+	public static final String MENU_ENREGISTRER_SOUS = "enregistrer_sous";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item fermer
+	 */
+	public static final String MENU_FERMER = "fermer";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item à propos
+	 */
+	public static final String MENU_A_PROPOS = "a_propos";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item creation
+	 */
+	public static final String VIEW_CREATION_COMPTE = "creation";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'item connexion
+	 */
+	public static final String VIEW_CONNEXION_COMPTE = "connexion";
+	
+	/**
+	 * Clé de configuration pour la langue pour le nom
+	 */
+	public static final String VIEW_NOM = "nom";
+	
+	/**
+	 * Clé de configuration pour la langue pour le pseudo
+	 */
+	public static final String VIEW_PSEUDO = "pseudo";
+	
+    /**
+     * Clé de configuration pour la langue pour le mot de passe
+     */
+	public static final String VIEW_MDP = "mdp";
+	
+	/**
+	 * Clé de configuration pour la langue pour la confirmation du mot de passe
+	 */
+	public static final String VIEW_CMDP = "cmdp";
+	
+	/**
+	 * Clé de configuration pour la langue pour l'erreur de connexion
+	 */
+	public static final String VIEW_ERREUR_CONNEXION = "erreurconnexion";
+	
+	/**
+	 * Clé de configuration pour le fichier de configuration
+	 */
+	public static final String MENU = "menu";
+	
+	/**
+	 * Clé de configuration pour la langue pour la déconnexion
+	 */
+	public static final String DECONNEXION = "deconnexion";
+	
+	/**
+	 * Clé de configuration pour le lien images
+	 */
+	public static final String CLE_IMAGES = "/images/";
 }

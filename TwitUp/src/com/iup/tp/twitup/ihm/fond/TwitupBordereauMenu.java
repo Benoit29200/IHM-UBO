@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.ihm.fond;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.bordereauMenu.IObservableBordereauMenu;
 import com.iup.tp.twitup.datamodel.bordereauMenu.IObserverBordereauMenu;
 
@@ -7,6 +8,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +22,8 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 	private IObserverBordereauMenu observer;
 
@@ -34,7 +39,7 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	private JPanel getPanelMenu() {
 		
 		JPanel panelMenu = new JPanel();
-		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/images/logoTwitterDummy.png")));
+		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(Constants.CLE_IMAGES+"logoTwitterDummy.png")));
 		
 		panelMenu.setBackground(Color.WHITE);
 		panelMenu.setLayout(new GridBagLayout());
@@ -51,8 +56,8 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	private JPanel getButtonsCreationConnexion() {
 		
 		JPanel monJPanel= new JPanel();
-		JButton connexion = new JButton("Connexion à mon compte");
-		JButton creation = new JButton("Création de mon compte");
+		JButton connexion = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
+		JButton creation = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
 		
 		monJPanel.setLayout(new GridBagLayout());
 		monJPanel.setBackground(Color.white);
