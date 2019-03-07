@@ -15,7 +15,9 @@ import com.iup.tp.twitup.ihm.fond.TwitupFond;
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
+import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
+import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
 
 import java.awt.*;
 
@@ -145,9 +147,21 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         createViewTwitController.setVue(twitupCreateViewTwit);
         vueParent.chargeComponent(twitupCreateViewTwit,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
                 GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+        this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
+        this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
     }
 
+    private void chargeCreateTWit(CreateViewTwitController parent, TwitupCreateViewTwit vueParent){
+        CreateTwitController createTwitController = new CreateTwitController(parent);
+        TwitupCreateTwit twitupCreateTwit = new TwitupCreateTwit(createTwitController);
+        createTwitController.setVue(twitupCreateTwit);
+        vueParent.addTwitupCreateTwit(twitupCreateTwit);
+    }
 
-
-
+    private void chargeFilTwit(CreateViewTwitController parent, TwitupCreateViewTwit vueParent){
+        TwitupFilTwitController twitupFilTwitController = new TwitupFilTwitController(parent);
+        TwitupFilTwit twitupFilTwit = new TwitupFilTwit(twitupFilTwitController);
+        twitupFilTwitController.setVue(twitupFilTwit);
+        vueParent.addTwitupFilTwit(twitupFilTwit);
+    }
 }

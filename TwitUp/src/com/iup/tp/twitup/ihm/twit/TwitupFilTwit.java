@@ -13,19 +13,21 @@ import javax.swing.ScrollPaneConstants;
 
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.datamodel.twitupFilTwit.IObservableTwitupFilTwit;
+import com.iup.tp.twitup.datamodel.twitupFilTwit.IObserverTwitupFilTwit;
 
-public class TwitupFilTwit extends JPanel {
+public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private IObserverTwitupFilTwit observer;
 
-	public TwitupFilTwit() {
+
+	public TwitupFilTwit(IObserverTwitupFilTwit observer) {
 		this.setLayout(new GridBagLayout());
-		
+		this.observer = observer;
 		JPanel scrollTwit = new JPanel(new GridBagLayout());
 		scrollTwit.setMinimumSize(new Dimension(1000, 1000));
 		scrollTwit.setBackground(new Color(240,248,255));
@@ -47,4 +49,13 @@ public class TwitupFilTwit extends JPanel {
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
+	@Override
+	public void addObserver(IObserverTwitupFilTwit o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
 }
