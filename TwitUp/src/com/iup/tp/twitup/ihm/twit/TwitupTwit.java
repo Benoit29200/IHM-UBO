@@ -3,17 +3,13 @@ package com.iup.tp.twitup.ihm.twit;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.datamodel.Twit;
@@ -27,7 +23,7 @@ public class TwitupTwit extends JPanel {
 	
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
-	JTextField textTwit = new JTextField();
+	JTextArea textTwit = new JTextArea();
 	JLabel nomUser = new JLabel();
 	
 	public TwitupTwit(Twit monTwit) {
@@ -42,6 +38,7 @@ public class TwitupTwit extends JPanel {
 		JPanel panelCreateTwit = new JPanel();
 		panelCreateTwit.setLayout(new BorderLayout());
 		this.textTwit.disable();
+		this.textTwit.setLineWrap(true);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setText(monTwit.getText());
 		panelCreateTwit.add(textTwit, BorderLayout.CENTER);

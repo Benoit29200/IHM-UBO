@@ -10,6 +10,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.BadLocationException;
@@ -32,7 +37,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
 
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private JTextField textTwit = new JTextField();
+	private JTextArea textTwit = new JTextArea();
 	private JLabel nbCaracteres = new JLabel("Nombre de caractères: 0");
 
 	
@@ -42,6 +47,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
+		this.textTwit.setLineWrap(true);
 		this.setLayout(new GridBagLayout());
 		this.add(textTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
