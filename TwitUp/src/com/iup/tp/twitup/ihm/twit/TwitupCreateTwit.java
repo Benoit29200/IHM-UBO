@@ -14,8 +14,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.BadLocationException;
 
@@ -48,6 +50,8 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.setBackground(Color.WHITE);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setLineWrap(true);
+		this.textTwit.setBorder(new LineBorder(Color.black,2));
+		JScrollPane sp = new JScrollPane(this.textTwit);
 		this.setLayout(new GridBagLayout());
 		this.add(textTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
