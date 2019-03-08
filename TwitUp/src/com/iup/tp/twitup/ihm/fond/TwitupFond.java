@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import com.iup.tp.twitup.datamodel.fond.IObservableFond;
 import com.iup.tp.twitup.datamodel.fond.IObserverFond;
-import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
@@ -43,11 +42,6 @@ public class TwitupFond extends JPanel implements IObservableFond {
 
 	public void chargeTwitupCreateViewTwit(TwitupCreateViewTwit twitupCreateViewTwit){
 		this.add(twitupCreateViewTwit,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-	}
-
-	public void chargeTwitupMyAccount(TwitupConsultAccount twitupConsultAccount){
-		this.add(twitupConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
