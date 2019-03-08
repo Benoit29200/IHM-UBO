@@ -37,20 +37,15 @@ public class TwitupCreateViewUserFil extends JPanel implements IObservableCreate
 		this.observer = null;
 	}
 
-	public void addTwitupCreateTwit(TwitupCreateTwit twitupCreateTwit){
-		this.add(twitupCreateTwit, new GridBagConstraints(0, 0, 1, 1, 0, 0.2, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		this.refresh();
-	}
 	
-	public void addTwitupResearchTwit(TwitupResearch twitupResearch){
-		this.add(twitupResearch, new GridBagConstraints(0, 1, 1, 1,0, 0, GridBagConstraints.CENTER,
+	public void addTwitupResearchTwit(TwitupResearchUser twitupResearchUser){
+		this.add(twitupResearchUser, new GridBagConstraints(0, 0, 1, 1,0, 0, GridBagConstraints.CENTER,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 		this.refresh();
 	}
 
-	public void addTwitupFilTwit(TwitupFilTwit twitupFilTwit){
-		this.add(twitupFilTwit, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
+	public void addTwitupFilTwit(TwitupFilUser twitupFilUser){
+		this.add(twitupFilUser, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		this.refresh();
 	}
