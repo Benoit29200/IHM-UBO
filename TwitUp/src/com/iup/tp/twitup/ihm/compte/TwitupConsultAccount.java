@@ -1,6 +1,5 @@
 package com.iup.tp.twitup.ihm.compte;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
