@@ -6,6 +6,8 @@ import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -13,20 +15,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
+import com.iup.tp.twitup.common.Constants;
 public class TwitupResearch extends JPanel implements IObservableTwitupResearch {
-	
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private IObserverTwitupResearch observer;
-	
+
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
+	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+
 	JTextField researchTextField = new JTextField();
-	JButton researchButton = new JButton();
+	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	
 	public TwitupResearch(IObserverTwitupResearch observer) {
 		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));

@@ -167,4 +167,9 @@ public interface Constants {
 	 * Clé pour créer un twit
 	 */
 	public static final String CREATION_TWIT = "createtwit";
+	
+	/**
+	 * Clé pour le bouton de recherche des twits
+	 */
+	public static final String RESEARCH_TWIT_JBUTTON_TITLE = "research";
 }
