@@ -32,7 +32,7 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	
 	public TwitupResearch(IObserverTwitupResearch observer) {
-		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/10));
+//		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/10));
 		this.observer = observer;
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
@@ -40,6 +40,10 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 		this.add(setNewResearchBar());
 	}
 
+	/**
+	 * Permet de créer le JPanel de recherche de twit
+	 * @return
+	 */
 	private JPanel setNewResearchBar() {
 		JPanel panelResearchTwit = new JPanel();
 		panelResearchTwit.setLayout(new BorderLayout());
