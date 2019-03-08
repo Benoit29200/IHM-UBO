@@ -18,6 +18,7 @@ import com.iup.tp.twitup.ihm.menu.MenuInformation;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
+import com.iup.tp.twitup.ihm.twit.TwitupResearch;
 
 
 public class MainViewController implements IObserverMainView, IDatabaseObserver {
@@ -144,8 +145,17 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         twitupFond.chargeTwitupCreateViewTwit(twitupCreateViewTwit);
 
         CreateTwitController createTwitController = this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
+        this.chargeResearch(createViewTwitController,twitupCreateViewTwit);
         TwitupFilTwitController twitupFilTwitController = this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
         createTwitController.setViewTwit(twitupFilTwitController);
+
+    }
+
+    private void chargeResearch(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+        ResearchController researchController = new ResearchController(createViewTwitController);
+        TwitupResearch twitupResearch = new TwitupResearch(researchController);
+        researchController.setVue(twitupResearch);
+        twitupCreateViewTwit.addTwitupResearchTwit(twitupResearch);
     }
 
     private CreateTwitController chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){

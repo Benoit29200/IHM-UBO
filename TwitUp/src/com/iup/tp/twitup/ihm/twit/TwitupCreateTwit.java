@@ -33,7 +33,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	private JTextField textTwit = new JTextField();
-	private JLabel nbCaracteres = new JLabel("nb caractères: 0");
+	private JLabel nbCaracteres = new JLabel("Nombre de caractères: 0");
 
 	
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
@@ -59,9 +59,12 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.textTwit.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				nbCaracteres.setText("Nombre de caractères: "+textTwit.getText().length());
 
-				if(textTwit.getText().length() >= 150){
+					int nb = textTwit.getText().length()+1;
+				System.out.println(nb);
+					nbCaracteres.setText("Nombre de caractères: "+ nb);
+
+				if(textTwit.getText().length() > 150){
 					try {
 						textTwit.setText(textTwit.getText(0, 149));
 					} catch (BadLocationException ble) { ble.printStackTrace(); }
