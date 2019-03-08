@@ -114,7 +114,9 @@ public class Twitup {
 		test.add("BenoitThePope");
 
 		User u = new User(UUID.randomUUID(), "bautret", "test","benoit" ,test,"");
+		User u1 = new User(UUID.randomUUID(), "a", "a","benoit" ,test,"");
 		this.mDatabase.addUser(u);
+		this.mDatabase.addUser(u1);
 
 		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
 		this.mDatabase.addTwit(twit);
