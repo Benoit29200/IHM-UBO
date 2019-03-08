@@ -145,17 +145,19 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         twitupFond.chargeTwitupCreateViewTwit(twitupCreateViewTwit);
 
         CreateTwitController createTwitController = this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
-        this.chargeResearch(createViewTwitController,twitupCreateViewTwit);
+        ResearchController  researchController= this.chargeResearch(createViewTwitController,twitupCreateViewTwit);
         TwitupFilTwitController twitupFilTwitController = this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
+        researchController.setObserver(twitupFilTwitController);
         createTwitController.setViewTwit(twitupFilTwitController);
 
     }
 
-    private void chargeResearch(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private ResearchController chargeResearch(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
         ResearchController researchController = new ResearchController(createViewTwitController);
         TwitupResearch twitupResearch = new TwitupResearch(researchController);
         researchController.setVue(twitupResearch);
         twitupCreateViewTwit.addTwitupResearchTwit(twitupResearch);
+        return researchController;
     }
 
     private CreateTwitController chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){

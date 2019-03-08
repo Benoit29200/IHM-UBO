@@ -1,11 +1,14 @@
 package com.iup.tp.twitup.ihm.twit;
 
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.datamodel.twitupResearch.IObservableTwitupResearch;
 import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -33,8 +36,10 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 	
 	public TwitupResearch(IObserverTwitupResearch observer) {
 //		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/10));
+		this.addActionResearchTextField();
 		this.observer = observer;
 		Border compound = null;
+
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setNewResearchBar());
@@ -51,6 +56,25 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 		panelResearchTwit.add(researchTextField, BorderLayout.CENTER);
 		panelResearchTwit.add(this.researchButton, BorderLayout.EAST);
 		return panelResearchTwit;
+	}
+
+	private void addActionResearchTextField(){
+		this.researchTextField.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				observer.notifyResearch(researchTextField.getText());
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				observer.notifyResearch(researchTextField.getText());
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
 	}
 
 
