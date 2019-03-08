@@ -5,19 +5,11 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -95,32 +87,27 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 			public void actionPerformed(ActionEvent e) {
 				notifyAddTwit(textTwit.getText());
 				textTwit.setText("");
+				nbCaracteres.setText("Nombre de caractères: 0 ");
 			}
 		});
 
-		this.textTwit.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-
-					int nb = textTwit.getText().length()+1;
-				System.out.println(nb);
-					nbCaracteres.setText("Nombre de caractères: "+ nb);
-
-				if(textTwit.getText().length() > 150){
-					try {
-						textTwit.setText(textTwit.getText(0, 149));
-					} catch (BadLocationException ble) { ble.printStackTrace(); }
-				}
-			}
-
+		this.textTwit.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						if(textTwit.getText().length() <= 150){
+							nbCaracteres.setText("Nombre de caractères: "+ textTwit.getText().length());
+						}
+						else{
+							try {
+								textTwit.setText(textTwit.getText(0, 150));
 
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-
+							} catch (BadLocationException ble) { ble.printStackTrace(); }
+						}
+					}
+				});
 			}
 		});
 	}

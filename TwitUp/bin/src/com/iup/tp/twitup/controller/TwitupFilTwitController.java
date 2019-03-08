@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.datamodel.Twit;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObserverCreateTwitViewTwit;
 import com.iup.tp.twitup.datamodel.researchViewTwit.IObserverResearchViewTwit;
 import com.iup.tp.twitup.datamodel.twitupFilTwit.IObserverTwitupFilTwit;
@@ -15,6 +16,11 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
 
     public TwitupFilTwitController(CreateViewTwitController parent) {
         this.parent = parent;
+    }
+
+    @Override
+    public Set<User> getUsers() {
+        return this.parent.getDatabase().getUsers();
     }
 
     public void setVue(TwitupFilTwit vue) {
