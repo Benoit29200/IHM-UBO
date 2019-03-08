@@ -67,6 +67,7 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				notifyAddTwit(textTwit.getText());
+				textTwit.setText("");
 			}
 		});
 

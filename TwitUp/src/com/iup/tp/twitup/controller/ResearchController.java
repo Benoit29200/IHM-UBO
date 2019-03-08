@@ -27,21 +27,17 @@ public class ResearchController implements IObserverTwitupResearch, IObservableR
     @Override
     public void notifyResearch(String research) {
         if(research.length() < 2){
-            LOGER.debug("< 2");
             observer.majTwits();
         }
 
         else if(research.startsWith("@")){
-            LOGER.debug("@");
             observer.searchTwitByUser(research.substring(1));
         }
 
         else if(research.startsWith("#")){
-            LOGER.debug("#");
             observer.searchByTag(research.substring(1));
         }
         else {
-            LOGER.debug(">2 sans @#");
             observer.majTwits();
         }
     }

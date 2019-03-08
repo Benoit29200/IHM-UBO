@@ -32,11 +32,13 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
 
     @Override
     public void searchTwitByUser(String user) {
-
+        Set<Twit> twitsUser = this.parent.getDatabase().getTwitsByUser(user);
+        this.vue.viewTwitSearch(twitsUser);
     }
 
     @Override
     public void searchByTag(String tag) {
-
+        Set<Twit> twitsWithTag = this.parent.getDatabase().getTwitsWithTag(tag);
+        this.vue.viewTwitSearch(twitsWithTag);
     }
 }

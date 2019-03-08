@@ -152,4 +152,7 @@ public interface IDatabase {
 
 	boolean findTagUser(String tag);
 
+	Set<Twit> getTwitsByUser(String user);
+	Set<Twit> getTwitsByTag(String tag);
+
 }

@@ -341,4 +341,29 @@ public class Database implements IDatabase {
 		}
 		return false;
 	}
+
+	@Override
+	public Set<Twit> getTwitsByUser(String user) {
+
+		Set<Twit> twitsUser = new HashSet<>();
+		for (Twit twit : this.mTwits) {
+			if (twit.mTwiter.getUserTag().equals(user)) {
+				twitsUser.add(twit);
+			}else if(twit.getText().contains("@"+user)){
+				twitsUser.add(twit);
+			}
+		}
+		return twitsUser;
+	}
+
+	@Override
+	public Set<Twit> getTwitsByTag(String tag) {
+		Set<Twit> twitWithTags = new HashSet<>();
+		for(Twit twit: this.mTwits){
+			if(twit.getText().contains("#"+tag)){
+				twitWithTags.add(twit);
+			}
+		}
+		return twitWithTags;
+	}
 }
