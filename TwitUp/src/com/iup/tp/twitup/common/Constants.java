@@ -172,4 +172,14 @@ public interface Constants {
 	 * Clé pour le bouton de recherche des twits
 	 */
 	public static final String RESEARCH_TWIT_JBUTTON_TITLE = "research";
+
+	/**
+	 * Clé pour le label pour le chemin de l'avatar
+	 */
+	public static final String VIEW_AVATAR = "avatar";
+	
+	/**
+	 * Clé pour le label de changement de mot de passe
+	 */
+	public static final String VIEW_CHANGE_PWD = "changepwd";
 }
