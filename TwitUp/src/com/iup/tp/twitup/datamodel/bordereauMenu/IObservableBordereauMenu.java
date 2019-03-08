@@ -6,4 +6,7 @@ public interface IObservableBordereauMenu {
 
     void deleteObserver();
 
+    void notifyChargeTwitView();
+    void notifyChargeMyAccount();
+
 }

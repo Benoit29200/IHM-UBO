@@ -18,8 +18,11 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.datamodel.myAccount.IObservableMyAccount;
+import com.iup.tp.twitup.datamodel.myAccount.IObserverMyAccount;
 
-public class TwitupConsultAccount extends JPanel {
+public class TwitupConsultAccount extends JPanel implements IObservableMyAccount {
 	
 	/**
 	 * 
@@ -41,14 +44,21 @@ public class TwitupConsultAccount extends JPanel {
 	private JTextField pseudo = new JTextField();
 	private JTextField avatarPath = new JTextField();
 	private JPasswordField changePwd = new JPasswordField();
+
+	private IObserverMyAccount observer;
 	
 	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	
-	public TwitupConsultAccount() {
+	public TwitupConsultAccount(IObserverMyAccount observer) {
 		Border compound = null;
+		this.observer = observer;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setPanelAccount());
+		User userConnected = this.observer.getUserConnected();
+		this.nom.setText(userConnected.getName());
+		this.pseudo.setText(userConnected.getUserTag());
+		this.avatarPath.setText(userConnected.getAvatarPath());
 	}
 
 	/**
@@ -103,7 +113,7 @@ public class TwitupConsultAccount extends JPanel {
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelTextFieldUserAccount.add(avatarPath,new GridBagConstraints(0,2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		panelTextFieldUserAccount.add(changePwd,new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		panelTextFieldUserAccount.add(changePwd,new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelTextFieldUserAccount.add(updatemyaccount,new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
@@ -111,4 +121,13 @@ public class TwitupConsultAccount extends JPanel {
 		return panelTextFieldUserAccount;
 	}
 
+	@Override
+	public void addObserver(IObserverMyAccount o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
 }
