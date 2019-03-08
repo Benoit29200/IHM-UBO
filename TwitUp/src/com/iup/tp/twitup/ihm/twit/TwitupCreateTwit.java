@@ -41,31 +41,54 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
 
 	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private JTextArea textTwit = new JTextArea();
+	private JTextArea textTwit = new JTextArea(3,50);
 	private JLabel nbCaracteres = new JLabel("Nombre de caractères: 0");
 
 	
+	/**
+	 * Constructeur
+	 * @param observer
+	 */
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
 		this.observer = observer;
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
-		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
-		this.textTwit.setLineWrap(true);
-		this.textTwit.setBorder(new LineBorder(Color.black,2));
-		JScrollPane sp = new JScrollPane(this.textTwit);
+		
+		configurationTextTwit();
+		
 		this.setLayout(new GridBagLayout());
 		this.add(textTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		
+		addButtonCreateTwit();
+		this.addAction();
+	}
+
+	/**
+	 * Permet de configurer le JTextArea textTwit
+	 */
+	private void configurationTextTwit() {
+		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
+		this.textTwit.setLineWrap(true);
+		this.textTwit.setBorder(new LineBorder(Color.black,2));
+	}
+
+	/**
+	 * Permet d'ajouter le bouton de création d'un twit
+	 */
+	private void addButtonCreateTwit() {
 		JPanel buttonCreateTwit = new JPanel();
 		buttonCreateTwit.add(nbCaracteres);
 		buttonCreateTwit.add(creationTwit);
 		buttonCreateTwit.setBackground(Color.white);
 		this.add(buttonCreateTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.SOUTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		this.addAction();
 	}
 
+	/**
+	 * Permet de définir une action lors de la création d'un twit
+	 */
 	private void addAction(){
 		this.creationTwit.addActionListener(new ActionListener() {
 			@Override

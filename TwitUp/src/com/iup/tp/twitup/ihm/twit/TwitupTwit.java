@@ -42,7 +42,8 @@ public class TwitupTwit extends JPanel {
 		this.textTwit.disable();
 		this.textTwit.setLineWrap(true);
 		this.textTwit.setBorder(new LineBorder(Color.black,2));
-		JScrollPane sp = new JScrollPane(this.textTwit);
+		//JScrollPane sp = new JScrollPane(this.textTwit);
+		//this.textTwit.add(sp);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setText(monTwit.getText());
 		panelCreateTwit.add(textTwit, BorderLayout.CENTER);

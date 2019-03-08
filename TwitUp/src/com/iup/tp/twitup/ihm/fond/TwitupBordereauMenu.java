@@ -56,8 +56,9 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	private JPanel getButtonsCreationConnexion() {
 		
 		JPanel monJPanel= new JPanel();
-		JButton connexion = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
-		JButton creation = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+		JButton connexion = new JButton(this.fileLanguage.getObject(Constants.USER_HOME).toString());
+		JButton creation = new JButton(this.fileLanguage.getObject(Constants.USER_ACCOUNT).toString());
+		JButton listeusers = new JButton(this.fileLanguage.getObject(Constants.USER_LIST_USERS).toString());
 		
 		monJPanel.setLayout(new GridBagLayout());
 		monJPanel.setBackground(Color.white);
@@ -66,6 +67,9 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
 		monJPanel.add(creation, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		
+		monJPanel.add(listeusers, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
 		return monJPanel;

@@ -42,7 +42,7 @@ public class TwitupConsultAccount extends JPanel {
 	private JTextField avatarPath = new JTextField();
 	private JPasswordField changePwd = new JPasswordField();
 	
-	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
+	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
 	
 	public TwitupConsultAccount() {
 		Border compound = null;
