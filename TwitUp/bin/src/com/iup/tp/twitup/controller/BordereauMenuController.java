@@ -1,6 +1,5 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.datamodel.bordereauMenu.IObserverBordereauMenu;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereauMenu;
 

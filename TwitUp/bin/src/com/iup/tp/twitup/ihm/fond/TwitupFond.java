@@ -46,8 +46,8 @@ public class TwitupFond extends JPanel implements IObservableFond {
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	public void chargeTwitupMyAccount(TwitupConsultAccount twitupConsultAccount){
-		this.add(twitupConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+	public void chargeTwitupMyAccount(TwitupConsultAccount TwitupConsultAccount){
+		this.add(TwitupConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 

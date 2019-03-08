@@ -116,7 +116,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     public void chargeFond(){
-
         FondController fondController = new FondController(this);
         TwitupFond twitupFond = new TwitupFond(fondController);
         fondController.setVue(twitupFond);

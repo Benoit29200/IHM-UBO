@@ -8,5 +8,4 @@ public interface IObservableBordereauMenu {
 
     void notifyChargeTwitView();
     void notifyChargeMyAccount();
-
 }

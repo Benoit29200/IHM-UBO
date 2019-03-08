@@ -20,4 +20,14 @@ public class BordereauMenuController implements IObserverBordereauMenu {
     public void eventChargeBordereauMenu() {
 
     }
+
+    @Override
+    public void eventChargeTwitView() {
+        this.parent.getParent().chargeFond();
+    }
+
+    @Override
+    public void eventChargeMyAccount() {
+        this.parent.getParent().chargeFondWithMyAccount();
+    }
 }

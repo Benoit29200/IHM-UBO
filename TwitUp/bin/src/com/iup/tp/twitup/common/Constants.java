@@ -192,4 +192,29 @@ public interface Constants {
 	 * Clé pour le label du bouton de connexion d'un utilisateur
 	 */
 	public static final String CONNECTION_TO_ACCOUNT = "connexionUserTag";
+
+	/**
+	 * Clé pour le user tag
+	 */
+	public static final String USER_TAG_FIL = "UserTag : ";
+	
+	/**
+	 * Clé pour le bouton Accueil
+	 */
+	public static final String USER_HOME = "home";
+	
+	/**
+	 * Clé pour le bouton mon compte
+	 */
+	public static final String USER_ACCOUNT = "moncompte";
+	
+	/**
+	 * Clé pour la modification du compte
+	 */
+	public static final String USER_MODIFICATION = "modification";
+
+	/**
+	 * Clé pour la liste des users
+	 */
+	public static final String USER_LIST_USERS = "listeuser";
 }

@@ -18,21 +18,20 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.myAccount.IObservableMyAccount;
 import com.iup.tp.twitup.datamodel.myAccount.IObserverMyAccount;
 
 public class TwitupConsultAccount extends JPanel implements IObservableMyAccount {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	
+
 	Dimension tailleComponent = new Dimension(screenSize.width/3, screenSize.height/15);
-	
+
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
@@ -46,19 +45,15 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 	private JPasswordField changePwd = new JPasswordField();
 
 	private IObserverMyAccount observer;
-	
-	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
-	
+
+	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
+
 	public TwitupConsultAccount(IObserverMyAccount observer) {
 		Border compound = null;
 		this.observer = observer;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setPanelAccount());
-		User userConnected = this.observer.getUserConnected();
-		this.nom.setText(userConnected.getName());
-		this.pseudo.setText(userConnected.getUserTag());
-		this.avatarPath.setText(userConnected.getAvatarPath());
 	}
 
 	/**
@@ -73,7 +68,7 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return panelResearchTwit;
 	}
-	
+
 	/**
 	 * Création du panel contenant les JLabels
 	 * @return
@@ -84,7 +79,7 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 		this.pseudoLabel.setPreferredSize(tailleComponent);
 		this.avatarPathLabel.setPreferredSize(tailleComponent);
 		this.changePwdLabel.setPreferredSize(tailleComponent);
-		
+
 		panelLabelUserAccount.add(nomLabel,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelLabelUserAccount.add(pseudoLabel,new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
@@ -95,7 +90,7 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return panelLabelUserAccount;
 	}
-	
+
 	/**
 	 * Création du panel contenant les textField et le bouton
 	 * @return
@@ -106,7 +101,7 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 		this.pseudo.setPreferredSize(tailleComponent);
 		this.avatarPath.setPreferredSize(tailleComponent);
 		this.changePwd.setPreferredSize(tailleComponent);
-		
+
 		panelTextFieldUserAccount.add(nom,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelTextFieldUserAccount.add(pseudo,new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
@@ -115,9 +110,9 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelTextFieldUserAccount.add(changePwd,new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		panelTextFieldUserAccount.add(updatemyaccount,new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		panelTextFieldUserAccount.add(updatemyaccount,new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		
+
 		return panelTextFieldUserAccount;
 	}
 
