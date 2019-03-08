@@ -182,4 +182,14 @@ public interface Constants {
 	 * Clé pour le label de changement de mot de passe
 	 */
 	public static final String VIEW_CHANGE_PWD = "changepwd";
+	
+	/**
+	 * Clé pour le label du bouton de déconnexion d'un utilisateur
+	 */
+	public static final String DECONNECTION_TO_ACCOUNT = "deconnexionUserTag";
+	
+	/**
+	 * Clé pour le label du bouton de connexion d'un utilisateur
+	 */
+	public static final String CONNECTION_TO_ACCOUNT = "connexionUserTag";
 }

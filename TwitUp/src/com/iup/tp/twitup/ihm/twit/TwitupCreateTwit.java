@@ -2,6 +2,9 @@ package com.iup.tp.twitup.ihm.twit;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,7 +12,11 @@ import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.BadLocationException;
@@ -42,9 +49,15 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
-		this.add(textTwit);
-		this.add(creationTwit);
-		this.add(nbCaracteres);
+		this.setLayout(new GridBagLayout());
+		this.add(textTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		JPanel buttonCreateTwit = new JPanel();
+		buttonCreateTwit.add(nbCaracteres);
+		buttonCreateTwit.add(creationTwit);
+		buttonCreateTwit.setBackground(Color.white);
+		this.add(buttonCreateTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.SOUTH,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		this.addAction();
 	}
 

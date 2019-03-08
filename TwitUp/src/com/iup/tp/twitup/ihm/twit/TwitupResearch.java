@@ -52,7 +52,7 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 		panelResearchTwit.setLayout(new BorderLayout());
 		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
 		panelResearchTwit.add(researchTextField, BorderLayout.CENTER);
-		panelResearchTwit.add(this.researchButton, BorderLayout.EAST);
+		panelResearchTwit.add(this.researchButton, BorderLayout.SOUTH);
 		return panelResearchTwit;
 	}
 
