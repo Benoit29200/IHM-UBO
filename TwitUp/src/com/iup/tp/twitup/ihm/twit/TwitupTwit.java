@@ -8,8 +8,10 @@ import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.datamodel.Twit;
@@ -39,6 +41,8 @@ public class TwitupTwit extends JPanel {
 		panelCreateTwit.setLayout(new BorderLayout());
 		this.textTwit.disable();
 		this.textTwit.setLineWrap(true);
+		this.textTwit.setBorder(new LineBorder(Color.black,2));
+		JScrollPane sp = new JScrollPane(this.textTwit);
 		this.textTwit.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/8));
 		this.textTwit.setText(monTwit.getText());
 		panelCreateTwit.add(textTwit, BorderLayout.CENTER);
