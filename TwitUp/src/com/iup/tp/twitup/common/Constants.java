@@ -217,4 +217,9 @@ public interface Constants {
 	 * Clé pour la liste des users
 	 */
 	public static final String USER_LIST_USERS = "listeuser";
+	
+	/**
+	 * Clé pour voir l'utilisateur
+	 */
+	public static final String USER_SEE_OTHER_USER = "voiruser";
 }
