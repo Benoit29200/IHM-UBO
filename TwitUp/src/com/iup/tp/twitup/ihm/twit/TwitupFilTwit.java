@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.swing.JPanel;
@@ -50,6 +51,20 @@ public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 			TwitupTwit twitPanel = new TwitupTwit(twit);
 			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
 			this.scrollTwit.add(twitPanel, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
+					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+			iterator++;
+		}
+		this.scrollTwit.revalidate();
+		this.scrollTwit.repaint();
+	}
+
+	public void viewTwitSearch(Set<Twit> twits){
+		this.scrollTwit.removeAll();
+		int iterator = 0;
+		for(Twit myTwit: twits) {
+			TwitupTwit twitupTwit = new TwitupTwit(myTwit);
+			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
+			this.scrollTwit.add(twitupTwit, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 			iterator++;
 		}

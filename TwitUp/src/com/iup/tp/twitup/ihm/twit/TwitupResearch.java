@@ -7,15 +7,13 @@ import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.iup.tp.twitup.common.Constants;
@@ -59,22 +57,18 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 	}
 
 	private void addActionResearchTextField(){
-		this.researchTextField.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				observer.notifyResearch(researchTextField.getText());
-			}
-
+		this.researchTextField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				observer.notifyResearch(researchTextField.getText());
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						observer.notifyResearch(researchTextField.getText());
+					}
+				});
 			}
 		});
+
 	}
 
 
