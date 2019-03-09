@@ -3,13 +3,18 @@ package com.iup.tp.twitup.controller;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.myAccount.IObserverMyAccount;
+import com.iup.tp.twitup.datamodel.myAccountBordereau.IObservableMyAccountBordereau;
+import com.iup.tp.twitup.datamodel.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
 
-public class MyAccountController implements IObserverMyAccount {
+import java.util.UUID;
+
+public class MyAccountController implements IObserverMyAccount, IObservableMyAccountBordereau {
 
     private TwitupConsultAccount vue;
     private FondController parent;
     private IDatabase database;
+    private IObserverMyAccountBordereau observer;
 
     public MyAccountController(FondController parent, IDatabase database) {
         this.parent = parent;
@@ -34,5 +39,26 @@ public class MyAccountController implements IObserverMyAccount {
     @Override
     public void chargeMyAccount() {
         this.parent.getParent().chargeFondWithMyAccount();
+    }
+
+    @Override
+    public void updateMyAccount(UUID id, String name, String pseudo, String avatarPath, String password) {
+        this.database.updateAccount(id,name,pseudo,avatarPath,password);
+        this.notifyUpdateAccount();
+    }
+
+    @Override
+    public void addObserver(IObserverMyAccountBordereau o) {
+        this.observer = o;
+    }
+
+    @Override
+    public void deleteObserver() {
+        this.observer = null;
+    }
+
+    @Override
+    public void notifyUpdateAccount() {
+        this.observer.updateAccount();
     }
 }

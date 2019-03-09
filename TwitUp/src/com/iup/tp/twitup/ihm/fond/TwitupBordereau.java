@@ -24,7 +24,8 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 	private static final long serialVersionUID = 1L;
 
 	private IObserverBordereau observer;
-	
+
+	JLabel connexion;
 	protected User monUser;
 	
 	public TwitupBordereau(IObserverBordereau observer, User user) {
@@ -61,6 +62,10 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		return panelFinal;
 	}
 
+	public void updateUser(User u){
+		this.connexion.setText(u.getUserTag());
+	}
+
 	/**
 	 * Permet de retourner un panel comprenant les infos de l'utilisateur
 	 * @return
@@ -70,13 +75,13 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		JPanel monJPanel= new JPanel();
 		monJPanel.setBackground(Color.white);
 		monJPanel.setLayout(new GridBagLayout());
-		JLabel connexion = new JLabel(this.monUser.getUserTag());
+		this.connexion = new JLabel(this.monUser.getUserTag());
 		
 		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(this.monUser.getAvatarPath())));
 		monJPanel.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		
-		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+		monJPanel.add(this.connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		
 		return monJPanel;

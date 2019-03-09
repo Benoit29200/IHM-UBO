@@ -4,6 +4,7 @@ import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Interface de la base de données de l'application.
@@ -154,5 +155,7 @@ public interface IDatabase {
 
 	Set<Twit> getTwitsByUser(String user);
 	Set<Twit> getTwitsByTag(String tag);
+
+	void updateAccount(UUID id, String name, String pseudo, String avatar, String mdp);
 
 }

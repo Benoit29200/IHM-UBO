@@ -2,6 +2,7 @@ package com.iup.tp.twitup.datamodel;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
@@ -365,5 +366,18 @@ public class Database implements IDatabase {
 			}
 		}
 		return twitWithTags;
+	}
+
+	@Override
+	public void updateAccount(UUID id, String name, String pseudo, String avatar, String mdp) {
+		for(User u: mUsers){
+			if(u.getUuid().equals(id)){
+				u.setName(name);
+				u.setAvatarPath(avatar);
+				u.setUserPassword(mdp);
+				u.setUserTag(pseudo);
+				this.mUserConnected = u;
+			}
+		}
 	}
 }

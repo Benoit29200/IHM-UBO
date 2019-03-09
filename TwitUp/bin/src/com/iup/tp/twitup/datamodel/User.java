@@ -19,7 +19,7 @@ public class User {
 	 * Tag non modifiable correspondant à l'utilisateur. <br/>
 	 * <i>Doit être unique dans le système</i>
 	 */
-	protected final String mUserTag;
+	protected String mUserTag;
 
 	/**
 	 * Mot de passe de l'utilisateur.
@@ -94,6 +94,10 @@ public class User {
 		return this.mUserTag;
 	}
 
+	public void setUserTag(String userTag){
+		this.mUserTag = userTag;
+	}
+
 	/**
 	 * Retourne le mot de passe de l'utilisateur.
 	 */
@@ -159,6 +163,18 @@ public class User {
 	 */
 	public boolean isFollowing(User userToCheck) {
 		return this.getFollows().contains(userToCheck.getUserTag());
+	}
+
+	public void setmUserPassword(String mUserPassword) {
+		this.mUserPassword = mUserPassword;
+	}
+
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
+
+	public void setmAvatarPath(String mAvatarPath) {
+		this.mAvatarPath = mAvatarPath;
 	}
 
 	/**

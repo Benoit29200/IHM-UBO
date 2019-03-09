@@ -27,8 +27,8 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
-	JButton home = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
-	JButton myAccount = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+	JButton home = new JButton(this.fileLanguage.getObject(Constants.VIEW_ACCUEIL).toString());
+	JButton myAccount = new JButton(this.fileLanguage.getObject(Constants.VIEW_MON_COMPTE).toString());
 	JButton listeusers = new JButton(this.fileLanguage.getObject(Constants.USER_LIST_USERS).toString());
 
 	private IObserverBordereauMenu observer;

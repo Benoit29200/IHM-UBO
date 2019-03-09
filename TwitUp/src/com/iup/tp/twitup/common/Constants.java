@@ -107,6 +107,18 @@ public interface Constants {
 	 * Clé de configuration pour la langue pour l'item connexion
 	 */
 	public static final String VIEW_CONNEXION_COMPTE = "connexion";
+
+	/**
+	 * Clé de configuration pour la langue pour l'item accueil
+	 */
+	public static final String VIEW_ACCUEIL = "accueil";
+
+	/**
+	 * Clé de configuration pour la langue pour l'item monCompte
+	 */
+	public static final String VIEW_MON_COMPTE = "monCompte";
+
+
 	
 	/**
 	 * Clé de configuration pour la langue pour le nom
