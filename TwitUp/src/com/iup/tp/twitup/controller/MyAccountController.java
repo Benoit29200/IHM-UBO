@@ -6,6 +6,7 @@ import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserve
 import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObservableMyAccountBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;
 
@@ -43,8 +44,15 @@ public class MyAccountController implements IObserverMyAccount, IObservableMyAcc
 
     @Override
     public void updateMyAccount(UUID id, String name, String pseudo, String avatarPath, String password) {
-        this.database.updateAccount(id,name,pseudo,avatarPath,password);
-        this.notifyUpdateAccount();
+        if(StringUtils.isBlank(name) || StringUtils.isBlank(pseudo)){
+            this.vue.setMessage("Le nom et le pseudo sont obligatoires");
+        }else if(this.database.findTagUser(pseudo) && !pseudo.equals(this.database.getUserConnected().getUserTag())){
+            this.vue.setMessage("Le pseudo est déja utilisé");
+        } else{
+                this.database.updateAccount(id,name,pseudo,avatarPath,password);
+                this.notifyUpdateAccount();
+            this.vue.setMessage("Votre profil a été mis à jour");
+        }
     }
 
     @Override

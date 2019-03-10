@@ -29,7 +29,7 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 
 	JTextField researchTextField = new JTextField();
 	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
-	
+
 	public TwitupResearch(IObserverTwitupResearch observer) {
 		this.addActionResearchTextField();
 		this.observer = observer;
@@ -50,6 +50,8 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
 		panelResearchTwit.add(researchTextField, BorderLayout.CENTER);
 		panelResearchTwit.add(this.researchButton, BorderLayout.SOUTH);
+		this.researchButton.setEnabled(false);
+
 		return panelResearchTwit;
 	}
 

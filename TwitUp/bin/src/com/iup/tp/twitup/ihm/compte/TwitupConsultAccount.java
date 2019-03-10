@@ -55,6 +55,9 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 
 	private JButton updateMyAccount;
 
+	private JLabel error;
+
+
 	public TwitupConsultAccount(IObserverMyAccount observer) {
 		Border compound = null;
 		this.addObserver(observer);
@@ -79,6 +82,12 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 		this.changePwdLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CHANGE_PWD).toString());
 		this.changePwd = new JPasswordField();
 		this.updateMyAccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
+		this.error = new JLabel("");
+		this.error.setForeground(Color.RED);
+	}
+
+	public void setMessage(String err){
+		this.error.setText(err);
 	}
 
 	/**
@@ -117,6 +126,9 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 		panelLabelUserAccount.add(changePwdLabel,
 				new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		panelLabelUserAccount.add(error,
+				new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER,
+						GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return panelLabelUserAccount;
 	}
 

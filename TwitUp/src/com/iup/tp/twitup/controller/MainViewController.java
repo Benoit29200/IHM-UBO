@@ -14,6 +14,7 @@ import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereauMenu;
 import com.iup.tp.twitup.ihm.fond.TwitupFond;
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
+import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
@@ -31,6 +32,11 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     public MainViewController(IDatabase database, TwitupMainView vue) {
         this.database = database;
         this.vue = vue;
+        this.chargeConnexionComponent();
+        this.chargeMenu();
+    }
+
+    public void reset(){
         this.chargeConnexionComponent();
         this.chargeMenu();
     }
@@ -70,13 +76,22 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     private void chargeMenu(){
-
         MenuController menuController = new MenuController(this);
         TwitupMenu twitupMenu = new TwitupMenu();
         menuController.setVue(twitupMenu);
         this.vue.setJMenuBar(twitupMenu);
         this.chargeMenuFichier(menuController,twitupMenu);
         this.chargeMenuConnexionCreation(menuController,twitupMenu);
+        this.chargeMenuInformation(menuController,twitupMenu);
+    }
+
+    private void chargeMenuWithDeconnexion(){
+        MenuController menuController = new MenuController(this);
+        TwitupMenu twitupMenu = new TwitupMenu();
+        menuController.setVue(twitupMenu);
+        this.vue.setJMenuBar(twitupMenu);
+        this.chargeMenuFichier(menuController,twitupMenu);
+        this.chargeMenuDeconnexion(menuController,twitupMenu);
         this.chargeMenuInformation(menuController,twitupMenu);
     }
 
@@ -92,6 +107,13 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         MenuFichier menuFichier = new MenuFichier(this.vue, menuFichierController);
         menuFichierController.setVue(menuFichier);
         twitupMenu.addMenuFichier(menuFichier);
+    }
+
+    private void chargeMenuDeconnexion(MenuController menuController, TwitupMenu twitMenu){
+        MenuDeconnexionController menuDeconnexionController = new MenuDeconnexionController(menuController);
+        MenuDeconnexion menuDeconnexion = new MenuDeconnexion(this.vue,menuDeconnexionController);
+        menuDeconnexionController.setVue(menuDeconnexion);
+        twitMenu.addMenuDeconnexion(menuDeconnexion);
     }
 
     private void chargeMenuInformation(MenuController menuController, TwitupMenu twitupMenu){
@@ -116,6 +138,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     public void chargeFond(){
+        this.chargeMenuWithDeconnexion();
         FondController fondController = new FondController(this);
         TwitupFond twitupFond = new TwitupFond(fondController);
         fondController.setVue(twitupFond);
@@ -126,7 +149,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     public void chargeFondWithMyAccount(){
-        this.chargeMenu();
+        this.chargeMenuWithDeconnexion();
         FondController fondController = new FondController(this);
         TwitupFond twitupFond = new TwitupFond(fondController);
         fondController.setVue(twitupFond);
@@ -142,6 +165,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     private MyAccountController chargeMyAccount(FondController fondController, TwitupFond twitupFond){
         MyAccountController myAccountController = new MyAccountController(fondController, this.getDatabase());
         TwitupConsultAccount twitupConsultAccount = new TwitupConsultAccount(myAccountController);
+        myAccountController.setVue(twitupConsultAccount);
         twitupFond.chargeTwitupMyAccount(twitupConsultAccount);
         return myAccountController;
     }

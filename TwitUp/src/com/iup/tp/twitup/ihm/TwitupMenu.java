@@ -3,6 +3,7 @@ package com.iup.tp.twitup.ihm;
 import javax.swing.*;
 
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
+import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
 
@@ -37,6 +38,11 @@ public class TwitupMenu extends JMenuBar {
 
 	public void addMenuInformation(MenuInformation menuInformation){
 		this.add(menuInformation);
+		this.refresh();
+	}
+
+	public void addMenuDeconnexion(MenuDeconnexion menuDeconnexion){
+		this.add(menuDeconnexion);
 		this.refresh();
 	}
 
