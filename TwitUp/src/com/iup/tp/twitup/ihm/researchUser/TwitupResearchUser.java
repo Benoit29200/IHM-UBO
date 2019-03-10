@@ -16,8 +16,8 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.twitupResearch.IObservableTwitupResearch;
-import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObservableTwitupResearch;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
 public class TwitupResearchUser extends JPanel implements IObservableTwitupResearch {
 
 	/**

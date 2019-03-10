@@ -1,6 +1,6 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObserverMenuConnexionCreation;
+import com.iup.tp.twitup.communicationInterface.vueController.menuConnexionCreation.IObserverMenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 
 public class MenuConnexionCreationController implements IObserverMenuConnexionCreation {

@@ -2,9 +2,9 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
-import com.iup.tp.twitup.datamodel.myAccount.IObserverMyAccount;
-import com.iup.tp.twitup.datamodel.myAccountBordereau.IObservableMyAccountBordereau;
-import com.iup.tp.twitup.datamodel.myAccountBordereau.IObserverMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObservableMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
 
 import java.util.UUID;

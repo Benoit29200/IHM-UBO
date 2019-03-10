@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.bordereau.IObserverBordereau;
-import com.iup.tp.twitup.datamodel.myAccountBordereau.IObserverMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
 
 public class BordereauController implements IObserverBordereau, IObserverMyAccountBordereau {

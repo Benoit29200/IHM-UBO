@@ -2,9 +2,9 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObserverCreateTwitViewTwit;
-import com.iup.tp.twitup.datamodel.researchViewTwit.IObserverResearchViewTwit;
-import com.iup.tp.twitup.datamodel.twitupFilTwit.IObserverTwitupFilTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObserverCreateTwitViewTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
 
 import java.util.Set;

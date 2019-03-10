@@ -6,14 +6,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.menuInformation.IObservableMenuInformation;
-import com.iup.tp.twitup.datamodel.menuInformation.IObserverMenuInformation;
+import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObservableMenuInformation;
+import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObserverMenuInformation;
 import org.apache.commons.lang3.StringUtils;
 
 public class MenuInformation extends JMenu implements IObservableMenuInformation {

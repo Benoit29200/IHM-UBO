@@ -1,8 +1,7 @@
 package com.iup.tp.twitup.ihm.twit;
 
-import com.iup.tp.twitup.common.LOGER;
-import com.iup.tp.twitup.datamodel.twitupResearch.IObservableTwitupResearch;
-import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObservableTwitupResearch;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

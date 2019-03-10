@@ -12,8 +12,8 @@ import javax.swing.JMenuItem;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObservableMenuConnexionCreation;
-import com.iup.tp.twitup.datamodel.menuConnexionCreation.IObserverMenuConnexionCreation;
+import com.iup.tp.twitup.communicationInterface.vueController.menuConnexionCreation.IObservableMenuConnexionCreation;
+import com.iup.tp.twitup.communicationInterface.vueController.menuConnexionCreation.IObserverMenuConnexionCreation;
 
 public class MenuConnexionCreation extends JMenu implements IObservableMenuConnexionCreation {
 

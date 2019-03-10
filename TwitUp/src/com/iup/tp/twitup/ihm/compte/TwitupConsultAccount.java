@@ -22,8 +22,8 @@ import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.myAccount.IObservableMyAccount;
-import com.iup.tp.twitup.datamodel.myAccount.IObserverMyAccount;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObservableMyAccount;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
 
 public class TwitupConsultAccount extends JPanel implements IObservableMyAccount {
 

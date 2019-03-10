@@ -1,9 +1,8 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.common.LOGER;
-import com.iup.tp.twitup.datamodel.researchViewTwit.IObservableResearchViewTwit;
-import com.iup.tp.twitup.datamodel.researchViewTwit.IObserverResearchViewTwit;
-import com.iup.tp.twitup.datamodel.twitupResearch.IObserverTwitupResearch;
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObservableResearchViewTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
 import com.iup.tp.twitup.ihm.twit.TwitupResearch;
 
 public class ResearchController implements IObserverTwitupResearch, IObservableResearchViewTwit {

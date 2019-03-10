@@ -17,8 +17,8 @@ import javax.swing.ScrollPaneConstants;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.twitupFilTwit.IObservableTwitupFilTwit;
-import com.iup.tp.twitup.datamodel.twitupFilTwit.IObserverTwitupFilTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObservableTwitupFilTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 
 public class TwitupFilUser extends JPanel implements IObservableTwitupFilTwit {
 	

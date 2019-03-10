@@ -1,6 +1,6 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.menu.IObserverMenu;
+import com.iup.tp.twitup.communicationInterface.vueController.menu.IObserverMenu;
 import com.iup.tp.twitup.ihm.TwitupMenu;
 
 public class MenuController implements IObserverMenu {

@@ -16,8 +16,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.text.BadLocationException;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.createTwit.IObservableCreateTwit;
-import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObservableCreateTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
 
 public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 

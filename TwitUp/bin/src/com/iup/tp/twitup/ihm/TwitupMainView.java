@@ -1,12 +1,11 @@
 package com.iup.tp.twitup.ihm;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.*;
 
-import com.iup.tp.twitup.datamodel.mainView.IObservableMainView;
-import com.iup.tp.twitup.datamodel.mainView.IObserverMainView;
+import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObservableMainView;
+import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
 import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
 import com.iup.tp.twitup.ihm.fond.TwitupFond;

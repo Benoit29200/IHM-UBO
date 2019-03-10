@@ -4,7 +4,7 @@ import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
-import com.iup.tp.twitup.datamodel.mainView.IObserverMainView;
+import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMenu;
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;

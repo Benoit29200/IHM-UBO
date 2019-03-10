@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.ihm.researchUser;
 
-import com.iup.tp.twitup.datamodel.createViewTwit.IObservableCreateViewTwit;
-import com.iup.tp.twitup.datamodel.createViewTwit.IObserverCreateViewTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObservableCreateViewTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObserverCreateViewTwit;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;

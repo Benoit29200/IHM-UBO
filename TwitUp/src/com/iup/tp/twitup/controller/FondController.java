@@ -1,7 +1,7 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.fond.IObservableFond;
-import com.iup.tp.twitup.datamodel.fond.IObserverFond;
+import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
+import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.fond.TwitupFond;
 
 public class FondController implements IObserverFond {

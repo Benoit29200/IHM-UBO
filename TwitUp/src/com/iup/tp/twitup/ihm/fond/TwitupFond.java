@@ -4,8 +4,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import com.iup.tp.twitup.datamodel.fond.IObservableFond;
-import com.iup.tp.twitup.datamodel.fond.IObserverFond;
+import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
+import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 

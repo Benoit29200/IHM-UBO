@@ -13,8 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.bordereau.IObservableBordereau;
-import com.iup.tp.twitup.datamodel.bordereau.IObserverBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObservableBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
 
 public class TwitupBordereau extends JPanel implements IObservableBordereau {
 	/**

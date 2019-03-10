@@ -19,8 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.accountCreation.IObservableAccountCreation;
-import com.iup.tp.twitup.datamodel.accountCreation.IObserverAccountCreation;
+import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObservableAccountCreation;
+import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
 
 public class TwitupCreationCompte extends JPanel implements IObservableAccountCreation {
 	

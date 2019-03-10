@@ -2,9 +2,9 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.createTwit.IObserverCreateTwit;
-import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObservableCreateTwitViewTwit;
-import com.iup.tp.twitup.datamodel.createTwitViewTwit.IObserverCreateTwitViewTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObservableCreateTwitViewTwit;
+import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObserverCreateTwitViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import org.apache.commons.lang3.StringUtils;
 

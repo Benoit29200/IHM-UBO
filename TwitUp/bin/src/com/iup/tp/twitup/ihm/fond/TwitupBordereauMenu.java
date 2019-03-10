@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.bordereauMenu.IObservableBordereauMenu;
-import com.iup.tp.twitup.datamodel.bordereauMenu.IObserverBordereauMenu;
+import com.iup.tp.twitup.communicationInterface.vueController.bordereauMenu.IObservableBordereauMenu;
+import com.iup.tp.twitup.communicationInterface.vueController.bordereauMenu.IObserverBordereauMenu;
 
 public class TwitupBordereauMenu extends JPanel implements IObservableBordereauMenu {
 

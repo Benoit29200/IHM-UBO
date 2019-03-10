@@ -20,8 +20,8 @@ import javax.swing.border.LineBorder;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.login.IObservableLogin;
-import com.iup.tp.twitup.datamodel.login.IObserverLogin;
+import com.iup.tp.twitup.communicationInterface.vueController.login.IObservableLogin;
+import com.iup.tp.twitup.communicationInterface.vueController.login.IObserverLogin;
 
 /**
  * Mise en place du component gérant la connexion d'un utilisateur

@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.menuFichier.IObservableMenuFichier;
-import com.iup.tp.twitup.datamodel.menuFichier.IObserverMenuFichier;
+import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObservableMenuFichier;
+import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObserverMenuFichier;
 
 public class MenuFichier extends JMenu implements IObservableMenuFichier {
 
