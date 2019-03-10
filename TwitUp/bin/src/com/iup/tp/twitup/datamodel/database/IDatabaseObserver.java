@@ -46,7 +46,7 @@ public interface IDatabaseObserver {
 
 	/**
 	 * Notification lorsqu'un utilisateur est modifié en base de données.
-	 * 
+	 *
 	 * @param modifiedUser
 	 */
 	void notifyUserModified(User modifiedUser);

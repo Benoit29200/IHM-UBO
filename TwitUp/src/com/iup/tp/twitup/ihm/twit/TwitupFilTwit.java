@@ -35,35 +35,19 @@ public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 		scrollTwit.setBackground(new Color(240,248,255));
 		
 		JScrollPane scroll = new JScrollPane(scrollTwit, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		
-//		Twit twit = new Twit(new User(new UUID(0011, 002),"Test","Test","Test",null,""),"Je suis un twit");
 
-		this.viewTwit();
+		this.viewTwitSearch(this.observer.getTwit());
 		
 		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	public void viewTwit(){
-		this.scrollTwit.removeAll();
-		int iterator = 0;
-		for(Twit twit: this.observer.getTwit()) {
-			TwitupTwit twitPanel = new TwitupTwit(twit);
-			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
-			this.scrollTwit.add(twitPanel, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
-					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-			iterator++;
-		}
-		this.scrollTwit.revalidate();
-		this.scrollTwit.repaint();
-	}
 
 	public void viewTwitSearch(Set<Twit> twits){
 		this.scrollTwit.removeAll();
 		int iterator = 0;
 		for(Twit myTwit: twits) {
 			TwitupTwit twitupTwit = new TwitupTwit(myTwit);
-			//twitPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
 			this.scrollTwit.add(twitupTwit, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 			iterator++;

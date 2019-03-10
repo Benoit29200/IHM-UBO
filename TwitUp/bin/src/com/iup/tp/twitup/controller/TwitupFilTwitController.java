@@ -33,7 +33,7 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
 
     @Override
     public void majTwits() {
-        this.vue.viewTwit();
+        this.vue.viewTwitSearch(this.getTwit());
     }
 
     @Override

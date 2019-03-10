@@ -38,10 +38,10 @@ public class CreateTwitController implements IObserverCreateTwit, IObservableCre
 
     @Override
     public void notifyAddTwit() {
-
         this.viewTwit.majTwits();
     }
 
+    @Override
     public void addTwit(String twitText){
             if(StringUtils.isNotBlank(twitText)){
                 User userConnected = this.parent.getDatabase().getUserConnected();

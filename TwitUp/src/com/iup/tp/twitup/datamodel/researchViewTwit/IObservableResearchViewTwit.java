@@ -6,8 +6,6 @@ public interface IObservableResearchViewTwit {
 
     void deleteObserver();
 
-    void notifySearchTwitByUser(String user);
-    void notifySearchByTag(String tag);
 
 
 }

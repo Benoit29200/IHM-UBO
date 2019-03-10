@@ -35,43 +35,63 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
-	private JButton connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
+	private JButton creationcompteJButton;
+	private JButton connexionUser;
 
-	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private Dimension screenSize;
 
-	private JLabel loginLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
-	private JTextField login = new JTextField();
+	private JLabel loginLabel;
+	private JTextField login;
 
-	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
-	private JTextField password = new JPasswordField();
+	private JLabel passwordLabel;
+	private JTextField password;
 
-	private JLabel errorMessage = new JLabel("");
+	private JLabel errorMessage;
 
 	protected IObserverLogin observer;
 
 	public TwitupConnexionUser(IObserverLogin observer){
-		
-		JPanel panelCreate = new JPanel();
 
-		panelCreate.setLayout(new GridBagLayout());
-		panelCreate.setBorder(new LineBorder(Color.CYAN, 4, true));
-		panelCreate.setOpaque(true);
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.initComponent();
+		this.addObserver(observer);
+		
+		JPanel connexionUserPanel = new JPanel();
+
+		connexionUserPanel.setLayout(new GridBagLayout());
+		connexionUserPanel.setBorder(new LineBorder(Color.CYAN, 4, true));
+		connexionUserPanel.setOpaque(true);
 
 		this.setLayout(new GridBagLayout());
-		this.add(panelCreate, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
+		this.add(connexionUserPanel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
-		this.observer = observer;
-		this.initUserPage(panelCreate);
+		this.initConnexionUserContent(connexionUserPanel);
 		this.setAction();
-
 	}
 
 	/**
-	 * Ajout d'un action sur le bouton de connexion
+	 * Initialisation des composants avec le label associé à la langue
+	 */
+	private void initComponent(){
+		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+		this.connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
+
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+		this.loginLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+		this.login = new JTextField();
+
+		this.passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
+		this.password = new JPasswordField();
+
+		this.errorMessage = new JLabel("");
+	}
+
+	/**
+	 * Ajout d'un action sur le bouton de connexion et sur le bouton de création de compte
 	 */
 	private void setAction(){
 		this.connexionUser.addActionListener(new ActionListener() {
@@ -91,37 +111,36 @@ public class TwitupConnexionUser extends JPanel implements IObservableLogin {
 
 	/**
 	 * Permet de créer le JPanel correspondant au component de la création d'un compte
-	 * @param panelCreate
+	 * @param connexionUserPanel
 	 */
-	private void initUserPage(JPanel panelCreate) {
+	private void initConnexionUserContent(JPanel connexionUserPanel) {
 
-		configurationComponentPanel();
+		setSizeComponent();
 		
 		JPanel labelEtBoutonConnexion = new JPanel(new GridBagLayout());
 		JPanel textFieldEtBoutonCreation = new JPanel(new GridBagLayout());
 
 		/**
-		 * Mise en place 
+		 * Mise en place des composants du panel connexion
 		 */
 		labelEtBoutonConnexion = initJLabelsEtConnexion(labelEtBoutonConnexion);
 		
 		textFieldEtBoutonCreation = initJTextFieldEtCreation(textFieldEtBoutonCreation);
 
-		panelCreate.add(labelEtBoutonConnexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		connexionUserPanel.add(labelEtBoutonConnexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 		
-		panelCreate.add(textFieldEtBoutonCreation, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		connexionUserPanel.add(textFieldEtBoutonCreation, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 5, 5), 0, 0));
 
-		panelCreate.add(errorMessage, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.CENTER,
+		connexionUserPanel.add(errorMessage, new GridBagConstraints(0, 2, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-
 	}
 
 	/**
 	 * Permet de gérer la configuration de la taille des components et de la couleur du message
 	 */
-	private void configurationComponentPanel() {
+	private void setSizeComponent() {
 		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
 		this.loginLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));

@@ -67,8 +67,4 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
 		this.observer = null;
 	}
 
-	@Override
-	public void notifyChargeInformation() {
-		this.observer.chargeInformation();
-	}
 }

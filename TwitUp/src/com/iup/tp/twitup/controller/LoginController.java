@@ -34,11 +34,9 @@ public class LoginController implements IObserverLogin {
         User u = parent.getDatabase().findUser(login,mdp);
 
         if( u != null){
-            LOGER.success("L'utilisateur existe ! Allélujah");
             parent.getDatabase().setUserConnected(u);
             parent.chargeFond();
         }else{
-            LOGER.err("L'utilisateur n'existe pas");
             vue.setErrorMessage("Le couple pseudo / mot de passe n'existe pas");
         }
     }

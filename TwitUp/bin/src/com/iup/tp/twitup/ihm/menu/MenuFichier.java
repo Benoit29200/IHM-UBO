@@ -33,13 +33,12 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
 	
 	public MenuFichier(JFrame fenetre, IObserverMenuFichier observer) {
 		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
-		this.observer = observer;
+		this.addObserver(observer);
 		this.setText(this.fileLanguage.getObject(Constants.MENU_FICHIER).toString());
 	    this.setItemToFichierMenu(fenetre);
 	}
 	
-	
-	
+
 	/**
 	 * 
 	 */

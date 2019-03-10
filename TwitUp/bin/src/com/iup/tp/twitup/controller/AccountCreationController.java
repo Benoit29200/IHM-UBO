@@ -38,7 +38,6 @@ public class AccountCreationController implements IObserverAccountCreation {
         }else if(parent.getDatabase().findTagUser(login)){
             this.vue.setErrorMessage("Le login est déja utilisé");
         }else{
-            LOGER.debug("J'ai reçu le signal \"Créer compte\" ");
             User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),"");
             parent.getDatabase().addUser(u);
             parent.getDatabase().setUserConnected(u);

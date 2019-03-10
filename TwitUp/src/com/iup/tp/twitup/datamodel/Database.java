@@ -20,6 +20,9 @@ public class Database implements IDatabase {
 	protected final Set<User> mUsers;
 
 
+    /**
+     * Utilisateur connecté.
+     */
 	protected User mUserConnected;
 
 	/**
@@ -36,9 +39,9 @@ public class Database implements IDatabase {
 	 * Constructeur.
 	 */
 	public Database() {
-		mUsers = new HashSet<User>();
-		mTwits = new HashSet<Twit>();
-		mObservers = new HashSet<IDatabaseObserver>();
+		mUsers = new HashSet<>();
+		mTwits = new HashSet<>();
+		mObservers = new HashSet<>();
 	}
 
 	/**
@@ -47,7 +50,7 @@ public class Database implements IDatabase {
 	@Override
 	public Set<User> getUsers() {
 		// Clonage pour éviter les modifications extérieures.
-		return new HashSet<User>(this.mUsers);
+		return new HashSet<>(this.mUsers);
 	}
 
 	/**
@@ -56,7 +59,7 @@ public class Database implements IDatabase {
 	@Override
 	public Set<Twit> getTwits() {
 		// Clonage pour éviter les modifications extérieures.
-		return new HashSet<Twit>(this.mTwits);
+		return new HashSet<>(this.mTwits);
 	}
 
 	/**
@@ -184,7 +187,7 @@ public class Database implements IDatabase {
 	 */
 	@Override
 	public Set<Twit> getTwitsWithTag(String tag) {
-		Set<Twit> taggedTwits = new HashSet<Twit>();
+		Set<Twit> taggedTwits = new HashSet<>();
 
 		// Parcours de tous les twits de la base
 		for (Twit twit : this.getTwits()) {
@@ -202,7 +205,7 @@ public class Database implements IDatabase {
 	 */
 	@Override
 	public Set<Twit> getTwitsWithUserTag(String userTag) {
-		Set<Twit> taggedTwits = new HashSet<Twit>();
+		Set<Twit> taggedTwits = new HashSet<>();
 
 		// Parcours de tous les twits de la base
 		for (Twit twit : this.getTwits()) {
@@ -220,7 +223,7 @@ public class Database implements IDatabase {
 	 */
 	@Override
 	public Set<Twit> getUserTwits(User user) {
-		Set<Twit> userTwits = new HashSet<Twit>();
+		Set<Twit> userTwits = new HashSet<>();
 
 		// Parcours de tous les twits de la base
 		for (Twit twit : this.getTwits()) {
@@ -238,7 +241,7 @@ public class Database implements IDatabase {
 	 */
 	@Override
 	public Set<User> getFollowers(User user) {
-		Set<User> followers = new HashSet<User>();
+		Set<User> followers = new HashSet<>();
 
 		// Parcours de tous les utilisateurs de la base
 		for (User otherUser : this.getUsers()) {
@@ -252,7 +255,7 @@ public class Database implements IDatabase {
 	}
 
 	public Set<User> getFollowed(User user) {
-		Set<User> followers = new HashSet<User>();
+		Set<User> followers = new HashSet<>();
 
 		// Parcours de tous les utilisateurs de la base
 		for (User otherUser : this.getUsers()) {
@@ -314,7 +317,7 @@ public class Database implements IDatabase {
 	 * Retourne une liste clonées des observateurs de modifications.
 	 */
 	protected Set<IDatabaseObserver> getObservers() {
-		return new HashSet<IDatabaseObserver>(this.mObservers);
+		return new HashSet<>(this.mObservers);
 	}
 
 	@Override
@@ -370,13 +373,21 @@ public class Database implements IDatabase {
 
 	@Override
 	public void updateAccount(UUID id, String name, String pseudo, String avatar, String mdp) {
+		String pseudoOld="";
 		for(User u: mUsers){
 			if(u.getUuid().equals(id)){
+				pseudoOld = u.getUserTag();
 				u.setName(name);
 				u.setAvatarPath(avatar);
 				u.setUserPassword(mdp);
 				u.setUserTag(pseudo);
 				this.mUserConnected = u;
+			}
+		}
+
+		for(Twit twit: this.mTwits){
+			if(twit.getTwiter().getUserTag().equals(pseudoOld)){
+				twit.getTwiter().setUserTag(pseudo);
 			}
 		}
 	}

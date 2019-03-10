@@ -25,21 +25,30 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	JButton home = new JButton(this.fileLanguage.getObject(Constants.VIEW_ACCUEIL).toString());
-	JButton myAccount = new JButton(this.fileLanguage.getObject(Constants.VIEW_MON_COMPTE).toString());
-	JButton listeusers = new JButton(this.fileLanguage.getObject(Constants.USER_LIST_USERS).toString());
+	JButton home;
+	JButton myAccount;
+	JButton listeusers;
 
 	private IObserverBordereauMenu observer;
 
 	public TwitupBordereauMenu(IObserverBordereauMenu observer) {
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.addObserver(observer);
+		this.initComponent();
+		this.addAction();
+
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.WHITE);
-		this.observer = observer;
-		this.addAction();
 		this.add(this.getPanelMenu(), new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	private void initComponent(){
+		this.home = new JButton(this.fileLanguage.getObject(Constants.VIEW_ACCUEIL).toString());
+		this.myAccount = new JButton(this.fileLanguage.getObject(Constants.VIEW_MON_COMPTE).toString());
+		this.listeusers = new JButton(this.fileLanguage.getObject(Constants.USER_LIST_USERS).toString());
 	}
 
 	private JPanel getPanelMenu() {

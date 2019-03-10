@@ -4,7 +4,6 @@ import com.iup.tp.twitup.datamodel.createViewTwit.IObservableCreateViewTwit;
 import com.iup.tp.twitup.datamodel.createViewTwit.IObserverCreateViewTwit;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;

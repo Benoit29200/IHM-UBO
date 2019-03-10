@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -31,7 +30,7 @@ public class MenuConnexionCreation extends JMenu implements IObservableMenuConne
 		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 		this.setText(this.fileLanguage.getObject(Constants.MENU_USER_ACCOUNT).toString());
         this.setItemToUserAccountMenu();
-        this.observer = observer;
+        this.addObserver(observer);
 	}
 
 	/**

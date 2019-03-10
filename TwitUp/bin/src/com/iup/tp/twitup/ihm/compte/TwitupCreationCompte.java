@@ -29,40 +29,40 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	private JButton creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+	private JButton creationcompteJButton;
 	
-	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private Dimension screenSize;
 
 	private IObserverAccountCreation observer;
 
-	private JLabel errorMessage = new JLabel("");
-	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
-	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
-	private JLabel passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
-	private JLabel confirmPasswordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CMDP).toString());
+	private JLabel errorMessage;
+	private JLabel nomLabel;
+	private JLabel pseudoLabel;
+	private JLabel passwordLabel;
+	private JLabel confirmPasswordLabel;
 
-	private JTextField nom = new JTextField();
-	private JTextField pseudo = new JTextField();
-	private JPasswordField password = new JPasswordField();
-	private JPasswordField confirmPassword = new JPasswordField();
+	private JTextField nom;
+	private JTextField pseudo;
+	private JPasswordField password;
+	private JPasswordField confirmPassword;
 
 
-	
 	public TwitupCreationCompte(IObserverAccountCreation observer){
-		
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.addObserver(observer);
+		this.initComponent();
+
 		JPanel panelCreation = new JPanel(new GridBagLayout());
 		panelCreation.setLayout(new GridBagLayout());
 		panelCreation.setOpaque(true);
 		panelCreation.setBorder(new LineBorder(Color.CYAN, 4, true));
 		
-		this.initUserPage(panelCreation);
+		this.initAccountManager(panelCreation);
 		this.setActionAccountCreation();
-		this.observer = observer;
 
-		this.errorMessage.setForeground(Color.RED);
-		
+
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(true);
 		
@@ -70,6 +70,24 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		this.dimensionComponent();
 		
+	}
+
+	private void initComponent(){
+		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		this.errorMessage = new JLabel("");
+		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
+		this.pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+		this.passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
+		this.confirmPasswordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CMDP).toString());
+
+		this.errorMessage = new JLabel("");
+		this.errorMessage.setForeground(Color.RED);
+
+		this.nom = new JTextField();
+		this.pseudo = new JTextField();
+		this.password = new JPasswordField();
+		this.confirmPassword = new JPasswordField();
 	}
 
 	public void setErrorMessage(String error) {
@@ -93,7 +111,7 @@ public class TwitupCreationCompte extends JPanel implements IObservableAccountCr
 	 * Permet de créer le JPanel principal
 	 * @param create
 	 */
-	private void initUserPage(JPanel create) {
+	private void initAccountManager(JPanel create) {
 		
 		JPanel panelJLabels = this.initJComponentDansJPanelComponent(this.nomLabel,this.pseudoLabel,this.passwordLabel,this.confirmPasswordLabel);
 		JPanel panelJTextField = this.initJComponentDansJPanelComponent(this.nom,this.pseudo,this.password,this.confirmPassword);

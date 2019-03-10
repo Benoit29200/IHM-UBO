@@ -52,13 +52,4 @@ public class ResearchController implements IObserverTwitupResearch, IObservableR
         this.observer = null;
     }
 
-    @Override
-    public void notifySearchTwitByUser(String user) {
-
-    }
-
-    @Override
-    public void notifySearchByTag(String tag) {
-
-    }
 }

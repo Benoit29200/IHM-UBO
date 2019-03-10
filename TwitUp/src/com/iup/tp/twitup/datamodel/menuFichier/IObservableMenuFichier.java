@@ -6,6 +6,4 @@ public interface IObservableMenuFichier {
 
     void deleteObserver();
 
-    void notifyChargeFichier();
-
 }

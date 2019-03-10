@@ -1,6 +1,5 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.createViewTwit.IObserverCreateViewTwit;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;

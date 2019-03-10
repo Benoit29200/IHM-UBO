@@ -27,25 +27,28 @@ public class TwitupConsultAnUserAccount extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	Dimension screenSize;
+	Dimension tailleComponent;
 	
-	Dimension tailleComponent = new Dimension(screenSize.width/3, screenSize.height/15);
-	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
-	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+	private JLabel nomLabel;
+	private JLabel nom;
+
+	private JLabel pseudoLabel;
+	private JLabel pseudo;
+
 	private JLabel avatar;
 	
 	private User user;
 
-	private JLabel nom;
-	private JLabel pseudo;
-	
 	JButton connectToThisAccount;
 	
-	public TwitupConsultAnUserAccount(User theUser, User myUser) {
-		if(myUser.getFollows().contains(theUser.getUserTag())) {
+	public TwitupConsultAnUserAccount(User theUser, User userConnected) {
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.initComponent();
+
+		if(userConnected.getFollows().contains(theUser.getUserTag())) {
 			connectToThisAccount = new JButton(this.fileLanguage.getObject(Constants.DECONNECTION_TO_ACCOUNT).toString());
 			connectToThisAccount.setBackground(Color.red);
 		}
@@ -54,11 +57,30 @@ public class TwitupConsultAnUserAccount extends JPanel {
 			connectToThisAccount.setBackground(Color.green);
 		}
 		this.user = theUser;
+		this.avatar = new JLabel(new ImageIcon(getClass().getResource(theUser.getAvatarPath())));
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setPanelAccount());
-		this.avatar = new JLabel(new ImageIcon(getClass().getResource(theUser.getAvatarPath())));
+
+	}
+
+	private void initComponent(){
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		this.tailleComponent = new Dimension(screenSize.width/3, screenSize.height/15);
+
+		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
+		this.nom = new JLabel(this.user.getName());
+
+		this.pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+		this.pseudo = new JLabel(this.user.getUserTag());
+
+		this.nomLabel.setPreferredSize(tailleComponent);
+		this.nom.setPreferredSize(tailleComponent);
+
+		this.pseudoLabel.setPreferredSize(tailleComponent);
+		this.pseudo.setPreferredSize(tailleComponent);
+
 	}
 
 	/**
@@ -82,9 +104,6 @@ public class TwitupConsultAnUserAccount extends JPanel {
 	 */
 	private JPanel setLabelPanel() {
 		JPanel panelLabelUserAccount = new JPanel(new GridBagLayout());
-		this.nomLabel.setPreferredSize(tailleComponent);
-		this.pseudoLabel.setPreferredSize(tailleComponent);
-		
 
 		panelLabelUserAccount.add(nomLabel,new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
@@ -99,10 +118,6 @@ public class TwitupConsultAnUserAccount extends JPanel {
 	 */
 	private JPanel setTextFieldPanel() {
 		JPanel panelTextFieldUserAccount = new JPanel(new GridBagLayout());
-		this.nom.setPreferredSize(tailleComponent);
-		this.nom = new JLabel(this.user.getName());
-		this.pseudo.setPreferredSize(tailleComponent);
-		this.pseudo = new JLabel(this.user.getUserTag());
 		
 		panelTextFieldUserAccount.add(nom,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));

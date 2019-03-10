@@ -6,6 +6,4 @@ public interface IObservableMenuInformation {
 
     void deleteObserver();
 
-    void notifyChargeInformation();
-
 }

@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -33,7 +32,6 @@ public class TwitupResearch extends JPanel implements IObservableTwitupResearch 
 	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	
 	public TwitupResearch(IObserverTwitupResearch observer) {
-//		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/10));
 		this.addActionResearchTextField();
 		this.observer = observer;
 		Border compound = null;

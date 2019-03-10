@@ -132,15 +132,18 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         fondController.setVue(twitupFond);
         this.vue.chargeFond(twitupFond);
         this.chargeBordereauMenu(fondController,twitupFond);
-        this.chargeBordereau(fondController,twitupFond);
-        this.chargeMyAccount(fondController,twitupFond);
+        BordereauController bordereauController = this.chargeBordereau(fondController,twitupFond);
+        MyAccountController myAccountController = this.chargeMyAccount(fondController,twitupFond);
+        myAccountController.addObserver(bordereauController);
+
 
     }
 
-    private void chargeMyAccount(FondController fondController, TwitupFond twitupFond){
+    private MyAccountController chargeMyAccount(FondController fondController, TwitupFond twitupFond){
         MyAccountController myAccountController = new MyAccountController(fondController, this.getDatabase());
         TwitupConsultAccount twitupConsultAccount = new TwitupConsultAccount(myAccountController);
         twitupFond.chargeTwitupMyAccount(twitupConsultAccount);
+        return myAccountController;
     }
 
     private void chargeBordereauMenu(FondController fondController, TwitupFond twitupFond){
@@ -150,11 +153,12 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         twitupFond.chargeTwitupBordereauMenu(twitupBordereauMenu);
     }
 
-    private void chargeBordereau(FondController fondController, TwitupFond twitupFond){
+    private BordereauController chargeBordereau(FondController fondController, TwitupFond twitupFond){
         BordereauController bordereauController = new BordereauController(fondController);
         TwitupBordereau twitupBordereau = new TwitupBordereau(bordereauController, this.database.getUserConnected());
         bordereauController.setVue(twitupBordereau);
         twitupFond.chargeTwitupBordereau(twitupBordereau);
+        return bordereauController;
     }
 
     private void chargeCreateViewTwit(FondController fondController, TwitupFond twitupFond){

@@ -32,39 +32,53 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 	 */
 	private static final long serialVersionUID = 1L;
 
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	Dimension tailleComponent = new Dimension(screenSize.width/3, screenSize.height/20);
+	private Dimension screenSize;
+	private Dimension tailleComponent;
 
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	private JLabel nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
-	private JLabel pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
-	private JLabel avatarPathLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_AVATAR).toString());
-	private JLabel changePwdLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CHANGE_PWD).toString());
-
+	private JLabel nomLabel;
 	private JTextField nom;
+
+	private JLabel pseudoLabel;
 	private JTextField pseudo;
+
+	private JLabel avatarPathLabel;
 	private JTextField avatarPath;
-	private JPasswordField changePwd = new JPasswordField();
 
-
+	private JLabel changePwdLabel;
+	private JPasswordField changePwd;
 
 	private IObserverMyAccount observer;
+
 	private User userConnected;
 
-	JButton updatemyaccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
+	private JButton updateMyAccount;
 
 	public TwitupConsultAccount(IObserverMyAccount observer) {
 		Border compound = null;
-		this.observer = observer;
-		this.userConnected = this.observer.getUserConnected();
-		this.nom = new JTextField(this.userConnected.getName());
-		this.pseudo = new JTextField(this.userConnected.getUserTag());
-		this.avatarPath = new JTextField(this.userConnected.getAvatarPath());
+		this.addObserver(observer);
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.initComponent();
 		this.addAction();
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setPanelAccount());
+	}
+
+	private void initComponent(){
+		this.userConnected = this.observer.getUserConnected();
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		this.tailleComponent = new Dimension(screenSize.width/3, screenSize.height/20);
+		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
+		this.nom = new JTextField(this.userConnected.getName());
+		this.pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
+		this.pseudo = new JTextField(this.userConnected.getUserTag());
+		this.avatarPathLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_AVATAR).toString());
+		this.avatarPath = new JTextField(this.userConnected.getAvatarPath());
+		this.changePwdLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CHANGE_PWD).toString());
+		this.changePwd = new JPasswordField();
+		this.updateMyAccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
 	}
 
 	/**
@@ -125,14 +139,14 @@ public class TwitupConsultAccount extends JPanel implements IObservableMyAccount
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		panelTextFieldUserAccount.add(changePwd,new GridBagConstraints(0, 3, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		panelTextFieldUserAccount.add(updatemyaccount,new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		panelTextFieldUserAccount.add(updateMyAccount,new GridBagConstraints(0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 
 		return panelTextFieldUserAccount;
 	}
 
 	private void addAction(){
-		this.updatemyaccount.addActionListener(new ActionListener() {
+		this.updateMyAccount.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				notifyUpdateMyAccount(userConnected.getUuid(),nom.getText(),pseudo.getText(),avatarPath.getText(),changePwd.getText());

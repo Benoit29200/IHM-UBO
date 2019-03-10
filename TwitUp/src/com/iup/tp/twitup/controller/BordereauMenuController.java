@@ -16,10 +16,6 @@ public class BordereauMenuController implements IObserverBordereauMenu {
         this.vue = vue;
     }
 
-    @Override
-    public void eventChargeBordereauMenu() {
-
-    }
 
     @Override
     public void eventChargeTwitView() {

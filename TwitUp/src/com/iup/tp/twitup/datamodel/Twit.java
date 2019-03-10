@@ -22,7 +22,7 @@ public class Twit {
 	/**
 	 * Utilisateur source.
 	 */
-	protected final User mTwiter;
+	protected User mTwiter;
 
 	/**
 	 * Date d'émission du twit.
@@ -85,6 +85,10 @@ public class Twit {
 			// Ajoute les tags correspondants aux mots-cl�s.
 			mTags.addAll(this.extractTags(text, Constants.WORD_TAG_DELIMITER));
 		}
+	}
+
+	public void setmTwiter(User mTwiter) {
+		this.mTwiter = mTwiter;
 	}
 
 	/**
@@ -152,6 +156,8 @@ public class Twit {
 	public long getEmissionDate() {
 		return this.mEmissionDate;
 	}
+
+
 
 	/**
 	 * Retourne une liste clonée des tags du twit. <br/>

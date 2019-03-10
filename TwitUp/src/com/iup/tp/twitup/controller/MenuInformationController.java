@@ -1,8 +1,6 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.menuFichier.IObserverMenuFichier;
 import com.iup.tp.twitup.datamodel.menuInformation.IObserverMenuInformation;
-import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
 
 public class MenuInformationController implements IObserverMenuInformation {
@@ -19,8 +17,4 @@ public class MenuInformationController implements IObserverMenuInformation {
         this.vue = vue;
     }
 
-    @Override
-    public void chargeInformation() {
-
-    }
 }

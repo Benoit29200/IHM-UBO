@@ -1,6 +1,5 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.datamodel.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
@@ -21,7 +20,6 @@ public class BordereauController implements IObserverBordereau, IObserverMyAccou
 
     @Override
     public void updateAccount() {
-        //TODO mettre à jour la vue
         this.vue.updateUser(this.parent.getParent().database.getUserConnected());
     }
 }

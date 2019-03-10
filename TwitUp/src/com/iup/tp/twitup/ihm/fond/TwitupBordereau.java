@@ -1,7 +1,6 @@
 package com.iup.tp.twitup.ihm.fond;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -26,14 +25,13 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 	private IObserverBordereau observer;
 
 	JLabel connexion;
-	protected User monUser;
+	protected User userConnected;
 	
-	public TwitupBordereau(IObserverBordereau observer, User user) {
-		this.monUser = user;
+	public TwitupBordereau(IObserverBordereau observer, User userConnected) {
+		this.userConnected = userConnected;
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.WHITE);
-//		this.setPreferredSize(new Dimension(this.screenSize.width/5, this.screenSize.height));
-		this.observer = observer;
+		this.addObserver(observer);
 		
 		this.add(this.getPanelUtilisateurEtFollowers(), new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
@@ -75,9 +73,9 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		JPanel monJPanel= new JPanel();
 		monJPanel.setBackground(Color.white);
 		monJPanel.setLayout(new GridBagLayout());
-		this.connexion = new JLabel(this.monUser.getUserTag());
+		this.connexion = new JLabel(this.userConnected.getUserTag());
 		
-		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(this.monUser.getAvatarPath())));
+		JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
 		monJPanel.add(picLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		
@@ -96,7 +94,7 @@ public class TwitupBordereau extends JPanel implements IObservableBordereau {
 		JScrollPane scroll = new JScrollPane(follow, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		int i = 0;
-		for(String follower : this.monUser.getFollows()) {
+		for(String follower : this.userConnected.getFollows()) {
 			JLabel comp = new JLabel(follower);
 			follow.add(comp, new GridBagConstraints(0, i, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));

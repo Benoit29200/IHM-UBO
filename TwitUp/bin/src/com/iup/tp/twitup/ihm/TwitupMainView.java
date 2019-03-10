@@ -60,7 +60,6 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 	 * Lance l'afficahge de l'IHM.
 	 */
 	public void showGUI() {
-		// Affichage dans l'EDT
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

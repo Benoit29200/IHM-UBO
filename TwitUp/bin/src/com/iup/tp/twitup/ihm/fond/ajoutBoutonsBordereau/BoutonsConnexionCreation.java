@@ -19,9 +19,10 @@ public class BoutonsConnexionCreation extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
 	public BoutonsConnexionCreation() {
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 		this.add(getButtonsCreationConnexion());
 		this.setBackground(Color.white);
 	}

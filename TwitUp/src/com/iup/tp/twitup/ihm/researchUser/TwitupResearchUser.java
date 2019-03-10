@@ -26,22 +26,31 @@ public class TwitupResearchUser extends JPanel implements IObservableTwitupResea
 	private static final long serialVersionUID = 1L;
 	private IObserverTwitupResearch observer;
 
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private Dimension screenSize;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
-	JTextField researchTextField = new JTextField();
-	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
+	private JTextField researchTextField;
+	private JButton researchButton;
 	
 	public TwitupResearchUser(IObserverTwitupResearch observer) {
-//		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/10));
+		this.initComponent();
 		this.addActionResearchTextField();
-		this.observer = observer;
+		this.addObserver(observer);
 		Border compound = null;
 
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setNewResearchBar());
+	}
+
+	private void initComponent(){
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+
+		this.researchTextField = new JTextField();
+		this.researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	}
 
 	/**

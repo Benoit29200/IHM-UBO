@@ -17,8 +17,4 @@ public class MenuFichierController implements IObserverMenuFichier {
         this.vue = vue;
     }
 
-    @Override
-    public void chargeFichier() {
-
-    }
 }

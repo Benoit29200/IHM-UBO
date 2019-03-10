@@ -27,14 +27,14 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	private static final long serialVersionUID = 1L;
 	private IObserverCreateTwit observer;
 	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	private ResourceBundle fileLanguage;
 
 
-	private JButton creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
+	private JButton creationTwit;
 
-	private Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private JTextArea textTwit = new JTextArea(3,50);
-	private JLabel nbCaracteres = new JLabel("Nombre de caractères: 0");
+	private Dimension screenSize;
+	private JTextArea textTwit;
+	private JLabel nbCaracteres;
 
 	
 	/**
@@ -42,7 +42,8 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 	 * @param observer
 	 */
 	public TwitupCreateTwit(IObserverCreateTwit observer) {
-		this.observer = observer;
+		this.initComponent();
+		this.addObserver(observer);
 		Border compound = null;
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
@@ -55,6 +56,16 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		
 		addButtonCreateTwit();
 		this.addAction();
+	}
+
+	private void initComponent(){
+		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+
+		this.creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
+
+		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		this.textTwit = new JTextArea(3,50);
+		this.nbCaracteres = new JLabel("Nombre de caractères: 0");
 	}
 
 	/**
