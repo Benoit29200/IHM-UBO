@@ -17,7 +17,9 @@ import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
+import com.iup.tp.twitup.ihm.researchUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
+import com.iup.tp.twitup.ihm.researchUser.TwitupResearchUser;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
@@ -181,11 +183,20 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     }
 
     private void chargeListUser(FondController fondController, TwitupFond twitupFond){
-        ListUserController listUserController = new ListUserController(fondController);
+        CreateViewUserController createViewUserController = new CreateViewUserController(fondController);
+        TwitupCreateViewUserFil twitupCreateViewUserFil = new TwitupCreateViewUserFil(createViewUserController);
+        createViewUserController.setVue(twitupCreateViewUserFil);
+        twitupFond.chargeListUser(twitupCreateViewUserFil);
+
+        ListUserController listUserController = new ListUserController(createViewUserController);
         TwitupFilUser twitupFilUser = new TwitupFilUser(listUserController);
         listUserController.setVue(twitupFilUser);
-        twitupFond.chargeListUser(twitupFilUser);
+        twitupCreateViewUserFil.addTwitupFilUser(twitupFilUser);
 
+        ResearchUserController researchUserController = new ResearchUserController(createViewUserController);
+        TwitupResearchUser twitupResearchUser = new TwitupResearchUser(researchUserController);
+        researchUserController.setVue(twitupResearchUser);
+        twitupCreateViewUserFil.addTwitupResearchUser(twitupResearchUser);
     }
 
     private void chargeBordereauMenu(FondController fondController, TwitupFond twitupFond){

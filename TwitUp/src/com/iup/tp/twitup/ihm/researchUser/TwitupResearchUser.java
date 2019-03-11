@@ -16,15 +16,17 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
+import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObservableTwitupResearch;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
-public class TwitupResearchUser extends JPanel implements IObservableTwitupResearch {
+public class TwitupResearchUser extends JPanel implements IObservableResearchUser {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IObserverTwitupResearch observer;
+	private IObserverResearchUser observer;
 
 	private Dimension screenSize;
 	
@@ -33,7 +35,7 @@ public class TwitupResearchUser extends JPanel implements IObservableTwitupResea
 	private JTextField researchTextField;
 	private JButton researchButton;
 	
-	public TwitupResearchUser(IObserverTwitupResearch observer) {
+	public TwitupResearchUser(IObserverResearchUser observer) {
 		this.initComponent();
 		this.addActionResearchTextField();
 		this.addObserver(observer);
@@ -67,28 +69,12 @@ public class TwitupResearchUser extends JPanel implements IObservableTwitupResea
 	}
 
 	private void addActionResearchTextField(){
-		this.researchTextField.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				observer.notifyResearch(researchTextField.getText());
-			}
 
-			@Override
-			public void keyPressed(KeyEvent e) {
-				observer.notifyResearch(researchTextField.getText());
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-
-			}
-		});
 	}
 
-
 	@Override
-	public void addObserver(IObserverTwitupResearch o) {
-		this.observer = o;
+	public void addObserver(IObserverResearchUser o) {
+		this.observer = observer;
 	}
 
 	@Override

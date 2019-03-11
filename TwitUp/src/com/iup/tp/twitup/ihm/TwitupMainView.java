@@ -26,7 +26,7 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 	public TwitupMainView() {
 		super("twiItUp");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setUndecorated(true);
+        this.setUndecorated(false);
 	}
 
 	public void addTwitupConnexionUser(TwitupConnexionUser twitupConnexionUser){

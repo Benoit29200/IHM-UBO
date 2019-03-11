@@ -10,9 +10,9 @@ import java.util.List;
 public class ListUserController implements IObserverListUser {
 
     private TwitupFilUser vue;
-    private FondController parent;
+    private CreateViewUserController parent;
 
-    public ListUserController(FondController parent) {
+    public ListUserController(CreateViewUserController parent) {
         this.parent = parent;
     }
 
@@ -22,6 +22,6 @@ public class ListUserController implements IObserverListUser {
 
     @Override
     public List<User> getUsers() {
-        return this.parent.getParent().getDatabase().getUsers();
+        return this.parent.getParent().getParent().getDatabase().getUsers();
     }
 }
