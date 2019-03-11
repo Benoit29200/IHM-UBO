@@ -25,8 +25,8 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 
 	public TwitupMainView() {
 		super("twiItUp");
-		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setUndecorated(true);
 	}
 
 	public void addTwitupConnexionUser(TwitupConnexionUser twitupConnexionUser){
