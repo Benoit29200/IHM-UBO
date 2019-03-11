@@ -1,26 +1,24 @@
 package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.datamodel.Twit;
-import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObserverCreateTwitViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
-import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
+import com.iup.tp.twitup.ihm.twit.ListTwit;
 
 import java.util.List;
-import java.util.Set;
 
 public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserverCreateTwitViewTwit, IObserverResearchViewTwit {
 
     private CreateViewTwitController parent;
-    private TwitupFilTwit vue;
+    private ListTwit vue;
 
     public TwitupFilTwitController(CreateViewTwitController parent) {
         this.parent = parent;
     }
 
 
-    public void setVue(TwitupFilTwit vue) {
+    public void setVue(ListTwit vue) {
         this.vue = vue;
     }
 

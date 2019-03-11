@@ -3,12 +3,12 @@ package com.iup.tp.twitup.controller;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObservableResearchViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
-import com.iup.tp.twitup.ihm.twit.TwitupResearch;
+import com.iup.tp.twitup.ihm.twit.ResearchTwit;
 
 public class ResearchController implements IObserverTwitupResearch, IObservableResearchViewTwit {
 
     private CreateViewTwitController parent;
-    private TwitupResearch vue;
+    private ResearchTwit vue;
     private IObserverResearchViewTwit observer;
 
     public ResearchController(CreateViewTwitController parent) {
@@ -19,7 +19,7 @@ public class ResearchController implements IObserverTwitupResearch, IObservableR
         this.observer = observer;
     }
 
-    public void setVue(TwitupResearch vue) {
+    public void setVue(ResearchTwit vue) {
         this.vue = vue;
     }
 

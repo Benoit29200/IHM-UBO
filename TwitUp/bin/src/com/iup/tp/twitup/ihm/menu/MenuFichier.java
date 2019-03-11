@@ -2,51 +2,33 @@ package com.iup.tp.twitup.ihm.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
 import javax.swing.JOptionPane;
 
-import org.apache.commons.lang3.StringUtils;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObservableMenuFichier;
 import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObserverMenuFichier;
 
-public class MenuFichier extends JMenu implements IObservableMenuFichier {
+public class MenuFichier extends Menu implements IObservableMenuFichier {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	
 	private JFileChooser fileChooser;
-	
-	private ResourceBundle fileLanguage;
 
 	private IObserverMenuFichier observer;
 	
 	public MenuFichier(JFrame fenetre, IObserverMenuFichier observer) {
-		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		super();
 		this.addObserver(observer);
 		this.setText(this.fileLanguage.getObject(Constants.MENU_FICHIER).toString());
 	    this.setItemToFichierMenu(fenetre);
 	}
-	
 
-	/**
-	 * 
-	 */
-	 private void setFileChooser(){
-	        this.fileChooser = new JFileChooser();
-	        this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	        this.fileChooser.setDialogTitle(this.fileLanguage.getObject(Constants.CLE_DOSSIER_ECHANGE).toString());
-	    }
+
 	
 	/**
 	 * 
@@ -89,16 +71,15 @@ public class MenuFichier extends JMenu implements IObservableMenuFichier {
         });
 	}
 
-	public void setItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
-		JMenuItem j = new JMenuItem(name);
-		menu.add(j);
-		if(StringUtils.isNotBlank(filenameIcon)){
-			j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
-		}
-		if(action != null){
-			j.addActionListener(action);
-		}
+	/**
+	 *
+	 */
+	private void setFileChooser(){
+		this.fileChooser = new JFileChooser();
+		this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		this.fileChooser.setDialogTitle(this.fileLanguage.getObject(Constants.CLE_DOSSIER_ECHANGE).toString());
 	}
+
 
 	@Override
 	public void addObserver(IObserverMenuFichier o) {

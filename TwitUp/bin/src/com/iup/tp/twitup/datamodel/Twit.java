@@ -71,7 +71,7 @@ public class Twit {
 		mUserTags = new HashSet<String>();
 
 		// Initialisation des mots-cl�s
-		this.initTags(new String(mText));
+		this.initTags(mText);
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class Twit {
 				String newTag = taggedString.split(" ")[0];
 
 				// Suppression du caractère sp�cial
-				newTag = newTag.substring(1, newTag.length());
+				newTag = newTag.substring(1);
 
 				// Ajout du tag à la liste
 				tags.add(newTag);

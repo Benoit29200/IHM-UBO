@@ -12,12 +12,12 @@ public interface IWatchableDirectory {
 	 * <i> Les observeurs sont premièrement avertis du contenu initial du
 	 * répertoire, puis avertis des modifications (ajout/suppression)</i>
 	 */
-	public void initWatching();
+	void initWatching();
 
 	/**
 	 * Arret de la surveillance du répertoire.
 	 */
-	public void stopWatching();
+	void stopWatching();
 
 	/**
 	 * Changement du répertoire de surveillance. <br/>
@@ -29,7 +29,7 @@ public interface IWatchableDirectory {
 	 * @param directoryPath
 	 *            , nouveau répertoire à surveiller.
 	 */
-	public void changeDirectory(String directoryPath);
+	void changeDirectory(String directoryPath);
 
 	/**
 	 * Ajout un observateur qui sera notifié des changements dans le répertoire
@@ -37,7 +37,7 @@ public interface IWatchableDirectory {
 	 * 
 	 * @param observer
 	 */
-	public void addObserver(IWatchableDirectoryObserver observer);
+	void addObserver(IWatchableDirectoryObserver observer);
 
 	/**
 	 * Supprime un observateur de la liste (il ne sera plus notifiés des
@@ -45,6 +45,6 @@ public interface IWatchableDirectory {
 	 * 
 	 * @param observer
 	 */
-	public void removeObserver(IWatchableDirectoryObserver observer);
+	void removeObserver(IWatchableDirectoryObserver observer);
 
 }

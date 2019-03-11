@@ -4,18 +4,18 @@ import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.communicationInterface.vueController.login.IObservableLogin;
 import com.iup.tp.twitup.communicationInterface.vueController.login.IObserverLogin;
 import com.iup.tp.twitup.common.LOGER;
-import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
+import com.iup.tp.twitup.ihm.account.ConnexionUser;
 
 public class LoginController implements IObserverLogin {
 
-    private TwitupConnexionUser vue;
+    private ConnexionUser vue;
     private MainViewController parent;
 
     public LoginController(MainViewController parent) {
         this.parent = parent;
     }
 
-    public void setVue(TwitupConnexionUser vue) {
+    public void setVue(ConnexionUser vue) {
         this.vue = vue;
     }
 

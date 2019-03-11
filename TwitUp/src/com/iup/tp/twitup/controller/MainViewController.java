@@ -6,14 +6,14 @@ import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.ihm.TwitupMainView;
-import com.iup.tp.twitup.ihm.TwitupMenu;
-import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
-import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
-import com.iup.tp.twitup.ihm.compte.TwitupConsultAnUserAccount;
-import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
-import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
-import com.iup.tp.twitup.ihm.fond.TwitupBordereauMenu;
-import com.iup.tp.twitup.ihm.fond.TwitupFond;
+import com.iup.tp.twitup.ihm.menu.TwitupMenu;
+import com.iup.tp.twitup.ihm.account.ConnexionUser;
+import com.iup.tp.twitup.ihm.account.ConsultAccount;
+import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
+import com.iup.tp.twitup.ihm.account.CreationCompte;
+import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
+import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
+import com.iup.tp.twitup.ihm.background.TwitupFond;
 import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
@@ -21,10 +21,10 @@ import com.iup.tp.twitup.ihm.menu.MenuInformation;
 import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.listUser.TwitupFilUser;
 import com.iup.tp.twitup.ihm.listUser.TwitupResearchUser;
-import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
-import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
-import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
-import com.iup.tp.twitup.ihm.twit.TwitupResearch;
+import com.iup.tp.twitup.ihm.twit.CreateTwitForm;
+import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
+import com.iup.tp.twitup.ihm.twit.ListTwit;
+import com.iup.tp.twitup.ihm.twit.ResearchTwit;
 
 
 public class MainViewController implements IObserverMainView, IDatabaseObserver {
@@ -129,14 +129,14 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     public void chargeConnexionComponent(){
         LoginController loginController = new LoginController(this);
-        TwitupConnexionUser connexion = new TwitupConnexionUser(loginController);
+        ConnexionUser connexion = new ConnexionUser(loginController);
         loginController.setVue(connexion);
         this.vue.addTwitupConnexionUser(connexion);
     }
 
     public void chargeAccountManager(){
         AccountCreationController accountCreationController = new AccountCreationController(this);
-        TwitupCreationCompte creationCompte = new TwitupCreationCompte(accountCreationController);
+        CreationCompte creationCompte = new CreationCompte(accountCreationController);
         accountCreationController.setVue(creationCompte);
         this.vue.chargeAccountManager(creationCompte);
     }
@@ -177,9 +177,9 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeAccountUser(FondController fondController, TwitupFond twitupFond, User user){
         ConsultAccountUserController consultAccountUserController = new ConsultAccountUserController(fondController);
-        TwitupConsultAnUserAccount twitupConsultAnUserAccount = new TwitupConsultAnUserAccount(user, this.database.getUserConnected(),consultAccountUserController);
-        consultAccountUserController.setVue(twitupConsultAnUserAccount);
-        twitupFond.chargeUserAccount(twitupConsultAnUserAccount);
+        ConsultAnUserAccount consultAnUserAccount = new ConsultAnUserAccount(user, this.database.getUserConnected(),consultAccountUserController);
+        consultAccountUserController.setVue(consultAnUserAccount);
+        twitupFond.chargeUserAccount(consultAnUserAccount);
     }
 
     public void chargeFondWithListUser(){
@@ -195,9 +195,9 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private MyAccountController chargeMyAccount(FondController fondController, TwitupFond twitupFond){
         MyAccountController myAccountController = new MyAccountController(fondController, this.getDatabase());
-        TwitupConsultAccount twitupConsultAccount = new TwitupConsultAccount(myAccountController);
-        myAccountController.setVue(twitupConsultAccount);
-        twitupFond.chargeTwitupMyAccount(twitupConsultAccount);
+        ConsultAccount consultAccount = new ConsultAccount(myAccountController);
+        myAccountController.setVue(consultAccount);
+        twitupFond.chargeTwitupMyAccount(consultAccount);
         return myAccountController;
     }
 
@@ -236,39 +236,39 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeCreateViewTwit(FondController fondController, TwitupFond twitupFond){
         CreateViewTwitController createViewTwitController = new CreateViewTwitController(fondController, this.database);
-        TwitupCreateViewTwit twitupCreateViewTwit = new TwitupCreateViewTwit(createViewTwitController);
-        createViewTwitController.setVue(twitupCreateViewTwit);
-        twitupFond.chargeTwitupCreateViewTwit(twitupCreateViewTwit);
+        CreateViewTwit createViewTwit = new CreateViewTwit(createViewTwitController);
+        createViewTwitController.setVue(createViewTwit);
+        twitupFond.chargeTwitupCreateViewTwit(createViewTwit);
 
-        CreateTwitController createTwitController = this.chargeCreateTWit(createViewTwitController,twitupCreateViewTwit);
-        ResearchController  researchController= this.chargeResearch(createViewTwitController,twitupCreateViewTwit);
-        TwitupFilTwitController twitupFilTwitController = this.chargeFilTwit(createViewTwitController,twitupCreateViewTwit);
+        CreateTwitController createTwitController = this.chargeCreateTWit(createViewTwitController, createViewTwit);
+        ResearchController  researchController= this.chargeResearch(createViewTwitController, createViewTwit);
+        TwitupFilTwitController twitupFilTwitController = this.chargeFilTwit(createViewTwitController, createViewTwit);
         researchController.setObserver(twitupFilTwitController);
         createTwitController.setViewTwit(twitupFilTwitController);
 
     }
 
-    private ResearchController chargeResearch(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private ResearchController chargeResearch(CreateViewTwitController createViewTwitController, CreateViewTwit createViewTwit){
         ResearchController researchController = new ResearchController(createViewTwitController);
-        TwitupResearch twitupResearch = new TwitupResearch(researchController);
-        researchController.setVue(twitupResearch);
-        twitupCreateViewTwit.addTwitupResearchTwit(twitupResearch);
+        ResearchTwit researchTwit = new ResearchTwit(researchController);
+        researchController.setVue(researchTwit);
+        createViewTwit.addTwitupResearchTwit(researchTwit);
         return researchController;
     }
 
-    private CreateTwitController chargeCreateTWit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private CreateTwitController chargeCreateTWit(CreateViewTwitController createViewTwitController, CreateViewTwit createViewTwit){
         CreateTwitController createTwitController = new CreateTwitController(createViewTwitController);
-        TwitupCreateTwit twitupCreateTwit = new TwitupCreateTwit(createTwitController);
-        createTwitController.setVue(twitupCreateTwit);
-        twitupCreateViewTwit.addTwitupCreateTwit(twitupCreateTwit);
+        CreateTwitForm createTwitForm = new CreateTwitForm(createTwitController);
+        createTwitController.setVue(createTwitForm);
+        createViewTwit.addTwitupCreateTwit(createTwitForm);
         return createTwitController;
     }
 
-    private TwitupFilTwitController chargeFilTwit(CreateViewTwitController createViewTwitController, TwitupCreateViewTwit twitupCreateViewTwit){
+    private TwitupFilTwitController chargeFilTwit(CreateViewTwitController createViewTwitController, CreateViewTwit createViewTwit){
         TwitupFilTwitController twitupFilTwitController = new TwitupFilTwitController(createViewTwitController);
-        TwitupFilTwit twitupFilTwit = new TwitupFilTwit(twitupFilTwitController);
-        twitupFilTwitController.setVue(twitupFilTwit);
-        twitupCreateViewTwit.addTwitupFilTwit(twitupFilTwit);
+        ListTwit listTwit = new ListTwit(twitupFilTwitController);
+        twitupFilTwitController.setVue(listTwit);
+        createViewTwit.addTwitupFilTwit(listTwit);
         return twitupFilTwitController;
     }
 }

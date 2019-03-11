@@ -5,14 +5,14 @@ import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObservableMyAccountBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
-import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
+import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;
 
 public class MyAccountController implements IObserverMyAccount, IObservableMyAccountBordereau {
 
-    private TwitupConsultAccount vue;
+    private ConsultAccount vue;
     private FondController parent;
     private IDatabase database;
     private IObserverMyAccountBordereau observer;
@@ -22,7 +22,7 @@ public class MyAccountController implements IObserverMyAccount, IObservableMyAcc
         this.database = database;
     }
 
-    public void setVue(TwitupConsultAccount vue) {
+    public void setVue(ConsultAccount vue) {
         this.vue = vue;
     }
 

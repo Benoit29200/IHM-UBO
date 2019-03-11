@@ -2,32 +2,25 @@ package com.iup.tp.twitup.ihm.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
-import java.util.ResourceBundle;
+
 
 import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
 import javax.swing.JOptionPane;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObservableMenuInformation;
 import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObserverMenuInformation;
-import org.apache.commons.lang3.StringUtils;
 
-public class MenuInformation extends JMenu implements IObservableMenuInformation {
+public class MenuInformation extends Menu implements IObservableMenuInformation {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private IObserverMenuInformation observer;
-	
-	private ResourceBundle fileLanguage;
+
 	
 	public MenuInformation(IObserverMenuInformation observer) {
-		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
-		this.observer = observer;
+		super();
+		this.addObserver(observer);
 		this.setText("?");
         setItemToTheProposMenu();
 	}
@@ -43,17 +36,6 @@ public class MenuInformation extends JMenu implements IObservableMenuInformation
                         new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
             }
         });
-	}
-
-	public void setItemToMenu(String name, JMenu menu, String filenameIcon, ActionListener action) {
-		JMenuItem j = new JMenuItem(name);
-		menu.add(j);
-		if(StringUtils.isNotBlank(filenameIcon)){
-			j.setIcon(new ImageIcon(menu.getClass().getResource(filenameIcon)));
-		}
-		if(action != null){
-			j.addActionListener(action);
-		}
 	}
 
 	@Override

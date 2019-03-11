@@ -4,7 +4,7 @@ import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
 import com.iup.tp.twitup.common.LOGER;
-import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
+import com.iup.tp.twitup.ihm.account.CreationCompte;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashSet;
@@ -13,20 +13,20 @@ import java.util.UUID;
 public class AccountCreationController implements IObserverAccountCreation {
 
     private MainViewController parent;
-    private TwitupCreationCompte vue;
+    private CreationCompte vue;
 
 
     public AccountCreationController(MainViewController parent) {
         this.parent = parent;
     }
 
-    public void setVue(TwitupCreationCompte vue) {
+    public void setVue(CreationCompte vue) {
         this.vue = vue;
     }
 
     @Override
     public void eventCancel(IObservableAccountCreation o, Object arg) {
-        LOGER.debug("J'ai reçu le signal cancel sur la page de création de compte");
+        LOGER.debug("J'ai reçu le signal cancel sur la page de création de account");
     }
 
     @Override

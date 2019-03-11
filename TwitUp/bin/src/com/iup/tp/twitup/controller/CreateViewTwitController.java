@@ -2,11 +2,11 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObserverCreateViewTwit;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
-import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
+import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
 
 public class CreateViewTwitController implements IObserverCreateViewTwit {
 
-    private TwitupCreateViewTwit vue;
+    private CreateViewTwit vue;
     private FondController parent;
     private IDatabase database;
 
@@ -15,7 +15,7 @@ public class CreateViewTwitController implements IObserverCreateViewTwit {
         this.database = database;
     }
 
-    public void setVue(TwitupCreateViewTwit vue) {
+    public void setVue(CreateViewTwit vue) {
         this.vue = vue;
     }
 

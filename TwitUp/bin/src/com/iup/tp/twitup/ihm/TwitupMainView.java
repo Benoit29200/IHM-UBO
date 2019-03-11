@@ -1,14 +1,12 @@
 package com.iup.tp.twitup.ihm;
 
-import java.awt.Dimension;
-
 import javax.swing.*;
 
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObservableMainView;
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
-import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
-import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
-import com.iup.tp.twitup.ihm.fond.TwitupFond;
+import com.iup.tp.twitup.ihm.account.ConnexionUser;
+import com.iup.tp.twitup.ihm.account.CreationCompte;
+import com.iup.tp.twitup.ihm.background.TwitupFond;
 
 /**
  * Classe de la vue principale de l'application.
@@ -29,13 +27,13 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
         this.setUndecorated(false);
 	}
 
-	public void addTwitupConnexionUser(TwitupConnexionUser twitupConnexionUser){
-		setContentPane(twitupConnexionUser);
+	public void addTwitupConnexionUser(ConnexionUser connexionUser){
+		setContentPane(connexionUser);
 		this.refresh();
 	}
 
-	public void chargeAccountManager(TwitupCreationCompte twitupCreationCompte){
-		setContentPane(twitupCreationCompte);
+	public void chargeAccountManager(CreationCompte creationCompte){
+		setContentPane(creationCompte);
 		this.refresh();
 	}
 
