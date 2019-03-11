@@ -1,13 +1,13 @@
 package com.iup.tp.twitup.controller;
 
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewUser.IObserverResearchViewUser;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.ihm.fond.TwitupFond;
-import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
+import com.iup.tp.twitup.ihm.listUser.TwitupFilUser;
 
 import java.util.List;
 
-public class ListUserController implements IObserverListUser {
+public class ListUserController implements IObserverListUser, IObserverResearchViewUser {
 
     private TwitupFilUser vue;
     private CreateViewUserController parent;
@@ -23,5 +23,12 @@ public class ListUserController implements IObserverListUser {
     @Override
     public List<User> getUsers() {
         return this.parent.getParent().getParent().getDatabase().getUsers();
+    }
+
+    @Override
+    public void searchUser(String user) {
+        List<User> users = this.parent.getParent().getParent().getDatabase().getUsersByContainsName(user);
+        this.vue.viewUsers(users);
+
     }
 }

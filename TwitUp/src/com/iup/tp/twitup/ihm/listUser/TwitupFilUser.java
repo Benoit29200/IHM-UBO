@@ -1,10 +1,11 @@
-package com.iup.tp.twitup.ihm.researchUser;
+package com.iup.tp.twitup.ihm.listUser;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -40,16 +41,16 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		
 		JScrollPane scroll = new JScrollPane(scrollUser, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
-		this.viewUsers();
+		this.viewUsers(this.observer.getUsers());
 		
 		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	public void viewUsers(){
+	public void viewUsers(List<User> users){
 		this.scrollUser.removeAll();
 		int iterator = 0;
-		for(User user: this.observer.getUsers()) {
+		for(User user: users) {
 			this.scrollUser.add(createNewPanelUser(user), new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
 					GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 			iterator++;

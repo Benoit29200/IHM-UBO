@@ -1,7 +1,5 @@
-package com.iup.tp.twitup.ihm.researchUser;
+package com.iup.tp.twitup.ihm.listUser;
 
-import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObservableCreateViewTwit;
-import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObserverCreateViewTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObservableCreateViewUser;
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
 

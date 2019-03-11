@@ -17,9 +17,9 @@ import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
-import com.iup.tp.twitup.ihm.researchUser.TwitupCreateViewUserFil;
-import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
-import com.iup.tp.twitup.ihm.researchUser.TwitupResearchUser;
+import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
+import com.iup.tp.twitup.ihm.listUser.TwitupFilUser;
+import com.iup.tp.twitup.ihm.listUser.TwitupResearchUser;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
@@ -194,6 +194,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         twitupCreateViewUserFil.addTwitupFilUser(twitupFilUser);
 
         ResearchUserController researchUserController = new ResearchUserController(createViewUserController);
+        researchUserController.addObserver(listUserController);
         TwitupResearchUser twitupResearchUser = new TwitupResearchUser(researchUserController);
         researchUserController.setVue(twitupResearchUser);
         twitupCreateViewUserFil.addTwitupResearchUser(twitupResearchUser);

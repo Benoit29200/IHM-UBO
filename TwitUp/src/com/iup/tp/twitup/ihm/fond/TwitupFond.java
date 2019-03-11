@@ -7,8 +7,7 @@ import javax.swing.*;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
-import com.iup.tp.twitup.ihm.researchUser.TwitupCreateViewUserFil;
-import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
+import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
 /**

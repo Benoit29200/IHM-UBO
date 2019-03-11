@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface IObserverResearchUser {
 
+    void searchUser(String userName);
+
 
 }

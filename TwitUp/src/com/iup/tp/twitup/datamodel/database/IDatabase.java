@@ -34,6 +34,11 @@ public interface IDatabase {
 	List<User> getUsers();
 
 	/**
+	 * Retourne la liste des utilisateurs qui contient le nom
+	 */
+	List<User> getUsersByContainsName(String nom);
+
+	/**
 	 * Retourne la liste des twits
 	 */
 	List<Twit> getTwits();

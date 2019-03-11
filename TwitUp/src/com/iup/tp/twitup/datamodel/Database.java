@@ -51,6 +51,17 @@ public class Database implements IDatabase {
 		return new ArrayList<>(this.mUsers);
 	}
 
+	@Override
+	public List<User> getUsersByContainsName(String nom) {
+		List<User> users = new ArrayList<>();
+		for(User u: this.mUsers){
+			if(u.getUserTag().contains(nom)){
+				users.add(u);
+			}
+		}
+		return users;
+	}
+
 	/**
 	 * @{inheritDoc
 	 */

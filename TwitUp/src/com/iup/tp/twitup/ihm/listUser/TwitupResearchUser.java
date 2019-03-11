@@ -1,32 +1,30 @@
-package com.iup.tp.twitup.ihm.researchUser;
+package com.iup.tp.twitup.ihm.listUser;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewUser.IObservableResearchViewUser;
+import com.iup.tp.twitup.communicationInterface.betweenController.researchViewUser.IObserverResearchViewUser;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
-import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObservableTwitupResearch;
-import com.iup.tp.twitup.communicationInterface.vueController.twitupResearch.IObserverTwitupResearch;
+
 public class TwitupResearchUser extends JPanel implements IObservableResearchUser {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IObserverResearchUser observer;
+	private IObserverResearchUser observerVue;
 
 	private Dimension screenSize;
 	
@@ -34,11 +32,12 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 
 	private JTextField researchTextField;
 	private JButton researchButton;
-	
-	public TwitupResearchUser(IObserverResearchUser observer) {
+
+
+	public TwitupResearchUser(IObserverResearchUser observerVue) {
 		this.initComponent();
 		this.addActionResearchTextField();
-		this.addObserver(observer);
+		this.addObserver(observerVue);
 		Border compound = null;
 
 		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
@@ -69,16 +68,32 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 	}
 
 	private void addActionResearchTextField(){
-
+		this.researchTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						notifySearchUser(researchTextField.getText());
+					}
+				});
+			}
+		});
 	}
 
 	@Override
 	public void addObserver(IObserverResearchUser o) {
-		this.observer = observer;
+		this.observerVue = o;
 	}
 
 	@Override
 	public void deleteObserver() {
-		this.observer = null;
+		this.observerVue = null;
 	}
+
+	@Override
+	public void notifySearchUser(String userName) {
+		this.observerVue.searchUser(userName);
+	}
+
 }

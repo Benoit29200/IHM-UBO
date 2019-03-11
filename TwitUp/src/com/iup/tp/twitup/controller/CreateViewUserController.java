@@ -2,7 +2,7 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.ihm.researchUser.TwitupCreateViewUserFil;
+import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 
 import java.util.List;
 

@@ -108,7 +108,9 @@ public class Twitup {
 
 	protected void initUser(){
 
-
+		for(int i =0 ; i < 50 ; i++) {
+			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, "/resources/images/logoIUP_20.jpg"));
+		}
 	}
 
 
