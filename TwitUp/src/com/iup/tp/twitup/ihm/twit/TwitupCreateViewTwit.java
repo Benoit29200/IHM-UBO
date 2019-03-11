@@ -37,7 +37,7 @@ public class TwitupCreateViewTwit extends JPanel implements IObservableCreateVie
 	}
 
 	public void addTwitupCreateTwit(TwitupCreateTwit twitupCreateTwit){
-		this.add(twitupCreateTwit, new GridBagConstraints(0, 0, 1, 1, 0, 0.2, GridBagConstraints.CENTER,
+		this.add(twitupCreateTwit, new GridBagConstraints(0, 0, 1, 1, 0, 0.4, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		this.refresh();
 	}

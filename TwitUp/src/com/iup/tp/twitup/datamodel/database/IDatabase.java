@@ -31,7 +31,7 @@ public interface IDatabase {
 	/**
 	 * Retourne la liste des utilisateurs
 	 */
-	Set<User> getUsers();
+	List<User> getUsers();
 
 	/**
 	 * Retourne la liste des twits

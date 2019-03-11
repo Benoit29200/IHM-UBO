@@ -5,4 +5,5 @@ public interface IObserverBordereauMenu {
 
     void eventChargeTwitView();
     void eventChargeMyAccount();
+    void eventChargeListUser();
 }

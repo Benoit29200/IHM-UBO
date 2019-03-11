@@ -16,22 +16,24 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObservableListUser;
+import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObservableTwitupFilTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 
-public class TwitupFilUser extends JPanel implements IObservableTwitupFilTwit {
+public class TwitupFilUser extends JPanel implements IObservableListUser {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IObserverTwitupFilTwit observer;
+	private IObserverListUser observer;
 	JPanel scrollUser;
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 
-	public TwitupFilUser(IObserverTwitupFilTwit observer) {
+	public TwitupFilUser(IObserverListUser observer) {
 		this.setLayout(new GridBagLayout());
 		this.observer = observer;
 		this.scrollUser = new JPanel(new GridBagLayout());
@@ -70,7 +72,7 @@ public class TwitupFilUser extends JPanel implements IObservableTwitupFilTwit {
 	}
 
 	@Override
-	public void addObserver(IObserverTwitupFilTwit o) {
+	public void addObserver(IObserverListUser o) {
 		this.observer = o;
 	}
 

@@ -66,6 +66,8 @@ public class TwitupCreateTwit extends JPanel implements IObservableCreateTwit {
 		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.textTwit = new JTextArea(3,50);
 		this.nbCaracteres = new JLabel("Nombre de caractères: 0");
+		revalidate();
+		repaint();
 	}
 
 	/**

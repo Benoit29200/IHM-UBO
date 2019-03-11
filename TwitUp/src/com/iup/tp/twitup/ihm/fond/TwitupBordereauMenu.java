@@ -101,6 +101,13 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 				notifyChargeMyAccount();
 			}
 		});
+
+		this.listeusers.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyChargeMyAccount();
+			}
+		});
 	}
 
 	@Override
@@ -121,5 +128,10 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 	@Override
 	public void notifyChargeMyAccount() {
 		this.observer.eventChargeMyAccount();
+	}
+
+	@Override
+	public void notifyChargeListUser() {
+		this.observer.eventChargeListUser();
 	}
 }

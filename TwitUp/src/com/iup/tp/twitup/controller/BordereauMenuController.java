@@ -26,4 +26,9 @@ public class BordereauMenuController implements IObserverBordereauMenu {
     public void eventChargeMyAccount() {
         this.parent.getParent().chargeFondWithMyAccount();
     }
+
+    @Override
+    public void eventChargeListUser() {
+        this.parent.getParent().chargeFondWithListUser();
+    }
 }
