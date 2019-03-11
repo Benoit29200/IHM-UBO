@@ -7,6 +7,7 @@ import javax.swing.*;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
+import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
 /**
@@ -47,6 +48,11 @@ public class TwitupFond extends JPanel implements IObservableFond {
 
 	public void chargeTwitupMyAccount(TwitupConsultAccount TwitupConsultAccount){
 		this.add(TwitupConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeListUser(TwitupFilUser twitupFilUser){
+		this.add(twitupFilUser,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 

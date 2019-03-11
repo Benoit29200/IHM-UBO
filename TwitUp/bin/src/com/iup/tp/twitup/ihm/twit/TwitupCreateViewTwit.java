@@ -4,6 +4,7 @@ import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit
 import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObserverCreateViewTwit;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -17,6 +18,8 @@ public class TwitupCreateViewTwit extends JPanel implements IObservableCreateVie
 	 */
 	private static final long serialVersionUID = 1L;
 	private IObserverCreateViewTwit observer;
+	
+	protected Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	
 	public TwitupCreateViewTwit(IObserverCreateViewTwit observer) {
 		this.observer = observer;
@@ -43,7 +46,7 @@ public class TwitupCreateViewTwit extends JPanel implements IObservableCreateVie
 	}
 	
 	public void addTwitupResearchTwit(TwitupResearch twitupResearch){
-		this.add(twitupResearch, new GridBagConstraints(0, 1, 1, 1,0, 0, GridBagConstraints.CENTER,
+		this.add(twitupResearch, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
 				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 		this.refresh();
 	}

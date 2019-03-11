@@ -19,10 +19,6 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
         this.parent = parent;
     }
 
-    @Override
-    public Set<User> getUsers() {
-        return this.parent.getDatabase().getUsers();
-    }
 
     public void setVue(TwitupFilTwit vue) {
         this.vue = vue;

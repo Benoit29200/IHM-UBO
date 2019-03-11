@@ -46,9 +46,9 @@ public class Database implements IDatabase {
 	 * @{inheritDoc
 	 */
 	@Override
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		// Clonage pour éviter les modifications extérieures.
-		return new HashSet<>(this.mUsers);
+		return new ArrayList<>(this.mUsers);
 	}
 
 	/**

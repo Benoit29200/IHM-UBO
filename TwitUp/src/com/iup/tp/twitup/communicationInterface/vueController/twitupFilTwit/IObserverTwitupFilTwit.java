@@ -11,5 +11,4 @@ public interface IObserverTwitupFilTwit {
 
 
     List<Twit> getTwit();
-    Set<User> getUsers();
 }

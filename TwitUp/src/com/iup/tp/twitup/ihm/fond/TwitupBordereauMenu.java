@@ -105,7 +105,7 @@ public class TwitupBordereauMenu extends JPanel implements IObservableBordereauM
 		this.listeusers.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				notifyChargeMyAccount();
+				notifyChargeListUser();
 			}
 		});
 	}

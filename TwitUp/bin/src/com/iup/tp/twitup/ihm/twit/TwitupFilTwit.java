@@ -22,6 +22,7 @@ public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 	 */
 	private static final long serialVersionUID = 1L;
 	private IObserverTwitupFilTwit observer;
+	protected Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	JPanel scrollTwit;
 
 
@@ -29,6 +30,7 @@ public class TwitupFilTwit extends JPanel implements IObservableTwitupFilTwit {
 		this.setLayout(new GridBagLayout());
 		this.observer = observer;
 		this.scrollTwit = new JPanel(new GridBagLayout());
+		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/7));
 		scrollTwit.setMinimumSize(new Dimension(1000, 1000));
 		scrollTwit.setBackground(new Color(240,248,255));
 		

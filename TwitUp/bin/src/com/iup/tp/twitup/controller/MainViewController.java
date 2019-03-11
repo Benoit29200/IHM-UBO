@@ -17,6 +17,7 @@ import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
 import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
 import com.iup.tp.twitup.ihm.menu.MenuFichier;
 import com.iup.tp.twitup.ihm.menu.MenuInformation;
+import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
@@ -158,8 +159,17 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         BordereauController bordereauController = this.chargeBordereau(fondController,twitupFond);
         MyAccountController myAccountController = this.chargeMyAccount(fondController,twitupFond);
         myAccountController.addObserver(bordereauController);
+    }
 
-
+    public void chargeFondWithListUser(){
+        this.chargeMenuWithDeconnexion();
+        FondController fondController = new FondController(this);
+        TwitupFond twitupFond = new TwitupFond(fondController);
+        fondController.setVue(twitupFond);
+        this.vue.chargeFond(twitupFond);
+        this.chargeBordereauMenu(fondController,twitupFond);
+        this.chargeBordereau(fondController,twitupFond);
+        chargeListUser(fondController,twitupFond);
     }
 
     private MyAccountController chargeMyAccount(FondController fondController, TwitupFond twitupFond){
@@ -168,6 +178,14 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         myAccountController.setVue(twitupConsultAccount);
         twitupFond.chargeTwitupMyAccount(twitupConsultAccount);
         return myAccountController;
+    }
+
+    private void chargeListUser(FondController fondController, TwitupFond twitupFond){
+        ListUserController listUserController = new ListUserController(fondController);
+        TwitupFilUser twitupFilUser = new TwitupFilUser(listUserController);
+        listUserController.setVue(twitupFilUser);
+        twitupFond.chargeListUser(twitupFilUser);
+
     }
 
     private void chargeBordereauMenu(FondController fondController, TwitupFond twitupFond){
