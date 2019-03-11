@@ -68,7 +68,7 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		infoUser.add(userTag, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		infoUser.add(profilUser, new GridBagConstraints(2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+		infoUser.add(profilUser, new GridBagConstraints(2, 0, 1, 1, 1, 1, GridBagConstraints.EAST,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return infoUser;
 	}

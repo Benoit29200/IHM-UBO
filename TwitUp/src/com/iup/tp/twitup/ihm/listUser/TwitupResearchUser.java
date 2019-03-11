@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.ihm.listUser;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -46,14 +47,19 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 		this.setLayout(new GridBagLayout());
 		this.addObserver(observerVue);
 		this.setBackground(Color.WHITE);
-		this.add(setNewResearchBar(), new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+
+		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
+		this.add(researchTextField, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(this.researchButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
 	private void initComponent(){
 		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 		this.setPreferredSize(new Dimension(this.screenSize.width/2,this.screenSize.height/2));
+
 
 		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
