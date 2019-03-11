@@ -1,14 +1,15 @@
 package com.iup.tp.twitup.ihm.fond;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
-import com.iup.tp.twitup.ihm.researchUser.TwitupCreateViewUserFil;
-import com.iup.tp.twitup.ihm.researchUser.TwitupFilUser;
+import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.twit.TwitupCreateViewTwit;
 
 /**
