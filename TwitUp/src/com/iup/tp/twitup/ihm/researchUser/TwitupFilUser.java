@@ -19,8 +19,6 @@ import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObservableListUser;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObservableTwitupFilTwit;
-import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 
 public class TwitupFilUser extends JPanel implements IObservableListUser {
 	
@@ -31,11 +29,11 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 	private IObserverListUser observer;
 	JPanel scrollUser;
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
-
-
+	
 	public TwitupFilUser(IObserverListUser observer) {
 		this.setLayout(new GridBagLayout());
 		this.observer = observer;
+		this.setBackground(Color.WHITE);
 		this.scrollUser = new JPanel(new GridBagLayout());
 		scrollUser.setMinimumSize(new Dimension(1000, 1000));
 		scrollUser.setBackground(new Color(240,248,255));
@@ -44,8 +42,8 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		
 		this.viewUsers();
 		
-		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
 	public void viewUsers(){
@@ -53,7 +51,7 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		int iterator = 0;
 		for(User user: this.observer.getUsers()) {
 			this.scrollUser.add(createNewPanelUser(user), new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
-					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+					GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 			iterator++;
 		}
 		this.scrollUser.revalidate();
@@ -65,9 +63,12 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		JLabel avatar = new JLabel(new ImageIcon(getClass().getResource(user.getAvatarPath())));
 		JLabel userTag = new JLabel(Constants.USER_TAG_FIL + user.getUserTag());
 		JButton profilUser = new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());
-		infoUser.add(avatar);
-		infoUser.add(userTag);
-		infoUser.add(profilUser);
+		infoUser.add(avatar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		infoUser.add(userTag, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		infoUser.add(profilUser, new GridBagConstraints(2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		return infoUser;
 	}
 
