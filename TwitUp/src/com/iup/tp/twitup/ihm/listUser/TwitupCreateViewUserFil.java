@@ -10,6 +10,9 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
+import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObservableCreateViewUser;
+import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
+
 public class TwitupCreateViewUserFil extends JPanel implements IObservableCreateViewUser  {
 
 	/**
@@ -36,8 +39,8 @@ public class TwitupCreateViewUserFil extends JPanel implements IObservableCreate
 
 	
 	public void addTwitupResearchUser(TwitupResearchUser twitupResearchUser){
-		this.add(twitupResearchUser, new GridBagConstraints(0, 0, 1, 1,0, 0, GridBagConstraints.CENTER,
-				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(twitupResearchUser, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 		this.refresh();
 	}
 

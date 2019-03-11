@@ -44,7 +44,7 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		this.viewUsers(this.observer.getUsers());
 		
 		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
 	public void viewUsers(List<User> users){

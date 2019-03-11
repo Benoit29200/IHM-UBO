@@ -1,8 +1,10 @@
 package com.iup.tp.twitup.ihm.fond;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObservableFond;
 import com.iup.tp.twitup.communicationInterface.vueController.fond.IObserverFond;
