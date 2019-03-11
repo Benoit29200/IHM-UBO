@@ -20,8 +20,8 @@ public class ResearchUserController implements IObserverResearchUser, IObservabl
     }
 
     @Override
-    public void searchUser(String userName) {
-        this.notifySearchUser(userName);
+    public void searchUserContains(String pattern) {
+        this.notifySearchUserContains(pattern);
     }
 
     @Override
@@ -32,6 +32,16 @@ public class ResearchUserController implements IObserverResearchUser, IObservabl
     @Override
     public void deleteObserverResearch() {
         this.observer = null;
+    }
+
+    @Override
+    public void notifySearchUserContains(String pattern) {
+        this.observer.searchUserContains(pattern);
+    }
+
+    @Override
+    public void searchUser(String userName) {
+        this.notifySearchUser(userName);
     }
 
     @Override

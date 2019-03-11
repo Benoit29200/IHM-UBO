@@ -26,9 +26,14 @@ public class ListUserController implements IObserverListUser, IObserverResearchV
     }
 
     @Override
-    public void searchUser(String user) {
-        List<User> users = this.parent.getParent().getParent().getDatabase().getUsersByContainsName(user);
+    public void searchUserContains(String pattern) {
+        List<User> users = this.parent.getParent().getParent().getDatabase().getUsersByContainsName(pattern);
         this.vue.viewUsers(users);
+    }
 
+    @Override
+    public void searchUser(String userName) {
+        List<User> users = this.parent.getParent().getParent().getDatabase().getUser(userName);
+        this.vue.viewUsers(users);
     }
 }

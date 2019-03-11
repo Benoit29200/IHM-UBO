@@ -4,6 +4,7 @@ package com.iup.tp.twitup.communicationInterface.betweenController.researchViewU
 public interface IObserverResearchViewUser {
 
 
-    void searchUser(String user);
+    void searchUserContains(String pattern);
+    void searchUser(String userName);
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IObserverResearchUser {
 
+    void searchUserContains(String pattern);
     void searchUser(String userName);
 
 

@@ -1,21 +1,22 @@
-package com.iup.tp.twitup.ihm.researchUser;
+package com.iup.tp.twitup.ihm.listUser;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.communicationInterface.betweenController.researchViewUser.IObservableResearchViewUser;
-import com.iup.tp.twitup.communicationInterface.betweenController.researchViewUser.IObserverResearchViewUser;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
 
@@ -41,9 +42,9 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 		this.addObserver(observerVue);
 		Border compound = null;
 
-		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
+		this.setBorder(BorderFactory.createTitledBorder(compound, "", TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setLayout(new GridBagLayout());
-		this.addObserver(observer);
+		this.addObserver(observerVue);
 		this.setBackground(Color.WHITE);
 		this.add(setNewResearchBar(), new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
@@ -82,11 +83,18 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {
-						notifySearchUser(researchTextField.getText());
+						notifySearchUserContains(researchTextField.getText());
 					}
 				});
 			}
 		});
+
+		this.researchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notifySearchUser(researchTextField.getText());
+            }
+        });
 	}
 
 	@Override
@@ -100,8 +108,12 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 	}
 
 	@Override
-	public void notifySearchUser(String userName) {
-		this.observerVue.searchUser(userName);
+	public void notifySearchUserContains(String pattern) {
+		this.observerVue.searchUserContains(pattern);
 	}
 
+    @Override
+    public void notifySearchUser(String userName) {
+        this.observerVue.searchUser(userName);
+    }
 }

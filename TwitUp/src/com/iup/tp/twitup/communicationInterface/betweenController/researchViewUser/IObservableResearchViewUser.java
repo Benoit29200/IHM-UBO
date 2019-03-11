@@ -6,6 +6,8 @@ public interface IObservableResearchViewUser {
 
     void deleteObserverResearch();
 
+    void notifySearchUserContains(String pattern);
+
     void notifySearchUser(String userName);
 
 }
