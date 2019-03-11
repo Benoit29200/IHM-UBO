@@ -36,34 +36,21 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 		this.setLayout(new GridBagLayout());
 		this.addObserver(observer);
 		this.setBackground(Color.WHITE);
-		this.add(setNewResearchBar(), new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+		
+		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
+		this.add(researchTextField, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.add(this.researchButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
+				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
 	private void initComponent(){
 		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		
-		this.setPreferredSize(new Dimension(this.screenSize.width/2,this.screenSize.height/2));
-		
 		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 		this.researchTextField = new JTextField();
 		this.researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
-	}
-
-	/**
-	 * Permet de créer le JPanel de recherche de twit
-	 * @return
-	 */
-	private JPanel setNewResearchBar() {
-		JPanel panelResearchTwit = new JPanel();
-		panelResearchTwit.setLayout(new GridBagLayout());
-		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
-		panelResearchTwit.add(researchTextField, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		panelResearchTwit.add(this.researchButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		return panelResearchTwit;
 	}
 
 	@Override
