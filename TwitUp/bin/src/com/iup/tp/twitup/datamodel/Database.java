@@ -1,8 +1,6 @@
 package com.iup.tp.twitup.datamodel;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
@@ -28,7 +26,7 @@ public class Database implements IDatabase {
 	/**
 	 * Liste des Twit enregistrés.
 	 */
-	protected final Set<Twit> mTwits;
+	protected final List<Twit> mTwits;
 
 	/**
 	 * Liste des observateurs de modifications de la base.
@@ -40,7 +38,7 @@ public class Database implements IDatabase {
 	 */
 	public Database() {
 		mUsers = new HashSet<>();
-		mTwits = new HashSet<>();
+		mTwits = new ArrayList<>();
 		mObservers = new HashSet<>();
 	}
 
@@ -57,9 +55,9 @@ public class Database implements IDatabase {
 	 * @{inheritDoc
 	 */
 	@Override
-	public Set<Twit> getTwits() {
+	public List<Twit> getTwits() {
 		// Clonage pour éviter les modifications extérieures.
-		return new HashSet<>(this.mTwits);
+		return this.mTwits;
 	}
 
 	/**
@@ -153,7 +151,7 @@ public class Database implements IDatabase {
 	@Override
 	public void clearTwits() {
 		// Parcours de la liste clonnée des twits
-		Set<Twit> clonedTwits = this.mTwits;
+		List<Twit> clonedTwits = this.mTwits;
 		for (Twit twit : clonedTwits) {
 			// Suppression de chacun des twits
 			this.removeTwit(twit);
@@ -186,8 +184,8 @@ public class Database implements IDatabase {
 	 * @{inheritDoc
 	 */
 	@Override
-	public Set<Twit> getTwitsWithTag(String tag) {
-		Set<Twit> taggedTwits = new HashSet<>();
+	public List<Twit> getTwitsWithTag(String tag) {
+		List<Twit> taggedTwits = new ArrayList<>();
 
 		// Parcours de tous les twits de la base
 		for (Twit twit : this.getTwits()) {
@@ -204,8 +202,8 @@ public class Database implements IDatabase {
 	 * @{inheritDoc
 	 */
 	@Override
-	public Set<Twit> getTwitsWithUserTag(String userTag) {
-		Set<Twit> taggedTwits = new HashSet<>();
+	public List<Twit> getTwitsWithUserTag(String userTag) {
+		List<Twit> taggedTwits = new ArrayList<>();
 
 		// Parcours de tous les twits de la base
 		for (Twit twit : this.getTwits()) {
@@ -347,9 +345,9 @@ public class Database implements IDatabase {
 	}
 
 	@Override
-	public Set<Twit> getTwitsByUser(String user) {
+	public List<Twit> getTwitsByUser(String user) {
 
-		Set<Twit> twitsUser = new HashSet<>();
+		List<Twit> twitsUser = new ArrayList<>();
 		for (Twit twit : this.mTwits) {
 			if (twit.mTwiter.getUserTag().equals(user)) {
 				twitsUser.add(twit);
@@ -361,8 +359,8 @@ public class Database implements IDatabase {
 	}
 
 	@Override
-	public Set<Twit> getTwitsByTag(String tag) {
-		Set<Twit> twitWithTags = new HashSet<>();
+	public List<Twit> getTwitsByTag(String tag) {
+		List<Twit> twitWithTags = new ArrayList<>();
 		for(Twit twit: this.mTwits){
 			if(twit.getText().contains("#"+tag)){
 				twitWithTags.add(twit);

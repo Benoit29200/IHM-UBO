@@ -3,6 +3,7 @@ package com.iup.tp.twitup.datamodel.database;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -35,7 +36,7 @@ public interface IDatabase {
 	/**
 	 * Retourne la liste des twits
 	 */
-	Set<Twit> getTwits();
+	List<Twit> getTwits();
 
 	/**
 	 * Ajoute un twit à la base de données.
@@ -107,7 +108,7 @@ public interface IDatabase {
 	 * @param tag
 	 *            , tag à rechercher.
 	 */
-	Set<Twit> getTwitsWithTag(String tag);
+	List<Twit> getTwitsWithTag(String tag);
 
 	/**
 	 * Retourne tous les Twits présents en base ayant le tag utilisateur donné
@@ -115,7 +116,7 @@ public interface IDatabase {
 	 * @param userTag
 	 *            , tag utilisateur à rechercher.
 	 */
-	Set<Twit> getTwitsWithUserTag(String userTag);
+	List<Twit> getTwitsWithUserTag(String userTag);
 
 	/**
 	 * Retourne tous les Twits d'un utilisateur.
@@ -153,8 +154,8 @@ public interface IDatabase {
 
 	boolean findTagUser(String tag);
 
-	Set<Twit> getTwitsByUser(String user);
-	Set<Twit> getTwitsByTag(String tag);
+	List<Twit> getTwitsByUser(String user);
+	List<Twit> getTwitsByTag(String tag);
 
 	void updateAccount(UUID id, String name, String pseudo, String avatar, String mdp);
 

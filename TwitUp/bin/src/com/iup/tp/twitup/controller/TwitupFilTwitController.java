@@ -7,6 +7,7 @@ import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTw
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 import com.iup.tp.twitup.ihm.twit.TwitupFilTwit;
 
+import java.util.List;
 import java.util.Set;
 
 public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserverCreateTwitViewTwit, IObserverResearchViewTwit {
@@ -27,7 +28,8 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
         this.vue = vue;
     }
 
-    public Set<Twit> getTwit(){
+    @Override
+    public List<Twit> getTwit(){
         return this.parent.getDatabase().getTwits();
     }
 
@@ -38,13 +40,13 @@ public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserve
 
     @Override
     public void searchTwitByUser(String user) {
-        Set<Twit> twitsUser = this.parent.getDatabase().getTwitsByUser(user);
+        List<Twit> twitsUser = this.parent.getDatabase().getTwitsByUser(user);
         this.vue.viewTwitSearch(twitsUser);
     }
 
     @Override
     public void searchByTag(String tag) {
-        Set<Twit> twitsWithTag = this.parent.getDatabase().getTwitsWithTag(tag);
+        List<Twit> twitsWithTag = this.parent.getDatabase().getTwitsWithTag(tag);
         this.vue.viewTwitSearch(twitsWithTag);
     }
 }
