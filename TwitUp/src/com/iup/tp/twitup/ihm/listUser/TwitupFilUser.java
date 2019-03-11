@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -30,12 +32,14 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 	private IObserverListUser observer;
 	JPanel scrollUser;
 	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+	JButton profilUser;
 	
 	public TwitupFilUser(IObserverListUser observer) {
 		this.setLayout(new GridBagLayout());
 		this.observer = observer;
 		this.setBackground(Color.WHITE);
 		this.scrollUser = new JPanel(new GridBagLayout());
+		 this.profilUser= new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());
 		scrollUser.setMinimumSize(new Dimension(1000, 1000));
 		scrollUser.setBackground(new Color(240,248,255));
 		
@@ -64,6 +68,12 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		JLabel avatar = new JLabel(new ImageIcon(getClass().getResource(user.getAvatarPath())));
 		JLabel userTag = new JLabel(Constants.USER_TAG_FIL + user.getUserTag());
 		JButton profilUser = new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());
+		profilUser.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyChargeViewProfilUser(user);
+			}
+		});
 		infoUser.add(avatar, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
 		infoUser.add(userTag, new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
@@ -73,6 +83,8 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 		return infoUser;
 	}
 
+
+
 	@Override
 	public void addObserver(IObserverListUser o) {
 		this.observer = o;
@@ -81,5 +93,10 @@ public class TwitupFilUser extends JPanel implements IObservableListUser {
 	@Override
 	public void deleteObserver() {
 		this.observer = null;
+	}
+
+	@Override
+	public void notifyChargeViewProfilUser(User user) {
+		this.observer.chargeProfilUser(user);
 	}
 }

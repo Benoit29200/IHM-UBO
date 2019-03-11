@@ -9,6 +9,7 @@ import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMenu;
 import com.iup.tp.twitup.ihm.compte.TwitupConnexionUser;
 import com.iup.tp.twitup.ihm.compte.TwitupConsultAccount;
+import com.iup.tp.twitup.ihm.compte.TwitupConsultAnUserAccount;
 import com.iup.tp.twitup.ihm.compte.TwitupCreationCompte;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereau;
 import com.iup.tp.twitup.ihm.fond.TwitupBordereauMenu;
@@ -161,6 +162,24 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         BordereauController bordereauController = this.chargeBordereau(fondController,twitupFond);
         MyAccountController myAccountController = this.chargeMyAccount(fondController,twitupFond);
         myAccountController.addObserver(bordereauController);
+    }
+
+    public void chargeFondWithProfilUser(User user){
+        this.chargeMenuWithDeconnexion();
+        FondController fondController = new FondController(this);
+        TwitupFond twitupFond = new TwitupFond(fondController);
+        fondController.setVue(twitupFond);
+        this.vue.chargeFond(twitupFond);
+        this.chargeBordereauMenu(fondController,twitupFond);
+        this.chargeBordereau(fondController,twitupFond);
+        this.chargeAccountUser(fondController,twitupFond,user);
+    }
+
+    private void chargeAccountUser(FondController fondController, TwitupFond twitupFond, User user){
+        ConsultAccountUserController consultAccountUserController = new ConsultAccountUserController(fondController);
+        TwitupConsultAnUserAccount twitupConsultAnUserAccount = new TwitupConsultAnUserAccount(user, this.database.getUserConnected(),consultAccountUserController);
+        consultAccountUserController.setVue(twitupConsultAnUserAccount);
+        twitupFond.chargeUserAccount(twitupConsultAnUserAccount);
     }
 
     public void chargeFondWithListUser(){

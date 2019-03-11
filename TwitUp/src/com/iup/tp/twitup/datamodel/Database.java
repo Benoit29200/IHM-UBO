@@ -55,7 +55,7 @@ public class Database implements IDatabase {
 	public List<User> getUser(String nom) {
 		List<User> users = new ArrayList<>();
 		for(User u: this.mUsers){
-			if(u.getUserTag().equals(u)){
+			if(u.getUserTag().equals(nom)){
 				users.add(u);
 			}
 		}

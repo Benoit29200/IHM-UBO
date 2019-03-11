@@ -8,5 +8,6 @@ import java.util.List;
 public interface IObserverListUser {
 
     List<User> getUsers();
+    void chargeProfilUser(User u);
 
 }

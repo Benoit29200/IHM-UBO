@@ -18,9 +18,11 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser.IObservableConsultAccountUser;
+import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser.IObserverConsultAccountUser;
 import com.iup.tp.twitup.datamodel.User;
 
-public class TwitupConsultAnUserAccount extends JPanel {
+public class TwitupConsultAnUserAccount extends JPanel implements IObservableConsultAccountUser {
 	
 	/**
 	 * 
@@ -42,10 +44,14 @@ public class TwitupConsultAnUserAccount extends JPanel {
 	
 	private User user;
 
+	private IObserverConsultAccountUser observer;
+
 	JButton connectToThisAccount;
 	
-	public TwitupConsultAnUserAccount(User theUser, User userConnected) {
+	public TwitupConsultAnUserAccount(User theUser, User userConnected, IObserverConsultAccountUser observer) {
 		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		this.addObserver(observer);
+		this.user = theUser;
 		this.initComponent();
 
 		if(userConnected.getFollows().contains(theUser.getUserTag())) {
@@ -129,4 +135,13 @@ public class TwitupConsultAnUserAccount extends JPanel {
 		return panelTextFieldUserAccount;
 	}
 
+	@Override
+	public void addObserver(IObserverConsultAccountUser o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
 }

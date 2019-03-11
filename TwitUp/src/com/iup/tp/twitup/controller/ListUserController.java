@@ -36,4 +36,9 @@ public class ListUserController implements IObserverListUser, IObserverResearchV
         List<User> users = this.parent.getParent().getParent().getDatabase().getUser(userName);
         this.vue.viewUsers(users);
     }
+
+    @Override
+    public void chargeProfilUser(User user) {
+        this.parent.getParent().getParent().chargeFondWithProfilUser(user);
+    }
 }
