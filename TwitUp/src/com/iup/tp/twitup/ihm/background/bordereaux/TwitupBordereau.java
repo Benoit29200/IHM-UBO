@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.ihm.background.bordereaux;
 
+import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObservableBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.datamodel.User;
@@ -55,9 +56,9 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 	public void updateUser(User u){
 		this.connexion.setText(u.getUserTag());
 		try {
-			this.avatar = new JLabel(new ImageIcon(this.userConnected.getAvatarPath()));
+			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(this.userConnected.getAvatarPath()),80,80));
 		}catch(Exception e) {
-			this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())),80,80));
 		}
 		revalidate();
 		repaint();
@@ -74,11 +75,11 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		panelUtilisateur.setLayout(new GridBagLayout());
 
 		this.connexion = new JLabel(this.userConnected.getUserTag());
-		
+
 		try {
-			this.avatar = new JLabel(new ImageIcon(this.userConnected.getAvatarPath()));
+			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(this.userConnected.getAvatarPath()),80,80));
 		}catch(Exception e) {
-			this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())),80,80));
 		}
 
 

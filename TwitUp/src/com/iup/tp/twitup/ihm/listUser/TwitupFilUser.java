@@ -1,6 +1,8 @@
 package com.iup.tp.twitup.ihm.listUser;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.LOGER;
+import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObservableListUser;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.User;
@@ -46,7 +48,16 @@ public class TwitupFilUser extends ListUser implements IObservableListUser {
 
 	private JPanel createNewPanelUser(User user) {
 		JPanel infoUser = new JPanel(new GridBagLayout());
-		JLabel avatar = new JLabel(new ImageIcon(getClass().getResource(user.getAvatarPath())));
+
+
+		JLabel avatar;
+
+		try {
+			avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(user.getAvatarPath()),80,80));
+		}catch(Exception e) {
+			avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(user.getAvatarPath())),80,80));
+		}
+
 		JLabel userTag = new JLabel(Constants.USER_TAG_FIL + user.getUserTag());
 		JButton profilUser = new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());
 		profilUser.addActionListener(new ActionListener() {
