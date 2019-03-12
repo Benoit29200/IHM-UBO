@@ -52,11 +52,7 @@ public class TwitupFilUser extends ListUser implements IObservableListUser {
 
 		JLabel avatar;
 
-		try {
-			avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(user.getAvatarPath()),80,80));
-		}catch(Exception e) {
-			avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(user.getAvatarPath())),80,80));
-		}
+		avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(user.getAvatarPath())),80,80));
 
 		JLabel userTag = new JLabel(Constants.USER_TAG_FIL + user.getUserTag());
 		JButton profilUser = new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());

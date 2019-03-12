@@ -243,5 +243,5 @@ public interface Constants {
 	/**
 	 * Valeur par défaut pour les images
 	 */
-	String AVATARDEFAULT = "C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg";
+	String AVATARDEFAULT = "/resources/images/logoIUP_50.jpg";
 }
