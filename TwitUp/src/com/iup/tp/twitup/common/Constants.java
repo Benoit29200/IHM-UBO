@@ -239,4 +239,9 @@ public interface Constants {
      * Clé pour changer le chemin de son avatar
      */
 	String CHANGE_PATH_AVATAR = "changepathavataruser";
+	
+	/**
+	 * Valeur par défaut pour les images
+	 */
+	String AVATARDEFAULT = "C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg";
 }
