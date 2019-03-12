@@ -1,8 +1,12 @@
 package com.iup.tp.twitup.ihm.account;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.PropertiesManager;
+import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
+import com.oracle.tools.packager.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +17,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
+import java.net.URI;
 
 public class CreationCompte extends Account implements IObservableAccountCreation {
 
@@ -190,6 +195,17 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 
 	@Override
 	public void notifyEventAccountCreation(String nom, String login, String mdp, String confirm, String avatarPath) {
+		if(StringUtils.isBlank(avatarPath)){
+			avatarPath = Constants.AVATARDEFAULT;
+		}else{
+			String resourcePath = getClass().getResource("/resources/images")+"/"+login+".jpg";
+			resourcePath = resourcePath.substring(5);
+			ImageHelper.copier(new File(avatarPath), new File(resourcePath));
+			avatarPath = "/resources/images/"+login+".jpg";
+
+		}
 		this.observer.eventEventAccountCreation(this, nom, login, mdp, confirm,avatarPath);
 	}
+
+
 }

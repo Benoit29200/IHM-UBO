@@ -2,15 +2,17 @@ package com.iup.tp.twitup.ihm.listUser;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.common.LOGER;
-import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObservableListUser;
 import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.ihm.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URI;
 import java.util.List;
 
 public class TwitupFilUser extends ListUser implements IObservableListUser {
@@ -50,11 +52,16 @@ public class TwitupFilUser extends ListUser implements IObservableListUser {
 		JPanel infoUser = new JPanel(new GridBagLayout());
 
 
-		JLabel avatar;
+		ImagePanel avatar = null;
 
-		avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(user.getAvatarPath())),80,80));
+		try{
+			URI t = getClass().getResource(user.getAvatarPath()).toURI();
+			avatar = new ImagePanel(new File(getClass().getResource(user.getAvatarPath()).toURI()), new Dimension(80,80));
+		} catch(Exception e){
+			LOGER.err("Erreur récupération image utilisateur");
+		}
 
-		JLabel userTag = new JLabel(Constants.USER_TAG_FIL + user.getUserTag());
+		JLabel userTag = new JLabel(user.getUserTag()+ " ( "+user.getName()+" )");
 		JButton profilUser = new JButton(this.fileLanguage.getObject(Constants.USER_SEE_OTHER_USER).toString());
 		profilUser.addActionListener(new ActionListener() {
 			@Override

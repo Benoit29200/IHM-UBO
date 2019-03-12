@@ -3,12 +3,14 @@ package com.iup.tp.twitup.core;
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
+import com.iup.tp.twitup.common.helper.UTF8Control;
 import com.iup.tp.twitup.controller.MainViewController;
 import com.iup.tp.twitup.datamodel.Database;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
+import com.iup.tp.twitup.ihm.ChooseExchangeDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
 import org.apache.commons.lang3.StringUtils;
@@ -112,10 +114,11 @@ public class Twitup {
 
 	protected void initUser(){
 
-		for(int i =0 ; i < 50 ; i++) {
-			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, Constants.AVATARDEFAULT));
-		}
+//		for(int i =0 ; i < 50 ; i++) {
+//			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, Constants.AVATARDEFAULT));
+//		}
 	}
+
 
 
 	/**
@@ -159,13 +162,30 @@ public class Twitup {
 	 */
 	private void initLanguage(){
 		Locale.setDefault(new Locale(this.mProperties.getProperty("LANGUE"),this.mProperties.getProperty("REGION")));
-		this.mResourceBundleLanguage = ResourceBundle.getBundle("menu", Locale.getDefault());
+		this.mResourceBundleLanguage = ResourceBundle.getBundle("menu", Locale.getDefault(), new UTF8Control());
 	}
 
 	/**
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
+		if(this.isValideExchangeDirectory(new File(this.mExchangeDirectoryPath))){
+			init();
+			return;
+		}
+
+		try{
+
+			ChooseExchangeDirectory vue = new ChooseExchangeDirectory(this);
+			vue.showGUI();
+			LOGER.success("Succès");
+		} catch (Exception e){
+			e.printStackTrace();
+			LOGER.err("Erreur à l'initialisation de la vue");
+		}
+	}
+
+	public void init(){
 		LOGER.debug("-- Initialisation de l'interface graphique");
 		try{
 			this.mMainView = new TwitupMainView();
@@ -250,6 +270,10 @@ public class Twitup {
 
 		mWatchableDirectory.initWatching();
 		mWatchableDirectory.addObserver(mEntityManager);
+	}
+
+	public void setmExchangeDirectoryPath(String directory){
+		this.mExchangeDirectoryPath = directory;
 	}
 
 	public void show() {

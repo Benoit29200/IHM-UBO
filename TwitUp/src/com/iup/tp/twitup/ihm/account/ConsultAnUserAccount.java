@@ -1,14 +1,17 @@
 package com.iup.tp.twitup.ihm.account;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser.IObservableConsultAccountUser;
 import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser.IObserverConsultAccountUser;
 import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.ihm.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class ConsultAnUserAccount extends Account implements IObservableConsultAccountUser {
 
@@ -22,7 +25,7 @@ public class ConsultAnUserAccount extends Account implements IObservableConsultA
 	private JLabel pseudoLabel;
 	private JLabel pseudo;
 
-	private JLabel avatar;
+	private ImagePanel avatar;
 	
 	private User user;
 
@@ -39,10 +42,16 @@ public class ConsultAnUserAccount extends Account implements IObservableConsultA
 
 		this.abonnement(theUser,userConnected);
 		this.user = theUser;
-		this.avatar = new JLabel(new ImageIcon(getClass().getResource(theUser.getAvatarPath())));
+		this.avatar = null;
+
+		try{
+			this.avatar = new ImagePanel(new File(getClass().getResource(theUser.getAvatarPath()).toURI()), new Dimension(180,180));
+		} catch(Exception e){
+			LOGER.err("Erreur récupération image utilisateur connecté");
+		}
+
 		this.setBackground(new Color(135,206,250));
 		this.addInto(this,setPanelAccount(),0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
-
 	}
 
 	public void abonnement(User theUser, User userConnected){

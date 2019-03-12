@@ -44,7 +44,6 @@ public class ListTwitUser extends Account implements IObservableListTwitUser {
 
     private void viewTwitSearch(List<Twit> twits) {
 
-
         List<Twit> twitList = new ArrayList<>();
         for (Twit twit : twits) {
             twitList.add(twit);

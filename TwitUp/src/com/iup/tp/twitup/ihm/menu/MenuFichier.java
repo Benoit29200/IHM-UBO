@@ -23,8 +23,6 @@ public class MenuFichier extends Menu implements IObservableMenuFichier {
 	    this.setItemToFichierMenu(fenetre);
 	}
 
-
-	
 	/**
 	 * 
 	 * @param fenetre

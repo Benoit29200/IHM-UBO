@@ -9,14 +9,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.apache.commons.lang3.StringUtils;
+import com.iup.tp.twitup.common.LOGER;
 
-import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObservableBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.datamodel.User;
@@ -84,12 +82,18 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		panelUtilisateur.setLayout(new GridBagLayout());
 
 		this.connexion = new JLabel(this.userConnected.getUserTag());
+		panelUtilisateur.setMinimumSize(new Dimension(92,100));
 
-		this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
+		String path =getClass().getResource(this.userConnected.getAvatarPath()).toString();
+		try{
+			this.avatar = new ImagePanel(new File(getClass().getResource(this.userConnected.getAvatarPath()).toURI()), new Dimension(80,80));
+		} catch(Exception e){
+			LOGER.err("Erreur récupération image utilisateur connecté");
+		}
 
 		this.addInto(panelUtilisateur,this.avatar,0,0,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.NONE,5,5,0,5,0,0);
-		this.addInto(panelUtilisateur,this.connexion,0,1,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.BOTH,5,5,0,5,0,0);
-		
+		this.addInto(panelUtilisateur,this.connexion,0,1,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
+
 		return panelUtilisateur;
 	}
 	

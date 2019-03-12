@@ -1,16 +1,22 @@
 package com.iup.tp.twitup.common.helper;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.io.*;
 
 public class ImageHelper {
 
-    public static ImageIcon getImageResize(ImageIcon image, int width, int height){
-        Image img = image.getImage();
-        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics g = bi.createGraphics();
-        g.drawImage(img, 0, 0, width, height, null);
-        return new ImageIcon(bi);
+    public static boolean copier(File source, File dest) {
+        try (InputStream sourceFile = new java.io.FileInputStream(source);
+             OutputStream destinationFile = new FileOutputStream(dest)) {
+            // Lecture par segment de 0.5Mo
+            byte buffer[] = new byte[512 * 1024];
+            int nbLecture;
+            while ((nbLecture = sourceFile.read(buffer)) != -1){
+                destinationFile.write(buffer, 0, nbLecture);
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+            return false; // Erreur
+        }
+        return true; // Résultat OK
     }
 }

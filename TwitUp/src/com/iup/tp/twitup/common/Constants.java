@@ -11,27 +11,29 @@ public interface Constants {
 	/**
 	 * Extension des fichiers XML des User
 	 */
-    String USER_FILE_EXTENSION = "usr";
+    public static String USER_FILE_EXTENSION = "usr";
+
+	public static String MESSAGE_CHOOSE_DIRECTORY = "MESSAGE_CHOOSE_DIRECTORY";
 
 	/**
 	 * Extension des fichiers XML des TwitMother
 	 */
-    String TWIT_FILE_EXTENSION = "twt";
+	public static String TWIT_FILE_EXTENSION = "twt";
 
 	/**
 	 * Extension des fichiers XML des DB utilisateur
 	 */
-    String DB_FILE_EXTENSION = "db";
+	public static String DB_FILE_EXTENSION = "db";
 
 	/**
 	 * Répertoire des fichiers temporaires du système.
 	 */
-    String SYSTEM_TMP_DIR = System.getProperty("java.io.tmpdir");
+	public static String SYSTEM_TMP_DIR = System.getProperty("java.io.tmpdir");
 
 	/**
 	 * Séparateur de fichier du système.
 	 */
-    String SYSTEM_FILE_SEPARATOR = System.getProperty("file.separator");
+	public static String SYSTEM_FILE_SEPARATOR = System.getProperty("file.separator");
 
 	/**
 	 * Caractère pour délimiter les tags référencant des utilisateurs.
@@ -43,205 +45,202 @@ public interface Constants {
 	 */
     String WORD_TAG_DELIMITER = "#";
 
+
 	/**
 	 * Identifiant de l'utilisateur inconnu.
 	 */
-    UUID UNKNONWN_USER_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+	public static UUID UNKNONWN_USER_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
 	/**
 	 * Fichier de configuration de l'application.
 	 */
-    String CONFIGURATION_FILE = "src/resources/configuration.properties";
+	public static String CONFIGURATION_FILE = "src/resources/configuration.properties";
 
 	/**
 	 * Clé de configuration pour la sauvegarde du répertoire d'échange.
 	 */
-    String CONFIGURATION_KEY_EXCHANGE_DIRECTORY = "EXCHANGE_DIRECTORY";
+	public static String CONFIGURATION_KEY_EXCHANGE_DIRECTORY = "EXCHANGE_DIRECTORY";
 
 	/**
 	 * Clé de configuration pour l'UI
 	 */
-    String CONFIGURATION_KEY_UI_CLASS_NAME = "UI_CLASS_NAME";
+	public static String CONFIGURATION_KEY_UI_CLASS_NAME = "UI_CLASS_NAME";
 
 	/**
 	 * Clé de configuration pour le mode bouchoné
 	 */
-    String CONFIGURATION_KEY_MOCK_ENABLED = "MOCK_ENABLED";
+	public static String CONFIGURATION_KEY_MOCK_ENABLED = "MOCK_ENABLED";
 	
 	/**
 	 * Clé de configuration pour la langue pour le menu du fichier
 	 */
-    String MENU_FICHIER = "fichier";
+	public static String MENU_FICHIER = "fichier";
 	
 	/**
 	 * Clé de configuration pour la langue pour le menu du account
 	 */
-    String MENU_USER_ACCOUNT = "userAccount";
+	public static String MENU_USER_ACCOUNT = "userAccount";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item ouvrir
 	 */
-    String MENU_OUVRIR = "ouvrir";
+	public static String MENU_OUVRIR = "ouvrir";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item enregistrer_sous
 	 */
-    String MENU_ENREGISTRER_SOUS = "enregistrer_sous";
+	public static String MENU_ENREGISTRER_SOUS = "enregistrer_sous";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item fermer
 	 */
-    String MENU_FERMER = "fermer";
+	public static String MENU_FERMER = "fermer";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item à propos
 	 */
-    String MENU_A_PROPOS = "a_propos";
+	public static String MENU_A_PROPOS = "a_propos";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item creation
 	 */
-    String VIEW_CREATION_COMPTE = "creation";
+	public static String VIEW_CREATION_COMPTE = "creation";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'item connexion
 	 */
-    String VIEW_CONNEXION_COMPTE = "connexion";
+	public static String VIEW_CONNEXION_COMPTE = "connexion";
 
 	/**
 	 * Clé de configuration pour la langue pour l'item accueil
 	 */
-    String VIEW_ACCUEIL = "accueil";
+	public static String VIEW_ACCUEIL = "accueil";
 
 	/**
 	 * Clé de configuration pour la langue pour l'item monCompte
 	 */
-    String VIEW_MON_COMPTE = "monCompte";
+	public static String VIEW_MON_COMPTE = "monCompte";
 
 
 	
 	/**
 	 * Clé de configuration pour la langue pour le nom
 	 */
-    String VIEW_NOM = "nom";
+	public static String VIEW_NOM = "nom";
 	
 	/**
 	 * Clé de configuration pour la langue pour le pseudo
 	 */
-    String VIEW_PSEUDO = "pseudo";
+	public static String VIEW_PSEUDO = "pseudo";
 	
     /**
      * Clé de configuration pour la langue pour le mot de passe
      */
-    String VIEW_MDP = "mdp";
+	public static String VIEW_MDP = "mdp";
 	
 	/**
 	 * Clé de configuration pour la langue pour la confirmation du mot de passe
 	 */
-    String VIEW_CMDP = "cmdp";
+	public static String VIEW_CMDP = "cmdp";
 	
 	/**
 	 * Clé de configuration pour la langue pour l'erreur de connexion
 	 */
-    String VIEW_ERREUR_CONNEXION = "erreurconnexion";
+	public static String VIEW_ERREUR_CONNEXION = "erreurconnexion";
 	
 	/**
 	 * Clé de configuration pour le fichier de configuration
 	 */
-    String MENU = "menu";
+	public static String MENU = "menu";
 	
 	/**
 	 * Clé de configuration pour la langue pour la déconnexion
 	 */
-    String DECONNEXION = "deconnexion";
+	public static String DECONNEXION = "deconnexion";
 	
 	/**
 	 * Clé de configuration pour le lien images
 	 */
-    String CLE_IMAGES = "/images/";
+	public static String CLE_IMAGES = "/images/";
 	
 	/**
 	 * Clé de configuration pour la sélection du fichier d'échange
 	 */
-    String CLE_DOSSIER_ECHANGE = "dossierechange";
+	public static String CLE_DOSSIER_ECHANGE = "dossierechange";
 	
 	/**
 	 * Clé de configuration pour l'erreur lors de la sélection du fichier d'échange
 	 */
-    String CLE_ERREUR_DOSSIER_ECHANGE = "erreurdossierechange";
+	public static String CLE_ERREUR_DOSSIER_ECHANGE = "erreurdossierechange";
 	
 	/**
 	 * Clé pour la pop up
 	 */
-    String UBO_MESSAGE = "UBO M2TIIL \\n Département Informatique";
+	public static String UBO_MESSAGE = "UBO M2TIIL \\n Département Informatique";
 	
 	/**
 	 * Clé pour créer un twit
 	 */
-    String CREATION_TWIT = "createtwit";
+	public static String CREATION_TWIT = "createtwit";
 	
 	/**
 	 * Clé pour le bouton de recherche des twits
 	 */
-    String RESEARCH_TWIT_JBUTTON_TITLE = "research";
+	public static String RESEARCH_TWIT_JBUTTON_TITLE = "research";
 
 	/**
 	 * Clé pour le label pour le chemin de l'avatar
 	 */
-    String VIEW_AVATAR = "avatar";
+	public static String VIEW_AVATAR = "avatar";
 	
 	/**
 	 * Clé pour le label de changement de mot de passe
 	 */
-    String VIEW_CHANGE_PWD = "changepwd";
+	public static String VIEW_CHANGE_PWD = "changepwd";
 	
 	/**
 	 * Clé pour le label du bouton de déconnexion d'un utilisateur
 	 */
-    String DECONNECTION_TO_ACCOUNT = "deconnexionUserTag";
+	public static String DECONNECTION_TO_ACCOUNT = "deconnexionUserTag";
 	
 	/**
 	 * Clé pour le label du bouton de connexion d'un utilisateur
 	 */
-    String CONNECTION_TO_ACCOUNT = "connexionUserTag";
+	public static String CONNECTION_TO_ACCOUNT = "connexionUserTag";
 
-	/**
-	 * Clé pour le user tag
-	 */
-    String USER_TAG_FIL = "UserTag : ";
 	
 	/**
 	 * Clé pour le bouton Accueil
 	 */
-    String USER_HOME = "home";
+	public static String USER_HOME = "home";
 	
 	/**
 	 * Clé pour le bouton mon account
 	 */
-    String USER_ACCOUNT = "moncompte";
+	public static String USER_ACCOUNT = "moncompte";
 	
 	/**
 	 * Clé pour la modification du account
 	 */
-    String USER_MODIFICATION = "modification";
+	public static String USER_MODIFICATION = "modification";
 
 	/**
 	 * Clé pour la liste des users
 	 */
-    String USER_LIST_USERS = "listeuser";
+	public static String USER_LIST_USERS = "listeuser";
 	
 	/**
 	 * Clé pour voir le profil des utilisateurs
 	 */
-    String USER_SEE_OTHER_USER = "seeuser";
+	public static String USER_SEE_OTHER_USER = "seeuser";
 
     /**
      * Clé pour changer le chemin de son avatar
      */
-	String CHANGE_PATH_AVATAR = "changepathavataruser";
+	public static String CHANGE_PATH_AVATAR = "changepathavataruser";
 	
 	/**
 	 * Valeur par défaut pour les images
 	 */
-	String AVATARDEFAULT = "/resources/images/logoIUP_50.jpg";
+	public static String AVATARDEFAULT = "/resources/images/logoIUP_50.jpg";
 }
