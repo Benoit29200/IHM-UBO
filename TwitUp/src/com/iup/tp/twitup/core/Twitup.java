@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.core;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.controller.MainViewController;
@@ -112,7 +113,7 @@ public class Twitup {
 	protected void initUser(){
 
 		for(int i =0 ; i < 50 ; i++) {
-			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, "C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"));
+			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, Constants.AVATARDEFAULT));
 		}
 	}
 
