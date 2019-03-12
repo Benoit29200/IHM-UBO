@@ -67,12 +67,8 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 	public void updateUser(User u){
 		this.connexion.setText(u.getUserTag());
-		if(StringUtils.isNotBlank(this.userConnected.getAvatarPath())) {
-			this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
-		}
-		else {
-			this.avatar = new ImagePanel(new File("C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"), new Dimension(80,80));
-		}
+		this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
+
 		revalidate();
 		repaint();
 	}
@@ -89,13 +85,7 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 		this.connexion = new JLabel(this.userConnected.getUserTag());
 
-		if(StringUtils.isNotBlank(this.userConnected.getAvatarPath())) {
-			this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
-		}
-		else {
-			this.avatar = new ImagePanel(new File("C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"), new Dimension(80,80));
-		}
-
+		this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
 
 		this.addInto(panelUtilisateur,this.avatar,0,0,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelUtilisateur,this.connexion,0,1,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.BOTH,5,5,0,5,0,0);
