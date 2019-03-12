@@ -21,7 +21,7 @@ public class ConnexionUser extends Account implements IObservableLogin {
 	private JButton creationcompteJButton;
 	private JButton connexionUser;
 
-	private Dimension screenSize;
+	private Dimension screenOfTheSize;
 
 	private JLabel loginLabel;
 	private JTextField login;
@@ -58,7 +58,7 @@ public class ConnexionUser extends Account implements IObservableLogin {
 		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
 		this.connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
 
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		this.screenOfTheSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
 		this.loginLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
 		this.login = new JTextField();
@@ -111,10 +111,10 @@ public class ConnexionUser extends Account implements IObservableLogin {
 	 * Permet de gérer la configuration de la taille des components et de la couleur du message
 	 */
 	private void setSizeComponent() {
-		this.login.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.password.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.loginLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
-		this.passwordLabel.setPreferredSize(new Dimension(screenSize.width/5, screenSize.height/22));
+		this.login.setPreferredSize(new Dimension(screenOfTheSize.width/5, screenOfTheSize.height/22));
+		this.password.setPreferredSize(new Dimension(screenOfTheSize.width/5, screenOfTheSize.height/22));
+		this.loginLabel.setPreferredSize(new Dimension(screenOfTheSize.width/5, screenOfTheSize.height/22));
+		this.passwordLabel.setPreferredSize(new Dimension(screenOfTheSize.width/5, screenOfTheSize.height/22));
 		this.errorMessage.setForeground(Color.RED);
 	}
 
