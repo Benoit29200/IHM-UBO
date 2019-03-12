@@ -3,17 +3,17 @@ package com.iup.tp.twitup.controller;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObserverCreateTwitViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
-import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.listTwit.IObserverTwitupFilTwit;
 import com.iup.tp.twitup.ihm.twit.ListTwit;
 
 import java.util.List;
 
-public class TwitupFilTwitController implements IObserverTwitupFilTwit, IObserverCreateTwitViewTwit, IObserverResearchViewTwit {
+public class ListTwitController implements IObserverTwitupFilTwit, IObserverCreateTwitViewTwit, IObserverResearchViewTwit {
 
     private CreateViewTwitController parent;
     private ListTwit vue;
 
-    public TwitupFilTwitController(CreateViewTwitController parent) {
+    public ListTwitController(CreateViewTwitController parent) {
         this.parent = parent;
     }
 

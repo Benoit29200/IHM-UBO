@@ -8,13 +8,13 @@ import com.iup.tp.twitup.communicationInterface.betweenController.createTwitView
 import com.iup.tp.twitup.ihm.twit.CreateTwitForm;
 import org.apache.commons.lang3.StringUtils;
 
-public class CreateTwitController implements IObserverCreateTwit, IObservableCreateTwitViewTwit {
+public class CreateTwitFormController implements IObserverCreateTwit, IObservableCreateTwitViewTwit {
 
     private CreateViewTwitController parent;
     private CreateTwitForm vue;
     private IObserverCreateTwitViewTwit viewTwit;
 
-    public CreateTwitController(CreateViewTwitController parent) {
+    public CreateTwitFormController(CreateViewTwitController parent) {
         this.parent = parent;
     }
 

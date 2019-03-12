@@ -1,4 +1,4 @@
-package com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit;
+package com.iup.tp.twitup.communicationInterface.vueController.listTwit;
 
 public interface IObservableTwitupFilTwit {
 

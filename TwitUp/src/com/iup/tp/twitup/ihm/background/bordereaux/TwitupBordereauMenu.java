@@ -3,11 +3,8 @@ package com.iup.tp.twitup.ihm.background.bordereaux;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,9 +14,9 @@ import javax.swing.JPanel;
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereauMenu.IObservableBordereauMenu;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereauMenu.IObserverBordereauMenu;
-import com.iup.tp.twitup.ihm.background.Background;
+import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
-public class TwitupBordereauMenu extends Background implements IObservableBordereauMenu {
+public class TwitupBordereauMenu extends BackgroundMother implements IObservableBordereauMenu {
 
 	/**
 	 *

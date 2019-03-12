@@ -7,10 +7,10 @@ import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
 public class CreateViewTwitController implements IObserverCreateViewTwit {
 
     private CreateViewTwit vue;
-    private FondController parent;
+    private BackgroundController parent;
     private IDatabase database;
 
-    public CreateViewTwitController(FondController parent, IDatabase database) {
+    public CreateViewTwitController(BackgroundController parent, IDatabase database) {
         this.parent = parent;
         this.database = database;
     }

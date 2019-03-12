@@ -1,4 +1,4 @@
-package com.iup.tp.twitup.communicationInterface.vueController.twitupResearch;
+package com.iup.tp.twitup.communicationInterface.vueController.researchTwit;
 
 
 public interface IObserverTwitupResearch {

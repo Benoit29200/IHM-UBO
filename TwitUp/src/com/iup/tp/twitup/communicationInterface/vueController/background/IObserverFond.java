@@ -1,4 +1,4 @@
-package com.iup.tp.twitup.communicationInterface.vueController.fond;
+package com.iup.tp.twitup.communicationInterface.vueController.background;
 
 
 public interface IObserverFond {

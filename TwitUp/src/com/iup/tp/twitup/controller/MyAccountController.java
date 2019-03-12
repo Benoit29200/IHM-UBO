@@ -3,8 +3,8 @@ package com.iup.tp.twitup.controller;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObservableMyAccountBordereau;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObservableMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,11 +13,11 @@ import java.util.UUID;
 public class MyAccountController implements IObserverMyAccount, IObservableMyAccountBordereau {
 
     private ConsultAccount vue;
-    private FondController parent;
+    private BackgroundController parent;
     private IDatabase database;
     private IObserverMyAccountBordereau observer;
 
-    public MyAccountController(FondController parent, IDatabase database) {
+    public MyAccountController(BackgroundController parent, IDatabase database) {
         this.parent = parent;
         this.database = database;
     }

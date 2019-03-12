@@ -9,10 +9,10 @@ import java.util.List;
 public class CreateViewUserController implements IObserverCreateViewUser {
 
 
-    private FondController parent;
+    private BackgroundController parent;
     private TwitupCreateViewUserFil vue;
 
-    public CreateViewUserController(FondController parent) {
+    public CreateViewUserController(BackgroundController parent) {
         this.parent = parent;
     }
 
@@ -20,7 +20,7 @@ public class CreateViewUserController implements IObserverCreateViewUser {
         this.vue = vue;
     }
 
-    public FondController getParent() {
+    public BackgroundController getParent() {
         return parent;
     }
 

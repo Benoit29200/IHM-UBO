@@ -8,9 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.ihm.background.Background;
+import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
-public class BoutonsDeconnexion extends Background {
+public class BoutonsDeconnexion extends BackgroundMother {
 
 
 	public BoutonsDeconnexion() {

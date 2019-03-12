@@ -6,10 +6,10 @@ import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
 
 public class ConsultAccountUserController implements IObserverConsultAccountUser {
 
-    private FondController parent;
+    private BackgroundController parent;
     private ConsultAnUserAccount vue;
 
-    public ConsultAccountUserController(FondController parent) {
+    public ConsultAccountUserController(BackgroundController parent) {
         this.parent = parent;
     }
 

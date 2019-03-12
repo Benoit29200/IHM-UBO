@@ -6,15 +6,10 @@ import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IOb
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
-import javax.swing.JPanel;
+import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
-import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObservableCreateViewUser;
-import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
-import com.iup.tp.twitup.ihm.background.Background;
-
-public class TwitupCreateViewUserFil extends Background implements IObservableCreateViewUser  {
+public class TwitupCreateViewUserFil extends BackgroundMother implements IObservableCreateViewUser  {
 
 	private IObserverCreateViewUser observer;
 	

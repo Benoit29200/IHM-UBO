@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObservableBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
-import com.iup.tp.twitup.ihm.background.Background;
+import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
-public class TwitupBordereau extends Background implements IObservableBordereau {
+public class TwitupBordereau extends BackgroundMother implements IObservableBordereau {
 
 
 	private IObserverBordereau observer;

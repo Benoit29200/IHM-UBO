@@ -6,9 +6,9 @@ import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
 public class BordereauMenuController implements IObserverBordereauMenu {
 
     private TwitupBordereauMenu vue;
-    private FondController parent;
+    private BackgroundController parent;
 
-    public BordereauMenuController(FondController parent) {
+    public BordereauMenuController(BackgroundController parent) {
         this.parent = parent;
     }
 

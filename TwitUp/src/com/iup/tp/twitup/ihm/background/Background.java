@@ -1,21 +1,80 @@
 package com.iup.tp.twitup.ihm.background;
 
-import com.iup.tp.twitup.common.Constants;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import javax.swing.JPanel;
 
-public class Background extends JPanel {
+import com.iup.tp.twitup.communicationInterface.vueController.background.IObservableFond;
+import com.iup.tp.twitup.communicationInterface.vueController.background.IObserverFond;
+import com.iup.tp.twitup.ihm.account.ConsultAccount;
+import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
+import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
+import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
+import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
+import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
 
-    protected ResourceBundle fileLanguage;
+/**
+ * Permet d'avoir une page background toujours affiché
+ * @author gaetan
+ *
+ */
+public class Background extends JPanel implements IObservableFond {
+	
 
-    public Background() {
-        this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
-    }
 
-    protected void addInto(JPanel panel, JComponent componentToAdd, int gridX, int gridY, int gridWidth, int gridHeight, int weightX, int weightY, int constraint, int constraint1, int top, int left, int bottom, int right, int ipadX, int ipadY){
-        panel.add(componentToAdd, new GridBagConstraints(gridX,gridY,gridWidth,gridHeight,weightX,weightY,constraint,constraint1, new Insets(top,left,bottom,right),ipadX,ipadY ));
-    }
+	private IObserverFond observer;
+
+	public Background(IObserverFond observer) {
+		this.setLayout(new GridBagLayout());
+		this.addObserver(observer);
+	}
+
+
+	public void chargeTwitupBordereauMenu(TwitupBordereauMenu twitupBordereauMenu){
+		this.add(twitupBordereauMenu,new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.WEST,
+				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeTwitupBordereau(TwitupBordereau twitupBordereau){
+		this.add(twitupBordereau,new GridBagConstraints(2, 0, 1, 1, 0, 1, GridBagConstraints.EAST,
+				GridBagConstraints.VERTICAL, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+
+	public void chargeTwitupCreateViewTwit(CreateViewTwit createViewTwit){
+		this.add(createViewTwit,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeTwitupMyAccount(ConsultAccount ConsultAccount){
+		this.add(ConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeListUser(TwitupCreateViewUserFil twitupCreateViewUserFil){
+		this.add(twitupCreateViewUserFil,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeUserAccount(ConsultAnUserAccount consultAnUserAccount){
+		this.add(consultAnUserAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	@Override
+	public void addObserver(IObserverFond o) {
+		this.observer = o;
+	}
+
+	@Override
+	public void deleteObserver() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyEventApp(String nom, String login, String mdp) {
+
+	}
 }
