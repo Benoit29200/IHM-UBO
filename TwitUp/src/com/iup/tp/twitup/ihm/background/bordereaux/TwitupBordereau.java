@@ -54,7 +54,11 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 	public void updateUser(User u){
 		this.connexion.setText(u.getUserTag());
-		this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+		try {
+			this.avatar = new JLabel(new ImageIcon(this.userConnected.getAvatarPath()));
+		}catch(Exception e) {
+			this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+		}
 		revalidate();
 		repaint();
 	}
@@ -71,7 +75,12 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 		this.connexion = new JLabel(this.userConnected.getUserTag());
 		
-		this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+		try {
+			this.avatar = new JLabel(new ImageIcon(this.userConnected.getAvatarPath()));
+		}catch(Exception e) {
+			this.avatar = new JLabel(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())));
+		}
+
 
 		this.addInto(panelUtilisateur,this.avatar,0,0,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelUtilisateur,this.connexion,0,1,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.BOTH,5,5,0,5,0,0);

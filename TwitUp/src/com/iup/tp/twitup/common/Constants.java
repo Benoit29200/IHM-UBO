@@ -234,4 +234,9 @@ public interface Constants {
 	 * Clé pour voir le profil des utilisateurs
 	 */
     String USER_SEE_OTHER_USER = "seeuser";
+
+    /**
+     * Clé pour changer le chemin de son avatar
+     */
+	String CHANGE_PATH_AVATAR = "changepathavataruser";
 }
