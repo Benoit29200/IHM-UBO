@@ -1,16 +1,31 @@
 package com.iup.tp.twitup.ihm.account;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.UUID;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObservableMyAccount;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
 import com.iup.tp.twitup.datamodel.User;
-
-import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.UUID;
 
 public class ConsultAccount extends Account implements IObservableMyAccount {
 
@@ -35,6 +50,7 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 	private User userConnected;
 
 	private JButton updateMyAccount;
+	private JButton changeAvatar;
 
 	private JLabel error;
 
@@ -44,6 +60,7 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 		this.addObserver(observer);
 		this.initComponent();
 		this.addAction();
+		this.addActiononChangeAvatarButtonPressed();
 		this.setBorder(BorderFactory.createTitledBorder(null, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setPanelAccount());
@@ -58,11 +75,14 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 		this.pseudo = new JTextField(this.userConnected.getUserTag());
 		this.avatarPathLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_AVATAR).toString());
 		this.avatarPath = new JTextField(this.userConnected.getAvatarPath());
+		this.avatarPath.setEditable(false);
 		this.changePwdLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CHANGE_PWD).toString());
 		this.changePwd = new JPasswordField();
 		this.updateMyAccount = new JButton(this.fileLanguage.getObject(Constants.USER_MODIFICATION).toString());
 		this.error = new JLabel("");
 		this.error.setForeground(Color.RED);
+		this.changeAvatar = new JButton(this.fileLanguage.getObject(Constants.CHANGE_PATH_AVATAR).toString());
+		
 	}
 
 	public void setMessage(String err){
@@ -92,9 +112,10 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 		this.pseudoLabel.setPreferredSize(tailleComponent);
 		this.avatarPathLabel.setPreferredSize(tailleComponent);
 		this.changePwdLabel.setPreferredSize(tailleComponent);
-
+		
 		this.addInto(panelLabelUserAccount,nomLabel,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelLabelUserAccount,pseudoLabel,0,1,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
+		
 		this.addInto(panelLabelUserAccount,avatarPathLabel,0,2,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelLabelUserAccount,changePwdLabel,0,3,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelLabelUserAccount,error,0,4,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
@@ -112,10 +133,15 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 		this.pseudo.setPreferredSize(tailleComponent);
 		this.avatarPath.setPreferredSize(tailleComponent);
 		this.changePwd.setPreferredSize(tailleComponent);
+		
+		JPanel ajoutAvatar = new JPanel(new GridBagLayout());
+		this.addInto(ajoutAvatar, this.avatarPath, 0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 5, 5, 0, 5, 0, 0);
+		this.addInto(ajoutAvatar, this.changeAvatar, 1, 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 0, 5, 0, 0);
+		ajoutAvatar.setPreferredSize(tailleComponent);
 
 		this.addInto(panelTextFieldUserAccount,nom,0,0,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelTextFieldUserAccount,pseudo,0,1,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
-		this.addInto(panelTextFieldUserAccount,avatarPath,0,2,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
+		this.addInto(panelTextFieldUserAccount,ajoutAvatar,0,2,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,5,0,0);
 		this.addInto(panelTextFieldUserAccount,changePwd,0,3,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.addInto(panelTextFieldUserAccount,updateMyAccount,0,4,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE,5,5,0,3,0,0);
 
@@ -127,6 +153,26 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				notifyUpdateMyAccount(userConnected.getUuid(),nom.getText(),pseudo.getText(),avatarPath.getText(),changePwd.getText());
+			}
+		});
+	}
+	
+	private void addActiononChangeAvatarButtonPressed() {
+		this.changeAvatar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				FileFilter imageFilter = new FileNameExtensionFilter(
+					    "Image files", ImageIO.getReaderFileSuffixes());
+				fc.addChoosableFileFilter(imageFilter);
+				fc.setAcceptAllFileFilterUsed(false);
+                int result = fc.showOpenDialog(null);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    avatarPath.setText(file.getPath());
+                    repaint();
+                    revalidate();
+                }
 			}
 		});
 	}
