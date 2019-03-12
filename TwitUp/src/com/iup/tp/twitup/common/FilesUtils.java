@@ -31,7 +31,6 @@ public class FilesUtils {
 		if (isOk) {
 			sourceFile.delete();
 		}
-
 		return isOk;
 	}
 

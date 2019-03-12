@@ -40,6 +40,7 @@ public class AccountCreationController implements IObserverAccountCreation {
         }else{
             User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),"");
             parent.getDatabase().addUser(u);
+            parent.getEntityManager().sendUser(u);
             parent.getDatabase().setUserConnected(u);
             parent.chargeFond();
         }

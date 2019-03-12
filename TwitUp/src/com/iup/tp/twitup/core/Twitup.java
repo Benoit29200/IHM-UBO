@@ -168,7 +168,7 @@ public class Twitup {
 		LOGER.debug("-- Initialisation de l'interface graphique");
 		try{
 			this.mMainView = new TwitupMainView();
-			MainViewController mainViewController = new MainViewController(this.mDatabase, this.mMainView);
+			MainViewController mainViewController = new MainViewController(this.mDatabase, this.mMainView, this.mEntityManager);
 			this.mMainView.addObserver(mainViewController);
 			LOGER.success("Succès");
 		} catch (Exception e){

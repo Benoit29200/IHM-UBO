@@ -23,6 +23,10 @@ public class CreateViewTwitController implements IObserverCreateViewTwit {
         return database;
     }
 
+    public BackgroundController getParent() {
+        return parent;
+    }
+
     @Override
     public void eventChargeCreateViewTwit() {
 

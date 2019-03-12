@@ -17,6 +17,9 @@ public class TwitupLauncher {
 	public static void main(String[] args) {
 		Twitup twitup = new Twitup();
 		twitup.show();
+
+		Twitup twitup1 = new Twitup();
+		twitup1.show();
 	}
 
 }

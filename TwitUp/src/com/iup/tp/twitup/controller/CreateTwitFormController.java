@@ -47,6 +47,7 @@ public class CreateTwitFormController implements IObserverCreateTwit, IObservabl
                 User userConnected = this.parent.getDatabase().getUserConnected();
                 Twit twit = new Twit(userConnected,twitText);
                 this.parent.getDatabase().addTwit(twit);
+                this.parent.getParent().getParent().getEntityManager().sendTwit(twit);
                 this.notifyAddTwit();
             }
     }

@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
+import com.iup.tp.twitup.core.EntityManager;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
@@ -25,10 +26,12 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     protected IDatabase database;
     protected TwitupMainView vue;
+    protected EntityManager entityManager;
 
-    public MainViewController(IDatabase database, TwitupMainView vue) {
+    public MainViewController(IDatabase database, TwitupMainView vue, EntityManager entityManager) {
         this.database = database;
         this.vue = vue;
+        this.entityManager = entityManager;
         this.chargeConnexionComponent();
         this.chargeMenu();
     }
@@ -70,6 +73,10 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     public IDatabase getDatabase() {
         return database;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     private void chargeMenu(){
