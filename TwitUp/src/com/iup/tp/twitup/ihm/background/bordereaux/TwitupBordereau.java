@@ -1,15 +1,27 @@
 package com.iup.tp.twitup.ihm.background.bordereaux;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObservableBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.ihm.ImagePanel;
 import com.iup.tp.twitup.ihm.background.BackgroundMother;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class TwitupBordereau extends BackgroundMother implements IObservableBordereau {
 
@@ -18,7 +30,7 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 	private JLabel connexion;
 	private User userConnected;
-	private JLabel avatar;
+	private ImagePanel avatar;
 	
 	public TwitupBordereau(IObserverBordereau observer, User userConnected) {
 		super();
@@ -55,10 +67,11 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 	public void updateUser(User u){
 		this.connexion.setText(u.getUserTag());
-		try {
-			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(this.userConnected.getAvatarPath()),80,80));
-		}catch(Exception e) {
-			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())),80,80));
+		if(StringUtils.isNotBlank(this.userConnected.getAvatarPath())) {
+			this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
+		}
+		else {
+			this.avatar = new ImagePanel(new File("C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"), new Dimension(80,80));
 		}
 		revalidate();
 		repaint();
@@ -76,10 +89,11 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 
 		this.connexion = new JLabel(this.userConnected.getUserTag());
 
-		try {
-			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(this.userConnected.getAvatarPath()),80,80));
-		}catch(Exception e) {
-			this.avatar = new JLabel(ImageHelper.getImageResize(new ImageIcon(getClass().getResource(this.userConnected.getAvatarPath())),80,80));
+		if(StringUtils.isNotBlank(this.userConnected.getAvatarPath())) {
+			this.avatar = new ImagePanel(new File(this.userConnected.getAvatarPath()), new Dimension(80,80));
+		}
+		else {
+			this.avatar = new ImagePanel(new File("C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"), new Dimension(80,80));
 		}
 
 

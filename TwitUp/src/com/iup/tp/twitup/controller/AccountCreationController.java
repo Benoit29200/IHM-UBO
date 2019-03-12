@@ -30,15 +30,15 @@ public class AccountCreationController implements IObserverAccountCreation {
     }
 
     @Override
-    public void eventEventAccountCreation(IObservableAccountCreation o, String nom, String login, String mdp, String confirm) {
-        if(StringUtils.isBlank(nom) || StringUtils.isBlank(login) || StringUtils.isBlank(mdp) || StringUtils.isBlank(confirm)){
+    public void eventEventAccountCreation(IObservableAccountCreation o, String nom, String login, String mdp, String confirm, String avatarPath) {
+        if(StringUtils.isBlank(nom) || StringUtils.isBlank(login) || StringUtils.isBlank(mdp) || StringUtils.isBlank(confirm) || StringUtils.isBlank(avatarPath)){
             this.vue.setErrorMessage("Tous les champs sont obligatoires");
         }else if(!mdp.equals(confirm)) {
             this.vue.setErrorMessage("Les mots de passe ne correspondent pas");
         }else if(parent.getDatabase().findTagUser(login)){
             this.vue.setErrorMessage("Le login est déja utilisé");
         }else{
-            User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),"");
+            User u = new User(UUID.randomUUID(), login, mdp,nom ,new HashSet<String>(),avatarPath);
             parent.getDatabase().addUser(u);
             parent.getEntityManager().sendUser(u);
             parent.getDatabase().setUserConnected(u);

@@ -4,16 +4,22 @@ import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class CreationCompte extends Account implements IObservableAccountCreation {
 
 
 	private JButton creationcompteJButton;
+	private JButton changeAvatarPath;
 
 
 	private IObserverAccountCreation observer;
@@ -23,11 +29,13 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 	private JLabel pseudoLabel;
 	private JLabel passwordLabel;
 	private JLabel confirmPasswordLabel;
+	private JLabel avatarPathLabel;
 
 	private JTextField nom;
 	private JTextField pseudo;
 	private JPasswordField password;
 	private JPasswordField confirmPassword;
+	private JTextField avatarPath;
 
 
 	public CreationCompte(IObserverAccountCreation observer){
@@ -44,6 +52,7 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 		this.setActionAccountCreation();
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(true);
+		this.addActiononChangeAvatarButtonPressed();
 		this.addInto(this, panelCreation,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.dimensionComponent();
 		
@@ -51,11 +60,13 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 
 	private void initComponent(){
 		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
+		this.changeAvatarPath = new JButton(this.fileLanguage.getObject(Constants.CHANGE_PATH_AVATAR).toString());
 		this.errorMessage = new JLabel("");
 		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
 		this.pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());
 		this.passwordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_MDP).toString());
 		this.confirmPasswordLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_CMDP).toString());
+		this.avatarPathLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_AVATAR).toString());
 
 		this.errorMessage = new JLabel("");
 		this.errorMessage.setForeground(Color.RED);
@@ -64,6 +75,8 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 		this.pseudo = new JTextField();
 		this.password = new JPasswordField();
 		this.confirmPassword = new JPasswordField();
+		this.avatarPath = new JTextField();
+		this.avatarPath.setEditable(false);
 	}
 
 	public void setErrorMessage(String error) {
@@ -81,6 +94,28 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 		this.pseudo.setPreferredSize(componentDimension);
 		this.password.setPreferredSize(componentDimension);
 		this.confirmPassword.setPreferredSize(componentDimension);
+		this.avatarPathLabel.setPreferredSize(componentDimension);
+		this.avatarPath.setPreferredSize(componentDimension);
+	}
+	
+	private void addActiononChangeAvatarButtonPressed() {
+		this.changeAvatarPath.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				FileFilter imageFilter = new FileNameExtensionFilter(
+					    "Image files", ImageIO.getReaderFileSuffixes());
+				fc.addChoosableFileFilter(imageFilter);
+				fc.setAcceptAllFileFilterUsed(false);
+                int result = fc.showOpenDialog(null);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    avatarPath.setText(file.getPath());
+                    repaint();
+                    revalidate();
+                }
+			}
+		});
 	}
 
 	/**
@@ -89,8 +124,15 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 	 */
 	private void initAccountManager(JPanel create) {
 		
-		JPanel panelJLabels = this.initJComponentDansJPanelComponent(this.nomLabel,this.pseudoLabel,this.passwordLabel,this.confirmPasswordLabel);
-		JPanel panelJTextField = this.initJComponentDansJPanelComponent(this.nom,this.pseudo,this.password,this.confirmPassword);
+		Dimension tailleComponent = new Dimension(screenSize.width/5, screenSize.height/22);
+		
+		JPanel ajoutAvatar = new JPanel(new GridBagLayout());
+		this.addInto(ajoutAvatar, this.avatarPath, 0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 5, 5, 0, 5, 0, 0);
+		this.addInto(ajoutAvatar, this.changeAvatarPath, 1, 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 0, 5, 0, 0);
+		ajoutAvatar.setPreferredSize(tailleComponent);
+		
+		JPanel panelJLabels = this.initJComponentDansJPanelComponent(this.nomLabel,this.pseudoLabel,this.passwordLabel,this.confirmPasswordLabel,this.avatarPathLabel);
+		JPanel panelJTextField = this.initJComponentDansJPanelComponent(this.nom,this.pseudo,this.password,this.confirmPassword,ajoutAvatar);
 
 		this.addInto(create,panelJLabels, 0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,5,5,0,0);
 		this.addInto(create, panelJTextField, 1,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
@@ -106,7 +148,7 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 	 * @param component4
 	 * @return
 	 */
-	private JPanel initJComponentDansJPanelComponent(JComponent component1, JComponent component2, JComponent component3,JComponent component4
+	private JPanel initJComponentDansJPanelComponent(JComponent component1, JComponent component2, JComponent component3,JComponent component4, JComponent component5
 			) {
 		JPanel panelConstruit = new JPanel(new GridBagLayout());
 
@@ -114,6 +156,7 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 		this.addInto(panelConstruit, component2,0,1,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.addInto(panelConstruit, component3,0,2,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.addInto(panelConstruit, component4, 0,3, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
+		this.addInto(panelConstruit,component5, 0, 4, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
 		
 		return panelConstruit;
 	}
@@ -125,7 +168,7 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 		this.creationcompteJButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				notifyEventAccountCreation(nom.getText(),pseudo.getText(),password.getText(), confirmPassword.getText());
+				notifyEventAccountCreation(nom.getText(),pseudo.getText(),password.getText(), confirmPassword.getText(), avatarPath.getText());
 			}
 		});
 	}
@@ -146,7 +189,7 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 	}
 
 	@Override
-	public void notifyEventAccountCreation(String nom, String login, String mdp, String confirm) {
-		this.observer.eventEventAccountCreation(this, nom, login, mdp, confirm);
+	public void notifyEventAccountCreation(String nom, String login, String mdp, String confirm, String avatarPath) {
+		this.observer.eventEventAccountCreation(this, nom, login, mdp, confirm,avatarPath);
 	}
 }
