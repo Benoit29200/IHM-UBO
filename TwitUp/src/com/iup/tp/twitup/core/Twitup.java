@@ -10,6 +10,7 @@ import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.io.File;
@@ -122,9 +123,17 @@ public class Twitup {
 	protected void initLookAndFeel() {
 		LOGER.debug("-- Initialisation des styles de l'application");
 		try{
-			UIManager.setLookAndFeel(this.mLookAndFeel);
-			LOGER.success("Succès");
+			if(StringUtils.isNotBlank(this.mLookAndFeel)){
+				UIManager.setLookAndFeel(this.mLookAndFeel);
+				LOGER.success("Succès");
+			}else{
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				LOGER.err("Erreur à l'application du thème");
+				LOGER.debug("Le look & feel par défaut a été sélectionné");
+			}
+
 		} catch (Exception e){
+
 			LOGER.err("Erreur à l'application du thème");
 		}
 	}

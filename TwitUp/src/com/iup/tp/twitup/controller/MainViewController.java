@@ -6,10 +6,7 @@ import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
 import com.iup.tp.twitup.ihm.TwitupMainView;
-import com.iup.tp.twitup.ihm.account.ConnexionUser;
-import com.iup.tp.twitup.ihm.account.ConsultAccount;
-import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
-import com.iup.tp.twitup.ihm.account.CreationCompte;
+import com.iup.tp.twitup.ihm.account.*;
 import com.iup.tp.twitup.ihm.background.Background;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
@@ -187,6 +184,24 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
         this.chargeListUser(backgroundController, background);
+    }
+
+    public void chargeFondWithListTwitUser(String userTag){
+        this.chargeMenuWithDeconnexion();
+        BackgroundController backgroundController = new BackgroundController(this);
+        Background background = new Background(backgroundController);
+        backgroundController.setVue(background);
+        this.vue.chargeFond(background);
+        this.chargeBordereauMenu(backgroundController, background);
+        this.chargeBordereau(backgroundController, background);
+        this.chargeListTwitUser(backgroundController,background,userTag);
+    }
+
+    private void chargeListTwitUser(BackgroundController backgroundController, Background background, String userTag){
+        ListTwitUserController listTwitUserController = new ListTwitUserController(backgroundController);
+        ListTwitUser listTwitUser = new ListTwitUser(listTwitUserController,this.getDatabase().getTwitsByUser(userTag));
+        listTwitUserController.setVue(listTwitUser);
+        background.chargeListTwitUser(listTwitUser);
     }
 
     private MyAccountController chargeMyAccount(BackgroundController backgroundController, Background background){

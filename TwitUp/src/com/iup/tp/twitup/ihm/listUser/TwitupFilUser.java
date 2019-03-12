@@ -56,7 +56,7 @@ public class TwitupFilUser extends ListUser implements IObservableListUser {
 			}
 		});
 
-		this.addInto(infoUser,avatar,0,0,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.NONE, 5,5,0,5,0,0);
+		this.addInto(infoUser,avatar,0,0,1,1,1,1,GridBagConstraints.WEST,GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.addInto(infoUser,userTag,1,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
 		this.addInto(infoUser,profilUser,2,0,1,1,1,1,GridBagConstraints.EAST, GridBagConstraints.NONE,5,5,0,5,0,0);
 

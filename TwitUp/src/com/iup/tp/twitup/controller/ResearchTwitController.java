@@ -37,7 +37,7 @@ public class ResearchTwitController implements IObserverTwitupResearch, IObserva
             observer.searchByTag(research.substring(1));
         }
         else {
-            observer.majTwits();
+            observer.searchByTagAndUser(research);
         }
     }
 

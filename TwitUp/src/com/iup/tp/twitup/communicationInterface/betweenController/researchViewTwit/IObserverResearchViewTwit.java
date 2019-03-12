@@ -7,5 +7,6 @@ public interface IObserverResearchViewTwit {
 
     void searchTwitByUser(String user);
     void searchByTag(String tag);
+    void searchByTagAndUser(String chaine);
 
 }

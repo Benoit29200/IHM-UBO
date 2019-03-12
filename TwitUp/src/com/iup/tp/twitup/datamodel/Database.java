@@ -220,6 +220,8 @@ public class Database implements IDatabase {
 		return taggedTwits;
 	}
 
+
+
 	/**
 	 * @{inheritDoc
 	 */
@@ -378,6 +380,15 @@ public class Database implements IDatabase {
 			}
 		}
 		return twitsUser;
+	}
+
+	@Override
+	public List<Twit> getTwitsByTagOrUserTag(String tag) {
+		List<Twit> twitsByUser = this.getTwitsByUser(tag);
+		List<Twit> twitsByTag = this.getTwitsByTag(tag);
+
+		twitsByUser.addAll(twitsByTag);
+		return twitsByUser;
 	}
 
 	@Override

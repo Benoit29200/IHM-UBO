@@ -22,4 +22,9 @@ public class BordereauController implements IObserverBordereau, IObserverMyAccou
     public void updateAccount() {
         this.vue.updateUser(this.parent.getParent().database.getUserConnected());
     }
+
+    @Override
+    public void consultListTwitUser(String userTag) {
+        this.parent.getParent().chargeFondWithListTwitUser(userTag);
+    }
 }

@@ -2,6 +2,9 @@ package com.iup.tp.twitup.ihm.account;
 
 import com.iup.tp.twitup.communicationInterface.vueController.listTwit.IObservableTwitupFilTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.listTwit.IObserverTwitupFilTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.listTwitUser.IObservableListTwitUser;
+import com.iup.tp.twitup.communicationInterface.vueController.listTwitUser.IObserverListTwitUser;
+import com.iup.tp.twitup.communicationInterface.vueController.listUser.IObserverListUser;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.twit.DisplayTwit;
@@ -12,37 +15,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ListTwitUser extends Account implements IObservableTwitupFilTwit {
+public class ListTwitUser extends Account implements IObservableListTwitUser {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-    private IObserverTwitupFilTwit observer;
 
-    JPanel scrollTwit;
-    User theUser;
+    private JPanel scrollTwit;
+
+    private IObserverListTwitUser observer;
 
 
-    public ListTwitUser(IObserverTwitupFilTwit observer, User user) {
+    public ListTwitUser(IObserverListTwitUser observer, List<Twit> twits) {
         super();
-        this.theUser = user;
         this.setLayout(new GridBagLayout());
-        this.observer = observer;
+        this.addObserver(observer);
         this.scrollTwit = new JPanel(new GridBagLayout());
         this.setPreferredSize(new Dimension(this.screenSize.width / 2, this.screenSize.height / 7));
         scrollTwit.setMinimumSize(new Dimension(1000, 1000));
         scrollTwit.setBackground(new Color(240, 248, 255));
 
         JScrollPane scroll = new JScrollPane(scrollTwit, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        this.viewTwitSearch(this.observer.getTwit());
         this.addInto(this,scroll,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,0,5,0,0);
-
+        this.viewTwitSearch(twits);
     }
 
 
-    public void viewTwitSearch(List<Twit> twits) {
+    private void viewTwitSearch(List<Twit> twits) {
 
 
         List<Twit> twitList = new ArrayList<>();
@@ -63,12 +63,12 @@ public class ListTwitUser extends Account implements IObservableTwitupFilTwit {
     }
 
     @Override
-    public void addObserver(IObserverTwitupFilTwit o) {
-        this.observer = o;
+    public void deleteObserver() {
+        this.observer = null;
     }
 
     @Override
-    public void deleteObserver() {
-        this.observer = null;
+    public void addObserver(IObserverListTwitUser o) {
+        this.observer = o;
     }
 }

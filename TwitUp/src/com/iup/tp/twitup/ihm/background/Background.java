@@ -4,6 +4,7 @@ import com.iup.tp.twitup.communicationInterface.vueController.background.IObserv
 import com.iup.tp.twitup.communicationInterface.vueController.background.IObserverFond;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
+import com.iup.tp.twitup.ihm.account.ListTwitUser;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
 import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
@@ -57,6 +58,11 @@ public class Background extends JPanel implements IObservableFond {
 
 	public void chargeUserAccount(ConsultAnUserAccount consultAnUserAccount){
 		this.add(consultAnUserAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+	}
+
+	public void chargeListTwitUser(ListTwitUser listTwitUser){
+		this.add(listTwitUser,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 

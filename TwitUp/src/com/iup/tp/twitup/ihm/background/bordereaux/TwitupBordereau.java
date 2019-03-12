@@ -7,6 +7,8 @@ import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TwitupBordereau extends BackgroundMother implements IObservableBordereau {
 
@@ -84,6 +86,12 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		int i = 0;
 		for(String follower : this.userConnected.getFollows()) {
 			JButton comp = new JButton(follower);
+			comp.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					notifyConsultListTwitUser(follower);
+				}
+			});
 
 			this.addInto(follow,comp,0,i,1,1,1,1,GridBagConstraints.NORTH, GridBagConstraints.NONE, 5,5,0,5,0,0);
 			i++;
@@ -102,5 +110,10 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 	@Override
 	public void deleteObserver() {
 		this.observer = null;
+	}
+
+	@Override
+	public void notifyConsultListTwitUser(String userTag) {
+		this.observer.consultListTwitUser(userTag);
 	}
 }

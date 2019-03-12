@@ -117,6 +117,15 @@ public interface IDatabase {
 	 */
 	List<Twit> getTwitsWithTag(String tag);
 
+
+	/**
+	 * Retourne tous les Twits présents en base ayant le tag ou le twiter donné
+	 *
+	 * @param tag
+	 *            , tag à rechercher.
+	 */
+	List<Twit> getTwitsByTagOrUserTag(String tag);
+
 	/**
 	 * Retourne tous les Twits présents en base ayant le tag utilisateur donné
 	 * 

@@ -43,4 +43,10 @@ public class ListTwitController implements IObserverTwitupFilTwit, IObserverCrea
         List<Twit> twitsWithTag = this.parent.getDatabase().getTwitsWithTag(tag);
         this.vue.viewTwitSearch(twitsWithTag);
     }
+
+    @Override
+    public void searchByTagAndUser(String chaine) {
+        List<Twit> twits = this.parent.getDatabase().getTwitsByTagOrUserTag(chaine);
+        this.vue.viewTwitSearch(twits);
+    }
 }

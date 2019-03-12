@@ -6,4 +6,6 @@ public interface IObservableBordereau {
 
     void deleteObserver();
 
+    void notifyConsultListTwitUser(String userTag);
+
 }
