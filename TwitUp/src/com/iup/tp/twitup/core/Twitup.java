@@ -112,7 +112,7 @@ public class Twitup {
 	protected void initUser(){
 
 		for(int i =0 ; i < 50 ; i++) {
-			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, "/resources/images/logoIUP_20.jpg"));
+			this.mDatabase.addUser(new User(new UUID(i,i), "userTag", "userPassword", "name", null, "C:/Users/gaeta/Documents/GitHub/IHM-UBO/TwitUp/src/resources/images/logoIUP_50.jpg"));
 		}
 	}
 
