@@ -1,9 +1,9 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.communicationInterface.vueController.login.IObservableLogin;
 import com.iup.tp.twitup.communicationInterface.vueController.login.IObserverLogin;
-import com.iup.tp.twitup.common.LOGER;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.account.ConnexionUser;
 
 public class LoginController implements IObserverLogin {

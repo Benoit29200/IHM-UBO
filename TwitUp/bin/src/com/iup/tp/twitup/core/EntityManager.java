@@ -1,22 +1,18 @@
 package com.iup.tp.twitup.core;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
 import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.converter.XmlbeanDatamodelConverter;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.jaxb.JaxbReader;
 import com.iup.tp.twitup.datamodel.jaxb.JaxbWriter;
 import com.iup.tp.twitup.datamodel.jaxb.bean.twit.TwitXml;
 import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
 import com.iup.tp.twitup.events.file.IWatchableDirectoryObserver;
+
+import java.io.File;
+import java.util.*;
 
 /**
  * Classe de gestion de la mise à jour de la base de données et de génération
@@ -186,7 +182,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 		}
 
 		//
-		// Récupération des Twit.
+		// Récupération des TwitMother.
 		Set<File> twitFiles = this.getTwitFiles(modifiedFiles);
 
 		// Récupération et parcours de la liste des twits modifiés
@@ -221,7 +217,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Extraction du fichier pour récupérer le Twit correspondant. <br/>
+	 * Extraction du fichier pour récupérer le TwitMother correspondant. <br/>
 	 * <i>Retourne <code>null</code> si un problème est rencontré</i>.
 	 * 
 	 * @param twitFile
@@ -306,7 +302,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Retourne la liste des fichiers de type 'Twit' parmis la liste des
+	 * Retourne la liste des fichiers de type 'TwitMother' parmis la liste des
 	 * fichiers donnés.
 	 * 
 	 * @param allFiles

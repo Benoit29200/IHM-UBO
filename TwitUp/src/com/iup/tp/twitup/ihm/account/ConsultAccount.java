@@ -1,21 +1,16 @@
 package com.iup.tp.twitup.ihm.account;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.UUID;
+import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObservableMyAccount;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
+import com.iup.tp.twitup.datamodel.User;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-
-import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObservableMyAccount;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.UUID;
 
 public class ConsultAccount extends Account implements IObservableMyAccount {
 

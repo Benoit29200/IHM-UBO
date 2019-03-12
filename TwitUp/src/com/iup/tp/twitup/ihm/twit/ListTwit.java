@@ -1,18 +1,14 @@
 package com.iup.tp.twitup.ihm.twit;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.util.*;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-
-import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.communicationInterface.vueController.listTwit.IObservableTwitupFilTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.listTwit.IObserverTwitupFilTwit;
+import com.iup.tp.twitup.datamodel.Twit;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ListTwit extends TwitMother implements IObservableTwitupFilTwit {
 

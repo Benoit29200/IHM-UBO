@@ -1,16 +1,12 @@
 package com.iup.tp.twitup.ihm.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-
-import javax.swing.ImageIcon;
-
-import javax.swing.JOptionPane;
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObservableMenuInformation;
 import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObserverMenuInformation;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuInformation extends Menu implements IObservableMenuInformation {
 

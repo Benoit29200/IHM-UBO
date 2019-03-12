@@ -1,20 +1,22 @@
 package com.iup.tp.twitup.core;
 
-import java.io.File;
-import java.util.*;
-
 import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.common.PropertiesManager;
 import com.iup.tp.twitup.controller.MainViewController;
 import com.iup.tp.twitup.datamodel.Database;
-import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
 import com.iup.tp.twitup.ihm.TwitupMainView;
 import com.iup.tp.twitup.ihm.TwitupMock;
+
 import javax.swing.*;
+import java.io.File;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**
  * Classe principale l'application.

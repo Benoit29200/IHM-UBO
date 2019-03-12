@@ -1,10 +1,10 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.Twit;
-import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObservableCreateTwitViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.createTwitViewTwit.IObserverCreateTwitViewTwit;
+import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
+import com.iup.tp.twitup.datamodel.Twit;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.twit.CreateTwitForm;
 import org.apache.commons.lang3.StringUtils;
 

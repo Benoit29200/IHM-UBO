@@ -1,12 +1,12 @@
 package com.iup.tp.twitup.ihm;
 
-import javax.swing.*;
-
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObservableMainView;
 import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.ihm.account.ConnexionUser;
 import com.iup.tp.twitup.ihm.account.CreationCompte;
-import com.iup.tp.twitup.ihm.background.TwitupFond;
+import com.iup.tp.twitup.ihm.background.Background;
+
+import javax.swing.*;
 
 /**
  * Classe de la vue principale de l'application.
@@ -37,8 +37,8 @@ public class TwitupMainView extends JFrame implements IObservableMainView {
 		this.refresh();
 	}
 
-	public void chargeFond(TwitupFond twitupFond){
-		setContentPane(twitupFond);
+	public void chargeFond(Background background){
+		setContentPane(background);
 		this.refresh();
 	}
 

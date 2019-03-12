@@ -1,26 +1,22 @@
 package com.iup.tp.twitup.controller;
 
+import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
-import com.iup.tp.twitup.communicationInterface.vueController.mainView.IObserverMainView;
 import com.iup.tp.twitup.ihm.TwitupMainView;
-import com.iup.tp.twitup.ihm.menu.TwitupMenu;
 import com.iup.tp.twitup.ihm.account.ConnexionUser;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
 import com.iup.tp.twitup.ihm.account.CreationCompte;
+import com.iup.tp.twitup.ihm.background.Background;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
-import com.iup.tp.twitup.ihm.background.Background;
-import com.iup.tp.twitup.ihm.menu.MenuConnexionCreation;
-import com.iup.tp.twitup.ihm.menu.MenuDeconnexion;
-import com.iup.tp.twitup.ihm.menu.MenuFichier;
-import com.iup.tp.twitup.ihm.menu.MenuInformation;
 import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.listUser.TwitupFilUser;
 import com.iup.tp.twitup.ihm.listUser.TwitupResearchUser;
+import com.iup.tp.twitup.ihm.menu.*;
 import com.iup.tp.twitup.ihm.twit.CreateTwitForm;
 import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
 import com.iup.tp.twitup.ihm.twit.ListTwit;
@@ -190,7 +186,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
-        chargeListUser(backgroundController, background);
+        this.chargeListUser(backgroundController, background);
     }
 
     private MyAccountController chargeMyAccount(BackgroundController backgroundController, Background background){

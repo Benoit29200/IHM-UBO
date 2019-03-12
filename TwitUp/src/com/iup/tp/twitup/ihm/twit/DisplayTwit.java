@@ -1,19 +1,12 @@
 package com.iup.tp.twitup.ihm.twit;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.util.Date;
+import com.iup.tp.twitup.datamodel.Twit;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.border.Border;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
-import com.iup.tp.twitup.datamodel.Twit;
+import java.awt.*;
+import java.util.Date;
 
 public class DisplayTwit extends TwitMother {
 

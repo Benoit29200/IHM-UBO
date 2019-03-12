@@ -1,25 +1,18 @@
 package com.iup.tp.twitup.ihm;
 
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import com.iup.tp.twitup.core.EntityManager;
+import com.iup.tp.twitup.datamodel.Twit;
+import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.UUID;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
-import com.iup.tp.twitup.core.EntityManager;
-import com.iup.tp.twitup.datamodel.database.IDatabase;
-import com.iup.tp.twitup.datamodel.Twit;
-import com.iup.tp.twitup.datamodel.User;
 
 public class TwitupMock {
 
@@ -99,7 +92,7 @@ public class TwitupMock {
 			}
 		});
 
-		Button addTwitButton = new Button("Add Twit");
+		Button addTwitButton = new Button("Add TwitMother");
 		addTwitButton.setPreferredSize(new Dimension(100, 50));
 		addTwitButton.addActionListener(new ActionListener() {
 
@@ -124,7 +117,7 @@ public class TwitupMock {
 			}
 		});
 
-		Button sendTwitButton = new Button("Send Twit");
+		Button sendTwitButton = new Button("Send TwitMother");
 		sendTwitButton.setPreferredSize(new Dimension(100, 50));
 		sendTwitButton.addActionListener(new ActionListener() {
 
@@ -222,7 +215,7 @@ public class TwitupMock {
 		User randomUser = new ArrayList<User>(this.mDatabase.getUsers()).get(Math.max(0, userIndex - 1));
 
 		// Création d'un twit fictif
-		Twit newTwit = new Twit(randomUser, "Twit fictif!! #Mock #test ;)");
+		Twit newTwit = new Twit(randomUser, "TwitMother fictif!! #Mock #test ;)");
 
 		return newTwit;
 	}

@@ -1,11 +1,5 @@
 package com.iup.tp.twitup.ihm.background;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.JPanel;
-
 import com.iup.tp.twitup.communicationInterface.vueController.background.IObservableFond;
 import com.iup.tp.twitup.communicationInterface.vueController.background.IObserverFond;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
@@ -14,6 +8,9 @@ import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereauMenu;
 import com.iup.tp.twitup.ihm.listUser.TwitupCreateViewUserFil;
 import com.iup.tp.twitup.ihm.twit.CreateViewTwit;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Permet d'avoir une page background toujours affiché

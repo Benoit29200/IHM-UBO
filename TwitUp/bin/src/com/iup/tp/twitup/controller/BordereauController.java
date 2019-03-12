@@ -1,15 +1,15 @@
 package com.iup.tp.twitup.controller;
 
+import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 
 public class BordereauController implements IObserverBordereau, IObserverMyAccountBordereau {
 
     private TwitupBordereau vue;
-    private FondController parent;
+    private BackgroundController parent;
 
-    public BordereauController(FondController parent) {
+    public BordereauController(BackgroundController parent) {
         this.parent = parent;
     }
 

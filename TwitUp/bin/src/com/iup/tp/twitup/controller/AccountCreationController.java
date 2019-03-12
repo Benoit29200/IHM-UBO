@@ -1,9 +1,9 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObservableAccountCreation;
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
-import com.iup.tp.twitup.common.LOGER;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.account.CreationCompte;
 import org.apache.commons.lang3.StringUtils;
 

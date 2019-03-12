@@ -3,13 +3,7 @@ package com.iup.tp.twitup.ihm.twit;
 import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObservableCreateViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.createViewTwit.IObserverCreateViewTwit;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.JPanel;
+import java.awt.*;
 
 public class CreateViewTwit extends TwitMother implements IObservableCreateViewTwit {
 

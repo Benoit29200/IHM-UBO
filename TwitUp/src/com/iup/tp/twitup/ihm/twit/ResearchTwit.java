@@ -1,17 +1,14 @@
 package com.iup.tp.twitup.ihm.twit;
 
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.researchTwit.IObservableTwitupResearch;
 import com.iup.tp.twitup.communicationInterface.vueController.researchTwit.IObserverTwitupResearch;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import com.iup.tp.twitup.common.Constants;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 public class ResearchTwit extends TwitMother implements IObservableTwitupResearch {
 
 

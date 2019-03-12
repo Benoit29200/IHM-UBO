@@ -1,14 +1,10 @@
 package com.iup.tp.twitup.ihm.background.ajoutBoutonsBordereau;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.ihm.background.BackgroundMother;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class BoutonsConnexionCreation extends BackgroundMother {
 

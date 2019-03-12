@@ -1,20 +1,16 @@
 package com.iup.tp.twitup.ihm.listUser;
 
+import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
+import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
-
-import com.iup.tp.twitup.common.Constants;
-import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
-import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
 
 public class TwitupResearchUser extends ListUser implements IObservableResearchUser {
 

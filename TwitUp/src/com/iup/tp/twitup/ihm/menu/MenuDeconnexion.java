@@ -1,15 +1,12 @@
 package com.iup.tp.twitup.ihm.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-
-
+import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuDeconnexion.IObservableMenuDeconnexion;
 import com.iup.tp.twitup.communicationInterface.vueController.menuDeconnexion.IObserverMenuDeconnexion;
 
-import com.iup.tp.twitup.common.Constants;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuDeconnexion extends Menu implements IObservableMenuDeconnexion {
 

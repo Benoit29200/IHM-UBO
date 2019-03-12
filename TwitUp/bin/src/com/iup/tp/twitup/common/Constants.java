@@ -14,7 +14,7 @@ public interface Constants {
     String USER_FILE_EXTENSION = "usr";
 
 	/**
-	 * Extension des fichiers XML des Twit
+	 * Extension des fichiers XML des TwitMother
 	 */
     String TWIT_FILE_EXTENSION = "twt";
 

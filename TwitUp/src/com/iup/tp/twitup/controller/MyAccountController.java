@@ -1,14 +1,15 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.datamodel.database.IDatabase;
-import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
 import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObservableMyAccountBordereau;
 import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObserverMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
+import com.iup.tp.twitup.datamodel.User;
+import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.UUID;
+
 
 public class MyAccountController implements IObserverMyAccount, IObservableMyAccountBordereau {
 

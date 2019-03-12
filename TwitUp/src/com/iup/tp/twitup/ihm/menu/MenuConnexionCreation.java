@@ -1,11 +1,11 @@
 package com.iup.tp.twitup.ihm.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuConnexionCreation.IObservableMenuConnexionCreation;
 import com.iup.tp.twitup.communicationInterface.vueController.menuConnexionCreation.IObserverMenuConnexionCreation;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuConnexionCreation extends Menu implements IObservableMenuConnexionCreation {
 

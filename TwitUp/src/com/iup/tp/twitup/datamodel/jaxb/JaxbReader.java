@@ -1,13 +1,12 @@
 package com.iup.tp.twitup.datamodel.jaxb;
 
-import java.io.FileReader;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.jaxb.bean.twit.TwitXml;
 import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import java.io.FileReader;
 
 /**
  * Classe de lecture des fichiers XML.

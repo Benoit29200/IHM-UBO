@@ -1,12 +1,10 @@
 package com.iup.tp.twitup.datamodel;
 
+import com.iup.tp.twitup.common.Constants;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import javax.naming.ldap.HasControls;
-
-import com.iup.tp.twitup.common.Constants;
 
 /**
  * Classe du modèle représentant un twit.

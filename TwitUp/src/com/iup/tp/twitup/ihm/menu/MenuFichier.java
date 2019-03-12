@@ -1,17 +1,12 @@
 package com.iup.tp.twitup.ihm.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-
-import javax.swing.JOptionPane;
-
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObservableMenuFichier;
 import com.iup.tp.twitup.communicationInterface.vueController.menuFichier.IObserverMenuFichier;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuFichier extends Menu implements IObservableMenuFichier {
 

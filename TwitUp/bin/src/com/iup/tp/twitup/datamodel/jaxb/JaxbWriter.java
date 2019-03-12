@@ -1,14 +1,13 @@
 package com.iup.tp.twitup.datamodel.jaxb;
 
-import java.io.File;
-import java.io.FileWriter;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
 import com.iup.tp.twitup.common.FilesUtils;
 import com.iup.tp.twitup.datamodel.jaxb.bean.twit.TwitXml;
 import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.io.File;
+import java.io.FileWriter;
 
 /**
  * Classe de génération des fichiers XML.

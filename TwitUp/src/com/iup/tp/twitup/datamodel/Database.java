@@ -1,10 +1,10 @@
 package com.iup.tp.twitup.datamodel;
 
-import java.util.*;
-
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
+
+import java.util.*;
 
 /**
  * Classe représentant les donénes chargées dans l'application.
