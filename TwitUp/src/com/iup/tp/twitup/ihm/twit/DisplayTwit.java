@@ -15,14 +15,9 @@ import javax.swing.border.TitledBorder;
 
 import com.iup.tp.twitup.datamodel.Twit;
 
-public class DisplayTwit extends JPanel {
+public class DisplayTwit extends TwitMother {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	Dimension screenSize;
+
 	
 	JTextArea textTwit;
 	JLabel userTwiter;
@@ -30,15 +25,12 @@ public class DisplayTwit extends JPanel {
 	public DisplayTwit(Twit monTwit) {
 		this.initComponent();
 		this.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/6));
-		Border compound = null;
-		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
+		this.setBorder(BorderFactory.createTitledBorder(null, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setNewTwit(monTwit));
 	}
 
 	private void initComponent(){
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 		this.textTwit = new JTextArea();
 		this.userTwiter = new JLabel();
 	}

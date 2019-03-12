@@ -23,15 +23,10 @@ import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IO
 import com.iup.tp.twitup.communicationInterface.vueController.accountCreation.IObserverAccountCreation;
 
 public class CreationCompte extends Account implements IObservableAccountCreation {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 
 	private JButton creationcompteJButton;
-	
-	private Dimension screenSize;
+
 
 	private IObserverAccountCreation observer;
 
@@ -68,7 +63,6 @@ public class CreationCompte extends Account implements IObservableAccountCreatio
 
 	private void initComponent(){
 		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.errorMessage = new JLabel("");
 		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
 		this.pseudoLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_PSEUDO).toString());

@@ -39,7 +39,7 @@ public class XmlbeanDatamodelConverter {
 	 * <i>NB, La map doit au moins contenir l'utilisateur inconnu</i>
 	 * 
 	 * @param twitToConvert
-	 *            , Twit à convertir.
+	 *            , TwitMother à convertir.
 	 * @param userMap
 	 *            , Map contenant les utilisateurs enregistrés en fonction de
 	 *            leur UUID.

@@ -130,7 +130,7 @@ public class Twit {
 	}
 
 	/**
-	 * @return l'identifiant du Twit.
+	 * @return l'identifiant du TwitMother.
 	 */
 	public UUID getUuid() {
 		return mUuid;
@@ -180,7 +180,7 @@ public class Twit {
 	public String getUserTag(){ return mTwiter.getUserTag();}
 
 	/**
-	 * Indique si le Twit possède le tag donné.
+	 * Indique si le TwitMother possède le tag donné.
 	 * 
 	 * @param aTag , tag à rechercher.
 	 */
@@ -189,7 +189,7 @@ public class Twit {
 	}
 
 	/**
-	 * Indique si le Twit possède le tag utilisateur donné.
+	 * Indique si le TwitMother possède le tag utilisateur donné.
 	 * 
 	 * @param anUserTag , tag utilisateur à rechercher.
 	 */

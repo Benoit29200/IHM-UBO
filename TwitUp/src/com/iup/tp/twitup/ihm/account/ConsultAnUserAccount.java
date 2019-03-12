@@ -22,11 +22,7 @@ import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser
 import com.iup.tp.twitup.datamodel.User;
 
 public class ConsultAnUserAccount extends Account implements IObservableConsultAccountUser {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 
 	Dimension tailleComponent;
 
@@ -86,7 +82,6 @@ public class ConsultAnUserAccount extends Account implements IObservableConsultA
 	}
 
 	private void initComponent(){
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.tailleComponent = new Dimension(screenSize.width/6, screenSize.height/15);
 
 		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());

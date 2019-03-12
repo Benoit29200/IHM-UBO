@@ -24,7 +24,7 @@ public class Database implements IDatabase {
 	protected User mUserConnected;
 
 	/**
-	 * Liste des Twit enregistrés.
+	 * Liste des TwitMother enregistrés.
 	 */
 	protected final List<Twit> mTwits;
 

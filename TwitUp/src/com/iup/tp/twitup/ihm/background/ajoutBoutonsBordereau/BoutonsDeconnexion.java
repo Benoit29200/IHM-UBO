@@ -3,19 +3,15 @@ package com.iup.tp.twitup.ihm.background.ajoutBoutonsBordereau;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.ihm.background.Background;
 
-public class BoutonsDeconnexion extends JPanel {
+public class BoutonsDeconnexion extends Background {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	public BoutonsDeconnexion() {
 		this.add(getButtonDeconnexion());
@@ -27,8 +23,9 @@ public class BoutonsDeconnexion extends JPanel {
 		monJPanel.setLayout(new GridBagLayout());
 		monJPanel.setBackground(Color.white);
 		JButton connexion = new JButton(Constants.DECONNEXION);
-		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+
+		this.addInto(monJPanel,connexion,0,0,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.BOTH,5,5,0,5,0,0);
+
 		return monJPanel;
 	}
 }

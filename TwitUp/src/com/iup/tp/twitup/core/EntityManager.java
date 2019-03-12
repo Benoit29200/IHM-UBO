@@ -186,7 +186,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 		}
 
 		//
-		// Récupération des Twit.
+		// Récupération des TwitMother.
 		Set<File> twitFiles = this.getTwitFiles(modifiedFiles);
 
 		// Récupération et parcours de la liste des twits modifiés
@@ -221,7 +221,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Extraction du fichier pour récupérer le Twit correspondant. <br/>
+	 * Extraction du fichier pour récupérer le TwitMother correspondant. <br/>
 	 * <i>Retourne <code>null</code> si un problème est rencontré</i>.
 	 * 
 	 * @param twitFile
@@ -306,7 +306,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Retourne la liste des fichiers de type 'Twit' parmis la liste des
+	 * Retourne la liste des fichiers de type 'TwitMother' parmis la liste des
 	 * fichiers donnés.
 	 * 
 	 * @param allFiles

@@ -3,26 +3,18 @@ package com.iup.tp.twitup.ihm.background.ajoutBoutonsBordereau;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.ihm.background.Background;
 
-public class BoutonsConnexionCreation extends JPanel {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private ResourceBundle fileLanguage;
+public class BoutonsConnexionCreation extends Background {
+
 
 	public BoutonsConnexionCreation() {
-		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
+		super();
 		this.add(getButtonsCreationConnexion());
 		this.setBackground(Color.white);
 	}
@@ -33,10 +25,8 @@ public class BoutonsConnexionCreation extends JPanel {
 		monJPanel.setBackground(Color.white);
 		JButton connexion = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
 		JButton creation = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
-		monJPanel.add(connexion, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		monJPanel.add(creation, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.NORTH,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.addInto(monJPanel,connexion,0,0,1,1,1,1,GridBagConstraints.NORTH, GridBagConstraints.BOTH,5,5,0,5,0,0);
+		this.addInto(monJPanel,creation,0,1,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.BOTH,5,5,0,5,0,0);
 		return monJPanel;
 	}
 

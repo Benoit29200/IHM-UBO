@@ -1,11 +1,6 @@
 package com.iup.tp.twitup.ihm.listUser;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -21,17 +16,10 @@ import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObservableResearchUser;
 import com.iup.tp.twitup.communicationInterface.vueController.researchUser.IObserverResearchUser;
 
-public class TwitupResearchUser extends JPanel implements IObservableResearchUser {
+public class TwitupResearchUser extends ListUser implements IObservableResearchUser {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private IObserverResearchUser observerVue;
-
-	private Dimension screenSize;
-	
-	private ResourceBundle fileLanguage;
 
 	private JTextField researchTextField;
 	private JButton researchButton;
@@ -41,46 +29,25 @@ public class TwitupResearchUser extends JPanel implements IObservableResearchUse
 		this.initComponent();
 		this.addActionResearchTextField();
 		this.addObserver(observerVue);
-		Border compound = null;
 
-		this.setBorder(BorderFactory.createTitledBorder(compound, "", TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
+		this.setBorder(BorderFactory.createTitledBorder(null, "", TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setLayout(new GridBagLayout());
 		this.addObserver(observerVue);
 		this.setBackground(Color.WHITE);
 
 		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
-		this.add(researchTextField, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		this.add(this.researchButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+
+		this.addInto(this,researchTextField,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH,5,5,0,5,0,0);
+		this.addInto(this,this.researchButton,0,1,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE,5,5,0,5,0,0);
 	}
 
 	private void initComponent(){
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-
 		this.setPreferredSize(new Dimension(this.screenSize.width/2,this.screenSize.height/2));
-
-
-		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 		this.researchTextField = new JTextField();
 		this.researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
 	}
 
-	/**
-	 * Permet de créer le JPanel de recherche de twit
-	 * @return
-	 */
-	private JPanel setNewResearchBar() {
-		JPanel panelResearchTwit = new JPanel();
-		panelResearchTwit.setLayout(new GridBagLayout());
-		this.researchTextField.setPreferredSize(new Dimension(screenSize.width/3, screenSize.height/15));
-		panelResearchTwit.add(researchTextField, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		panelResearchTwit.add(this.researchButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
-		return panelResearchTwit;
-	}
 
 	private void addActionResearchTextField(){
 		this.researchTextField.addKeyListener(new KeyAdapter() {

@@ -99,7 +99,7 @@ public class TwitupMock {
 			}
 		});
 
-		Button addTwitButton = new Button("Add Twit");
+		Button addTwitButton = new Button("Add TwitMother");
 		addTwitButton.setPreferredSize(new Dimension(100, 50));
 		addTwitButton.addActionListener(new ActionListener() {
 
@@ -124,7 +124,7 @@ public class TwitupMock {
 			}
 		});
 
-		Button sendTwitButton = new Button("Send Twit");
+		Button sendTwitButton = new Button("Send TwitMother");
 		sendTwitButton.setPreferredSize(new Dimension(100, 50));
 		sendTwitButton.addActionListener(new ActionListener() {
 
@@ -222,7 +222,7 @@ public class TwitupMock {
 		User randomUser = new ArrayList<User>(this.mDatabase.getUsers()).get(Math.max(0, userIndex - 1));
 
 		// Création d'un twit fictif
-		Twit newTwit = new Twit(randomUser, "Twit fictif!! #Mock #test ;)");
+		Twit newTwit = new Twit(randomUser, "TwitMother fictif!! #Mock #test ;)");
 
 		return newTwit;
 	}

@@ -20,7 +20,6 @@ import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserve
 public class ConsultAccount extends Account implements IObservableMyAccount {
 
 
-	private Dimension screenSize;
 	private Dimension tailleComponent;
 
 
@@ -57,7 +56,6 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 
 	private void initComponent(){
 		this.userConnected = this.observer.getUserConnected();
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.tailleComponent = new Dimension(screenSize.width/3, screenSize.height/20);
 		this.nomLabel = new JLabel(this.fileLanguage.getObject(Constants.VIEW_NOM).toString());
 		this.nom = new JTextField(this.userConnected.getName());

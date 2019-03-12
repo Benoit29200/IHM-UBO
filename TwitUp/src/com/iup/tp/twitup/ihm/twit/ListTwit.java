@@ -15,14 +15,9 @@ import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObservableTwitupFilTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.twitupFilTwit.IObserverTwitupFilTwit;
 
-public class ListTwit extends JPanel implements IObservableTwitupFilTwit {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ListTwit extends TwitMother implements IObservableTwitupFilTwit {
+
 	private IObserverTwitupFilTwit observer;
-	protected Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	JPanel scrollTwit;
 
 
@@ -37,9 +32,7 @@ public class ListTwit extends JPanel implements IObservableTwitupFilTwit {
 		JScrollPane scroll = new JScrollPane(scrollTwit, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,  ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		this.viewTwitSearch(this.observer.getTwit());
-		
-		this.add(scroll, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.addInto(this,scroll,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH,5,5,0,5,0,0);
 	}
 
 
@@ -56,8 +49,7 @@ public class ListTwit extends JPanel implements IObservableTwitupFilTwit {
 		int iterator = 0;
 		for(Twit myTwit: twitList) {
 			DisplayTwit displayTwit = new DisplayTwit(myTwit);
-			this.scrollTwit.add(displayTwit, new GridBagConstraints(0, iterator, 1, 1, 1, 1, GridBagConstraints.NORTH,
-					GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+			this.addInto(this.scrollTwit,displayTwit,0,iterator,1,1,1,1,GridBagConstraints.NORTH,GridBagConstraints.NONE,5,5,0,5,0,0);
 			iterator++;
 		}
 		this.scrollTwit.revalidate();

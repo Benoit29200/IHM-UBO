@@ -15,17 +15,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.iup.tp.twitup.common.Constants;
-public class ResearchTwit extends JPanel implements IObservableTwitupResearch {
+public class ResearchTwit extends TwitMother implements IObservableTwitupResearch {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private IObserverTwitupResearch observer;
-
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	
-	private ResourceBundle fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
 
 	JTextField researchTextField = new JTextField();
 	JButton researchButton = new JButton(this.fileLanguage.getObject(Constants.RESEARCH_TWIT_JBUTTON_TITLE).toString());
@@ -33,9 +26,7 @@ public class ResearchTwit extends JPanel implements IObservableTwitupResearch {
 	public ResearchTwit(IObserverTwitupResearch observer) {
 		this.addActionResearchTextField();
 		this.observer = observer;
-		Border compound = null;
-
-		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
+		this.setBorder(BorderFactory.createTitledBorder(null, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		this.add(setNewResearchBar());
 	}

@@ -19,20 +19,13 @@ import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObservableCreateTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
 
-public class CreateTwitForm extends JPanel implements IObservableCreateTwit {
+public class CreateTwitForm extends TwitMother implements IObservableCreateTwit {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private IObserverCreateTwit observer;
-	
-	private ResourceBundle fileLanguage;
-
 
 	private JButton creationTwit;
 
-	private Dimension screenSize;
 	private JTextArea textTwit;
 	private JLabel nbCaracteres;
 
@@ -44,26 +37,19 @@ public class CreateTwitForm extends JPanel implements IObservableCreateTwit {
 	public CreateTwitForm(IObserverCreateTwit observer) {
 		this.initComponent();
 		this.addObserver(observer);
-		Border compound = null;
-		this.setBorder(BorderFactory.createTitledBorder(compound, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
+		this.setBorder(BorderFactory.createTitledBorder(null, "",TitledBorder.CENTER, TitledBorder.BELOW_BOTTOM));
 		this.setBackground(Color.WHITE);
 		
 		configurationTextTwit();
 		
 		this.setLayout(new GridBagLayout());
-		this.add(textTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		
+		this.addInto(this,textTwit,0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE,5,5,0,5,0,0);
 		addButtonCreateTwit();
 		this.addAction();
 	}
 
 	private void initComponent(){
-		this.fileLanguage = ResourceBundle.getBundle(Constants.MENU, Locale.getDefault());
-
 		this.creationTwit = new JButton(this.fileLanguage.getObject(Constants.CREATION_TWIT).toString());
-
-		this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		this.textTwit = new JTextArea(3,50);
 		this.nbCaracteres = new JLabel("Nombre de caractères: 0");
 		revalidate();
@@ -87,8 +73,7 @@ public class CreateTwitForm extends JPanel implements IObservableCreateTwit {
 		buttonCreateTwit.add(nbCaracteres);
 		buttonCreateTwit.add(creationTwit);
 		buttonCreateTwit.setBackground(Color.white);
-		this.add(buttonCreateTwit,new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.SOUTH,
-				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
+		this.addInto(this, buttonCreateTwit,0,0,1,1,1,1,GridBagConstraints.SOUTH, GridBagConstraints.NONE,5,5,0,5,0,0);
 	}
 
 	/**

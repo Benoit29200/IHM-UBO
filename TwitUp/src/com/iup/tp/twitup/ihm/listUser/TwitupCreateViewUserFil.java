@@ -12,13 +12,10 @@ import javax.swing.JPanel;
 
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObservableCreateViewUser;
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
+import com.iup.tp.twitup.ihm.background.Background;
 
-public class TwitupCreateViewUserFil extends JPanel implements IObservableCreateViewUser  {
+public class TwitupCreateViewUserFil extends Background implements IObservableCreateViewUser  {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private IObserverCreateViewUser observer;
 	
 	public TwitupCreateViewUserFil(IObserverCreateViewUser observer) {
@@ -39,14 +36,12 @@ public class TwitupCreateViewUserFil extends JPanel implements IObservableCreate
 
 	
 	public void addTwitupResearchUser(TwitupResearchUser twitupResearchUser){
-		this.add(twitupResearchUser, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.addInto(this,twitupResearchUser,0,0,1,1,0,0,GridBagConstraints.CENTER, GridBagConstraints.BOTH,5,5,0,5,0,0);
 		this.refresh();
 	}
 
 	public void addTwitupFilUser(TwitupFilUser twitupFilUser){
-		this.add(twitupFilUser, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER,
-				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
+		this.addInto(this,twitupFilUser,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH,5,5,0,5,0,0,0);
 		this.refresh();
 	}
 
