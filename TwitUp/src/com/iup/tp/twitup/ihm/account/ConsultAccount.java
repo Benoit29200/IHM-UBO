@@ -23,6 +23,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.helper.ImageHelper;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObservableMyAccount;
 import com.iup.tp.twitup.communicationInterface.vueController.myAccount.IObserverMyAccount;
 import com.iup.tp.twitup.datamodel.User;
@@ -189,6 +190,12 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 
 	@Override
 	public void notifyUpdateMyAccount(UUID id, String name, String pseudo, String avatarPath, String password) {
+		if(!this.observer.getUserConnected().getAvatarPath().equals(avatarPath)){
+			String resourcePath = getClass().getResource("/resources/images")+"/"+pseudo+".jpg";
+			resourcePath = resourcePath.substring(5);
+			ImageHelper.copier(new File(avatarPath), new File(resourcePath));
+			avatarPath = "/resources/images/"+pseudo+".jpg";
+		}
 		this.observer.updateMyAccount(id,name,pseudo,avatarPath,password);
 
 	}

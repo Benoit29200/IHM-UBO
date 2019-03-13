@@ -108,8 +108,6 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 			comp.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JButton source = (JButton)e.getSource();
-					source = new JButton(follower);
 					notifyConsultListTwitUser(follower);
 				}
 			});
@@ -128,8 +126,6 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 			if(bouton.getText().equals(userTag)){
 				bouton.setBackground(Color.BLUE);
 				bouton.setForeground(Color.white);
-				this.revalidate();
-				this.repaint();
 			}
 		}
 	}

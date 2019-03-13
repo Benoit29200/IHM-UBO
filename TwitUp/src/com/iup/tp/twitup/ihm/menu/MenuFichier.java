@@ -11,8 +11,7 @@ import java.awt.event.ActionListener;
 public class MenuFichier extends Menu implements IObservableMenuFichier {
 
 
-	
-	private JFileChooser fileChooser;
+
 
 	private IObserverMenuFichier observer;
 	
@@ -28,34 +27,6 @@ public class MenuFichier extends Menu implements IObservableMenuFichier {
 	 * @param fenetre
 	 */
 	private void setItemToFichierMenu(JFrame fenetre) {
-		
-		setFileChooser();
-		
-		setItemToMenu(this.fileLanguage.getObject(Constants.MENU_OUVRIR).toString(),this, null, new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                switch (fileChooser.showOpenDialog(fenetre))
-                {
-                    case JFileChooser.APPROVE_OPTION:
-
-                        JOptionPane.showMessageDialog(fenetre, "Vous avez choisi: \""+
-                                        fileChooser.getSelectedFile()+"\" comme dossier d'échange",
-                                "TwitUp",
-                                JOptionPane.OK_OPTION);
-                        break;
-
-                    case JFileChooser.CANCEL_OPTION:
-                        JOptionPane.showMessageDialog(fenetre, fileLanguage.getObject(Constants.CLE_ERREUR_DOSSIER_ECHANGE).toString(),
-                                "TwitUp",
-                                JOptionPane.OK_OPTION);
-                        break;
-                }
-            }
-        });
-
-        setItemToMenu(this.fileLanguage.getObject(Constants.MENU_ENREGISTRER_SOUS).toString(),this, null, null);
         setItemToMenu(this.fileLanguage.getObject(Constants.MENU_FERMER).toString(),this,"/resources/images/exitIcon_20.png", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,16 +34,6 @@ public class MenuFichier extends Menu implements IObservableMenuFichier {
             }
         });
 	}
-
-	/**
-	 *
-	 */
-	private void setFileChooser(){
-		this.fileChooser = new JFileChooser();
-		this.fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		this.fileChooser.setDialogTitle(this.fileLanguage.getObject(Constants.CLE_DOSSIER_ECHANGE).toString());
-	}
-
 
 	@Override
 	public void addObserver(IObserverMenuFichier o) {

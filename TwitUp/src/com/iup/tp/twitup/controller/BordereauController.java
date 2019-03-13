@@ -34,7 +34,6 @@ public class BordereauController implements IObserverBordereau, IObserverMyAccou
 
     @Override
     public void receiveNewTwit(Twit twit) {
-        LOGER.debug("J'ai reçu un twit");
         this.vue.notification(twit.getTwiter().getUserTag());
     }
 }

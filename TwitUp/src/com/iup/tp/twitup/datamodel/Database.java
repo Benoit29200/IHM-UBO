@@ -92,6 +92,7 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 	@Override
 	public void addTwit(Twit twitToAdd) {
 		// Ajout du twit
+		if(this.mTwits.contains(twitToAdd)) return;
 		this.mTwits.add(twitToAdd);
 		this.notifyFollower(twitToAdd);
 
