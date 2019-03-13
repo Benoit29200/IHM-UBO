@@ -145,7 +145,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
         Background background = new Background(backgroundController);
-        backgroundController.setVue(background);
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -156,7 +155,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
         Background background = new Background(backgroundController);
-        backgroundController.setVue(background);
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         BordereauController bordereauController = this.chargeBordereau(backgroundController, background);
@@ -168,7 +166,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
         Background background = new Background(backgroundController);
-        backgroundController.setVue(background);
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -186,7 +183,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
         Background background = new Background(backgroundController);
-        backgroundController.setVue(background);
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -197,7 +193,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
         Background background = new Background(backgroundController);
-        backgroundController.setVue(background);
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);

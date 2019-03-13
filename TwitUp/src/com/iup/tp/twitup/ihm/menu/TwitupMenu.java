@@ -12,14 +12,6 @@ public class TwitupMenu extends JMenuBar {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-    /**
-     * Constructeur de la classe
-     */
-	public TwitupMenu() {
-
-
-	}
-	
 
 	public void addMenuConnexion(MenuConnexionCreation menuConnexionCreation){
 		this.add(menuConnexionCreation);

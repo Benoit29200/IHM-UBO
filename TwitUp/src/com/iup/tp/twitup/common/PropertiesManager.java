@@ -27,14 +27,14 @@ public class PropertiesManager {
 				in = new FileInputStream(configurationFilePath);
 				properties.load(in);
 			} catch (Throwable t) {
-				System.out.println("Impossible de charger les configurations");
+				LOGER.err("Impossible de charger les configurations");
 				t.printStackTrace();
 			} finally {
 				if (in != null) {
 					try {
 						in.close();
 					} catch (IOException e) {
-						System.err.println("Erreur lors de la fermeture du flux sur le fichier de configuration");
+						LOGER.err("Erreur lors de la fermeture du flux sur le fichier de configuration");
 					}
 				}
 			}
@@ -58,14 +58,14 @@ public class PropertiesManager {
 				out = new FileOutputStream(configurationFilePath);
 				properties.store(out, "Configuration de l'application twItUP");
 			} catch (Throwable t) {
-				System.err.println("Impossible d'enregistrer les configurations");
+				LOGER.err("Impossible d'enregistrer les configurations");
 				t.printStackTrace();
 			} finally {
 				if (out != null) {
 					try {
 						out.close();
 					} catch (Throwable e) {
-						System.err.println("Erreur lors de la fermeture du flux sur le fichier de configuration");
+						LOGER.err("Erreur lors de la fermeture du flux sur le fichier de configuration");
 					}
 				}
 			}

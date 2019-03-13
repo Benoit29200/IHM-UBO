@@ -62,7 +62,7 @@ public class FilesUtils {
 
 			isOk = true;
 		} catch (Throwable t) {
-			System.err.println("Erreur lors de la copie du fichier '" + sourceFileName + "'");
+			LOGER.err("Erreur lors de la copie du fichier '" + sourceFileName + "'");
 			t.printStackTrace();
 		} finally {
 			// Fermeture des flux

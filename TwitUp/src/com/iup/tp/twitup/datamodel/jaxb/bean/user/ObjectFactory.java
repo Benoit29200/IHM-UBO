@@ -27,15 +27,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
 	private final static QName _User_QNAME = new QName("http://www.example.org/twit/", "User");
-
-	/**
-	 * Create a new ObjectFactory that can be used to create new instances of
-	 * schema derived classes for package: com.iup.tp.twitup.jaxb.bean.user
-	 * 
-	 */
-	public ObjectFactory() {
-	}
-
+	
 	/**
 	 * Create an instance of {@link UserXml }
 	 * 

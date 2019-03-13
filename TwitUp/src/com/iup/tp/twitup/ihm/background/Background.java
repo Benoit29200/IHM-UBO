@@ -76,8 +76,4 @@ public class Background extends JPanel implements IObservableFond {
 		this.observer = null;
 	}
 
-	@Override
-	public void notifyEventApp(String nom, String login, String mdp) {
-
-	}
 }

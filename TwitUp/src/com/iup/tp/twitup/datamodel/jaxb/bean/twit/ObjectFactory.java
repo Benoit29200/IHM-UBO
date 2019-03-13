@@ -28,13 +28,6 @@ public class ObjectFactory {
 
 	private final static QName _Twit_QNAME = new QName("http://www.example.org/twit/", "TwitMother");
 
-	/**
-	 * Create a new ObjectFactory that can be used to create new instances of
-	 * schema derived classes for package: com.iup.tp.twitup.jaxb.bean.twit
-	 * 
-	 */
-	public ObjectFactory() {
-	}
 
 	/**
 	 * Create an instance of {@link TwitXml }

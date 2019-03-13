@@ -3,5 +3,4 @@ package com.iup.tp.twitup.communicationInterface.betweenController.createViewTwi
 
 public interface IObserverCreateViewTwit {
 
-    void eventChargeCreateViewTwit();
 }

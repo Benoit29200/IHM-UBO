@@ -27,8 +27,4 @@ public class CreateViewTwitController implements IObserverCreateViewTwit {
         return parent;
     }
 
-    @Override
-    public void eventChargeCreateViewTwit() {
-
-    }
 }

@@ -37,8 +37,9 @@
   <!-- Define the SonarQube project properties -->
   <property name="sonar.projectKey" value="Twitup" />
   <property name="sonar.projectName" value="Twitup" />
-  <property name="sonar.projectVersion" value="1.0" />
+  <property name="sonar.projectVersion" value="1.3" />
   <property name="sonar.java.binaries" value="build" />
+  <property name="sonar.sources" value="src" />
 
   <!-- Define SonarQube Scanner for Ant Target -->
 

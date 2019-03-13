@@ -6,6 +6,4 @@ public interface IObservableFond {
 
     void deleteObserver();
 
-    void notifyEventApp(String nom, String login, String mdp);
-
 }

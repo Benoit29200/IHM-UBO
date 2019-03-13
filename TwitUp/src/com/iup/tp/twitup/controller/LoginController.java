@@ -21,7 +21,6 @@ public class LoginController implements IObserverLogin {
 
     @Override
     public void eventCancel(IObservableLogin o, Object arg) {
-        //TODO
         LOGER.debug("J'ai reçu l'évènement Cancel");
     }
 

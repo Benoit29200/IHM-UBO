@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.ihm;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.core.Twitup;
 
 import javax.swing.*;
@@ -43,6 +44,10 @@ public class ChooseExchangeDirectory extends JFrame {
 
             case JFileChooser.CANCEL_OPTION:
                 System.exit(0);
+                break;
+
+            default:
+                LOGER.err("Cas non géré");
                 break;
         }
 
