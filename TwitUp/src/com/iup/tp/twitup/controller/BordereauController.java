@@ -1,11 +1,9 @@
 package com.iup.tp.twitup.controller;
 
-import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObserverMyAccountBordereau;
 import com.iup.tp.twitup.communicationInterface.vueController.IObserverNotifyFollower;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
 import com.iup.tp.twitup.datamodel.Twit;
-import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 
 public class BordereauController implements IObserverBordereau, IObserverMyAccountBordereau, IObserverNotifyFollower {

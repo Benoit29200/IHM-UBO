@@ -131,7 +131,6 @@ public class TwitupMock {
 		// Ajout des composants à la fenêtre
 		this.mFrame.add(dbLabel, new GridBagConstraints(0, 0, 2, 1, 1, 1, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE, new Insets(5, 5, 0, 5), 0, 0));
-		//GridBagConstraints(int gridx, int gridy,int gridwidth, int gridheight,double weightx, double weighty,int anchor, int fill, Insets insets, int ipadx, int ipady)
 		this.mFrame.add(addUserButton, new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 0, 0));
 		this.mFrame.add(addTwitButton, new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.EAST,
@@ -173,9 +172,8 @@ public class TwitupMock {
 	protected User generateUser() {
 		int randomInt = new Random().nextInt(99999);
 		String userName = "MockUser" + randomInt;
-		User newUser = new User(UUID.randomUUID(), userName, "--", userName, new HashSet<String>(), "");
+		return new User(UUID.randomUUID(), userName, "--", userName, new HashSet<String>(), "");
 
-		return newUser;
 	}
 
 	/**
@@ -205,7 +203,7 @@ public class TwitupMock {
 	 */
 	protected Twit generateTwit() {
 		// Si la base n'a pas d'utilisateur
-		if (this.mDatabase.getUsers().size() == 0) {
+		if (this.mDatabase.getUsers().isEmpty()) {
 			// Création d'un utilisateur
 			this.addUserInDatabase();
 		}
@@ -215,8 +213,6 @@ public class TwitupMock {
 		User randomUser = new ArrayList<User>(this.mDatabase.getUsers()).get(Math.max(0, userIndex - 1));
 
 		// Création d'un twit fictif
-		Twit newTwit = new Twit(randomUser, "TwitMother fictif!! #Mock #test ;)");
-
-		return newTwit;
+		return new Twit(randomUser, "TwitMother fictif!! #Mock #test ;)");
 	}
 }

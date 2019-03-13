@@ -119,7 +119,7 @@ public class User {
 	 */
 	public Set<String> getFollows() {
 		// Clonage pour éviter les modifications exterieures
-		return new HashSet<String>(this.mFollows);
+		return new HashSet<>(this.mFollows);
 	}
 
 	/**
@@ -198,11 +198,9 @@ public class User {
 	public boolean equals(Object other) {
 		boolean equals = false;
 
-		if (other != null) {
-			if (other instanceof User) {
+		if (other instanceof User) {
 				User otherUser = (User) other;
 				equals = (this.getUuid().equals(otherUser.getUuid()));
-			}
 		}
 
 		return equals;
@@ -213,7 +211,7 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		sb.append("[");
 		sb.append(this.getClass().getName());

@@ -84,7 +84,6 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		this.connexion = new JLabel(this.userConnected.getUserTag());
 		panelUtilisateur.setMinimumSize(new Dimension(92,100));
 
-		String path =getClass().getResource(this.userConnected.getAvatarPath()).toString();
 		try{
 			this.avatar = new ImagePanel(new File(getClass().getResource(this.userConnected.getAvatarPath()).toURI()), new Dimension(80,80));
 		} catch(Exception e){

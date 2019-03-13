@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.datamodel.jaxb;
 
 import com.iup.tp.twitup.common.FilesUtils;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.datamodel.jaxb.bean.twit.TwitXml;
 import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
 
@@ -71,7 +72,7 @@ public class JaxbWriter {
 				isOk = FilesUtils.moveFile(tmpFile, destFileName);
 			}
 		} catch (Throwable t) {
-			System.err.println("Erreur lors de la génération du fichier pour l'objet : '" + objectToMarshal + "'");
+			LOGER.err("Erreur lors de la génération du fichier pour l'objet : '" + objectToMarshal + "'");
 			t.printStackTrace();
 		}
 

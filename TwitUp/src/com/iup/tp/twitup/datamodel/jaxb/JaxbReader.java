@@ -1,6 +1,7 @@
 package com.iup.tp.twitup.datamodel.jaxb;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.datamodel.jaxb.bean.twit.TwitXml;
 import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
 
@@ -67,7 +68,7 @@ public class JaxbReader {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			object = unmarshaller.unmarshal(new FileReader(xmlFileName));
 		} catch (Throwable t) {
-			System.err.println("Erreur de chargement du fichier : '" + xmlFileName + "'");
+			LOGER.err("Erreur de chargement du fichier : '" + xmlFileName + "'");
 			t.printStackTrace();
 		}
 		return object;

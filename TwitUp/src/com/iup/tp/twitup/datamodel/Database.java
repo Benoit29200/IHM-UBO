@@ -97,8 +97,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		this.notifyFollower(twitToAdd);
 
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyTwitAdded(twitToAdd);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyTwitAdded(twitToAdd);
 		}
 	}
 
@@ -112,8 +112,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 
 		// Notification des observateurs
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyTwitDeleted(twitToRemove);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyTwitDeleted(twitToRemove);
 		}
 	}
 
@@ -126,8 +126,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		this.mTwits.add(twitToModify);
 
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyTwitModified(twitToModify);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyTwitModified(twitToModify);
 		}
 	}
 
@@ -140,8 +140,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		this.mUsers.add(userToAdd);
 
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyUserAdded(userToAdd);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyUserAdded(userToAdd);
 		}
 	}
 
@@ -154,8 +154,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		this.mUsers.remove(userToRemove);
 
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyUserDeleted(userToRemove);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyUserDeleted(userToRemove);
 		}
 	}
 
@@ -168,8 +168,8 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		this.mUsers.add(userToModify);
 
 		// Notification des observateurs
-		for (IDatabaseObserver observer : mObservers) {
-			observer.notifyUserModified(userToModify);
+		for (IDatabaseObserver o : mObservers) {
+			o.notifyUserModified(userToModify);
 		}
 	}
 
@@ -327,7 +327,7 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 		// Notification pour le nouvel observateur
 		for (User user : this.getUsers()) {
 			// Pas de notification pour l'utilisateur inconnu
-			if (user.getUuid().equals(Constants.UNKNONWN_USER_UUID) == false) {
+			if (!user.getUuid().equals(Constants.UNKNONWN_USER_UUID)) {
 				observer.notifyUserAdded(user);
 			}
 		}
@@ -379,9 +379,7 @@ public class Database implements IDatabase, IObservableNotifyFollower {
 
 		List<Twit> twitsUser = new ArrayList<>();
 		for (Twit twit : this.mTwits) {
-			if (twit.mTwiter.getUserTag().equals(user)) {
-				twitsUser.add(twit);
-			}else if(twit.getText().contains("@"+user)){
+			if (twit.mTwiter.getUserTag().equals(user) || twit.getText().contains("@"+user)) {
 				twitsUser.add(twit);
 			}
 		}

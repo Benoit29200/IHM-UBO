@@ -48,6 +48,7 @@ public class ImagePanel extends JPanel {
 		}
 	}
 
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -56,9 +57,9 @@ public class ImagePanel extends JPanel {
 
 	public BufferedImage resizeImage(BufferedImage original, Dimension dimension) {
 
-		double widthFactor = (double) dimension.getWidth()
+		double widthFactor = dimension.getWidth()
 				/ original.getWidth();
-		double heightFactor = (double) dimension.getHeight()
+		double heightFactor = dimension.getHeight()
 				/ original.getHeight();
 
 		double factor = Math.min(widthFactor, heightFactor);

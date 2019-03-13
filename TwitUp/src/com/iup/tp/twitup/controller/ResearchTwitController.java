@@ -3,25 +3,17 @@ package com.iup.tp.twitup.controller;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObservableResearchViewTwit;
 import com.iup.tp.twitup.communicationInterface.betweenController.researchViewTwit.IObserverResearchViewTwit;
 import com.iup.tp.twitup.communicationInterface.vueController.researchTwit.IObserverTwitupResearch;
-import com.iup.tp.twitup.ihm.twit.ResearchTwit;
 
 public class ResearchTwitController implements IObserverTwitupResearch, IObservableResearchViewTwit {
 
-    private CreateViewTwitController parent;
-    private ResearchTwit vue;
     private IObserverResearchViewTwit observer;
 
-    public ResearchTwitController(CreateViewTwitController parent) {
-        this.parent = parent;
-    }
+
 
     public void setObserver(IObserverResearchViewTwit observer) {
         this.observer = observer;
     }
 
-    public void setVue(ResearchTwit vue) {
-        this.vue = vue;
-    }
 
     @Override
     public void notifyResearch(String research) {

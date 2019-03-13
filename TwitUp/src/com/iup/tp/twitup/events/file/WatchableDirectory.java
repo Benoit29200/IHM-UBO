@@ -1,5 +1,7 @@
 package com.iup.tp.twitup.events.file;
 
+import com.iup.tp.twitup.common.LOGER;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -57,9 +59,9 @@ public class WatchableDirectory implements IWatchableDirectory {
 	 */
 	public WatchableDirectory(String directoryPath) {
 		this.mDirectoryPath = directoryPath;
-		this.mPresentFiles = new HashSet<File>();
-		this.mFileModificationMap = new HashMap<String, Long>();
-		this.mObservers = new HashSet<IWatchableDirectoryObserver>();
+		this.mPresentFiles = new HashSet<>();
+		this.mFileModificationMap = new HashMap<>();
+		this.mObservers = new HashSet<>();
 	}
 
 	/**
@@ -68,13 +70,13 @@ public class WatchableDirectory implements IWatchableDirectory {
 	@Override
 	public void changeDirectory(String directoryPath) {
 		// Clonage de la liste pour notification
-		HashSet<File> presentFiles = new HashSet<File>(this.mPresentFiles);
+		HashSet<File> presentFiles = new HashSet<>(this.mPresentFiles);
 
 		// Arret de la surveillance en cours
 		this.stopWatching();
 
 		// Notification de la suppression des fichiers
-		if (presentFiles.isEmpty() == false) {
+		if (!presentFiles.isEmpty()) {
 			this.notifyDeletedFiles(presentFiles);
 		}
 
@@ -99,7 +101,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 			this.startPolling();
 		} else {
 			mDirectory = null;
-			System.err.println("Erreur lors du démarrage de la surveillance du répertoire : " + mDirectoryPath);
+			LOGER.err("Erreur lors du démarrage de la surveillance du répertoire : " + mDirectoryPath);
 		}
 	}
 
@@ -128,7 +130,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 			}
 
 			// Notification de la liste des fichiers présents
-			if (this.mPresentFiles.isEmpty() == false) {
+			if (!this.mPresentFiles.isEmpty()) {
 				this.notifyPresentFiles(this.mPresentFiles);
 			}
 		}
@@ -151,7 +153,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 					// Relancement automatique
 					startPolling();
 				} catch (InterruptedException e) {
-					System.err.println("Surveillance du répertoire interrompue.");
+					LOGER.err("Surveillance du répertoire interrompue.");
 				}
 			}
 		});
@@ -179,7 +181,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 			// Récupération des nouveaux fichiers
 			for (File presentFile : presentFiles) {
 				// Si le fichier n'était pas présent avant
-				if (oldFiles.contains(presentFile) == false) {
+				if (!oldFiles.contains(presentFile)) {
 					// C'est un nouveau fichier
 					newFiles.add(presentFile);
 				}
@@ -188,7 +190,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 			// Récupération des fichiers supprimés
 			for (File oldFile : oldFiles) {
 				// Si le fichier n'est plus présent
-				if (presentFiles.contains(oldFile) == false) {
+				if (!presentFiles.contains(oldFile)) {
 					// C'est un fichier supprimé
 					deletedFiles.add(oldFile);
 				}
@@ -197,33 +199,31 @@ public class WatchableDirectory implements IWatchableDirectory {
 			// Récupération des fichiers modifiés
 			for (File presentFile : presentFiles) {
 				// Si le fichiers n'est pas nouveau
-				if (newFiles.contains(presentFile) == false) {
+				if (!newFiles.contains(presentFile)) {
 					// Récupération de la date de modification de la version
 					// précédente
 					Long savedLastModification = mFileModificationMap.get(presentFile.getName());
 
-					if (savedLastModification != null) {
+					if (savedLastModification != null && savedLastModification < presentFile.lastModified()) {
 						// Si le fichier a été modifié depuis
-						if (savedLastModification < presentFile.lastModified()) {
 							// Stockage du fichier comme ayant été modifié
 							modifiedFiles.add(presentFile);
-						}
 					}
 				}
 			}
 
 			// Notification des fichiers supprimés
-			if (deletedFiles.isEmpty() == false) {
+			if (!deletedFiles.isEmpty()) {
 				this.notifyDeletedFiles(deletedFiles);
 			}
 
 			// Notification des fichiers ajoutés
-			if (newFiles.isEmpty() == false) {
+			if (!newFiles.isEmpty()) {
 				this.notifyNewFiles(newFiles);
 			}
 
 			// Notification des fichiers modifiés
-			if (modifiedFiles.isEmpty() == false) {
+			if (!modifiedFiles.isEmpty()) {
 				this.notifyModifiedFiles(modifiedFiles);
 			}
 
@@ -253,7 +253,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 	@Override
 	public void addObserver(IWatchableDirectoryObserver observer) {
 		// Notification initiale du contenu
-		if (this.mPresentFiles.isEmpty() == false) {
+		if (!this.mPresentFiles.isEmpty()) {
 			observer.notifyPresentFiles(this.mPresentFiles);
 		}
 
@@ -277,10 +277,9 @@ public class WatchableDirectory implements IWatchableDirectory {
 	 */
 	protected void notifyPresentFiles(Set<File> presentFiles) {
 		// Clonage de la liste pour éviter les modifications concurantes
-		Set<IWatchableDirectoryObserver> clonedList = this.mObservers;
 
 		// Parcours de la liste des observeurs pour notification
-		for (IWatchableDirectoryObserver observer : clonedList) {
+		for (IWatchableDirectoryObserver observer : this.mObservers) {
 			observer.notifyPresentFiles(presentFiles);
 		}
 	}

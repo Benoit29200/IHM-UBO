@@ -19,7 +19,7 @@
   </target>
 
   <target name="jar" depends="clean,compile">
-    <jar destfile="jar/TwitupLauncher.jar" basedir="../build" includes="com/**" >
+    <jar destfile="jar/TwitupLauncher.jar" basedir="build" includes="com/**" >
       <manifest>
         <attribute name="Main-Class" value="com.iup.tp.twitup.TwitupLauncher"/>
       </manifest>
@@ -37,7 +37,7 @@
   <!-- Define the SonarQube project properties -->
   <property name="sonar.projectKey" value="Twitup" />
   <property name="sonar.projectName" value="Twitup" />
-  <property name="sonar.projectVersion" value="1.3" />
+  <property name="sonar.projectVersion" value="2.0" />
   <property name="sonar.java.binaries" value="build" />
   <property name="sonar.sources" value="src" />
 

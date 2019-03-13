@@ -191,7 +191,7 @@ public class ConsultAccount extends Account implements IObservableMyAccount {
 	@Override
 	public void notifyUpdateMyAccount(UUID id, String name, String pseudo, String avatarPath, String password) {
 		if(!this.observer.getUserConnected().getAvatarPath().equals(avatarPath)){
-			String resourcePath = getClass().getResource("/resources/images")+"/"+pseudo+".jpg";
+			String resourcePath = getClass().getResource("/resources/images/")+pseudo+".jpg";
 			resourcePath = resourcePath.substring(5);
 			ImageHelper.copier(new File(avatarPath), new File(resourcePath));
 			avatarPath = "/resources/images/"+pseudo+".jpg";

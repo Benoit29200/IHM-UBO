@@ -2,8 +2,6 @@ package com.iup.tp.twitup.communicationInterface.betweenController.createViewTwi
 
 public interface IObservableCreateViewTwit {
 
-    void addObserver(IObserverCreateViewTwit o);
 
-    void deleteObserver();
 
 }

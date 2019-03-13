@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class ConnexionUser extends Account implements IObservableLogin {
 
 	private JButton creationcompteJButton;
-	private JButton connexionUser;
+	private JButton connexionOfUser;
 
 	private Dimension screenOfTheSize;
 
@@ -56,7 +56,7 @@ public class ConnexionUser extends Account implements IObservableLogin {
 	 */
 	private void initComponent(){
 		this.creationcompteJButton = new JButton(this.fileLanguage.getObject(Constants.VIEW_CREATION_COMPTE).toString());
-		this.connexionUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
+		this.connexionOfUser = new JButton(this.fileLanguage.getObject(Constants.VIEW_CONNEXION_COMPTE).toString());
 
 		this.screenOfTheSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -73,7 +73,7 @@ public class ConnexionUser extends Account implements IObservableLogin {
 	 * Ajout d'un action sur le bouton de connexion et sur le bouton de création de account
 	 */
 	private void setAction(){
-		this.connexionUser.addActionListener(new ActionListener() {
+		this.connexionOfUser.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				notifyEventLogin(login.getText(), password.getText());
@@ -140,7 +140,7 @@ public class ConnexionUser extends Account implements IObservableLogin {
 
 		this.addInto(labelEtBoutonConnexion, this.loginLabel, 0,0,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 5, 5, 0,0);
 		this.addInto(labelEtBoutonConnexion, this.passwordLabel, 0, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,5,5,0,0);
-		this.addInto(labelEtBoutonConnexion, this.connexionUser, 0,2,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,5,5,0,0);
+		this.addInto(labelEtBoutonConnexion, this.connexionOfUser, 0,2,1,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.NONE, 5,5,5,5,0,0);
 
 		return labelEtBoutonConnexion;
 	}

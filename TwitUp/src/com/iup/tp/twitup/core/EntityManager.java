@@ -52,9 +52,9 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	 */
 	public EntityManager(IDatabase database) {
 		this.mDatabase = database;
-		this.mUserMap = new HashMap<UUID, User>();
-		this.mTwitFileMap = new HashMap<String, Twit>();
-		this.mUserFileMap = new HashMap<String, User>();
+		this.mUserMap = new HashMap<>();
+		this.mTwitFileMap = new HashMap<>();
+		this.mUserFileMap = new HashMap<>();
 
 		// Ajout de l'utilisateur inconnu
 		User unknowUser = database.getUnknowUser();
@@ -199,7 +199,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	 *            , Liste des fichiers de twit.
 	 */
 	protected Set<Twit> extractAllTwits(Set<File> allTwitFiles) {
-		Set<Twit> allTwits = new HashSet<Twit>();
+		Set<Twit> allTwits = new HashSet<>();
 
 		// Parcours de tous les fichiers de twit
 		for (File twitFile : allTwitFiles) {
@@ -248,7 +248,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	 *            , Liste des fichiers d'utilisateur.
 	 */
 	protected Set<User> extractAllUsers(Set<File> allUserFiles) {
-		Set<User> allUsers = new HashSet<User>();
+		Set<User> allUsers = new HashSet<>();
 
 		// Parcours de tous les fichiers de l'utilsiateur
 		for (File userFile : allUserFiles) {
@@ -322,7 +322,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	 *            , Extension des fichiers à récupérer.
 	 */
 	protected Set<File> getSpecificFiles(Set<File> allFiles, String extension) {
-		Set<File> specificFiles = new HashSet<File>();
+		Set<File> specificFiles = new HashSet<>();
 
 		// Parcours de tous les fichiers donnés
 		for (File file : allFiles) {

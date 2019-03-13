@@ -1,7 +1,6 @@
 package com.iup.tp.twitup.ihm.background;
 
 import com.iup.tp.twitup.communicationInterface.vueController.background.IObservableFond;
-import com.iup.tp.twitup.communicationInterface.vueController.background.IObserverFond;
 import com.iup.tp.twitup.ihm.account.ConsultAccount;
 import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
 import com.iup.tp.twitup.ihm.account.ListTwitUser;
@@ -22,11 +21,9 @@ public class Background extends JPanel implements IObservableFond {
 	
 
 
-	private IObserverFond observer;
 
-	public Background(IObserverFond observer) {
+	public Background() {
 		this.setLayout(new GridBagLayout());
-		this.addObserver(observer);
 	}
 
 
@@ -46,8 +43,8 @@ public class Background extends JPanel implements IObservableFond {
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	public void chargeTwitupMyAccount(ConsultAccount ConsultAccount){
-		this.add(ConsultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
+	public void chargeTwitupMyAccount(ConsultAccount consultAccount){
+		this.add(consultAccount,new GridBagConstraints(1, 0, 1, 1, 1, 1, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
@@ -66,14 +63,5 @@ public class Background extends JPanel implements IObservableFond {
 				GridBagConstraints.BOTH, new Insets(5, 5, 0, 5), 0, 0));
 	}
 
-	@Override
-	public void addObserver(IObserverFond o) {
-		this.observer = o;
-	}
-
-	@Override
-	public void deleteObserver() {
-		this.observer = null;
-	}
 
 }

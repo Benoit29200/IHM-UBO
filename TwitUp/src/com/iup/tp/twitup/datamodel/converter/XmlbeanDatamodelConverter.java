@@ -83,7 +83,7 @@ public class XmlbeanDatamodelConverter {
 	 */
 	public static User convertAsModelUser(UserXml userToConvert) {
 		UUID userUuid = UUID.fromString(userToConvert.getID());
-		Set<String> follows = new HashSet<String>(userToConvert.getFollows());
+		Set<String> follows = new HashSet<>(userToConvert.getFollows());
 
 		return new User(userUuid, userToConvert.getUserTag(), userToConvert.getUserPassword(), userToConvert.getName(),
 				follows, userToConvert.getAvatarPath());

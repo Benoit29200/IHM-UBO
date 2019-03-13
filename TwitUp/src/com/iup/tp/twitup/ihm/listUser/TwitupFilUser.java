@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.net.URI;
 import java.util.List;
 
 public class TwitupFilUser extends ListUser implements IObservableListUser {
@@ -55,7 +54,6 @@ public class TwitupFilUser extends ListUser implements IObservableListUser {
 		ImagePanel avatar = null;
 
 		try{
-			URI t = getClass().getResource(user.getAvatarPath()).toURI();
 			avatar = new ImagePanel(new File(getClass().getResource(user.getAvatarPath()).toURI()), new Dimension(80,80));
 		} catch(Exception e){
 			LOGER.err("Erreur récupération image utilisateur");

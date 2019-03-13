@@ -2,19 +2,13 @@ package com.iup.tp.twitup.controller;
 
 import com.iup.tp.twitup.communicationInterface.vueController.consultAccountUser.IObserverConsultAccountUser;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.ihm.account.ConsultAnUserAccount;
 
 public class ConsultAccountUserController implements IObserverConsultAccountUser {
 
     private BackgroundController parent;
-    private ConsultAnUserAccount vue;
 
     public ConsultAccountUserController(BackgroundController parent) {
         this.parent = parent;
-    }
-
-    public void setVue(ConsultAnUserAccount vue) {
-        this.vue = vue;
     }
 
     @Override

@@ -2,8 +2,6 @@ package com.iup.tp.twitup.ihm.menu;
 
 import com.iup.tp.twitup.common.Constants;
 import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObservableMenuInformation;
-import com.iup.tp.twitup.communicationInterface.vueController.menuInformation.IObserverMenuInformation;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,12 +9,10 @@ import java.awt.event.ActionListener;
 public class MenuInformation extends Menu implements IObservableMenuInformation {
 
 
-	private IObserverMenuInformation observer;
 
 	
-	public MenuInformation(IObserverMenuInformation observer) {
+	public MenuInformation() {
 		super();
-		this.addObserver(observer);
 		this.setText("?");
         setItemToTheProposMenu();
 	}
@@ -32,16 +28,6 @@ public class MenuInformation extends Menu implements IObservableMenuInformation 
                         new ImageIcon(getClass().getResource("/resources/images/logoIUP_50.jpg")));
             }
         });
-	}
-
-	@Override
-	public void addObserver(IObserverMenuInformation o) {
-		this.observer = o;
-	}
-
-	@Override
-	public void deleteObserver() {
-		this.observer = null;
 	}
 
 }

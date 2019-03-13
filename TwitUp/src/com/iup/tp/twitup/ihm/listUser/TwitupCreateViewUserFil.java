@@ -1,30 +1,19 @@
 package com.iup.tp.twitup.ihm.listUser;
 
 import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObservableCreateViewUser;
-import com.iup.tp.twitup.communicationInterface.vueController.createViewUser.IObserverCreateViewUser;
 import com.iup.tp.twitup.ihm.background.BackgroundMother;
 
 import java.awt.*;
 
 public class TwitupCreateViewUserFil extends BackgroundMother implements IObservableCreateViewUser  {
 
-	private IObserverCreateViewUser observer;
 	
-	public TwitupCreateViewUserFil(IObserverCreateViewUser observer) {
-		this.observer = observer;
+	public TwitupCreateViewUserFil() {
 		this.setLayout(new GridBagLayout());
 		this.setBackground(new Color(135,206,250));
 	}
 
-	@Override
-	public void addObserver(IObserverCreateViewUser o) {
-		this.observer = o;
-	}
 
-	@Override
-	public void deleteObserver() {
-		this.observer = null;
-	}
 
 	
 	public void addTwitupResearchUser(TwitupResearchUser twitupResearchUser){

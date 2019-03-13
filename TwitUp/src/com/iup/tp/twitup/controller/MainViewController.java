@@ -82,48 +82,40 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     private void chargeMenu(){
         MenuController menuController = new MenuController(this);
         TwitupMenu twitupMenu = new TwitupMenu();
-        menuController.setVue(twitupMenu);
         this.vue.setJMenuBar(twitupMenu);
-        this.chargeMenuFichier(menuController,twitupMenu);
+        this.chargeMenuFichier(twitupMenu);
         this.chargeMenuConnexionCreation(menuController,twitupMenu);
-        this.chargeMenuInformation(menuController,twitupMenu);
+        this.chargeMenuInformation(twitupMenu);
     }
 
     private void chargeMenuWithDeconnexion(){
         MenuController menuController = new MenuController(this);
         TwitupMenu twitupMenu = new TwitupMenu();
-        menuController.setVue(twitupMenu);
         this.vue.setJMenuBar(twitupMenu);
-        this.chargeMenuFichier(menuController,twitupMenu);
+        this.chargeMenuFichier(twitupMenu);
         this.chargeMenuDeconnexion(menuController,twitupMenu);
-        this.chargeMenuInformation(menuController,twitupMenu);
+        this.chargeMenuInformation(twitupMenu);
     }
 
     private void chargeMenuConnexionCreation(MenuController menuController, TwitupMenu twitupMenu){
         MenuConnexionCreationController menuConnexionCreationController = new MenuConnexionCreationController(menuController);
         MenuConnexionCreation menuConnexionCreation = new MenuConnexionCreation(menuConnexionCreationController);
-        menuConnexionCreationController.setMenuView(menuConnexionCreation);
         twitupMenu.addMenuConnexion(menuConnexionCreation);
     }
 
-    private void chargeMenuFichier(MenuController menuController, TwitupMenu twitupMenu){
-        MenuFichierController menuFichierController = new MenuFichierController(menuController);
-        MenuFichier menuFichier = new MenuFichier(this.vue, menuFichierController);
-        menuFichierController.setVue(menuFichier);
+    private void chargeMenuFichier(TwitupMenu twitupMenu){
+        MenuFichier menuFichier = new MenuFichier();
         twitupMenu.addMenuFichier(menuFichier);
     }
 
     private void chargeMenuDeconnexion(MenuController menuController, TwitupMenu twitMenu){
         MenuDeconnexionController menuDeconnexionController = new MenuDeconnexionController(menuController);
         MenuDeconnexion menuDeconnexion = new MenuDeconnexion(this.vue,menuDeconnexionController);
-        menuDeconnexionController.setVue(menuDeconnexion);
         twitMenu.addMenuDeconnexion(menuDeconnexion);
     }
 
-    private void chargeMenuInformation(MenuController menuController, TwitupMenu twitupMenu){
-        MenuInformationController menuInformationController = new MenuInformationController(menuController);
-        MenuInformation menuInformation = new MenuInformation(menuInformationController);
-        menuInformationController.setVue(menuInformation);
+    private void chargeMenuInformation(TwitupMenu twitupMenu){
+        MenuInformation menuInformation = new MenuInformation();
         twitupMenu.addMenuInformation(menuInformation);
     }
 
@@ -144,7 +136,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     public void chargeFond(){
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
-        Background background = new Background(backgroundController);
+        Background background = new Background();
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -154,7 +146,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     public void chargeFondWithMyAccount(){
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
-        Background background = new Background(backgroundController);
+        Background background = new Background();
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         BordereauController bordereauController = this.chargeBordereau(backgroundController, background);
@@ -165,7 +157,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     public void chargeFondWithProfilUser(User user){
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
-        Background background = new Background(backgroundController);
+        Background background = new Background();
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -175,14 +167,13 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     private void chargeAccountUser(BackgroundController backgroundController, Background background, User user){
         ConsultAccountUserController consultAccountUserController = new ConsultAccountUserController(backgroundController);
         ConsultAnUserAccount consultAnUserAccount = new ConsultAnUserAccount(user, this.database.getUserConnected(),consultAccountUserController);
-        consultAccountUserController.setVue(consultAnUserAccount);
         background.chargeUserAccount(consultAnUserAccount);
     }
 
     public void chargeFondWithListUser(){
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
-        Background background = new Background(backgroundController);
+        Background background = new Background();
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
@@ -192,17 +183,15 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     public void chargeFondWithListTwitUser(String userTag){
         this.chargeMenuWithDeconnexion();
         BackgroundController backgroundController = new BackgroundController(this);
-        Background background = new Background(backgroundController);
+        Background background = new Background();
         this.vue.chargeFond(background);
         this.chargeBordereauMenu(backgroundController, background);
         this.chargeBordereau(backgroundController, background);
-        this.chargeListTwitUser(backgroundController,background,userTag);
+        this.chargeListTwitUser(background,userTag);
     }
 
-    private void chargeListTwitUser(BackgroundController backgroundController, Background background, String userTag){
-        ListTwitUserController listTwitUserController = new ListTwitUserController(backgroundController);
-        ListTwitUser listTwitUser = new ListTwitUser(listTwitUserController,this.getDatabase().getTwitsByUser(userTag));
-        listTwitUserController.setVue(listTwitUser);
+    private void chargeListTwitUser(Background background, String userTag){
+        ListTwitUser listTwitUser = new ListTwitUser(this.getDatabase().getTwitsByUser(userTag));
         background.chargeListTwitUser(listTwitUser);
     }
 
@@ -216,8 +205,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeListUser(BackgroundController backgroundController, Background background){
         CreateViewUserController createViewUserController = new CreateViewUserController(backgroundController);
-        TwitupCreateViewUserFil twitupCreateViewUserFil = new TwitupCreateViewUserFil(createViewUserController);
-        createViewUserController.setVue(twitupCreateViewUserFil);
+        TwitupCreateViewUserFil twitupCreateViewUserFil = new TwitupCreateViewUserFil();
         background.chargeListUser(twitupCreateViewUserFil);
 
         ListUserController listUserController = new ListUserController(createViewUserController);
@@ -225,17 +213,15 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
         listUserController.setVue(twitupFilUser);
         twitupCreateViewUserFil.addTwitupFilUser(twitupFilUser);
 
-        ResearchUserController researchUserController = new ResearchUserController(createViewUserController);
+        ResearchUserController researchUserController = new ResearchUserController();
         researchUserController.addObserver(listUserController);
         TwitupResearchUser twitupResearchUser = new TwitupResearchUser(researchUserController);
-        researchUserController.setVue(twitupResearchUser);
         twitupCreateViewUserFil.addTwitupResearchUser(twitupResearchUser);
     }
 
     private void chargeBordereauMenu(BackgroundController backgroundController, Background background){
         BordereauMenuController bordereauMenuController = new BordereauMenuController(backgroundController);
         TwitupBordereauMenu twitupBordereauMenu = new TwitupBordereauMenu(bordereauMenuController);
-        bordereauMenuController.setVue(twitupBordereauMenu);
         background.chargeTwitupBordereauMenu(twitupBordereauMenu);
     }
 
@@ -250,22 +236,20 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private void chargeCreateViewTwit(BackgroundController backgroundController, Background background){
         CreateViewTwitController createViewTwitController = new CreateViewTwitController(backgroundController, this.database);
-        CreateViewTwit createViewTwit = new CreateViewTwit(createViewTwitController);
-        createViewTwitController.setVue(createViewTwit);
+        CreateViewTwit createViewTwit = new CreateViewTwit();
         background.chargeTwitupCreateViewTwit(createViewTwit);
 
         CreateTwitFormController createTwitFormController = this.chargeCreateTWit(createViewTwitController, createViewTwit);
-        ResearchTwitController researchTwitController = this.chargeResearch(createViewTwitController, createViewTwit);
+        ResearchTwitController researchTwitController = this.chargeResearch(createViewTwit);
         ListTwitController listTwitController = this.chargeFilTwit(createViewTwitController, createViewTwit);
         researchTwitController.setObserver(listTwitController);
         createTwitFormController.setViewTwit(listTwitController);
 
     }
 
-    private ResearchTwitController chargeResearch(CreateViewTwitController createViewTwitController, CreateViewTwit createViewTwit){
-        ResearchTwitController researchTwitController = new ResearchTwitController(createViewTwitController);
+    private ResearchTwitController chargeResearch(CreateViewTwit createViewTwit){
+        ResearchTwitController researchTwitController = new ResearchTwitController();
         ResearchTwit researchTwit = new ResearchTwit(researchTwitController);
-        researchTwitController.setVue(researchTwit);
         createViewTwit.addTwitupResearchTwit(researchTwit);
         return researchTwitController;
     }
@@ -273,7 +257,6 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
     private CreateTwitFormController chargeCreateTWit(CreateViewTwitController createViewTwitController, CreateViewTwit createViewTwit){
         CreateTwitFormController createTwitFormController = new CreateTwitFormController(createViewTwitController);
         CreateTwitForm createTwitForm = new CreateTwitForm(createTwitFormController);
-        createTwitFormController.setVue(createTwitForm);
         createViewTwit.addTwitupCreateTwit(createTwitForm);
         return createTwitFormController;
     }

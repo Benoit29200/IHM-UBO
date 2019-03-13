@@ -5,13 +5,11 @@ import com.iup.tp.twitup.communicationInterface.betweenController.createTwitView
 import com.iup.tp.twitup.communicationInterface.vueController.createTwit.IObserverCreateTwit;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
-import com.iup.tp.twitup.ihm.twit.CreateTwitForm;
 import org.apache.commons.lang3.StringUtils;
 
 public class CreateTwitFormController implements IObserverCreateTwit, IObservableCreateTwitViewTwit {
 
     private CreateViewTwitController parent;
-    private CreateTwitForm vue;
     private IObserverCreateTwitViewTwit viewTwit;
 
     public CreateTwitFormController(CreateViewTwitController parent) {
@@ -20,10 +18,6 @@ public class CreateTwitFormController implements IObserverCreateTwit, IObservabl
 
     public void setViewTwit(IObserverCreateTwitViewTwit viewTwit) {
         this.viewTwit = viewTwit;
-    }
-
-    public void setVue(CreateTwitForm vue) {
-        this.vue = vue;
     }
 
     @Override
