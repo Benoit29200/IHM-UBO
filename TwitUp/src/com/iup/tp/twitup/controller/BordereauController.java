@@ -1,10 +1,14 @@
 package com.iup.tp.twitup.controller;
 
+import com.iup.tp.twitup.common.LOGER;
 import com.iup.tp.twitup.communicationInterface.betweenController.myAccountBordereau.IObserverMyAccountBordereau;
+import com.iup.tp.twitup.communicationInterface.vueController.IObserverNotifyFollower;
 import com.iup.tp.twitup.communicationInterface.vueController.bordereau.IObserverBordereau;
+import com.iup.tp.twitup.datamodel.Twit;
+import com.iup.tp.twitup.datamodel.User;
 import com.iup.tp.twitup.ihm.background.bordereaux.TwitupBordereau;
 
-public class BordereauController implements IObserverBordereau, IObserverMyAccountBordereau {
+public class BordereauController implements IObserverBordereau, IObserverMyAccountBordereau, IObserverNotifyFollower {
 
     private TwitupBordereau vue;
     private BackgroundController parent;
@@ -26,5 +30,11 @@ public class BordereauController implements IObserverBordereau, IObserverMyAccou
     @Override
     public void consultListTwitUser(String userTag) {
         this.parent.getParent().chargeFondWithListTwitUser(userTag);
+    }
+
+    @Override
+    public void receiveNewTwit(Twit twit) {
+        LOGER.debug("J'ai reçu un twit");
+        this.vue.notification(twit.getTwiter().getUserTag());
     }
 }

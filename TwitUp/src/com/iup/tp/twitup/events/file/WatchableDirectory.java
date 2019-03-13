@@ -17,7 +17,7 @@ public class WatchableDirectory implements IWatchableDirectory {
 	/**
 	 * Temps (en ms) entre deux vérification du répertoire.
 	 */
-	protected static final int POLLING_TIME = 1000;
+	protected static final int POLLING_TIME = 600;
 
 	/**
 	 * Chemin d'accès au repertoire à surveiller.

@@ -1,6 +1,8 @@
 package com.iup.tp.twitup.datamodel;
 
 import com.iup.tp.twitup.common.Constants;
+import com.iup.tp.twitup.communicationInterface.IObservableNotifyFollower;
+import com.iup.tp.twitup.communicationInterface.vueController.IObserverNotifyFollower;
 import com.iup.tp.twitup.datamodel.database.IDatabase;
 import com.iup.tp.twitup.datamodel.database.IDatabaseObserver;
 
@@ -11,11 +13,13 @@ import java.util.*;
  * 
  * @author S.Lucas
  */
-public class Database implements IDatabase {
+public class Database implements IDatabase, IObservableNotifyFollower {
 	/**
 	 * Liste des utilisateurs enregistrés.
 	 */
 	protected final Set<User> mUsers;
+
+	private IObserverNotifyFollower observer;
 
 
     /**
@@ -89,6 +93,7 @@ public class Database implements IDatabase {
 	public void addTwit(Twit twitToAdd) {
 		// Ajout du twit
 		this.mTwits.add(twitToAdd);
+		this.notifyFollower(twitToAdd);
 
 		// Notification des observateurs
 		for (IDatabaseObserver observer : mObservers) {
@@ -421,5 +426,21 @@ public class Database implements IDatabase {
 				twit.getTwiter().setUserTag(pseudo);
 			}
 		}
+	}
+
+	@Override
+	public void addObserverFollower(IObserverNotifyFollower observer) {
+		this.observer = observer;
+	}
+
+	@Override
+	public void deleteObserverFollower() {
+		this.observer = null;
+	}
+
+	@Override
+	public void notifyFollower(Twit twit) {
+		if(observer==null) return;
+		this.observer.receiveNewTwit(twit);
 	}
 }

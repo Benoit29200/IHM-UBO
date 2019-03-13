@@ -246,6 +246,7 @@ public class MainViewController implements IObserverMainView, IDatabaseObserver 
 
     private BordereauController chargeBordereau(BackgroundController backgroundController, Background background){
         BordereauController bordereauController = new BordereauController(backgroundController);
+        this.database.addObserverFollower(bordereauController);
         TwitupBordereau twitupBordereau = new TwitupBordereau(bordereauController, this.database.getUserConnected());
         bordereauController.setVue(twitupBordereau);
         background.chargeTwitupBordereau(twitupBordereau);

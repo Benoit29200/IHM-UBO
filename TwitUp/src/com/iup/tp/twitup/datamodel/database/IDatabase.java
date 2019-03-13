@@ -1,5 +1,6 @@
 package com.iup.tp.twitup.datamodel.database;
 
+import com.iup.tp.twitup.communicationInterface.vueController.IObserverNotifyFollower;
 import com.iup.tp.twitup.datamodel.Twit;
 import com.iup.tp.twitup.datamodel.User;
 
@@ -174,5 +175,7 @@ public interface IDatabase {
 	List<Twit> getTwitsByTag(String tag);
 
 	void updateAccount(UUID id, String name, String pseudo, String avatar, String mdp);
+
+	void addObserverFollower(IObserverNotifyFollower observer);
 
 }

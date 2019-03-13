@@ -1,12 +1,10 @@
 package com.iup.tp.twitup.ihm.background.bordereaux;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -29,9 +27,11 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 	private JLabel connexion;
 	private User userConnected;
 	private ImagePanel avatar;
+	private ArrayList<JButton> buttonFollower;
 	
 	public TwitupBordereau(IObserverBordereau observer, User userConnected) {
 		super();
+		this.buttonFollower = new ArrayList<>();
 		this.userConnected = userConnected;
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.WHITE);
@@ -104,6 +104,7 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		int i = 0;
 		for(String follower : this.userConnected.getFollows()) {
 			JButton comp = new JButton(follower);
+			this.buttonFollower.add(comp);
 			comp.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -118,6 +119,16 @@ public class TwitupBordereau extends BackgroundMother implements IObservableBord
 		follow.repaint();
 		
 		return follow;
+	}
+
+	public void notification(String userTag){
+		for(JButton bouton: this.buttonFollower){
+			if(bouton.getText().equals(userTag)){
+				bouton.setForeground(Color.BLUE);
+				this.revalidate();
+				this.repaint();
+			}
+		}
 	}
 
 	@Override
